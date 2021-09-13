@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    
+    aaaaaaaaaaaaaaaa
 	<jsp:include page="../navbar.jsp"></jsp:include>
     <!-- END nav -->
     
