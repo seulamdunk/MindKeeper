@@ -27,71 +27,51 @@
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/signup.css">
   </head>
   <body>
     
-	 <jsp:include page="../navbar.jsp"></jsp:include>
+	<jsp:include page="../navbar.jsp"></jsp:include>
     <!-- END nav -->
     
-    <div class="hero-wrap hero-wrap-2" style="background-image: url(../images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+    <div class="hero-wrap hero-wrap-2" style="background-image: url(images/bg_2.jpg);" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container-fluid">
         <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">회원가입</h1>
+          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Team</span></p>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Team</h1>
           </div>
         </div>
       </div>
     </div>
 
-    <section class="ftco-section bg-light">
-  		<div class="container">
+    <section class="ftco-section">
+      <div class="container">
+      	<div class="row justify-content-center mb-5 pb-5">
+        
+        </div>
         <div class="row">
-          <div class="col-md-12">
-            <form method="post">
-              <!-- <h1> Sign Up </h1> -->
-              
-              <fieldset>
-                
-                <legend>회원가입</legend>
-              
-                <label for="CustomerID">아이디:</label>
-                <input type="text" id="customerID" >
-
-                <label for="CustomerPW">비밀번호:</label>
-                <input type="password" id="customerPW">
-
-                <label for="Customer_Name">이름:</label>
-                <input type="text" id="customerName">
-
-                <label for="Customer_Nick">닉네임:</label>
-                <input type="text" id="customerNick">
-              
-                <label for="identity_Num">주민번호:</label>
-                <input type="text" id="identityNum">
-             
-                <label for="phone_Num">전화번호:</label>
-                <input type="text" id="phoneNum">
-              
-              
-              </fieldset>
-  
-             
-              <input type="button" onclick="signup();" value="회원가입"></input>
-              
-             </form>
-              </div>
-            </div>
-          </div>
+        	
+        </div>
+        	<div class="col-lg-3 d-flex mb-sm-4 ftco-animate">
+        		
+        	</div>
+        	<div class="col-lg-3 d-flex mb-sm-4 ftco-animate">
+        		
+        	</div>
+        	<div class="col-lg-3 d-flex mb-sm-4 ftco-animate">
+        		
+        	</div>
+        </div>
+        <div class="row  mt-5 justify-conten-center">
+        	
+      </div>
     </section>
-    
-<!-- footer -->
-   <jsp:include page="../footer.jsp"></jsp:include>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
-  <script src="../js/guest/signup.js"></script>
+    
+    <!-- footer -->
+	<jsp:include page="../footer.jsp"></jsp:include>
+
   <script src="../js/jquery.min.js"></script>
   <script src="../js/jquery-migrate-3.0.1.min.js"></script>
   <script src="../js/popper.min.js"></script>

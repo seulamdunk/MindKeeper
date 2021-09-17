@@ -1,22 +1,26 @@
-function insertMember(){
+function signin(){
+	
 	var customerID=$('#customerID').val()
 	var customerPW=$('#customerPW').val()
 	
 	var params={customerID:customerID,
 				customerPW:customerPW
 				} // json 파일
-
+		
 	$.ajax({
 		type:"POST",
-		url:"LoginCustomer",
-		contentType:'application/json; charset=utf-8',
+		url:"signin",
+		contentType:'application/json',
 		data:JSON.stringify(params),
 		success:function(result){
-			alert("회원가입이 완료 되었습니다.")
-			location.href='/guest/signin' 
+			var expireDay = 24 * 60 * 60 * 1000;
+			document.cookie="X-AUTH-TOKEN=" + result +expireDay+"; path=/";
+			
+			location.href='/' 
+			 
 		},
 		error:function(err){
-			alert("삽입오류")
+			alert("로그인오류")
 			console.log(err)
 		}
 	})

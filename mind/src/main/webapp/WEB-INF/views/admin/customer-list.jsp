@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Tables</title>
+    <title>MindKeeper - Tables</title>
 
     <!-- Custom fonts for this template -->
     <link href="../css/admin/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -40,7 +40,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">MindKeeper Admin</div>
             </a>
 
             <!-- Divider -->
@@ -136,7 +136,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
+                    <span>회원 목록</span></a>
             </li>
 
             <!-- Divider -->
@@ -366,15 +366,13 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
+                    <h1 class="h3 mb-2 text-gray-800">회원 목록</h1>
+                    
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">회원 정보</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -395,7 +393,7 @@
                                             <th>가입날짜</th>
                                         </tr>
                                     </tfoot>
-                                    <tbody id="memberList">
+                                    <tbody id="customerList">
                                       
                                     </tbody>
                                 </table>
@@ -452,6 +450,7 @@
 
     <!-- Bootstrap core JavaScript-->
     <script src="../js/admin/jquery/jquery.min.js"></script>
+    <script src="../js/admin/customerList.js"></script>
     <script src="../js/admin/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
@@ -466,7 +465,6 @@
 
     <!-- Page level custom scripts -->
     <script src="../js/admin/datatables-demo.js"></script>
-    <script src="../js/admin/memberList.js"></script>
 
 </body>
 

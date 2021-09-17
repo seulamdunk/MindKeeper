@@ -58,10 +58,10 @@
                 <legend>로그인</legend>
               
                 <label for="name">ID:</label>
-                <input type="text" id="name" name="user_name">
+                <input type="text" id="customerID">
               
                 <label for="password">Password:</label>
-                <input type="password" id="password"       name="user_password">
+                <input type="password" id="customerPW">
               
               </fieldset>
               <!-- <fieldset>  
@@ -92,8 +92,8 @@
                 <input type="checkbox" id="business" value="interest_business" name="user_interest"><label class="light" for="business">Business</label>
                 
                </fieldset> -->
-             
-              <button type="submit">로그인</button>
+             <input type="button" onclick="signin();" value="로그인"></input>
+              
               
              </form>
               </div>
@@ -104,7 +104,7 @@
 <!-- footer -->
    <jsp:include page="../footer.jsp"></jsp:include>
 
-
+  <script src="../js/guest/signin.js"></script>
   <script src="../js/jquery.min.js"></script>
   <script src="../js/jquery-migrate-3.0.1.min.js"></script>
   <script src="../js/popper.min.js"></script>

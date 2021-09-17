@@ -1,4 +1,4 @@
-function insertMember(){
+function signup(){
 	var customerID=$('#customerID').val()
 	var customerPW=$('#customerPW').val()
 	var customerName=$('#customerName').val()
@@ -17,7 +17,7 @@ function insertMember(){
 
 	$.ajax({
 		type:"POST",
-		url:"insertCustomer",
+		url:"signup",
 		contentType:'application/json; charset=utf-8',
 		data:JSON.stringify(params),
 		success:function(result){

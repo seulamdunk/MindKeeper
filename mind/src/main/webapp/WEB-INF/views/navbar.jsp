@@ -9,9 +9,9 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="/admin/admin-table" class="nav-link">관리자 페이지 임시</a></li>
-	          <li class="nav-item active"><a href="/guest/signin" class="nav-link">로그인 임시</a></li>
-	          <li class="nav-item active"><a href="/guest/signup" class="nav-link">회원가입 임시</a></li>
+	          <li class="nav-item active"><a href="/guest/a" class="nav-link">테스트 페이지 임시</a></li>
+	          <li class="nav-item active"><a href="/admin/customer-list" class="nav-link">회원목록 임시</a></li>
+	          <li class="nav-item active"><a href="/admin/mindTalk-list" class="nav-link">게시글 목록 임시</a></li>
 	          <li class="nav-item active"><a href="/index" class="nav-link">Home</a></li>
 	          <li class="nav-item"><a href="about" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="services" class="nav-link">Services</a></li>

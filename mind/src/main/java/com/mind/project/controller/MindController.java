@@ -18,6 +18,11 @@ public class MindController {
 		return "admin/"+url;
 	}
 	
+	@RequestMapping(value="/user/{url}")
+	public String userPage(@PathVariable String url) {
+		return "user/"+url;
+	}
+	
     @RequestMapping(value="/")
     public String index() {
         return "/guest/index";
