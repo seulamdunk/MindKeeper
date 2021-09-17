@@ -10,11 +10,11 @@ function signin(){
 	$.ajax({
 		type:"POST",
 		url:"signin",
-		contentType:'application/json',
+		contentType: "application/json; charset=utf-8",
 		data:JSON.stringify(params),
 		success:function(result){
-			var expireDay = 24 * 60 * 60 * 1000;
-			document.cookie="X-AUTH-TOKEN=" + result +expireDay+"; path=/";
+			
+			document.cookie="X-AUTH-TOKEN=" +result +"; path=/";
 			
 			location.href='/' 
 			 

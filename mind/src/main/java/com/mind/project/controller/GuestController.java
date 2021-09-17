@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Map;
 
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.core.Authentication;
@@ -62,7 +61,7 @@ public class GuestController {
         if (!passwordEncoder.matches(user.get("customerPW"), customer.getPassword())) {
             throw new IllegalArgumentException("잘못된 비밀번호입니다.");
         }
-        return jwtTokenProvider.createToken(customer.getCustomerNick(), customer.getRoles());
+        return jwtTokenProvider.createToken(customer.getUsername(), customer.getRoles());
     }
     
     //권한 확인 나중에 지울것
