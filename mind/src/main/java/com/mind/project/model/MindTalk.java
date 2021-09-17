@@ -45,7 +45,14 @@ public class MindTalk {
 
     
 
+    
 
+    	
+    	/*
+    	 * @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    	 * 
+    	 * @JoinColumn(name="talk_num") private List<TalkReview> talkReviewList;
+    	 */
 
 	
     
