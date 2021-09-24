@@ -6,10 +6,12 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,12 +30,6 @@ import lombok.RequiredArgsConstructor;
 public class GuestController {
 	
 	private final GuestService guestService;
-	
-//	@PostMapping("/insertCustomer")
-//	public ResponseEntity<Customer> insertCustomer(@RequestBody InsertCustomerRequest request) {
-//		return ResponseEntity.ok(guestService.insertCustomer(request));
-//	}
-	
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
     private final CustomerRepository customerRepository;
@@ -52,6 +48,17 @@ public class GuestController {
                 .roles(Collections.singletonList("ROLE_USER")) // 최초 가입시 USER 로 설정
                 .build()).getCustomerNum();
     }
+    
+    // 아이디 중복 확인
+    @PostMapping("/idCheck/{id}")
+    public boolean idCheck(@PathVariable String id) {
+    	return customerRepository.existsByCustomerID(id);
+    }
+    // 닉네임 중복 확인
+    @PostMapping("/nickCheck/{nick}")
+    public boolean nickCheck(@PathVariable String nick) {
+    	return customerRepository.existsByCustomerNick(nick);
+    }
 
     // 로그인
     @PostMapping("/signin")
@@ -62,15 +69,6 @@ public class GuestController {
             throw new IllegalArgumentException("잘못된 비밀번호입니다.");
         }
         return jwtTokenProvider.createToken(customer.getUsername(), customer.getRoles());
-    }
-    
-    //권한 확인 나중에 지울것
-    @GetMapping("/checkJWT")
-    public String list(){
-      //권한체크
-      Authentication user = SecurityContextHolder.getContext().getAuthentication();
-      Customer user2 = (Customer) user.getPrincipal();
-      return user.getAuthorities().toString()+" / "+user2.getCustomerID()+" / "+user2.getCustomerNick();
     }
     
 }

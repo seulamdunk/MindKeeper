@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,8 +26,8 @@ public class JwtTokenProvider {
 
     private String secretKey = "secretKey-authorization-jwt-token";
 
-    // 토큰 유효시간 30분
-    private long tokenValidTime = 30 * 60 * 1000L;
+    // 토큰 유효시간 1일
+    private long tokenValidTime = 24 * 60 * 60 * 1000L;
     
     private final UserDetailsService userDetailsService;
 
@@ -62,8 +63,21 @@ public class JwtTokenProvider {
     }
 
     // Request의 Header에서 token 값을 가져옵니다. "X-AUTH-TOKEN" : "TOKEN값'
+    // Cookie에서 가져옴
     public String resolveToken(HttpServletRequest request) {
-        return request.getHeader("X-AUTH-TOKEN");
+    	String token = "";
+    	try {	
+	    	Cookie[] cookies = request.getCookies();
+	    	for(Cookie cookie:cookies) {
+	    		if(("X-AUTH-TOKEN").equals(cookie.getName())){
+	    			token= cookie.getValue();
+	    		}
+	    	}
+    	}catch(Exception e) {
+    		System.out.println(e);
+    	}
+    	return token;
+//        return request.getHeader("X-AUTH-TOKEN");
     }
 
     // 토큰의 유효성 + 만료일자 확인

@@ -20,7 +20,7 @@ function signin(){
 			 
 		},
 		error:function(err){
-			alert("로그인오류")
+			alert("아이디 또는 비밀번호를 확인하세요.")
 			console.log(err)
 		}
 	})
