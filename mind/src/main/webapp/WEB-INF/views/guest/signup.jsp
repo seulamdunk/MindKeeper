@@ -59,16 +59,21 @@
               
                 <label for="CustomerID">아이디:</label>
                 <input type="text" id="customerID" >
-
+				<p id="idCheckresult" style="color:red;"></p>
+				
                 <label for="CustomerPW">비밀번호:</label>
                 <input type="password" id="customerPW">
+
+                <label for="CustomerPWR">비밀번호 확인:</label>
+                <input type="password" id="customerPWR">
 
                 <label for="Customer_Name">이름:</label>
                 <input type="text" id="customerName">
 
                 <label for="Customer_Nick">닉네임:</label>
                 <input type="text" id="customerNick">
-              
+              	<p id="nickCheckresult" style="color:red;"></p>
+              	
                 <label for="identity_Num">주민번호:</label>
                 <input type="text" id="identityNum">
              
