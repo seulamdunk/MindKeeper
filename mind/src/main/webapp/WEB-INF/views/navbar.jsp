@@ -10,18 +10,15 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 	          
-	          <li class="nav-item active"><a href="/index" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="about" class="nav-link">About</a></li>
+	          <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+	          <li class="nav-item active"><a href="/test" class="nav-link">코로나현황</a></li>
 	          <li class="nav-item"><a href="/guest/mindTalk" class="nav-link">마음톡톡</a></li>
 	          <li class="nav-item"><a href="/guest/mindGrow"class="nav-link">마음가꾸기</a></li>
-	          <li class="nav-item"><a href="/park" class="nav-link">마음기르기</a></li>
-	          <li class="nav-item"><a href="pricing" class="nav-link">Pricing</a></li>
-	          <li class="nav-item"><a href="blog" class="nav-link">Blog</a></li>
+	          <li class="nav-item"><a href="/guest/park" class="nav-link">마음기르기</a></li>
 	          <li class="nav-item"><a href="/admin/myPage" class="nav-link">마이페이지</a></li>
-	          <li class="nav-item"><a href="/guest/a" class="nav-link">테스트 페이지 임시</a></li>
-	          <li class="nav-item"><a href="/admin/customer-list" class="nav-link">회원목록 임시</a></li>
 	          <li class="nav-item"><a href="/admin/mindTalk-list" class="nav-link">게시글 목록 임시</a></li>
-	          <li class="nav-item cta"><a href="contact" class="nav-link" data-toggle="modal" data-target="#modalRequest"><span>Get a Quote</span></a></li>
+	          <li class="nav-item cta"><a href="/guest/signin" class="nav-link" ><span>로그인</span></a></li>
+	          <li class="nav-item cta"><a href="/admin/customer-list" class="nav-link" ><span>관리자페이지</span></a></li>
 	        </ul>
 	      </div>
 	    </div>

@@ -4,7 +4,7 @@
 
 		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 		<aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
-			<h1 id="colorlib-logo"><a href="../guest/index">마음지킴이</a></h1>
+			<h1 id="colorlib-logo"><a href="/">마음지킴이</a></h1>
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
 					<li class="colorlib-active"><a href="myPage">Secret Diary</a></li>

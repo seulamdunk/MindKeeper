@@ -30,15 +30,15 @@
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/style.css">
     
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+   <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">-->
    
    <!-- 반경 정보 css 시작 -->
-   <style>
+<!--    <style>
 	.info {position:relative;top:5px;left:5px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;font-size:12px;padding:5px;background:#fff;list-style:none;margin:0;color:#black;} 
 	.info:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}    
 	.info .label {display:inline-block;width:50px;}
 	.number {font-weight:bold;color:#00a0e9;} 
-   </style>
+   </style> -->
    <!-- 반경 정보 css 종료 -->
   </head>
   <body>
@@ -46,7 +46,7 @@
 	 <jsp:include page="../navbar.jsp"></jsp:include>
     <!-- END nav -->
     
-    <div class="hero-wrap hero-wrap-2" style="background-image: url(images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+    <div class="hero-wrap hero-wrap-2" style="background-image: url(../images/bg_2.jpg);" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container-fluid">
         <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
