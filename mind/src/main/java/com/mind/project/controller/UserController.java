@@ -21,6 +21,8 @@ import lombok.RequiredArgsConstructor;
 public class UserController {
 	
 	private final MindTalkRepository mindTalkRepository;
+	
+	private final UserService userService;
 
     // 공개일기 작성
     @PostMapping("/insertTalk")
@@ -35,6 +37,6 @@ public class UserController {
         		.customer(customer)
                 .build()).getTalkNum();
     }
-
+    
 
 }

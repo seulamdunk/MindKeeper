@@ -72,4 +72,5 @@ public class GuestController {
       Customer user2 = (Customer) user.getPrincipal();
       return user.getAuthorities().toString()+" / "+user2.getCustomerID()+" / "+user2.getCustomerNick();
     }
+    
 }

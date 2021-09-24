@@ -17,7 +17,7 @@
 	          <li class="nav-item"><a href="team" class="nav-link">Team</a></li>
 	          <li class="nav-item"><a href="pricing" class="nav-link">Pricing</a></li>
 	          <li class="nav-item"><a href="blog" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact" class="nav-link">Contact</a></li>
+	          <li class="nav-item"><a href="/admin/myPage" class="nav-link">마이페이지</a></li>
 	          <li class="nav-item"><a href="/guest/a" class="nav-link">테스트 페이지 임시</a></li>
 	          <li class="nav-item"><a href="/admin/customer-list" class="nav-link">회원목록 임시</a></li>
 	          <li class="nav-item"><a href="/admin/mindTalk-list" class="nav-link">게시글 목록 임시</a></li>

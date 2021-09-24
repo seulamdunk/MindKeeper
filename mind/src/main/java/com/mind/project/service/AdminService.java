@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.mind.project.model.Customer;
-import com.mind.project.model.MindTalk;
 import com.mind.project.repository.CustomerRepository;
 import com.mind.project.repository.MindTalkRepository;
 
@@ -25,4 +24,5 @@ public class AdminService {
 	public List<Object[]> mindTalkList() {
 		return mindTalkRepository.findMindtalk();
 	}
+	
 }
