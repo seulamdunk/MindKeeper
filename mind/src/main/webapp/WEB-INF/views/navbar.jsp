@@ -14,7 +14,7 @@
 	          <li class="nav-item"><a href="about" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="/guest/mindTalk" class="nav-link">마음톡톡</a></li>
 	          <li class="nav-item"><a href="/guest/mindGrow"class="nav-link">마음가꾸기</a></li>
-	          <li class="nav-item"><a href="team" class="nav-link">Team</a></li>
+	          <li class="nav-item"><a href="/park" class="nav-link">마음기르기</a></li>
 	          <li class="nav-item"><a href="pricing" class="nav-link">Pricing</a></li>
 	          <li class="nav-item"><a href="blog" class="nav-link">Blog</a></li>
 	          <li class="nav-item"><a href="/admin/myPage" class="nav-link">마이페이지</a></li>
