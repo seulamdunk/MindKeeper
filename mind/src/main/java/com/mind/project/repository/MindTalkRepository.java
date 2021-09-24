@@ -12,4 +12,7 @@ public interface MindTalkRepository extends JpaRepository<MindTalk, Integer> {
 	@Query(value="select customerid,talk_con,talk_date,talk_cnt from mindtalk "
 			+ "left join customer on mindtalk.customer_num=customer.customer_num ",nativeQuery=true)
 	public List<Object[]> findMindtalk();
+	
+	
+	List<MindTalk> findAllByOrderByTalkDateDesc();
 }

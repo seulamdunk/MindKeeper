@@ -1,6 +1,8 @@
 package com.mind.project.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -9,9 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Cascade;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -41,20 +42,41 @@ public class MindTalk {
     @JoinColumn(name = "CUSTOMER_NUM")
     private Customer customer;
     
+//
+//    @OneToMany(
+//     	   mappedBy = "talk_img",
+//     	   cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+//     	   orphanRemoval = true
+//     )
+//     private List<TalkImg> talkImg= new ArrayList<>();
+//    
+//    
+// 
+//    
+//    
+//
+//    
+//    public void addPhoto(TalkImg talkImg) {
+//        this.talkImg.add(talkImg);
+//
+//	// 게시글에 파일이 저장되어있지 않은 경우
+//        if(talkImg.getTalk() != this)
+//            // 파일 저장
+//            talkImg.setMindTalk(this);
+//    }
+//
 
 
-    
 
-    
 
-    	
-    	/*
-    	 * @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    	 * 
-    	 * @JoinColumn(name="talk_num") private List<TalkReview> talkReviewList;
-    	 */
 
-	
+    @Builder
+	public MindTalk(String talkCon, Customer customer) {
+		
+		this.talkCon = talkCon;
+		this.customer = customer;
+	}
+
     
     
     

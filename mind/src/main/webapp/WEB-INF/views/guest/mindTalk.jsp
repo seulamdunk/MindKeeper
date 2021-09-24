@@ -42,7 +42,7 @@
         <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
           	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>마음톡톡</span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">마음톡톡</h1>
+            <h1 class="mb-3 bread"  data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">마음톡톡</h1>
           </div>
         </div>
       </div>
@@ -59,82 +59,34 @@
                     <div class="card-header bg-blue">
                         
                     </div>
-                    <div class="card-body">
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
-                                <div class="form-group">
-                                    <label class="sr-only" for="message">post</label>
-                                    <textarea class="form-control" id="message" rows="3" placeholder="마음톡톡"></textarea>
-                                </div>
-
-                            </div>
-                            <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
-                                
-                                <div class="py-4"></div>
-                            </div>
-                        </div>
-                        <div class="btn-toolbar justify-content-between">
-                      		  <div class="form-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile">
-                                        <label class="custom-file-label" for="customFile">Upload image</label>
-                                    </div>
-                               </div>
-                            <div class="btn-group">
-                                <button type="submit" class="btn btn-primary">올리기</button>
-                            </div>
-                           
-                        </div>
+                    <form name="talk_frm" method="post" action="/insertTalk?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">
+	                    <div class="card-body">
+	                        <div class="tab-content" id="myTabContent">
+	                            <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+	                                <div class="form-group">
+	                                    <label class="sr-only" for="message">post</label>
+	                                    <textarea class="form-control" id="talkCon" name="talkCon" rows="10" placeholder="마음톡톡"></textarea>
+	                                </div>
+	
+	                            </div>
+	                      
+	                        </div>
+	                        <div class="btn-toolbar justify-content-between">
+	                      		  <div class="form-group">
+	                                    <div class="custom-file">
+	                                        <input type="file" class="custom-file-input" id="customFile" name="files" multiple="multiple">
+	                                        <label class="custom-file-label" for="customFile">Upload image</label>
+	                                    </div>
+	                               </div>
+	                            <div class="btn-group">
+	                                <button type="button" onclick="insertTalk()" class="btn btn-primary">올리기</button>
+	                            </div>
+	                           
+	                        </div>
                     </div>
+                    </form>
                 </div>
-                <!-- Post /////-->
-				<div><a href="/getTest">데이터 확인</a></div>
-                <!--- \\\\\\\Post-->
-                <div class="card gedf-card">
-                    <div class="card-header">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="mr-2">
-                                    <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
-                                </div>
-                                <div class="ml-2">
-                                    <div class="h5 m-0">@LeeCross</div>
-                                    <div class="h7 text-muted">Miracles Lee Cross <span> 몇분전</span></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="dropdown">
-                                    <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
-                                        <div class="h6 dropdown-header">Configuration</div>
-                                        <a class="dropdown-item" href="#">Save</a>
-                                        <a class="dropdown-item" href="#">Hide</a>
-                                        <a class="dropdown-item" href="#">Report</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="card-body">
-                        
-                        
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo recusandae nulla rem eos ipsa praesentium esse magnam nemo dolor
-                            sequi fuga quia quaerat cum, obcaecati hic, molestias minima iste voluptates.
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-                        <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                        <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-                    </div>
-                </div>
-                <!-- Post /////-->
-
-
+         
 
 
                 <!--- \\\\\\\Post-->
@@ -227,21 +179,63 @@
 				    	</div>
 				    </div>
 				</div>
-                </div>
+        
                 <!-- Post /////-->
+  		
+				
+				<!--  test -->
+				<c:forEach items="${talkList }" var="talk">
+				 <!--- \\\\\\\Post-->
+                <div class="card gedf-card">
+                    <div class="card-header bg-blue">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center ">
+                                <div class="mr-2">
+                                    <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                                </div>
+                                <div class="ml-2">
+                                    <div class="h5 m-0">${talk.customer.customerName }</div>
+                                    <div class="h7 text-muted">시간<span>${talk.talkDate }</span></div>
+                                </div>
+                            </div>
+                           
+                        </div>
 
-				 <c:forEach items="${customers}" var="customer" >
-			      	customer.customerName
-			      
-			      </c:forEach>
+                    </div>
+                    
+                  
+                    <div class="card-body">
+                      <!--   <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Hace 40 min</div> -->
+                        <!-- <a class="card-link" href="#">
+                            <h5 class="card-title">Totam non adipisci hic! Possimus ducimus amet, dolores illo ipsum quoscum.</h5>
+                        </a> -->
 
-            </div>
-            
-        </div>
-        	
-      </div>
-     
-      
+                        <p class="card-text">
+                            ${talk.talkCon }
+                            
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                       <i class="btn btn-primary">🤍  힘내요</i>  <i>0</i>
+                       <i class="btn btn-primary">🗨  응원</i>
+                       <i class="btn btn-primary">🔽 응원 보기 </i>
+                    </div>
+                    
+                  
+				</div>
+				   </c:forEach>
+             
+                
+                <!-- Post /////-->
+                
+             
+				<!--  test ///// -->
+				
+				 </div>	
+		
+                </div>
+	</div>
+       
     </section>
 
     
@@ -265,6 +259,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="../js/google-map.js"></script>
   <script src="../js/main.js"></script>
+  <script src="../custom/mindTalk.js"></script>
     
   </body>
 </html>
