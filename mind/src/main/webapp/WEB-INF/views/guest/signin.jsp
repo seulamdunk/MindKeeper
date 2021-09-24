@@ -64,34 +64,7 @@
                 <input type="password" id="customerPW">
               
               </fieldset>
-              <!-- <fieldset>  
-              
-                <legend><span class="number">2</span> Your Profile</legend>
-                
-               <label for="bio">Bio:</label>
-                <textarea id="bio" name="user_bio"></textarea>
-              
-             
-              
-               <label for="job">Job Role:</label>
-                <select id="job" name="user_job">
-                  <optgroup label="Web">
-                    <option value="frontend_developer">Front-End Developer</option>
-                  </optgroup>
-                  <optgroup label="Mobile">
-                    <option value="android_developer">Android Developer</option>
-                  </optgroup>
-                  <optgroup label="Business">
-                    <option value="business_owner">Business Owner</option>
-                  </optgroup>
-                </select>
-                
-                <label>Interests:</label>
-                <input type="checkbox" id="development" value="interest_development" name="user_interest"><label class="light" for="development">Development</label><br>
-                <input type="checkbox" id="design" value="interest_design" name="user_interest"><label class="light" for="design">Design</label><br>
-                <input type="checkbox" id="business" value="interest_business" name="user_interest"><label class="light" for="business">Business</label>
-                
-               </fieldset> -->
+
              <input type="button" onclick="signin();" value="로그인"></input>
               
               
