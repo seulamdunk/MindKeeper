@@ -63,8 +63,10 @@ public class GuestController {
     // 로그인
     @PostMapping("/signin")
     public String login(@RequestBody Map<String, String> user,HttpServletResponse response) {
+    	//입력된 아이디 찾기
         Customer customer= customerRepository.findByCustomerID(user.get("customerID"))
                 .orElseThrow(() -> new IllegalArgumentException("가입되지 않은 아이디 입니다."));
+        //입력된 비밀번호 일치 확인
         if (!passwordEncoder.matches(user.get("customerPW"), customer.getPassword())) {
             throw new IllegalArgumentException("잘못된 비밀번호입니다.");
         }

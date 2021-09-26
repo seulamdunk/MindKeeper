@@ -36,7 +36,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="adminindex">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -48,7 +48,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="adminindex">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -304,14 +304,15 @@
                             <h6 class="m-0 font-weight-bold text-primary">게시글 정보</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <div id="createTable"class="table-responsive">
+                               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>아이디</th>
                                             <th>내용</th>
                                             <th>날짜</th>
                                             <th>조회수</th>
+                                            <th>삭제</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -320,12 +321,15 @@
                                             <th>내용</th>
                                             <th>날짜</th>
                                             <th>조회수</th>
+                                            <th>삭제</th>
                                         </tr>
                                     </tfoot>
                                     <tbody id="mindTalkList">
                                       
                                     </tbody>
                                 </table>
+                                
+                                
                             </div>
                         </div>
                     </div>
@@ -376,13 +380,13 @@
             </div>
         </div>
     </div>
-
     <!-- Bootstrap core JavaScript-->
+	
     <script src="../js/admin/jquery/jquery.min.js"></script>
     <script src="../js/admin/mindTalkList.js"></script>
     <script src="../js/admin/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
+			<!-- Core plugin JavaScript-->
     <script src="../js/admin/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
@@ -394,7 +398,7 @@
 
     <!-- Page level custom scripts -->
     <script src="../js/admin/datatables-demo.js"></script>
-
+			
 </body>
 
 </html>

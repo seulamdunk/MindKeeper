@@ -17,6 +17,7 @@ public class CustomUserDetailService implements UserDetailsService  {
 	@Autowired
 	private final CustomerRepository customerRepository;
 	
+	//UserDetails상속받은 Customer에서 유저 정보를 불러오면 UserDetails이라는 스프링에서 제공하는 클래스로 반환하는 메소드
 	@Override
 	public UserDetails loadUserByUsername(String loginId) throws UsernameNotFoundException {
 		return customerRepository.findByCustomerID(loginId)

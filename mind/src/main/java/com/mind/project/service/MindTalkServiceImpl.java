@@ -25,6 +25,12 @@ import com.mind.project.repository.MindTalkRepository;
 	  public MindTalk insertTalk(MindTalk talk) {
 		  return talkRep.save(talk);
 	  }
+
+	  //게시글삭제
+	@Override
+	public void mindTalkDelete(int num) {
+		
+	}
   
 
   

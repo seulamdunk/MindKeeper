@@ -3,6 +3,10 @@ package com.mind.project.controller;
 import java.time.LocalDateTime;
 import java.util.Map;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +29,7 @@ public class UserController {
 	private final UserService userService;
 
     // 공개일기 작성
-    @PostMapping("/insertTalk")
+    @PostMapping("/insertTalks")
     public Integer join(@RequestBody Map<String, String> user) {
         Customer customer = new Customer();
         customer.setCustomerNum(Integer.parseInt(user.get("CustomerNum")));
@@ -36,6 +40,14 @@ public class UserController {
         		.talkImg(null)
         		.customer(customer)
                 .build()).getTalkNum();
+    }
+    
+    @PostMapping("/nickname")
+    public String list() {
+    	// 시큐리티에서 정보 가져오기
+    	Authentication user = SecurityContextHolder.getContext().getAuthentication();
+    	Customer user2 = (Customer) user.getPrincipal();
+        return user2.getCustomerNick();
     }
     
 

@@ -17,12 +17,20 @@ public class AdminService {
 	private final CustomerRepository customerRepository;
 	private final MindTalkRepository mindTalkRepository;
 	
+	//회원 목록
 	public List<Customer> customerList() {
 		return customerRepository.findAll(); 
 	}
 	
+	//게시글 목록
 	public List<Object[]> mindTalkList() {
 		return mindTalkRepository.findMindtalk();
 	}
+
+	//가입자 수
+	public int plusCustomer(int num) {
+		return customerRepository.plusCustomer(num);
+	}
+	
 	
 }
