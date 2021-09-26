@@ -32,14 +32,7 @@
     
    <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">-->
    
-   <!-- 반경 정보 css 시작 -->
-<!--    <style>
-	.info {position:relative;top:5px;left:5px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;font-size:12px;padding:5px;background:#fff;list-style:none;margin:0;color:#black;} 
-	.info:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}    
-	.info .label {display:inline-block;width:50px;}
-	.number {font-weight:bold;color:#00a0e9;} 
-   </style> -->
-   <!-- 반경 정보 css 종료 -->
+
   </head>
   <body>
     
@@ -69,7 +62,7 @@
 	            <h2 class="h4" style="align:center">주변 공원 찾기 </h2>
 	            	<!-- 부트스트랩 primary 버튼 -->
 	            	<div>
-					<button type="button" class="btn btn-primary py-2 px-2" id="getMyPositionBtn" onclick="getCurrentPosBtn()">내 위치 가져오기</button>
+					<button type="button" class="btn btn-primary py-2 px-2" id="getMyPositionBtn" onclick="getCurrentPosBtn()">주변 공원</button>
 	       	 		</div>
 	          </div>
 	          
@@ -94,7 +87,7 @@
 	<!-- 부트스트랩 이용을 위한 jQuery와 CDN -->
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	<script src="../js/maps.js"></script>
+	<script src="../js/parkMap.js"></script>
 	<!-- 지도 script 종료 -->
 	
   <script src="../js/jquery.min.js"></script>

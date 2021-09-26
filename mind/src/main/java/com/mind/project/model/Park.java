@@ -1,43 +1,22 @@
 package com.mind.project.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Setter
 @Getter
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
-@Entity(name="park")
+@AllArgsConstructor
 public class Park {
-
-		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		private int park_Num;
-		
-		@Column
-		private String park_Name;
-		
-		@Column
-		private float park_Wido;
-		
-		@Column
-		private float park_Gyungdo;
-		
-		@Builder
-		public Park(String park_Name, float park_Wido, float park_Gyungdo) {
-			this.park_Name = park_Name;
-			this.park_Wido = park_Wido;
-			this.park_Gyungdo = park_Gyungdo;
-		}
-		
-		
-		
+	
+	private int parkNum;		// 공원번호
+	private String parkName;	// 공원이름
+	private float parkScore;	// 공원평점
+	private int parkReview;		// 공원리뷰
+	private String parkLink;	// 공원링크
+	private String parkAddr;	// 공원주소
+	private float parkLat;		// 공원위도
+	private float parkLng;		// 공원경도
 }

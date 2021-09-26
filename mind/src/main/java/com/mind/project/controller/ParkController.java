@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mind.project.model.Park;
+import com.mind.project.model.entity.ParkEntity;
 import com.mind.project.repository.ParkRepository;
-import com.mind.project.request.parkRequest;
 
 @Controller
 public class ParkController {
@@ -22,12 +22,12 @@ public class ParkController {
 
 	@ResponseBody
 	@RequestMapping(value="/guest/parkSearch" ,method = RequestMethod.POST)
-	public List<parkRequest> ajaxtest(){
-		List<Park> list = parkRepository.findAll(); 
-		List<parkRequest> parkData = new ArrayList<parkRequest>();
+	public List<Park> ajaxtest(){
+		List<ParkEntity> list = parkRepository.findAll(); 
+		List<Park> parkData = new ArrayList<Park>();
 		
-		for (Park source: list) {
-			parkRequest target =new parkRequest(); 
+		for (ParkEntity source: list) {
+			Park target =new Park(); 
 			BeanUtils.copyProperties(source,target); 
 			parkData.add(target);
 		}
