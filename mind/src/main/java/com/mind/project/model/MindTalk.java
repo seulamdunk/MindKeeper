@@ -36,35 +36,35 @@ public class MindTalk {
     private String talkCon;
     private LocalDateTime talkDate;
     private Integer talkCnt;
-    private String talkImg;
+  
     
     @ManyToOne
     @JoinColumn(name = "CUSTOMER_NUM")
     private Customer customer;
     
-//
-//    @OneToMany(
-//     	   mappedBy = "talk_img",
-//     	   cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
-//     	   orphanRemoval = true
-//     )
-//     private List<TalkImg> talkImg= new ArrayList<>();
-//    
-//    
-// 
-//    
-//    
-//
-//    
-//    public void addPhoto(TalkImg talkImg) {
-//        this.talkImg.add(talkImg);
-//
-//	// 게시글에 파일이 저장되어있지 않은 경우
-//        if(talkImg.getTalk() != this)
-//            // 파일 저장
-//            talkImg.setMindTalk(this);
-//    }
-//
+
+    @OneToMany(
+     	   mappedBy = "talk",
+     	   cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+     	   orphanRemoval = true
+     )
+     private List<TalkImg> talkImg= new ArrayList<>();
+    
+    
+ 
+    
+    
+
+    
+    public void addPhoto(TalkImg talkImg) {
+        this.talkImg.add(talkImg);
+
+	// 게시글에 파일이 저장되어있지 않은 경우
+        if(talkImg.getTalk() != this)
+            // 파일 저장
+            talkImg.setMindTalk(this);
+    }
+
 
 
 

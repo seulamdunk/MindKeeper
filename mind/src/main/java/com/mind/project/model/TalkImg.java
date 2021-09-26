@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class TalkImg {
 
 	    @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    @Column(name="talk_img_num")
 	    private int talkImgNum;
 
@@ -35,21 +35,22 @@ public class TalkImg {
 	    private String filePath;  // 파일 저장 경로
 
 	    private Long fileSize;
-
+	    
 	    @Builder 
 	    public TalkImg(String origFileName, String filePath, Long fileSize){
 	        this.origFileName = origFileName;
 	        this.filePath = filePath;
 	        this.fileSize = fileSize;
+	        
 	    }
 
-//	    // Board 정보 저장
-//	    public void setMindTalk(MindTalk talk){
-//	        this.talk= talk;
-//
-//		// 게시글에 현재 파일이 존재하지 않는다면
-//	        if(!talk.getTalkImg().contains(this))
-//	            // 파일 추가
-//	            talk.getTalkImg().add(this);
-//	    }
+	    // Board 정보 저장
+	    public void setMindTalk(MindTalk talk){
+	        this.talk= talk;
+
+		// 게시글에 현재 파일이 존재하지 않는다면
+	        if(!talk.getTalkImg().contains(this))
+	            // 파일 추가
+	            talk.getTalkImg().add(this);
+	    }
 	}

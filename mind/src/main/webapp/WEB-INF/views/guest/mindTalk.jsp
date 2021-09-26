@@ -59,7 +59,7 @@
                     <div class="card-header bg-blue">
                         
                     </div>
-                    <form name="talk_frm" method="post" action="/insertTalk?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">
+                    <form name="talk_frm" id="talk_frm" method="post" action="/insertTalk?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">
 	                    <div class="card-body">
 	                        <div class="tab-content" id="myTabContent">
 	                            <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
@@ -74,12 +74,13 @@
 	                        <div class="btn-toolbar justify-content-between">
 	                      		  <div class="form-group">
 	                                    <div class="custom-file">
-	                                        <input type="file" class="custom-file-input" id="customFile" name="files" multiple="multiple">
-	                                        <label class="custom-file-label" for="customFile">Upload image</label>
+	                                        <input type="file" class="custom-file-input" id="files" name="files" multiple="multiple">
+	                                        <label class="custom-file-label" for="files">Upload image</label>
 	                                    </div>
 	                               </div>
 	                            <div class="btn-group">
 	                                <button type="button" onclick="insertTalk()" class="btn btn-primary">올리기</button>
+	                                 <button type="submit" class="btn btn-primary">submit</button>
 	                            </div>
 	                           
 	                        </div>
@@ -109,7 +110,7 @@
                     
                   
                     <div class="card-body">
-                      <!--   <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Hace 40 min</div> -->
+                      <!--   <div class="text-muted h7 mb-2"> <span class="fa fa-clock-o"></span> Hace 40 min</div> -->
                         <!-- <a class="card-link" href="#">
                             <h5 class="card-title">Totam non adipisci hic! Possimus ducimus amet, dolores illo ipsum quoscum.</h5>
                         </a> -->
@@ -122,9 +123,9 @@
                         </p>
                     </div>
                     <div class="card-footer">
-                       <i class="btn btn-primary">🤍  힘내요</i>  <i>0</i>
-                       <i class="btn btn-primary">🗨  응원</i>
-                       <i class="btn btn-primary">🔽 응원 보기 </i>
+                       <span class="btn btn-primary">🤍  힘내요</span>  <span>0</span>
+                       <span class="btn btn-primary">🗨  응원</span>
+                       <span class="btn btn-primary">🔽 응원 보기 </span>
                     </div>
                     
                       <!--  댓글 시작 -->
@@ -144,8 +145,8 @@
 		                                    		<p>Lorem Ipsum is simply dummy text of the pr make  but also the leap into electronic typesetting</p>
 		                                    	</div>
 		                                    	<div class="">
-							                       <i class="btn btn-primary">🤍  힘내요</i>  <i>0</i>
-							                       <i class="btn btn-primary">🗨  응원</i>					                       
+							                       <span class="btn btn-primary">🤍  힘내요</span>  <span>0</span>
+							                       <span class="btn btn-primary">🗨  응원</span>					                       
 							                    </div>		                                    
 		                                    </div>      
 		                                </div>
@@ -167,8 +168,8 @@
 			                                    		<p>Lorem Ipsum is simply dummy text of the pr make  but also the leap into electronic typesetting</p>
 			                                    	</div>
 			                                    	<div class="">
-								                       <i class="btn btn-primary">🤍  힘내요</i>  <i>0</i>
-								                       <i class="btn btn-primary">🗨  응원</i>					                       
+								                       <span class="btn btn-primary">🤍  힘내요</span>  <span>0</span>
+								                       <span class="btn btn-primary">🗨  응원</span>					                       
 								                    </div>		                                    
 			                                    </div>      
 			                                </div>
@@ -185,6 +186,7 @@
 				
 				<!--  test -->
 				<c:forEach items="${talkList }" var="talk">
+				
 				 <!--- \\\\\\\Post-->
                 <div class="card gedf-card">
                     <div class="card-header bg-blue">
@@ -205,7 +207,7 @@
                     
                   
                     <div class="card-body">
-                      <!--   <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Hace 40 min</div> -->
+                      <!--   <div class="text-muted h7 mb-2"> <span class="fa fa-clock-o"></span> Hace 40 min</div> -->
                         <!-- <a class="card-link" href="#">
                             <h5 class="card-title">Totam non adipisci hic! Possimus ducimus amet, dolores illo ipsum quoscum.</h5>
                         </a> -->
@@ -214,14 +216,48 @@
                             ${talk.talkCon }
                             
                         </p>
-                    </div>
-                    <div class="card-footer">
-                       <i class="btn btn-primary">🤍  힘내요</i>  <i>0</i>
-                       <i class="btn btn-primary">🗨  응원</i>
-                       <i class="btn btn-primary">🔽 응원 보기 </i>
+                        <div class="img-display">
+                        <img  src="${talk.talkImg[0].filePath }"/>
+                        </div>
                     </div>
                     
-                  
+                    <div class="card-footer">
+                       <span class="btn btn-primary">🤍  힘내요</span>  <span>${talk.talkCnt}</span>
+                       <span class="btn btn-primary cheerUPBtn">🗨  응원
+                       <input class="talkNum" type="hidden" value="${talk.talkNum }"></span>
+                       <span class="btn btn-primary">🔽 응원 보기 </span>
+                    </div>
+                    
+                    <div class="cheerUPArea">
+                    
+                    <div class="card card-inner"> 
+                    <c:forEach items="${talkReviewList }" var="review">
+	                    <div class="card-body">
+					        <div class="row">        	 
+		                            <div class="d-flex justify-content-between align-items-center">
+		                                <div class="mr-2">
+		                                    <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+		                                </div>
+		                                <div class="ml-2">
+		                                    <div class="inline-div">
+		                                    	<div class=" text-bk">
+		                                    		<p><strong>${review.customer.customerName }</strong>		<span>시간</span></p>
+		                                    	</div>
+		                                    	<div class="h7 text-muted">
+		                                    		<p>${review.talkReviewCon }</p>
+		                                    	</div>
+		                                    	<div class="">
+							                       <span class="btn btn-primary">🤍  힘내요</span>  <span>0</span>
+							                       <span class="btn btn-primary">🗨  응원</span>					                       
+							                    </div>		                                    
+		                                    </div>      
+		                                </div>
+	                            	</div>
+				       		 </div>
+				       	</div>
+				       	</c:forEach>
+                  </div>
+                  </div>
 				</div>
 				   </c:forEach>
              

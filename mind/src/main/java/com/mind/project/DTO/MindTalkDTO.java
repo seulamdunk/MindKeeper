@@ -1,13 +1,15 @@
 package com.mind.project.DTO;
 
-import java.time.LocalDateTime;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 @Data
 public class MindTalkDTO {
-	private Integer talkNum;
+	
     private String talkCon;
-    private LocalDateTime talkDate;
-    private Integer talkCnt;
-    private String talkImg;
+
+
+    private List<MultipartFile> talkImg;
 }
