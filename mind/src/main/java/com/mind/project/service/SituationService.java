@@ -79,9 +79,9 @@ public class SituationService {
 	}
 	
 	@PostConstruct
-	public List<WeatherMap> getWeatherMap() throws IOException{
+	public List<String> getWeatherMap() throws IOException{
 		
-		List<WeatherMap> MapList = new ArrayList<>();
+		List<String> MapList = new ArrayList<>();
 		Document doc = Jsoup.connect(WEATHER_MAP_URL).get();
 		//System.out.println(doc);
 		Elements weatherMaps = doc.select("#divWeather > div.nation_map > div.map_list > a");
@@ -94,9 +94,8 @@ public class SituationService {
 					.build();
 			
 			//System.out.println(weather_m);
-			MapList.add(weather_m);
-			System.out.println(MapList);
-			
+			MapList.add(weather_m.getCity_weather());
+			//System.out.println(MapList);
 		}
 		return MapList;
 		

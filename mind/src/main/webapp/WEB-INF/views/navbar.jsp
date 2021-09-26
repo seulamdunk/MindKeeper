@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="index">마음지킴이</a>
+	      <a class="navbar-brand" href="/">마음지킴이</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
@@ -11,7 +11,8 @@
 	        <ul class="navbar-nav ml-auto">
 	          
 	          <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
-	          <li class="nav-item active"><a href="/test" class="nav-link">코로나현황</a></li>
+	          <li class="nav-item active"><a href="/corona" class="nav-link">코로나현황</a></li>
+	          <li class="nav-item"><a href="/weather" class="nav-link">날씨 현황</a></li>
 	          <li class="nav-item"><a href="/guest/mindTalk" class="nav-link">마음톡톡</a></li>
 	          <li class="nav-item"><a href="/guest/mindGrow"class="nav-link">마음가꾸기</a></li>
 	          <li class="nav-item"><a href="/guest/park" class="nav-link">마음기르기</a></li>

@@ -16,32 +16,30 @@ import com.mind.project.service.SituationService;
 
 
 @Controller
-public class WeatherController {
+public class StatusController {
 	
 
 	@Autowired
 	private SituationService situationService;
 	
-	 @GetMapping("/test")
+	 @GetMapping("/corona")
 	 public String test(Model model) throws IOException {
 		 List<KoreaStats> koreaStatsList = situationService.getKoreaCovidDatas();
 		 model.addAttribute("test", koreaStatsList);
 		
-		return "공백4";
+		return "korea_corona";
 	}
-	 // 미완성
-//	 @GetMapping("/test2")
-//	 public String test2(Model model) throws IOException{
-//		WeatherForecast weather = situationService.getWeatherForecastData(); 
-//		model.addAttribute("test2", weather);
-//		 return "공백2";
-//	 }
-	 //미완성이지만 모형만 나옴
-	 @GetMapping("/test3")
-	 public String test3(Model model) throws IOException{
-		 List<WeatherMap> weather_map = situationService.getWeatherMap();
-		 model.addAttribute("test3", weather_map);
-		 return "공백3";
-	 }
+	 
+
+	
+	 @GetMapping("/weather")
+	 public String test2(Model model) throws IOException{
+		WeatherForecast weather = situationService.getWeatherForecastData(); 
+		model.addAttribute("test2", weather);
+		List<String> weather_map = situationService.getWeatherMap();
+		model.addAttribute("test3", weather_map);
+		
+		 return "weather";
+ }
 
 }
