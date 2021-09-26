@@ -42,6 +42,7 @@
 						<div>
 							<form action="/admin/predictDiary" method="post">
 								<div class="form-group">
+								<input type="hidden" name="customerNum" id="customerNum" value="22"/>
 									<input name="secretTitle" id="secretTitle" type="text"
 										class="form-control" placeholder="제목을 입력해주세요">
 								</div>

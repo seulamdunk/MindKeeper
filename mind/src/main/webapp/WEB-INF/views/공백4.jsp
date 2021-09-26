@@ -61,15 +61,13 @@
 
 	
 		<div class="container mt-5">
-		<h1>한국의 코로나19</h1>
 		<div class="col-4">
-		<hr>
 		</div>
 		
 			<div class="row center justify-content-center mb-5 pb-5">
-			
 			<h2>코로나 총 확진자 수 :  </h2>
 			<h2>${test[0].total}</h2><br/>
+			<div style="height: 100px"></div>
 				<table class="table caption-top">
 					<thead>
 						<tr>
@@ -100,12 +98,14 @@
 					</c:forEach>
 					</tbody>
 				</table>
+				<!--  
 				<div class="row  mt-5 justify-conten-center">
 					<img src="img\코로나 현황 크롤링0.png">
 				</div>
 				<div class="row  mt-5 justify-conten-center">
 					<img src="img\코로나 현황 크롤링1.png">
 				</div>
+				-->
 				<div class="row  mt-5 justify-conten-center">
 					<img src="img\코로나 현황 크롤링3.png">
 				</div>

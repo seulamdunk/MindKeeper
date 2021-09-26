@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
  <head>
     <title>Elen - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
@@ -68,7 +68,7 @@
 							<a href="#" class="img img-2" style="background-image: url(../css/mypage/images/image_1.jpg);"></a>
 							<div class="text text-2 pt-2 mt-3">
 								<span class="category mb-3 d-block"><a href="/secretDiaryView">Technology</a></span>
-	              <h3 class="mb-4"><a href="./secretDiaryView">${secret.secretTitle }</a></h3>
+	              <h3 class="mb-4"><a href="./secretDiaryView?secretNum=${secret.secretNum }">${secret.secretTitle }</a></h3>
 	              <p class="mb-4">${secret.secretCon }</p>
 	              <div class="author mb-4 d-flex align-items-center">
 	            		<div class="ml-3 info">

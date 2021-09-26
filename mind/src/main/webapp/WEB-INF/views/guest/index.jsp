@@ -38,14 +38,18 @@
         <div class="slider-text d-md-flex align-items-center" data-scrollax-parent="true">
 
           <div class="one-forth ftco-animate align-self-md-center" data-scrollax=" properties: { translateY: '70%' }">
-          	<h1 class="mb-4"> Template for
-              <strong class="typewrite" data-period="4000" data-type='[ "Digital Agency", "Portfolio", "SEO Agency", "Business" ]'>
+          	<!--  
+          	<h1 class="mb-4"> 지쳐버린<br>당신의 <br>
+              <strong class="typewrite" data-period="4000" data-type='[ "마음지킴이", "마음지킴이", "마음지킴이", "마음지킴이" ]'>
                 <span class="wrap"></span>
               </strong>
             </h1>
+            -->
             <p class="mb-md-5 mb-sm-3" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-            <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="#" class="btn btn-primary px-4 py-3">Get a Quote</a> <a href="#" class="btn btn-primary btn-outline-primary px-4 py-3">Our Portfolio</a></p>
+            <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="#" class="btn btn-primary px-4 py-3">Get a Quote</a></p>
           </div>
+          
+          <!--
           <div class="one-half align-self-md-end align-self-sm-center">
           	<div class="slider-carousel owl-carousel">
           		<div class="item">
@@ -59,21 +63,26 @@
 		          </div>
 	          </div>
           </div>
+          -->
+          
         </div>
       </div>
     </div>
     
+    
+    <!--  
     <section class="ftco-section ftco-section-2">
     	<div class="overlay"></div>
     	<div class="container">
     		<div class="row">
-    			<div class="col-md-8">
-    				<h3 class="heading-white">We Provide High Quality Services</h3>
+    			<div class="col-md-8" style="align-self: center;">
+    				<h3 class="heading-white">I AM YOUR MINDKEEPER</h3>
     			</div>
     		</div>
     	</div>
     </section>
   
+
     <section class="ftco-section ftco-services">
       <div class="container">
       	<div class="row justify-content-center mb-5 pb-5">
@@ -154,7 +163,8 @@
       	</div>
       </div>
     </section>
-
+    -->
+<!--  
     <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(../images/bg_1.jpg);" data-stellar-background-ratio="0.5">
     	<div class="container">
     		<div class="row justify-content-center">
@@ -164,7 +174,7 @@
 		            <div class="block-18 text-center">
 		              <div class="text">
 		                <strong class="number" data-number="6780">0</strong>
-		                <span>Happy Clients</span>
+		                <span>확진환자</span>
 		              </div>
 		            </div>
 		          </div>
@@ -172,7 +182,7 @@
 		            <div class="block-18 text-center">
 		              <div class="text">
 		                <strong class="number" data-number="4500">0</strong>
-		                <span>Running Projects</span>
+		                <span>격리해제</span>
 		              </div>
 		            </div>
 		          </div>
@@ -180,7 +190,7 @@
 		            <div class="block-18 text-center">
 		              <div class="text">
 		                <strong class="number" data-number="4200">0</strong>
-		                <span>Project Completed</span>
+		                <span>사망자</span>
 		              </div>
 		            </div>
 		          </div>
@@ -188,7 +198,7 @@
 		            <div class="block-18 text-center">
 		              <div class="text">
 		                <strong class="number" data-number="320">0</strong>
-		                <span>Cups of Coffe</span>
+		                <span>검사진행</span>
 		              </div>
 		            </div>
 		          </div>
@@ -197,6 +207,7 @@
         </div>
     	</div>
     </section>
+    -->
 
     <section class="ftco-section ftco-work">
     	<div class="container-fluid">

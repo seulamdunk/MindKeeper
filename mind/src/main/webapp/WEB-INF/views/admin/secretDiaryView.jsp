@@ -47,41 +47,48 @@
 	    					<div class="col-md-12">
 	    						<div class="blog-entry ftco-animate">
 	    							<span class="category mb-1 d-block"><a href="#">Technology</a></span>
-				              <h3 class="mb-4"><a href="#">"${secretModel.secretTitle }"</a></h3>
+				              <h3 class="mb-4"><a href="#">${secretModel.secretTitle }</a></h3>
+				              <hr>
+				              <input type="hidden" id="customerNum" value="${secretModel.customerNum }" />
 	    							
 	    					<div class="text pt-2 mt-3">
 				              <a href="#" class="img" style="background-image: url(../css/mypage/images/image_1.jpg);"></a>
-				              <p class="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+				              <p class="mb-4" style="margin-top: 20px; font-size: 25px">${secretModel.secretCon }</p>
 				              <div class="author mb-4 d-flex align-items-center">
 				            		<div class="ml-3 info">
-				            			<span>Written by</span>
-				            			<h3><a href="#">Dave Lewis</a>, <span>Nov 28, 2018</span></h3>
+				            			<h3><span id="secretDate">${secretModel.secretDate }</span></h3>
 				            		</div>
 				            	</div>
+				              
+				              
+				              
+				              <hr>
 				              <div class="meta-wrap d-md-flex align-items-center">
-				              	<div class="half order-md-last text-md-right">
-					              	<p class="meta">
-					              		<span><i class="icon-heart"></i>3</span>
-					              		<span><i class="icon-eye"></i>100</span>
-					              		<span><i class="icon-comment"></i>5</span>
-					              	</p>
-				              	</div>
-				              	
-				              	<!-- 
+				              	 <input type="submit" value="결과보기" id="resultBtn" class="btn btn-primary py-3 px-5" />
+				              	 <!--  
 				              	<form action="/admin/predictDiary" method="post">
 				              	<div class="half">
 					              	<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">결과보기</a></p>
 				              	</div>
 				              	</form>
 				              	-->
-				              	
+
 				              </div>
+				              
+				             
 				            </div>
 	    						</div>
 	    					</div>
 
 
 	    				</div>
+	    		
+						<div id="resultBox">
+						결과값
+						</div>
+	    				
+	    				<!-- 페이징 버튼 -->
+	    				<!-- 
 	    				<div class="row mt-5">
 			          <div class="col">
 			            <div class="block-27">
@@ -97,6 +104,8 @@
 			            </div>
 			          </div>
 			        </div>
+			        -->
+			        
 	    			</div><!-- END-->
 	    			
 	    			<!-- 
@@ -232,6 +241,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="../css/mypage/js/google-map.js"></script>
   <script src="../css/mypage/js/main.js"></script>
+  <script src="../js/mypage/mypage.js"></script>
  
     
   </body>
