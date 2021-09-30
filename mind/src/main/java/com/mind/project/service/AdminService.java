@@ -29,8 +29,8 @@ public class AdminService {
 		return mindTalkRepository.findMindtalk();
 	}
 
-	//게시글 목록
-	public int countMindtalk() {
+	//오늘 게시글 수
+	public Integer countMindtalk() {
 		return mindTalkRepository.countMindtalk();
 	}
 

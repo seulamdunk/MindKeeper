@@ -98,8 +98,13 @@ public class AdminController {
 
     //오늘의 게시글 수
     @GetMapping("/countMindtalk")
-    public int countMindtalk() {
-    	int result = adminService.countMindtalk();
+    public Integer countMindtalk() {
+    	Integer result = 0;
+    	if(adminService.countMindtalk()==null) {
+    		result=0;
+    	}else {
+    		result=adminService.countMindtalk();
+    	}
     	return result;
     }
     

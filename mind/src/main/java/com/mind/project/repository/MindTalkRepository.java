@@ -17,7 +17,7 @@ public interface MindTalkRepository extends JpaRepository<MindTalk, Integer> {
 	@Query(value="select count(*) as date from mindtalk "
 			+ "where date(talk_date)=date(now()) "
 			+ "group by date(talk_date)",nativeQuery=true)
-	int countMindtalk();
+	Integer countMindtalk();
 	
 	List<MindTalk> findAllByOrderByTalkDateDesc();
 }
