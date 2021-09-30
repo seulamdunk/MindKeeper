@@ -1,5 +1,9 @@
 package com.mind.project.controller;
 
+import java.time.LocalDateTime;
+import java.util.Map;
+import java.util.Optional;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
@@ -10,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -66,6 +71,36 @@ public class AdminController {
     	return result;
     }
     
+    //회원 상세
+    @GetMapping("/customerDetail/{num}")
+    public Optional<Customer> customerDetail(@PathVariable int num) {    	
+    	return adminService.customerDetail(num);
+    }
     
+    //회원 권한 변경
+    @PostMapping("/changerole")
+    public int changerole(@RequestBody Map<String, String> customer) {
+    int result=	adminService.changeRole(Integer.parseInt(customer.get("customerNum")),customer.get("role"));
+    	return result;
+    }	
+    
+    //총 회원 수
+    @GetMapping("/countCustomer")
+    public int countCustomer() {
+    	
+    	Customer user = new Customer();
+    	user.setCreateDate(LocalDateTime.now());
+    	
+    	
+    	int result = adminService.countCustomer();
+    	return result;
+    }
+
+    //오늘의 게시글 수
+    @GetMapping("/countMindtalk")
+    public int countMindtalk() {
+    	int result = adminService.countMindtalk();
+    	return result;
+    }
     
 }

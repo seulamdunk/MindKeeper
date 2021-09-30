@@ -24,7 +24,8 @@
 
     <!-- Custom styles for this page -->
     <link href="../css/admin/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+	<link href="../css/admin/table.css" rel="stylesheet" type="text/css">
+	
 </head>
 
 <body id="page-top">
@@ -42,6 +43,16 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">MindKeeper Admin</div>
             </a>
+            
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="../../">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>홈페이지</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -50,7 +61,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="adminindex">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>통계</span></a>
             </li>
 
             <!-- Divider -->
@@ -86,7 +97,7 @@
             </li>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="mindTalk-list">
                     <i class="fas fa-fw fa-table"></i>
                     <span>마인드톡 목록</span></a>
@@ -307,30 +318,31 @@
                             <h6 class="m-0 font-weight-bold text-primary">회원 정보</h6>
                         </div>
                         <div class="card-body">
+                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="아이디 검색" title="Type in a name">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <div style="width:100%; height:500px; overflow:auto">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0" id="myTable">
                                     <thead>
-                                        <tr>
+                                        <tr class="header">
                                             <th>아이디</th>
                                             <th>이름</th>
                                             <th>닉네임</th>
-                                            <th>가입날짜</th>
-                                            <th>권한</th>
+                                            <th>상세보기</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
-                                        <tr>
+                                        <tr class="header">
                                             <th>아이디</th>
                                             <th>이름</th>
                                             <th>닉네임</th>
-                                            <th>가입날짜</th>
-                                            <th>권한</th>
+                                            <th>상세보기</th>
                                         </tr>
                                     </tfoot>
                                     <tbody id="customerList">
                                       
                                     </tbody>
                                 </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -401,6 +413,18 @@
     <!-- Page level custom scripts -->
     <script src="../js/admin/datatables-demo.js"></script>
     <script src="../js/admin/nickname.js"></script>
+    <script src="../js/admin/idSearch.js"></script>
+    
+   
+    
+    
+    
+    
+    
+    
+    
+    
+
 
 </body>
 

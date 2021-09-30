@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -31,6 +32,9 @@
   </head>
   <body>
     
+<c:if test="${cookie.token.value!=null}">
+    	<c:redirect url="i!ndex"/>
+</c:if>
 	 <jsp:include page="../navbar.jsp"></jsp:include>
     <!-- END nav -->
     
@@ -58,7 +62,7 @@
                 <legend>회원가입</legend>
               
                 <label for="CustomerID">아이디:</label>
-                <input type="text" id="customerID" >
+                <input type="text" id="customerID">
 				<p id="idCheckresult" style="color:red;"></p>
 				
                 <label for="CustomerPW">비밀번호:</label>
@@ -74,9 +78,11 @@
                 <input type="text" id="customerNick">
               	<p id="nickCheckresult" style="color:red;"></p>
               	
-                <label for="identity_Num">주민번호:</label>
-                <input type="text" id="identityNum">
-             
+                <label for="identity_Num">생년월일:</label>
+                <input type="text" id="identityNum" pattern="[0-9]+" style="width:40%" maxlength="6">-
+                <input type="text" id="identityNumAfter" pattern="[1-4]+" style="width:10%" maxlength="1">
+                <input type="text" value="# 　#　 #　 #　 #　 #" readonly style="width:45.5%">
+             	
                 <label for="phone_Num">전화번호:</label>
                 <input type="text" id="phoneNum">
               
@@ -84,7 +90,7 @@
               </fieldset>
   
              
-              <input type="button" onclick="signup();" value="회원가입"></input>
+              <input type="button" onclick="signup();" class="btn btn-primary"  value="회원가입"></input>
               
              </form>
               </div>

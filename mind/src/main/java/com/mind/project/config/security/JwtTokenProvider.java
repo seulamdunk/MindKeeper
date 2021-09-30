@@ -69,7 +69,7 @@ public class JwtTokenProvider {
     	try {	
 	    	Cookie[] cookies = request.getCookies();
 	    	for(Cookie cookie:cookies) {
-	    		if(("X-AUTH-TOKEN").equals(cookie.getName())){
+	    		if(("token").equals(cookie.getName())){
 	    			token= cookie.getValue();
 	    		}
 	    	}

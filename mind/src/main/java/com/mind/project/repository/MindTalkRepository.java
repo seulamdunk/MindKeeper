@@ -12,8 +12,12 @@ public interface MindTalkRepository extends JpaRepository<MindTalk, Integer> {
 	//게시글 조회
 	@Query(value="select talk_num,customerid,talk_con,talk_date,talk_cnt from mindtalk "
 			+ "left join customer on mindtalk.customer_num=customer.customer_num ",nativeQuery=true)
-	public List<Object[]> findMindtalk();
+	List<Object[]> findMindtalk();
 	
+	@Query(value="select count(*) as date from mindtalk "
+			+ "where date(talk_date)=date(now()) "
+			+ "group by date(talk_date)",nativeQuery=true)
+	int countMindtalk();
 	
 	List<MindTalk> findAllByOrderByTalkDateDesc();
 }

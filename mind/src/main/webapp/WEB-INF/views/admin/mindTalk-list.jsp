@@ -25,6 +25,7 @@
     <!-- Custom styles for this page -->
     <link href="../css/admin/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <link href="../css/admin/table.css" rel="stylesheet" type="text/css">
 </head>
 
 <body id="page-top">
@@ -48,9 +49,19 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
+                <a class="nav-link" href="../../">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>홈페이지</span></a>
+            </li>
+            
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
                 <a class="nav-link" href="adminindex">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>통계</span></a>
             </li>
 
             <!-- Divider -->
@@ -78,7 +89,7 @@
             </div>
 
             <!-- Nav Item - Charts -->
-             <li class="nav-item active">
+             <li class="nav-item">
                 <a class="nav-link" href="customer-list">
                     <i class="fas fa-fw fa-table"></i>
                     <span>회원 목록</span></a>
@@ -304,10 +315,12 @@
                             <h6 class="m-0 font-weight-bold text-primary">게시글 정보</h6>
                         </div>
                         <div class="card-body">
+                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="아이디 검색" title="Type in a name">
                             <div id="createTable"class="table-responsive">
-                               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
+                            <div style="width:100%; height:500px; overflow:auto">
+                               <table width="100%" border="0" cellspacing="0" cellpadding="0" id="myTable">
+                                    <thead >
+                                        <tr class="header">
                                             <th>아이디</th>
                                             <th>내용</th>
                                             <th>날짜</th>
@@ -315,8 +328,8 @@
                                             <th>삭제</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
+                                    <tfoot >
+                                        <tr class="header">
                                             <th>아이디</th>
                                             <th>내용</th>
                                             <th>날짜</th>
@@ -328,7 +341,7 @@
                                       
                                     </tbody>
                                 </table>
-                                
+                                </div>
                                 
                             </div>
                         </div>
@@ -384,6 +397,7 @@
 	
     <script src="../js/admin/jquery/jquery.min.js"></script>
     <script src="../js/admin/mindTalkList.js"></script>
+    <script src="../js/admin/idSearch.js"></script>
     <script src="../js/admin/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 			<!-- Core plugin JavaScript-->
@@ -392,13 +406,6 @@
     <!-- Custom scripts for all pages-->
     <script src="../js/admin/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="../js/admin/datatables/jquery.dataTables.min.js"></script>
-    <script src="../js/admin/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="../js/admin/datatables-demo.js"></script>
-			
 </body>
 
 </html>

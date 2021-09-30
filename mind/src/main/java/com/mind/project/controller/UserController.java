@@ -1,6 +1,7 @@
 package com.mind.project.controller;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.security.core.Authentication;
@@ -48,6 +49,21 @@ public class UserController {
     	Authentication user = SecurityContextHolder.getContext().getAuthentication();
     	Customer user2 = (Customer) user.getPrincipal();
         return user2.getCustomerNick();
+    }
+
+    @PostMapping("/userCheck")
+    public String userCheck() {
+    	// 시큐리티에서 정보 가져오기
+    	try {
+    	
+    	Authentication user = SecurityContextHolder.getContext().getAuthentication();
+    	Customer user2 = (Customer) user.getPrincipal();
+    	List<String> role = user2.getRoles();
+    	return role.get(0);
+    	
+    	}catch (Exception e) {
+    		return null;
+    	}
     }
     
 

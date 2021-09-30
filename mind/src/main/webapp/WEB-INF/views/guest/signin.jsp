@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <title>Ultim8 - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700" rel="stylesheet">
 
@@ -30,6 +34,10 @@
     <link rel="stylesheet" href="../css/signup.css">
   </head>
   <body>
+
+<c:if test="${cookie.token.value!=null}">
+     	<c:redirect url="index"/>
+</c:if>
     
 	 <jsp:include page="../navbar.jsp"></jsp:include>
     <!-- END nav -->
@@ -65,7 +73,8 @@
               
               </fieldset>
 
-             <input type="button" onclick="signin();" value="로그인"></input>
+             <input type="button" class="btn btn-primary" onclick="signin();" value="로그인"></input>
+             <div style="float:right"><a href="signup">회원가입&ensp;></a></div>
               
               
              </form>

@@ -1,14 +1,13 @@
 package com.mind.project.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
-import com.mind.project.DTO.No_nameDTO;
-import com.mind.project.model.AnonymousBoard;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.mind.project.repository.AnonymousBoardRepository;
 
 import lombok.extern.java.Log;
@@ -25,5 +24,15 @@ public class AnonymousController {
 		
 		return "no_name";
 	}
+	
+    // 로그아웃
+    @RequestMapping("/signout")
+    public String signout(HttpServletResponse response){
+    	Cookie cookie = new Cookie("token", null);
+    	cookie.setMaxAge(0);
+    	cookie.setPath("/");
+    	response.addCookie(cookie);
+    	return "redirect:/";
+    }
 
 }

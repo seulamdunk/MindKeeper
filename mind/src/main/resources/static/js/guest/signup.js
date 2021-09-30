@@ -62,7 +62,9 @@ function signup(){
 	var customerPWR=$('#customerPWR').val()
 	var customerName=$('#customerName').val()
 	var customerNick=$('#customerNick').val()
-	var identityNum=$('#identityNum').val()
+	var identityNum=""
+	identityNum+=$('#identityNum').val()
+	identityNum+=$('#identityNumAfter').val()
 	var phoneNum=$('#phoneNum').val()	
 	var params={customerID:customerID,
 				customerPW:customerPW,
@@ -71,7 +73,6 @@ function signup(){
 				customerNick:customerNick,
 				phoneNum:phoneNum
 				} // json 파일
-				
 	//아이디 검사
 	var cidCheck = /^[a-z0-9]{4,12}$/;
 	//휴대폰번호 검사

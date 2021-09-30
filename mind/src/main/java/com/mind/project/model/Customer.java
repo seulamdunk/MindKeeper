@@ -47,6 +47,7 @@ public class Customer implements UserDetails {
     private LocalDateTime createDate;
     private LocalDateTime deleteDate;
     
+    
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
     private List<String> roles = new ArrayList<>();
