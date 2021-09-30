@@ -99,7 +99,7 @@ public class AdminController {
     //오늘의 게시글 수
     @GetMapping("/countMindtalk")
     public Integer countMindtalk() {
-    	Integer result = 0;
+    	Integer result = 0; //null 값 비교로 Integer사용
     	if(adminService.countMindtalk()==null) {
     		result=0;
     	}else {
