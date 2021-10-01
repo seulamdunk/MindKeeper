@@ -24,7 +24,7 @@ public class SecretService {
 	
 	@Transactional
 	public Long save(SecretModel secretModel) {
-		return secretRepository.save(secretModel.toEntity()).getCustomerNum();
+		return secretRepository.save(secretModel.toEntity()).getSecretNum();
 	}
 	
 	@Transactional

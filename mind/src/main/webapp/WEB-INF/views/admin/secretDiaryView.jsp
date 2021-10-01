@@ -50,6 +50,7 @@
 				              <h3 class="mb-4"><a href="#">${secretModel.secretTitle }</a></h3>
 				              <hr>
 				              <input type="hidden" id="customerNum" value="${secretModel.customerNum }" />
+				              <input type="hidden" id="secretNum" value="${secretModel.secretNum }" />
 	    							
 	    					<div class="text pt-2 mt-3">
 				              <a href="#" class="img" style="background-image: url(../css/mypage/images/image_1.jpg);"></a>
@@ -63,8 +64,8 @@
 				              
 				              
 				              <hr>
-				              <div class="meta-wrap d-md-flex align-items-center">
-				              	 <input type="submit" value="결과보기" id="resultBtn" class="btn btn-primary py-3 px-5" />
+				              <div class="meta-wrap d-md-flex align-items-center" id="btnBox">
+				              	 <input type="button" value="분석하기" id="resultBtn" class="btn btn-primary py-3 px-5" />
 				              	 <!--  
 				              	<form action="/admin/predictDiary" method="post">
 				              	<div class="half">

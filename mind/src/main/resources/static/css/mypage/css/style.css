@@ -459,7 +459,7 @@ pre {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
-  margin-left: auto; }
+  margin-left: auto;}
   @media (min-width: 576px) {
     .container {
       max-width: 540px; } }
@@ -485,6 +485,17 @@ pre {
   display: -ms-flexbox;
   display: flex;
   justify-content:center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px; }
+  
+  /* 비밀일기 */
+  .row_secretdiary {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: inherit;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin-right: -15px;
@@ -7329,7 +7340,7 @@ h1, h2, h3, h4, h5,
   left: 0;
   overflow-y: scroll;
   z-index: 1001;
-  background:#2f89fc;
+  background:#1575ff;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
@@ -7367,7 +7378,7 @@ h1, h2, h3, h4, h5,
     margin: 0;
     padding: 0; }
     #colorlib-aside #colorlib-main-menu ul li {
-      margin: 0 0 15px 0;
+      margin: 15px 0 20px 0;
       padding: 0;
       list-style: none;
       font-size: 16px;
@@ -8031,7 +8042,10 @@ textarea.form-control {
   font-size: 20px; }
 
 .ftco-section {
-  padding: 6em 1.8em;
+  padding: 3em 4em;
+  position: relative; }
+  
+  .ftco-section-title {
   position: relative; }
 
 .ftco-footer {

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
  <head>
@@ -60,7 +61,7 @@
             <p>오늘 하루는 어떠셨어요? 오늘의 감정을 한줄로 적어보세요</p>
           </div>
         </div>
-    		<div class="row">
+    		<div class="row_secretdiary">
     		
     		<c:forEach items="${secretList }" var="secret" varStatus="loop">
     			<div class="col-md-4">
@@ -72,14 +73,12 @@
 	              <p class="mb-4">${secret.secretCon }</p>
 	              <div class="author mb-4 d-flex align-items-center">
 	            		<div class="ml-3 info">
-	            		<span>${secret.secretDate}</span>
+	            		<span>${fn:substring(secret.secretDate,0,10)}</span>
 	            		</div>
 	            	</div>
 	              <div class="meta-wrap align-items-center">
 	         
-	              	<div class="half">
-		              	<p><a href="#" class="btn py-2">Continue Reading <span class="ion-ios-arrow-forward"></span></a></p>
-	              	</div>
+
 	              </div>
 	            </div>
 						</div>
@@ -87,6 +86,12 @@
     			</c:forEach>
     			
     		</div>
+    		<div class="row">
+    		<a href="/admin/secretDiaryWrite">
+    			<input type="submit" value="글쓰기" id="writeBtn" class="btn btn-primary py-3 px-5" />
+    			</a>
+    			</div>
+    			
     	</div>
     </section>
    
@@ -113,7 +118,6 @@
   <script src="../css/mypage/js/bootstrap-datepicker.js"></script>
   <script src="../css/mypage/js/jquery.timepicker.min.js"></script>
   <script src="../css/mypage/js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="../css/mypage/js/google-map.js"></script>
   <script src="../css/mypage/js/main.js"></script>
     

@@ -20,6 +20,7 @@ import lombok.NoArgsConstructor;
 public class Secret extends TimeEntity {
 
     @Id
+    
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long secretNum;
     

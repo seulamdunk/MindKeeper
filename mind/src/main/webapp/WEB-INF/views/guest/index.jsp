@@ -32,7 +32,7 @@
 	<jsp:include page="../navbar.jsp"></jsp:include>
     <!-- END nav -->
     
-    <div class="hero-wrap">
+    <div class="hero-wrap" style="background-image: url(../images/bg_10.jpg);">
       <div class="overlay"></div>
       <div class="container-fluid">
         <div class="slider-text d-md-flex align-items-center" data-scrollax-parent="true">
@@ -44,9 +44,10 @@
                 <span class="wrap"></span>
               </strong>
             </h1>
-            -->
+          
             <p class="mb-md-5 mb-sm-3" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-            <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="#" class="btn btn-primary px-4 py-3">Get a Quote</a></p>
+            -->
+            <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="/guest/signup" class="btn btn-primary px-4 py-3">Get a Quote</a></p>
           </div>
           
           <!--
@@ -164,7 +165,7 @@
       </div>
     </section>
     -->
-<!--  
+ 
     <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(../images/bg_1.jpg);" data-stellar-background-ratio="0.5">
     	<div class="container">
     		<div class="row justify-content-center">
@@ -207,7 +208,7 @@
         </div>
     	</div>
     </section>
-    -->
+
 
     <section class="ftco-section ftco-work">
     	<div class="container-fluid">

@@ -1,15 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-
 <html lang="en">
   <head>
     <title>Ultim8 - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700" rel="stylesheet">
 
@@ -34,23 +30,23 @@
     <link rel="stylesheet" href="../css/signup.css">
   </head>
   <body>
-
-<c:if test="${cookie.token.value!=null}">
-     	<c:redirect url="index"/>
-</c:if>
     
 	 <jsp:include page="../navbar.jsp"></jsp:include>
     <!-- END nav -->
     
-    <div class="hero-wrap hero-wrap-2" style="background-image: url(../images/bg_2.jpg);" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
+    <div class="hero-wrap hero-wrap-2" data-stellar-background-ratio="0.5">
       <div class="container-fluid">
-        <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+      <div style="width: 600px; margin: 0 auto; margin-top: 200px">
+      <img src="../images/login_logo.png" style="width: 100%" />
+      </div>
+         <!-- 
           <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
           	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> </p>
             <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">로그인</h1>
           </div>
-        </div>
+           -->
+           
+
       </div>
     </div>
 
@@ -73,8 +69,7 @@
               
               </fieldset>
 
-             <input type="button" class="btn btn-primary" onclick="signin();" value="로그인"></input>
-             <div style="float:right"><a href="signup">회원가입&ensp;></a></div>
+             <input type="button" onclick="signin();" value="로그인" class="btn btn-primary px-4 py-3" style="width: 200px; margin: 0 auto;"></input>
               
               
              </form>

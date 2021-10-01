@@ -29,20 +29,24 @@
 		<!-- navbar -->
 		<jsp:include page="myPage-navbar.jsp"></jsp:include>
 
-		<div class="container">
-			<div class="row justify-content-center mb-5 pb-2">
+				<div id="colorlib-main">
+					<section class="ftco-section">
+					<div class="container">
+					
+					<section class="ftco-section-title">
+					<div class="row justify-content-center mb-5 pb-2">
 				<div class="col-md-7 heading-section text-center ftco-animate">
 					<h2 class="mb-4">비밀일기</h2>
 					<p>오늘 하루 감정을 적어주세요. 사용자님의 감정을 분석해드립니다.</p>
 				</div>
+				</div>
+				</section>
+					
 
-				<div id="colorlib-main">
-					<section class="ftco-section">
-
-						<div>
-							<form action="/admin/predictDiary" method="post">
+						<section class="ftco-section">
+							<form action="#" method="post" id="predictForm">
 								<div class="form-group">
-								<input type="hidden" name="customerNum" id="customerNum" value="22"/>
+								<input type="hidden" name="customerNum" id="customerNum" value="30"/>
 									<input name="secretTitle" id="secretTitle" type="text"
 										class="form-control" placeholder="제목을 입력해주세요">
 								</div>
@@ -51,11 +55,12 @@
 										class="form-control" placeholder="내용을 입력해주세요"></textarea>
 								</div>
 								<div class="form-group">
-									<input type="submit" value="등록" id="writeSecret"
+									<input type="button" value="등록" id="writeSecret"
 										class="btn btn-primary py-3 px-5">
 								</div>
 							</form>
 
+						</section>
 						</div>
 					</section>
 
@@ -129,7 +134,7 @@
 				<!-- END COLORLIB-MAIN -->
 			</div>
 			<!-- END COLORLIB-PAGE -->
-		</div>
+
 
 		<!-- loader -->
 		<div id="ftco-loader" class="show fullscreen">

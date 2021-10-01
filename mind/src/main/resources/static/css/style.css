@@ -6,12 +6,13 @@
  */
  @font-face {
  	font-family: "sb";
-  src: url("../fonts/SB �뼱洹몃줈 L.ttf");
+  src: url("../fonts/SB 어그로 L.ttf");
  }
   @font-face {
  	font-family: "cafe";
   src: url("../fonts/CAFE24SSURROUNDAIR.TTF");
  }
+ 
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -495,8 +496,8 @@ pre {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px; }
+  margin-right: 30px;
+  margin-left: 30px; }
 
 .no-gutters {
   margin-right: 0;
@@ -5000,7 +5001,7 @@ button.bg-danger:focus {
   background-color: #bd2130 !important; }
 
 .bg-light {
-  background-color: #f8f9fa !important; }
+  background-color: #ffffff !important; }
 
 a.bg-light:hover, a.bg-light:focus,
 button.bg-light:hover,
@@ -7312,9 +7313,7 @@ h1, h2, h3, h4, h5,
   color: #2f89fc !important; }
 
 .ftco-navbar-light {
-  background: transparent !important;
-  position: absolute;
-  top: 20px;
+  background: #1575ff !important;
   left: 0;
   right: 0;
   z-index: 3; }
@@ -7332,6 +7331,7 @@ h1, h2, h3, h4, h5,
     .ftco-navbar-light .navbar-nav {
       padding-bottom: 20px; } }
   .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
+  font-family: "cafe";
     font-size: 13px;
     padding-top: .9rem;
     padding-bottom: .9rem;
@@ -7376,7 +7376,9 @@ h1, h2, h3, h4, h5,
           display: none; } }
   .ftco-navbar-light .navbar-nav > .nav-item.cta > a {
     color: #ffffff;
-    border: 1px solid #2f89fc;
+    border: 1px solid #fff806;
+    /* 메인 로그인 버튼*/
+    background-color: #fff806;
     padding-top: .5rem;
     padding-bottom: .5rem;
     padding-left: 20px;
@@ -7391,17 +7393,18 @@ h1, h2, h3, h4, h5,
         -webkit-border-radius: 4px;
         -moz-border-radius: 4px;
         -ms-border-radius: 4px;
-        border-radius: 4px; } }
+        border-radius: 4px;
+        color: #fff806;} }
     .ftco-navbar-light .navbar-nav > .nav-item.cta > a span {
       display: inline-block;
-      color: #2f89fc; }
+      color: #000000; }
   .ftco-navbar-light .navbar-nav > .nav-item.cta.cta-colored span {
     border-color: #2f89fc; }
   .ftco-navbar-light .navbar-nav > .nav-item.active > a {
     color: #2f89fc; }
   .ftco-navbar-light .navbar-toggler {
     border: none;
-    color: rgba(255, 255, 255, 0.5) !important;
+    color: #fff806 !important;
     cursor: pointer;
     padding-right: 0;
     text-transform: uppercase;
@@ -7450,7 +7453,7 @@ h1, h2, h3, h4, h5,
         padding-right: 0rem !important; } }
     @media (max-width: 767.98px) {
       .ftco-navbar-light.scrolled .navbar-nav {
-        background: none;
+        background: #fff806;
         padding-left: 0 !important;
         padding-right: 0 !important; } }
     .ftco-navbar-light.scrolled .navbar-toggler {
@@ -7491,12 +7494,9 @@ h1, h2, h3, h4, h5,
   height: 100%;
   position: relative;
   z-index: 1;
-  /* 硫붿씤 諛곌꼍 */
-
-  background-image: url('../images/bg_9.jpg');
-  background-position-y: -70px;
+  /* 메인 배경 */
   background-size: cover;
-  height: 800px; }
+  height: 750px; }
   @media (max-width: 767.98px) {
     .hero-wrap {
       height: 750px; } }
@@ -7542,8 +7542,8 @@ h1, h2, h3, h4, h5,
       .slider-text .one-half {
         width: 100% !important; } }
   .slider-text h1 {
-  /* 硫붿씤 �룿�듃 */
-    font-size: 60px;
+  /* 메인 폰트 */
+    font-size: 35px;
     color: #ffffff;
     line-height: 1.2;
     font-family: cafe; }
@@ -7594,7 +7594,7 @@ h1, h2, h3, h4, h5,
     color: #000; }
 
 .hero-wrap-2 {
-  height: 450px; }
+  height: 350px; }
   @media (max-width: 1199.98px) {
     .hero-wrap-2 {
       background-position: center center !important; } }
@@ -7691,7 +7691,7 @@ h1, h2, h3, h4, h5,
     display: inline-block; }
 
 .bg-light {
-  background: #fafafa !important;
+  background: #ffffff !important;
   z-index: 0; }
 
 .bg-primary {
@@ -8154,7 +8154,8 @@ textarea.form-control {
   font-size: 20px; }
 
 .ftco-section {
-  padding: 7em 0;
+  padding: 20px;
+  margin-bottom: 100px;
   position: relative; }
   .ftco-section.ftco-section-2 {
     position: relative;
@@ -9040,6 +9041,7 @@ textarea.form-control {
     font-size: 16px; }
     .subscribe-form .form-group .submit:hover {
       cursor: pointer; }
+
 
 .subscribe-form .icon {
   position: absolute;
