@@ -49,7 +49,18 @@ function customerDetail(){
 	error:function(err){
 		console.log("회원목록 가져오기 에러 : " + err)
 	}
+	})
+	$.ajax({
+		type:"GET",
+		url:"../customerTalkCount/"+num,
+		success:function(result){
+			$('#customerTalkCount').val(result+" 개")
+		},
+		error:function(err){
+			alert("게시글 수 오류")
+		}
 	})	
+	
 }
 
 //권한 변경하기
