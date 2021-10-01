@@ -50,9 +50,9 @@ public class ParkService {
 	// 키워드 검색
 	@Transactional
 	public List<ParkEntity> searchPark(String keyword){
-		System.out.println("keyword:" + keyword);
+		//System.out.println("keyword:" + keyword);
 		List<ParkEntity> parkEntities = parkRepository.findAllByParkNameContaining(keyword);
-		System.out.println("parkEntities: " + parkEntities);
+		//System.out.println("parkEntities: " + parkEntities);
 		List<ParkEntity> parkSearchList = new ArrayList<>();
 	
 		if(parkEntities.isEmpty()) return parkSearchList;
@@ -60,7 +60,7 @@ public class ParkService {
 		for(ParkEntity parkEntity : parkEntities) {
 			parkSearchList.add(this.convertEntityToDto(parkEntity));
 		}
-		System.out.println(parkSearchList);
+		//System.out.println(parkSearchList);
 		return parkSearchList;
 	}
 	

@@ -64,7 +64,7 @@
 <div class="col-md-4" style="float:right;">
 	<!--*** 공원 검색 시작 ***-->
 	<div class="col-md-8" style="width:300px;align:center;">
-		<form action="/parkSearch" method="post" class="subscribe-form">
+		<form action="/guest/parkSearch" method="post" class="subscribe-form">
 			<div class="form-group d-flex">
 				<input type="text" name="keyword" class="form-control" placeholder="입력해주세요.">
 				<input type="submit" value="검색" class="submit px-3">
