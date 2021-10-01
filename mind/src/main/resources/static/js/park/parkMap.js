@@ -55,7 +55,7 @@ $.ajax({
     
     	success:function(parkData){
     	
-    		parkData = parkData
+    		parkData = parkData.slice(0.100);
     		for(i =0; i<parkData.length; i++){
     			
     			// 마커 이미지 생성
@@ -74,9 +74,53 @@ $.ajax({
     		        clickable: true
     		    });
     		    
+    		    // 마커를 지도에 표시합니다.
+    		    Parkmarker.setMap(map);
+
+    		    // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+    		    var iwContent = '<div class="wrap">' + 
+                '    <div class="info">' + 
+                '        <div class="title" style="background-color:yellowgreen;color:black;">' + 
+                			parkData[i]["parkName"]+ 
+                '        </div>' + 
+                '        <div class="body">' + 
+                '            <div class="img">' +
+                '                <img src="../img/parkImg/parkImg.png" width="73" height="70">' +
+                '           </div>' + 
+                '            <div class="desc">' + 
+                '                <div class="ellipsis">' + 
+                '					<img class="parkScoreImg" src="../img/parkImg/parkScoreImg.png" alt="평점 이미지" width="18" height="18">' + parkData[i]["parkScore"] +
+                '					 , 후기 : <a href="' + parkData[i]["parkScoreLink"] + '" target="_blank" class="link">' + parkData[i]["parkScoreCnt"] + '</a>' + 
+                '					 , 리뷰 : <a href="' + parkData[i]["parkReviewLink"] + '" target="_blank" class="link">' + parkData[i]["parkReview"] + '</a>' + 
+                '			 	 </div>' + 
+                '                <div class="ellipsis">' + parkData[i]["parkAddr"] + '</div>' + 
+                '                <div><a href="' + parkData[i]["parkLink"] + '" target="_blank" class="link">상세보기</a></div>' + 
+                '            </div>' + 
+                '        </div>' + 
+                '    </div>' +    
+                '</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+    		        iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+    		    // 인포윈도우를 생성합니다
+    		    var infowindow = new kakao.maps.InfoWindow({
+    		        content : iwContent,
+    		        removable : iwRemoveable
+    		    });
+
+    		    kakao.maps.event.addListener(Parkmarker, 'click', makeClickListener(map, Parkmarker, infowindow));
+    		    
+    		    // 마커에 클릭이벤트를 등록합니다
+    		    function makeClickListener(map, Parkmarker, infowindow){
+    		        return function(){  
+    		    	// 마커 위에 인포윈도우를 표시합니다
+    		          infowindow.open(map, Parkmarker);  
+    		    	};
+    		    }
 
     	   	
     	    } // end of for
+    
+    		
    		
     } // end of function(parkJson)
     
