@@ -23,7 +23,7 @@
 		          	<li class="nav-item cta"><a href="/guest/signin" class="nav-link" ><span>로그인</span></a></li>
 			    </c:when>
 			    <c:otherwise>
-		          	<li class="nav-item cta"><a href="/signout" class="nav-link" ><span>로그아웃</span></a></li>
+		          	<li class="nav-item cta"><a href="/user/signout" class="nav-link" ><span>로그아웃</span></a></li>
 			    </c:otherwise>
 	          </c:choose>
 	          <li id="admin" class="nav-item cta"></li>
