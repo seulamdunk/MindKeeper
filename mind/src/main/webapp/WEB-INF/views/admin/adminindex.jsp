@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -48,7 +48,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="../../">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>È¨ÆäÀÌÁö</span></a>
+                    <span>í™ˆí˜ì´ì§€</span></a>
             </li>
 
             <!-- Divider -->
@@ -58,7 +58,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="adminindex">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Åë°è</span></a>
+                    <span>í†µê³„</span></a>
             </li>
 
            
@@ -90,14 +90,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="customer-list">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>È¸¿ø ¸ñ·Ï</span></a>
+                    <span>íšŒì› ëª©ë¡</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="mindTalk-list">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>¸¶ÀÎµåÅå ¸ñ·Ï</span></a>
+                    <span>ë§ˆì¸ë“œí†¡ ëª©ë¡</span></a>
             </li>
 
             <!-- Divider -->
@@ -219,7 +219,7 @@
                                     <div class="font-weight-bold">
                                         <div class="text-truncate">Hi there! I am wondering if you can help me with a
                                             problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler ¡¤ 58m</div>
+                                        <div class="small text-gray-500">Emily Fowler Â· 58m</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -231,7 +231,7 @@
                                     <div>
                                         <div class="text-truncate">I have the photos that you ordered last month, how
                                             would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun ¡¤ 1d</div>
+                                        <div class="small text-gray-500">Jae Chun Â· 1d</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -243,7 +243,7 @@
                                     <div>
                                         <div class="text-truncate">Last month's report looks great, I am very happy with
                                             the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez ¡¤ 2d</div>
+                                        <div class="small text-gray-500">Morgan Alvarez Â· 2d</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -255,7 +255,7 @@
                                     <div>
                                         <div class="text-truncate">Am I a good boy? The reason I ask is because someone
                                             told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog ¡¤ 2w</div>
+                                        <div class="small text-gray-500">Chicken the Dog Â· 2w</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
@@ -316,7 +316,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                               <a href="customer-list"><p style="font-size: 200%">ÃÑ °¡ÀÔÀÚ ¼ö</p></a></div>
+                                               <a href="customer-list"><p style="font-size: 200%">ì´ ê°€ì…ì ìˆ˜</p></a></div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                             	<p id="countCustomer"></p>
                                             </div>
@@ -336,7 +336,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                <p style="font-size: 200%">¿À´Ã ¹æ¹®ÀÚ ¼ö</p></div>
+                                                <p style="font-size: 200%">ì˜¤ëŠ˜ ë°©ë¬¸ì ìˆ˜</p></div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
 												<p id="countTodayCustomer"></p>
 											</div>
@@ -356,7 +356,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                               <a href="../guest/mindTalk"><p style="font-size: 200%;color:#1cc88a;">¿À´ÃÀÇ °Ô½Ã±Û ¼ö</p></a></div>
+                                               <a href="../guest/mindTalk"><p style="font-size: 200%;color:#1cc88a;">ì˜¤ëŠ˜ì˜ ê²Œì‹œê¸€ ìˆ˜</p></a></div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
 												<p id="countMindtalk"></p>
 											</div>
@@ -402,7 +402,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">È¸¿ø Áõ°¡·®</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">íšŒì› ì¦ê°€ëŸ‰</h6>
                                     <div class="dropdown no-arrow">
                                     </div>
                                 </div>
@@ -421,7 +421,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">¿À´Ã °¡Àå ¸¹Àº ÅÂ±× (ÀÚ¹Ù½ºÅ©¸³Æ® #À¸·Î Â©¶ó¼­ split)</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">ì˜¤ëŠ˜ ê°€ì¥ ë§ì€ íƒœê·¸ (ìë°”ìŠ¤í¬ë¦½íŠ¸ #ìœ¼ë¡œ ì§¤ë¼ì„œ split)</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -453,7 +453,7 @@
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">ÁÁ¾Æ¿ä °¹¼ö ¸¹Àº°Å (order desc)</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">ì¢‹ì•„ìš” ê°¯ìˆ˜ ë§ì€ê±° (order desc)</h6>
                                 </div>
                                 <div class="card-body">
                                     <h4 class="small font-weight-bold">Server Migration <span
@@ -526,7 +526,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">¡¿</span>
+                        <span aria-hidden="true">Ã—</span>
                     </button>
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
