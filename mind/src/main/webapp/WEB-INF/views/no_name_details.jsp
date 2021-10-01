@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>익명상담게시판</title>
+    <title>상세보기</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700" rel="stylesheet">
-
+	
+	<link rel="stylesheet" href="css/bootstrap.min2.css" type="text/css">
     <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="../css/animate.css">
     
@@ -27,9 +28,6 @@
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/style.css">
-    
-    <link rel="stylesheet" href="../css/css/a_board/main.css">
-    <link rel="stylesheet" href="../css/css/a_board/util.css">
     <link rel="stylesheet" href="../css/css/noname/css.css">
     <link rel="stylesheet" href="../css/css/noname/media.css">
     <link rel="stylesheet" href="../css/css/noname/style.css">
@@ -44,63 +42,57 @@
       <div class="container-fluid">
         <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="/">Home</a></span> <span>Team</span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">익명상담게시판</h1>
+          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="/">Home</a></span> <span>익명상담게시판</span></p>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">상세보기</h1>
           </div>
         </div>
       </div>
     </div>
-<div class="board_wrap">
-		<div class="board_title">
-			<strong>익명상담게시판</strong>
+	   <div class="board_wrap">
+        <div class="board_title">
+            <strong>익명상담게시판</strong>
 			<p>익명으로 글이 작성되니 안심하고 상담하시기 바랍니다.</p>
-		</div>
-		<div class="board_list_wrap">
-			<div class="board_list">
-				<div class="top">
-					<div class="num">번호</div>
-					<div class="title">제목</div>
-					<div class="writer">글쓴이</div>
-					<div class="date">작성일</div>
-					<div class="count">조회</div>
-				</div>
-				<c:forEach var="noNameList" items="${noNameList}">
-				<div>				
-					<div class="num">${noNameList.noNameNum }</div>
-					<div class="title">
-						<a href="/n_details/${noNameList.noNameNum }">${noNameList.noNameTitle }</a>
-					</div>
-					<div class="writer">익명</div>
-					<div class="date">${noNameList.noNameDate }</div>
-					<div class="count">${noNameList.noNameCount }</div>				
-				</div>
-				</c:forEach>
-			</div>
-			<!-- 검색 form -->
-			<br>
-				<form action="/n_search" method="GET">
-					<div class="btn-group" role="group" aria-label="Basic example">
-							<input name="keyword" type="text" placeholder="검색어를 입력해주세요">
-							<button class="btn btn-primary">검색</button>
-							</div>
-							</form>
-				</div>
-			<!-- 검색 종료 -->
-			<div class="board_page">
-				<c:forEach items="${pageList }" var="pageNum">
-				<a href="/n_name/?page=${pageNum }">${pageNum }</a>
-				</c:forEach>
-			</div>
-			<div class="bt_wrap">
-				<a href="/n_write" class="on">글작성</a>
-			</div>
-		</div>
-	</div>
-
-
+        </div>
+        <div class="board_view_wrap">
+            <div class="board_view">
+                <div class="title">
+                   		${noNameDTO.noNameTitle }
+                </div>
+                <div class="info">
+                    <dl>
+                        <dt>번호</dt>
+                        <dd>${noNameDTO.noNameNum }</dd>
+                    </dl>
+                    <dl>
+                        <dt>글쓴이</dt>
+                        <dd>익명</dd>
+                    </dl>
+                    <dl>
+                        <dt>작성일</dt>
+                        <dd>${noNameDTO.noNameDate }</dd>
+                    </dl>
+                    <dl>
+                        <dt>조회</dt>
+                        <dd>${noNameDTO.noNameCount }</dd>
+                    </dl>
+                </div>
+                <div class="cont textview">
+                    ${noNameDTO.noNameCon }
+                </div>
+            </div>
+            <div class="text-center">
+                <input type="button" class="btn btn-primary" value="수정하기" onclick="location.href='/n_details/edit/${noNameDTO.noNameNum}'">
+                <form id="delete-form" action="/n_details/${noNameDTO.noNameNum }" method="post">
+       	    		<input type="hidden" name="_method" value="delete"/>
+       	    		<button id="delete-btn" class="btn btn-primary">삭제하기</button>
+    			</form>
+    			<input type="button" class="btn btn-primary" value="목록보기" onclick="location.href='/n_name'">
+            </div>
+        </div>
+    </div>
     
-    <!-- footer -->
-	<jsp:include page="footer.jsp"></jsp:include>
+  <!-- footer -->
+  <jsp:include page="footer.jsp"></jsp:include>
 
   <script src="../js/jquery.min.js"></script>
   <script src="../js/jquery-migrate-3.0.1.min.js"></script>

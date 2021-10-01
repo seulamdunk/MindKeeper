@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>익명상담게시판</title>
+    <title>익명게시판 글쓰기</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700" rel="stylesheet">
 
     <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
@@ -27,9 +27,7 @@
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/style.css">
-    
-    <link rel="stylesheet" href="../css/css/a_board/main.css">
-    <link rel="stylesheet" href="../css/css/a_board/util.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/css/noname/css.css">
     <link rel="stylesheet" href="../css/css/noname/media.css">
     <link rel="stylesheet" href="../css/css/noname/style.css">
@@ -44,59 +42,46 @@
       <div class="container-fluid">
         <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="/">Home</a></span> <span>Team</span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">익명상담게시판</h1>
+          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>익명게시판</span></p>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">익명게시판 글쓰기</h1>
           </div>
         </div>
       </div>
     </div>
-<div class="board_wrap">
-		<div class="board_title">
-			<strong>익명상담게시판</strong>
-			<p>익명으로 글이 작성되니 안심하고 상담하시기 바랍니다.</p>
-		</div>
-		<div class="board_list_wrap">
-			<div class="board_list">
-				<div class="top">
-					<div class="num">번호</div>
-					<div class="title">제목</div>
-					<div class="writer">글쓴이</div>
-					<div class="date">작성일</div>
-					<div class="count">조회</div>
-				</div>
-				<c:forEach var="noNameList" items="${noNameList}">
-				<div>				
-					<div class="num">${noNameList.noNameNum }</div>
-					<div class="title">
-						<a href="/n_details/${noNameList.noNameNum }">${noNameList.noNameTitle }</a>
-					</div>
-					<div class="writer">익명</div>
-					<div class="date">${noNameList.noNameDate }</div>
-					<div class="count">${noNameList.noNameCount }</div>				
-				</div>
-				</c:forEach>
-			</div>
-			<!-- 검색 form -->
-			<br>
-				<form action="/n_search" method="GET">
-					<div class="btn-group" role="group" aria-label="Basic example">
-							<input name="keyword" type="text" placeholder="검색어를 입력해주세요">
-							<button class="btn btn-primary">검색</button>
-							</div>
-							</form>
-				</div>
-			<!-- 검색 종료 -->
-			<div class="board_page">
-				<c:forEach items="${pageList }" var="pageNum">
-				<a href="/n_name/?page=${pageNum }">${pageNum }</a>
-				</c:forEach>
-			</div>
-			<div class="bt_wrap">
-				<a href="/n_write" class="on">글작성</a>
-			</div>
-		</div>
-	</div>
-
+		 <div class="board_wrap">
+        <div class="board_title">
+            <strong>익명 상담하기</strong>
+            <p>작성하긴 모든 글은 익명으로 작성됩니다.</p>
+        </div>
+        <div class="board_write_wrap">
+            <div class="board_write">
+                <div class="title">
+            <form action="/n_write" method="post" >
+                 <input type="hidden"  class="form-control" name="customerNum" value=1 />
+                    <dl>
+                        <dt>제목</dt>
+                        <dd><input type="text" placeholder="제목 입력" name="noNameTitle"></dd>
+                    </dl>
+                </div>
+                <div class="info">
+                    <dl>
+                        <dt>글쓴이</dt>
+                        <dd><input type="text" value="익명" readonly></dd>
+                    </dl>
+                </div>
+                <div class="cont">
+                    <textarea placeholder="내용 입력" name="noNameCon"></textarea>
+                </div>
+            </div>
+            <div class="bt_wrap">
+               <input type="submit" value="글쓰기" class="btn btn-primary bst">
+               <input type="reset" value="다시작성" class="btn btn-primary rst" >
+               <input type="button" class="btn btn-primary" value="취소" onClick="location.href='/n_name'">
+            </div>
+        </div>
+        </form>
+    </div>
+   
 
     
     <!-- footer -->
@@ -119,6 +104,16 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="../js/google-map.js"></script>
   <script src="../js/main.js"></script>
-    
-  </body>
+  <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script src="//cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+  <script>
+	//CKEDITOR 적용 
+	CKEDITOR.replace('content', {
+    width:'100%',
+    height:'350'
+	});
+ 
+  </script>
+</body>
 </html>

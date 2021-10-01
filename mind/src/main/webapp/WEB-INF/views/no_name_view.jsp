@@ -64,15 +64,15 @@
 					<div class="date">작성일</div>
 					<div class="count">조회</div>
 				</div>
-				<c:forEach var="noNameList" items="${noNameList}">
+				<c:forEach var="noNameDTOList" items="${noNameDTOList}">
 				<div>				
-					<div class="num">${noNameList.noNameNum }</div>
+					<div class="num">${noNameDTOList.noNameNum }</div>
 					<div class="title">
-						<a href="/n_details/${noNameList.noNameNum }">${noNameList.noNameTitle }</a>
+						<a href="n_details/${noNameDTOList.noNameNum }">${noNameDTOList.noNameTitle }</a>
 					</div>
 					<div class="writer">익명</div>
-					<div class="date">${noNameList.noNameDate }</div>
-					<div class="count">${noNameList.noNameCount }</div>				
+					<div class="date">${noNameDTOList.noNameDate }</div>
+					<div class="count">${noNameDTOList.noNameCount }</div>				
 				</div>
 				</c:forEach>
 			</div>
@@ -87,16 +87,17 @@
 				</div>
 			<!-- 검색 종료 -->
 			<div class="board_page">
-				<c:forEach items="${pageList }" var="pageNum">
-				<a href="/n_name/?page=${pageNum }">${pageNum }</a>
-				</c:forEach>
+				<a href="#" class="bt first"><<</a> <a href="#" class="bt prev"><</a>
+				<a href="#" class="num on">1</a> <a href="#" class="num">2</a> <a
+					href="#" class="num">3</a> <a href="#" class="num">4</a> <a
+					href="#" class="num">5</a> <a href="#" class="bt next">></a> <a
+					href="#" class="bt last">>></a>
 			</div>
 			<div class="bt_wrap">
 				<a href="/n_write" class="on">글작성</a>
 			</div>
 		</div>
 	</div>
-
 
     
     <!-- footer -->
