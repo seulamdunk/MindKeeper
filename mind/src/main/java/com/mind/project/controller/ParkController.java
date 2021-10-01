@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mind.project.model.Park;
 import com.mind.project.model.entity.ParkEntity;
 import com.mind.project.repository.ParkRepository;
 
@@ -20,19 +19,25 @@ public class ParkController {
 	@Autowired
 	private ParkRepository parkRepository;
 
+	// 공원 마커 찍기
 	@ResponseBody
-	@RequestMapping(value="/guest/parkSearch" ,method = RequestMethod.POST)
-	public List<Park> ajaxtest(){
+	@RequestMapping(value="/guest/parkRequest", method = RequestMethod.POST)
+	public List<ParkEntity> ajax(){
 		List<ParkEntity> list = parkRepository.findAll(); 
-		List<Park> parkData = new ArrayList<Park>();
+		List<ParkEntity> parkData = new ArrayList<ParkEntity>();
 		
 		for (ParkEntity source: list) {
-			Park target =new Park(); 
+			ParkEntity target =new ParkEntity(); 
+								// 원본객체, 복사대상 객체
 			BeanUtils.copyProperties(source,target); 
 			parkData.add(target);
 		}
-		return  parkData;
-	}
+		return parkData;
+	}	
+	
+	
+	
+
 
 	
 
