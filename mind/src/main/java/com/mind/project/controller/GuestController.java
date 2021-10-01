@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mind.project.config.security.JwtTokenProvider;
 import com.mind.project.model.Customer;
+import com.mind.project.model.CustomerLog;
 import com.mind.project.repository.CustomerRepository;
 import com.mind.project.service.GuestService;
+import com.mind.project.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -28,6 +30,7 @@ import lombok.RequiredArgsConstructor;
 public class GuestController {
 	
 	private final GuestService guestService;
+	private final UserService userService;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
     private final CustomerRepository customerRepository;
@@ -61,6 +64,7 @@ public class GuestController {
     // 로그인
     @PostMapping("/signin")
     public String login(@RequestBody Map<String, String> user,HttpServletResponse response) {
+    	
     	//입력된 아이디 찾기
         Customer customer= customerRepository.findByCustomerID(user.get("customerID"))
                 .orElseThrow(() -> new IllegalArgumentException("가입되지 않은 아이디 입니다."));
@@ -68,6 +72,8 @@ public class GuestController {
         if (!passwordEncoder.matches(user.get("customerPW"), customer.getPassword())) {
             throw new IllegalArgumentException("잘못된 비밀번호입니다.");
         }
+        //로그인시 로그 기록
+        userService.login(customer.getCustomerNum());
         return jwtTokenProvider.createToken(customer.getUsername(), customer.getRoles());
     }
     

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
 
@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>MindKeeper - Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="../css/admin/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -61,22 +61,7 @@
                     <span>통계</span></a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
-                </a>
-            </li>
+           
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
@@ -283,7 +268,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><p  id="nickname" style="font-size:250%;"></p></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -338,6 +323,26 @@
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-user fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                <p style="font-size: 200%">오늘 방문자 수</p></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+												<p id="countTodayCustomer"></p>
+											</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -537,6 +542,7 @@
     <script src="../js/admin/jquery/jquery.min.js"></script>
     <script src="../js/admin/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../js/admin/adminindex.js"></script>
+    <script src="../js/admin/nickname.js"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="../js/admin/jquery-easing/jquery.easing.min.js"></script>

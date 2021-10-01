@@ -25,14 +25,5 @@ public class AnonymousController {
 		return "no_name";
 	}
 	
-    // 로그아웃
-    @RequestMapping("/signout")
-    public String signout(HttpServletResponse response){
-    	Cookie cookie = new Cookie("token", null);
-    	cookie.setMaxAge(0);
-    	cookie.setPath("/");
-    	response.addCookie(cookie);
-    	return "redirect:/";
-    }
 
 }

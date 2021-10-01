@@ -43,7 +43,7 @@ function userCheck(){
 	url:"/user/userCheck",
 	success:function(result){
         if(result=="ROLE_ADMIN"){
-        	$('#admin').html('<a href="/admin/customer-list" class="nav-link" ><span>관리자페이지</span></a>')
+        	$('#admin').html('<a href="/admin/adminindex" class="nav-link" ><span>관리자페이지</span></a>')
         }
 	},
 	error:function(err){

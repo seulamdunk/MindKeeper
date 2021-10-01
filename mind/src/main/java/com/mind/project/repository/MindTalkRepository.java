@@ -18,11 +18,15 @@ public interface MindTalkRepository extends JpaRepository<MindTalk, Integer> {
 			+ "left join customer on mindtalk.customer_num=customer.customer_num ",nativeQuery=true)
 	public List<Object[]> findMindtalk();
 	
-
+	//일별 게시글 수
 	@Query(value="select count(*) as date from mindtalk "
 			+ "where date(talk_date)=date(now()) "
 			+ "group by date(talk_date)",nativeQuery=true)
-	Integer countMindtalk();	
+	Integer countMindtalk();
+	
+	
+	@Query(value="select count(*) from mindtalk group by customer_num having customer_num=:num ",nativeQuery=true)
+	Integer customerTalkCount(int num);	
 
 	
 	Page<MindTalk> findAllByOrderByTalkDateDesc(Pageable pageable);

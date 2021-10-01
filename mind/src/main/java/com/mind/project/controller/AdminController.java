@@ -73,8 +73,17 @@ public class AdminController {
     
     //회원 상세
     @GetMapping("/customerDetail/{num}")
-    public Optional<Customer> customerDetail(@PathVariable int num) {    	
+    public Optional<Customer> customerDetail(@PathVariable int num) {
     	return adminService.customerDetail(num);
+    }
+    
+    //회원 상세 게시글 수
+    @GetMapping("/customerTalkCount/{num}")
+    public Integer customerTalkCount(@PathVariable int num) {
+    	Integer result = 0;
+    	if(adminService.customerTalkCount(num)!=null)
+    		result=adminService.customerTalkCount(num);
+    	return result; 
     }
     
     //회원 권한 변경
@@ -87,12 +96,14 @@ public class AdminController {
     //총 회원 수
     @GetMapping("/countCustomer")
     public int countCustomer() {
-    	
-    	Customer user = new Customer();
-    	user.setCreateDate(LocalDateTime.now());
-    	
-    	
     	int result = adminService.countCustomer();
+    	return result;
+    }
+    
+    //오늘 방문자 숨
+    @GetMapping("/countTodayCustomer")
+    public int countTodayCustomer() {
+    	int result = adminService.countTodayCustomer();
     	return result;
     }
 
@@ -100,11 +111,8 @@ public class AdminController {
     @GetMapping("/countMindtalk")
     public Integer countMindtalk() {
     	Integer result = 0; //null 값 비교로 Integer사용
-    	if(adminService.countMindtalk()==null) {
-    		result=0;
-    	}else {
+    	if(adminService.countMindtalk()!=null) 
     		result=adminService.countMindtalk();
-    	}
     	return result;
     }
     

@@ -64,21 +64,7 @@
                     <span>통계</span></a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href="#" >
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
-                </a>
-            </li>
+          
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -272,7 +258,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                	<p  id="nickname" style=""></p>
+                                	<p  id="nickname" style="font-size:250%;"></p>
                                 </span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">

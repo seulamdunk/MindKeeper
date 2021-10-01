@@ -1,7 +1,7 @@
 countCustomer()
 
 function countCustomer(){
-		$.ajax({
+	$.ajax({
 		url:"countCustomer",
 		success:function(result){
 			$('#countCustomer').text(result+" 명")
@@ -15,7 +15,7 @@ function countCustomer(){
 countMindtalk()
 
 function countMindtalk(){
-		$.ajax({
+	$.ajax({
 		url:"countMindtalk",
 		success:function(result){
 			$('#countMindtalk').text(result+" 개")
@@ -25,4 +25,18 @@ function countMindtalk(){
 		}
 	})
 	
+}
+
+countTodayCustomer()
+
+function countTodayCustomer(){
+	$.ajax({
+		url:"countTodayCustomer",
+		success:function(result){
+			$('#countTodayCustomer').text(result+" 명")
+		},
+		error:function(err){
+			console.log(err)
+		}
+	})
 }
