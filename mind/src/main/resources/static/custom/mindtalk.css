@@ -1,7 +1,10 @@
 @charset "EUC-KR";
-
-.bg-blue{
+strong{
+	color:#2f89fc;
+}
+.bg-blue-20{
 	background-color: #2f89fc;
+	height:20px;
 }
 .text-bk{
 	color: black;
@@ -14,4 +17,81 @@
 	display:block;
 	width:100%;
 	height:auto;
+}
+
+.review-group{
+		width:100%;
+		display:flex;
+		align-content: center;
+		
+}
+.review-frm{
+	
+align-content: center
+	}
+.review-textarea-div{
+		width:100%;
+		border-radius: 15px 15px 15px 15px !important;
+		background-color: rgba(0,0,0,0.1)  !important;
+		box-sizing: border-box;
+		display:flex;
+}
+
+.review-textarea{
+		border-radius: 15px 0px 0px 15px !important;
+		width:100%;
+		background-color: rgba(0,0,0,0.1)  !important;
+		height: 45px !important;
+		overflow-y: auto;
+		resize: none;
+		color:black;
+		text-indent: 20px;
+		vertical-align: middle;
+		line-height: 45px;
+}
+.review-textarea:focus{
+	box-shadow: None !important;
+	outline:0px !important;
+	color:black;
+}
+.review-btn{
+	border-radius: 0px 15px 15px 0px !important;
+	background-color: rgba(0,0,0,0.1);
+	min-width: 80px;
+	border-left: 1px solid black;
+	text-align:center;
+	
+	color:black;
+	line-height: 45px;
+}
+
+.review-btn:hover{
+	background-color: #2f89fc;
+	color: #fff;
+	cursor: pointer;
+	}
+.inser-area{
+	margin:10px;
+	
+}
+.cheerUPArea .row{
+/* 	border-bottom: 1px solid #808080; */
+
+
+}
+[contenteditable=true]:empty:before{
+  content: attr(placeholder);
+}
+
+.card-footer{
+	background:white;
+	border-top:none;
+	border-bottom:1px solid black;
+}
+
+
+.cheerUpArea*{
+	word-break:break-all;
+	overflow-y:auto;
+	overflow-x:auto;
 }

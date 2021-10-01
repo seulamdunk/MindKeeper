@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -26,7 +29,9 @@ public class TalkReview {
 	private String talkReviewCon;
 	
 	@Column(name="TK_Class")
-	private int TkClass;
+	private int tkClass;
+	
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="TR_Order")
 	private int TROrder;
 	private int groupNum;
@@ -38,6 +43,21 @@ public class TalkReview {
 	@JoinColumn(name="customer_num")
 	private Customer customer;
 	
+	@JsonBackReference
+	@ManyToOne
+    @JoinColumn(name="talk_Num")
+    private MindTalk talk;
+
+	@Builder
+	public TalkReview(String talkReviewCon, int tkClass, int groupNum, Customer customer, MindTalk talk) {
+		
+		this.talkReviewCon = talkReviewCon;
+		this.tkClass = tkClass;
+		this.groupNum = groupNum;
+		this.customer = customer;
+		this.talk = talk;
+		this.talkReviewDate= LocalDateTime.now();
+	}
 	
 	
 	

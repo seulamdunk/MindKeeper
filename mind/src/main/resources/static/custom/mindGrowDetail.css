@@ -1,0 +1,16 @@
+@charset "EUC-KR";
+.ifArea{
+	margin-top:100px;
+}
+
+.infoArea{
+	margin-top:30px;
+	align-content: center;
+	text-align:center;
+	width:100%;
+	display: flex;
+}
+.infoArea div{
+	margin: 40px;
+	align-content: center;
+}

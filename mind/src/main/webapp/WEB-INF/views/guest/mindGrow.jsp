@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Ultim8 - Free Bootstrap 4 Template by Colorlib</title>
+    <title>마음지킴이</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -51,10 +51,10 @@
     
 
 	
-
+<h1>마음가꾸기</h1>
 <c:forEach items="${youtubeSet}" var="youtubeList" varStatus="status">
 
-   <h1>${youtubeList[0].youtubeTag }</h1>
+   <h2>${youtubeList[0].youtubeTag }</h2>
  <div class="wrapper">
  
  	<div class="img-list" id="listCnt${status.count }" >
@@ -63,7 +63,7 @@
 		 		<c:forEach items="${youtubeList }" var="youtube">
 				 <div class="item">
 					 <img width="341" height="192" src="${youtube.thumbnail}"
-					 onclick="location.href='/mindGrowDetail?youtubeUrl=${youtube.youtubeUrl}'">
+					 onclick="location.href='/mindGrowDetail?youtubeNum=${youtube.youtubeNum}'">
 				 </div>
 				 </c:forEach>
 	

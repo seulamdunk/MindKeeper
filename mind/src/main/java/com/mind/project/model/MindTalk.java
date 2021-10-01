@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -35,7 +37,7 @@ public class MindTalk {
     private Integer talkNum;
     private String talkCon;
     private LocalDateTime talkDate;
-    private Integer talkCnt;
+    private Integer talkCnt=0;
   
     
     @ManyToOne
@@ -51,6 +53,13 @@ public class MindTalk {
      private List<TalkImg> talkImg= new ArrayList<>();
     
     
+    @JsonManagedReference
+    @OneToMany(
+      	   mappedBy = "talk",
+      	   cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+      	   orphanRemoval = true
+      )
+      private List<TalkReview> talkReview= new ArrayList<>();
  
     
     

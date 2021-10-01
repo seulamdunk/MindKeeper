@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -28,4 +29,18 @@ public class YoutubeLog {
 	 @JoinColumn(name="youtube_num") 
 	 private Youtube youtube;
 	
+	 
+	 @ManyToOne
+	 @JoinColumn(name="customer_num") 
+	 private Customer customer;
+
+	 @Builder
+	public YoutubeLog( Youtube youtube, Customer customer) {
+		this.youtubeLogDate = LocalDateTime.now();
+		this.youtube = youtube;
+		this.customer = customer;
+	}
+	
+	 
+	 
 }

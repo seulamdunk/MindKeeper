@@ -42,6 +42,9 @@ public class Youtube {
 	private int youtubeCnt = 0;
 	@Column
 	private String thumbnail;
+	
+	
+	
 
 	@Builder
 	public Youtube(int youtubeNum, String youtubeTitle, String youtubeCh, String youtubeTag, String youtubeUrl,

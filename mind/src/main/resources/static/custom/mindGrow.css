@@ -10,7 +10,7 @@ body {
 }
 
 section{
-	 background-color: #000;
+	 /* background-color: #000; */
 }
 h1 {
  font-family: Arial;
@@ -23,12 +23,17 @@ h1 {
  max-height:300px;
  overflow: hidden;
  scroll-behavior: smooth;
- background-color: #000;
+ background-color: #2f89fc;
  margin-bottom: 100px;
  
 
 }
-
+h2{
+	font-family: Arial;
+	color: black;
+	text-indent: 40px;
+ 
+}
 
 
 .wrapper .img-list{

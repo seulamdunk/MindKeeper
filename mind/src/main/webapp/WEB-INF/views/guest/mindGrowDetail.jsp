@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Ultim8 - Free Bootstrap 4 Template by Colorlib</title>
+    <title>마음지킴이</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../custom/mindGrowDetail.css">
   </head>
   <body>
     
@@ -48,14 +49,27 @@
 
     <section class="ftco-section">
       <div class="container">
+      
+      	
+      
       	<div class="row justify-content-center mb-5 pb-5">
-        	
-        <iframe width="560" height="315" src="https://www.youtube.com/${youtubeUrl}" 
-        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-        clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen></iframe>
+        	<h2>${youtube.youtubeTitle}</h2>
+	        <div class="ifArea">	
+		        <iframe width="560" height="315" src="https://www.youtube.com/${youtube.youtubeUrl}" 
+		        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+		        clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+		        allowfullscreen></iframe>
+		     </div>
+	         <div class="infoArea  justify-content-center"> 
+        		<div>
+        			채널 : ${youtube.youtubeCh}
+        		</div>
+        		<div>
+        			조회수 : ${youtube.youtubeCnt}
+        		</div>
+        	 </div>	
         </div>
-        	
+       
       </div>
    
     </section>
