@@ -96,7 +96,7 @@ import com.mind.project.repository.TalkReviewRepository;
 	  //게시글삭제
 	@Override
 	public void mindTalkDelete(int num) {
-		
+		talkRep.deleteById(num);
 	}
 
 	//댓글 출력
