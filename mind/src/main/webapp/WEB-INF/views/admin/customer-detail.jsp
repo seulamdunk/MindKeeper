@@ -91,7 +91,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
-  <input id="customerID" class="form-control" type="text" readonly>
+  <input id="customerTalkCount" class="form-control" type="text" readonly>
     </div>
   </div>
 </div>
