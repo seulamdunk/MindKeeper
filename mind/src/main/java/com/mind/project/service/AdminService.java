@@ -31,6 +31,10 @@ public class AdminService {
 	public List<Object[]> mindTalkList() {
 		return mindTalkRepository.findMindtalk();
 	}
+	//게시글 태그
+	public List<Object> countTag() {
+		return mindTalkRepository.findTag();
+	}
 
 	//오늘 게시글 수
 	public Integer countMindtalk() {
@@ -66,6 +70,7 @@ public class AdminService {
 	public int changeRole(int num,String role) {
 		return customerRepository.changeRole(num,role);
 	}
+	
 	
 	
 	

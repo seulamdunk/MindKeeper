@@ -1,59 +1,83 @@
 // Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
+var arr1 = []
+var arr2 = []
+countTag()
+function getSortedArr(array) { 
+	// 1. 출연 빈도 구하기 
+	const counts = array.reduce((pv, cv)=>{ 
+		pv[cv] = (pv[cv] || 0) + 1; 
+		return pv; 
+	}, {}); 
+	// 2. 요소와 개수를 표현하는 배열 생성 => [ [요소: 개수], [요소: 개수], ...] 
+	const result = []; 
+	for (let key in counts) { 
+		result.push([key, counts[key]]); 
+	} 
+	// 3. 출현 빈도별 정리하기 
+	result.sort((first, second) => { 
+		// 정렬 순서 바꾸려면 return first[1] - second[1];
+		return second[1] - first[1];
+	}); 
+	return result; 
+}
 
-var today = new Date();
-//연령별 배열
-var array = [0,0,0,0,0,0,0]
-$.ajax({
-	type:"GET",
-	url:"customerList",
-	async:false,
-	success:function(result){
-		var tblresult = result
-		var year=0;
-		var count = 0;
+function countTag(){
+	$.ajax({
+		url:"countTag",
+		async:false,
+		success:function(result){
+		var tag = result;
+        var cnt =0;
+        
+        // 태그 하니씩 배열
+        var array = [];
 		
-		//하나씩 뽑아서 생년월일 추출
-		$.each(tblresult, function(i){
-			if(tblresult[i].identityNum.length>1){
-				var x=0
-				//40년생 이상시 1900년도
-				if(tblresult[i].identityNum.substr(0,2)>40){
-					year=1900+(tblresult[i].identityNum.substr(0,2)*1)
-					x = Math.floor((today.getFullYear()-year)/10)
-				}else{
-				//40년생 미만시 2000년도
-					year=2000+(tblresult[i].identityNum.substr(0,2)*1)
-					x = Math.floor((today.getFullYear()-year)/10)
+		// 배열에 값 저장				
+		$.each(tag, function(i){
+			//게시글당 태그 수
+            var len = tag[i].split('#').length
+            if(len>2){
+				for(var j=1;j<len;j++){
+					//태그별 배열에 저장
+					array[cnt]=(tag[i].split('#')[j])
+					cnt+=1
 				}
-				//배열에 카운트
-				switch(x){
-					case 0: array[1]=array[1]+1; break;
-					case 1: array[1]=array[1]+1; break;
-					case 2: array[2]=array[2]+1; break;
-					case 3: array[3]=array[3]+1; break;
-					case 4: array[4]=array[4]+1; break;
-					case 5: array[5]=array[5]+1; break;
-					case 6: array[5]=array[5]+1; break;
-				}
+			}else if(len==2){
+				array[cnt]=(tag[i].split('#')[1])
+				cnt+=1
 			}
-		});
+        });
+		for(var k=0;k<5;k++){
+			//key 값 배열에 담기
+			arr1[k]=getSortedArr(array)[k][0];
+			//value 값 배열에 담기
+			arr2[k]=getSortedArr(array)[k][1];
+		}
+		}, //end of success
+		error:function(err){
+			console.log(err)
+		}
+	})
 	
-	}
-	
-});
+}
 
+$('#tag1').html('<i class="fas fa-circle" style="color:#FF6B6B"></i> '+arr1[0])
+$('#tag2').html('<i class="fas fa-circle" style="color:#FFD573"></i> '+arr1[1])
+$('#tag3').html('<i class="fas fa-circle" style="color:#8BF759"></i> '+arr1[2])
+$('#tag4').html('<i class="fas fa-circle" style="color:#D952F7"></i> '+arr1[3])
+$('#tag5').html('<i class="fas fa-circle" style="color:#12CDFC"></i> '+arr1[4])
 // Pie Chart Example
 var ctx = document.getElementById("myTagChart");
 var myPieChart = new Chart(ctx, {
   type: 'pie',
   data: {
-    labels: ["10대이하", "20대", "30대", "40대", "50대이상"],
+    labels: [arr1[0], arr1[1], arr1[2], arr1[3], arr1[4]],
     datasets: [{
-      data: [array[1], array[2], array[3], array[4], array[5]],
-      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc','#b1f4fc','#ff78db'],
-      hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf','#91c8cf','#d461b5'],
+      data: [arr2[0],arr2[1],arr2[2],arr2[3],arr2[4]],
+      backgroundColor: ['#FF6B6B', '#FFD573', '#8BF759','#D952F7','#12CDFC'],
+      hoverBackgroundColor: ['#BD4B4B', '#C7A558', '#5FAD3B','#B63BB8','#0B78B8'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }],
   },

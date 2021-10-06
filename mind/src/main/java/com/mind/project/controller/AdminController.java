@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mind.project.model.Customer;
 import com.mind.project.service.AdminService;
 import com.mind.project.service.MindTalkService;
+import com.mind.project.service.NoNameService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -32,6 +33,7 @@ public class AdminController {
 	
 	private final AdminService adminService;
 	private final MindTalkService mindtalkService;
+	private final NoNameService noNameService;
 	
 	
 	//회원 목록 불러오기
@@ -127,4 +129,15 @@ public class AdminController {
     	return result;
     }
     
+    //태그 조회
+    @GetMapping("/countTag")
+    public ResponseEntity countTag() {
+    	return ResponseEntity.ok(adminService.countTag());
+    }
+    
+    //익명게시판 조회수 
+    @GetMapping("/countNoName")
+    public ResponseEntity countNoName() {
+		return ResponseEntity.ok(noNameService.findnoNameCount());
+	}
 }

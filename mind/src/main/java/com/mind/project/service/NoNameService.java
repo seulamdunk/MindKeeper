@@ -143,6 +143,10 @@ public class NoNameService {
 		
 	}
 	
+	public List<Object[]> findnoNameCount() {
+		return noNameRepository.findnoNameCount();
+	}
+	
 //	@Transactional
 //	public int updateCount(Long noNameNum) {
 //		System.out.println(noNameNum);

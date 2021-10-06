@@ -24,7 +24,10 @@ public interface MindTalkRepository extends JpaRepository<MindTalk, Integer> {
 			+ "group by date(talk_date)",nativeQuery=true)
 	Integer countMindtalk();
 	
+	@Query(value="select tag from mindtalk",nativeQuery=true)
+	public List<Object> findTag();
 	
+	//회원 작성한 게시글 수
 	@Query(value="select count(*) from mindtalk group by customer_num having customer_num=:num ",nativeQuery=true)
 	Integer customerTalkCount(int num);	
 

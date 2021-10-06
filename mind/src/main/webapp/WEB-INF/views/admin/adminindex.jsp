@@ -465,19 +465,19 @@
                                         <canvas id="myTagChart"></canvas>
                                     </div>
                                     <div class="mt-4 text-center small">
-                                        <span class="mr-2">
+                                        <span class="mr-2" id="tag1">
                                             <i class="fas fa-circle" style="color:#4e73df"></i> 태그1
                                         </span>
-                                        <span class="mr-2">
+                                        <span class="mr-2" id="tag2">
                                             <i class="fas fa-circle" style="color:#1cc88a"></i> 태그2
                                         </span>
-                                        <span class="mr-2">
+                                        <span class="mr-2" id="tag3">
                                             <i class="fas fa-circle" style="color:#36b9cc"></i> 태그3
                                         </span>
-                                        <span class="mr-2">
+                                        <span class="mr-2" id="tag4">
                                             <i class="fas fa-circle" style="color:#b1f4fc"></i> 태그4
                                         </span>
-                                        <span class="mr-2">
+                                        <span class="mr-2" id="tag5">
                                             <i class="fas fa-circle" style="color:#ff78db"></i> 태그5
                                         </span>
                                     </div>
@@ -490,37 +490,37 @@
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">좋아요 갯수 많은거 (order desc)</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">익명상담 가장 많은 조회수</h6>
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="small font-weight-bold">Server Migration <span
-                                            class="float-right">20%</span></h4>
+                                    <h4 class="small font-weight-bold" id="noNameContent0"><span
+                                            class="float-right" id="noNameCount0"></span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
+                                        <div id="one" class="progress-bar bg-danger" role="progressbar" 
                                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <h4 class="small font-weight-bold">Sales Tracking <span
-                                            class="float-right">40%</span></h4>
+                                    <h4 class="small font-weight-bold" id="noNameContent1"><span
+                                            class="float-right" id="noNameCount1"></span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
+                                        <div id="two" class="progress-bar bg-warning" role="progressbar" 
                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <h4 class="small font-weight-bold">Customer Database <span
-                                            class="float-right">60%</span></h4>
+                                    <h4 class="small font-weight-bold" id="noNameContent2"><span
+                                            class="float-right" id="noNameCount2"></span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 60%"
+                                        <div id="three" class="progress-bar" role="progressbar" 
                                             aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <h4 class="small font-weight-bold">Payout Details <span
-                                            class="float-right">80%</span></h4>
+                                    <h4 class="small font-weight-bold" id="noNameContent3"><span
+                                            class="float-right" id="noNameCount3"></span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
+                                        <div id="four" class="progress-bar bg-info" role="progressbar" 
                                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <h4 class="small font-weight-bold">Account Setup <span
-                                            class="float-right">Complete!</span></h4>
+                                    <h4 class="small font-weight-bold" id="noNameContent4"><span
+                                            class="float-right" id="noNameCount4"></span></h4>
                                     <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
+                                        <div id="five" class="progress-bar bg-success" role="progressbar" 
                                             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
