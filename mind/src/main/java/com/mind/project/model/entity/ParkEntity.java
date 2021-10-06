@@ -7,8 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.mind.project.model.AnonymousBoard;
-
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

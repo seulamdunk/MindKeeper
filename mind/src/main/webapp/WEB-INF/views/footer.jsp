@@ -30,6 +30,9 @@
               </ul>
             </div>
           </div>
+          <div class="col-md-5">
+          	<div id="footerMap" style="width:100%;height:100%;"></div>
+          </div>
          <!--  <div class="col-md-4 pr-md-4">
             <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Recent Blog</h2>
@@ -74,14 +77,22 @@
         </div>
         <div class="row">
           <div class="col-md-12 text-center">
-
             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
   &copy; This site is made with by 권순호, 구효원 , 배준건, 배현호, 편이슬
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
           </div>
         </div>
       </div>
-    </footer>
+<!--********************************** 지도 script 시작 ***************************************-->
+<!-- 부트스트랩 이용을 위한 jQuery와 CDN -->
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	
+<!-- 카카오 javaScriptKey -->
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9a2c6577da696f87c0359d059fa9c8a7"></script>
+<script src="../js/footerMap.js"></script>
+<!--*********************************** 지도 script 종료 ***************************************-->
+</footer>
     
     
      <!-- loader -->
@@ -135,4 +146,6 @@
         
       </div>
     </div> -->
-  </div>
+    
+
+

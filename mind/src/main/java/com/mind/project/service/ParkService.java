@@ -39,6 +39,8 @@ public class ParkService {
 				.parkReviewLink(park.getParkReviewLink())
 				.parkLink(park.getParkLink())
 				.parkAddr(park.getParkAddr())
+				.parkLat(park.getParkLat())
+				.parkLng(park.getParkLng())
 				.build();
 			
 			parkList.add(parkdatalist);
@@ -46,35 +48,5 @@ public class ParkService {
 		return parkList;
 	}
 	
-
-	// 키워드 검색
-	@Transactional
-	public List<ParkEntity> searchPark(String keyword){
-		//System.out.println("keyword:" + keyword);
-		List<ParkEntity> parkEntities = parkRepository.findAllByParkNameContaining(keyword);
-		//System.out.println("parkEntities: " + parkEntities);
-		List<ParkEntity> parkSearchList = new ArrayList<>();
-	
-		if(parkEntities.isEmpty()) return parkSearchList;
-		
-		for(ParkEntity parkEntity : parkEntities) {
-			parkSearchList.add(this.convertEntityToDto(parkEntity));
-		}
-		//System.out.println(parkSearchList);
-		return parkSearchList;
-	}
-	
-	private ParkEntity convertEntityToDto(ParkEntity parkEntity) {
-		return ParkEntity.builder()
-			.parkName(parkEntity.getParkName())
-			.parkScore(parkEntity.getParkScore())
-			.parkScoreCnt(parkEntity.getParkScoreCnt())
-			.parkScoreLink(parkEntity.getParkScoreLink())
-			.parkReview(parkEntity.getParkReview())
-			.parkReviewLink(parkEntity.getParkReviewLink())
-			.parkLink(parkEntity.getParkLink())
-			.parkAddr(parkEntity.getParkAddr())
-			.build();
-	}
 }
 

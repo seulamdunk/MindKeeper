@@ -25,6 +25,20 @@
 <!--****************** parkCSS 추가 *****************-->
 <link rel="stylesheet" href="../css/park/parkCSS.css">
 <!--***********************************************-->
+
+<!-- **************** 로드뷰 css 추가 (시작) **************** -->
+<style>
+#container {overflow:hidden;height:300px;position:relative;}
+#mapWrapper {width:100%;height:300px;z-index:1;}
+#rvWrapper {width:50%;height:300px;top:0;right:0;position:absolute;z-index:0;}
+#container.view_roadview #mapWrapper {width: 50%;}
+#roadviewControl {position:absolute;top:5px;left:5px;width:42px;height:42px;z-index: 1;cursor: pointer; background: url(https://t1.daumcdn.net/localimg/localimages/07/2018/pc/common/img_search.png) 0 -450px no-repeat;}
+#roadviewControl.active {background-position:0 -350px;}
+#close {position: absolute;padding: 4px;top: 5px;left: 5px;cursor: pointer;background: #fff;border-radius: 4px;border: 1px solid #c8c8c8;box-shadow: 0px 1px #888;}
+#close .img {display: block;background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/rv_close.png) no-repeat;width: 14px;height: 14px;}
+</style>
+<!-- **************** 로드뷰 css 추가 (종료) **************** -->
+
 </head>
 
 <body>
@@ -46,56 +60,55 @@
      </div>
 </div>
 <!--********** header 종료 **********--> 
-		
+
 <!--********************* section 시작 *********************-->
 <section class="ftco-section contact-section ftco-degree-bg">
+<br/><br/><br/><br/><br/>
 	<div class="container">
 		<div class="row d-flex mb-5 contact-info">
 	    	<div class="col-md-12 mb-4">
-	
-	
 	         
 	<!--*** 지도 DIV 시작 ***-->
-	
-	<div class="map_wrap">
-		<div id="map" class="col-md-8" style="height:100%;position:relative;overflow:hidden;float:left;"></div>
-		
+	<div id="container" style="height:500px;">
+	    <div id="rvWrapper">
+	        <div id="roadview" style="width:100%;height:500px;"></div> <!-- 로드뷰를 표시할 div 입니다 -->
+	        <div id="close" title="로드뷰닫기" onclick="closeRoadview()"><span class="img"></span></div>
+	    </div>
+	    <div id="mapWrapper">
+	        <div id="map" style="width:100%;height:500px;"></div> <!-- 지도를 표시할 div 입니다 -->
+	        <div id="roadviewControl" onclick="setRoadviewRoad()"></div>
+	    </div>
+	</div>
+<!--*** 지도 DIV 종료 ***-->
+
+<br/>
+
 <!-- 검색&목록 DIV 시작 -->	
-<div class="col-md-4" style="float:right;">
+<div class="col-md-4" style="float:left;" >
 
 			<!--*** 공원 검색 시작 ***-->
-			<div class="col-md-12" style="width:300px;float:center;">
-				<form action="/guest/parkSearch" method="post" class="subscribe-form">
+			<div class="col-md-12" style="float:center;">
 					<div class="form-group d-flex">
 						<input type="text" name="keyword" id="keyword" class="form-control" placeholder="입력해주세요.">
-						<input type="submit" value="검색" class="submit px-3">
+						<button type="button"  onclick="getKeyword()" id="keywordClick" class="btn btn-primary px-4 py-3">검색</button>
 					</div>
-					</form>
-			</div><br/>
+			</div>
 			<!--*** 공원 검색 종료 ***-->
 			
+			<br/>
+			
 			<!--*** 공원 목록 출력 시작 ***-->
-			<div id="parkList" style="overflow:auto;width:300px;height:430px;padding:10px;">
-				<c:forEach items="${parkList }" var="parkList">
-				<div class="wrap">
-					<div style="font-weight: bold;">${parkList.parkName }</div>
-			    	<div>
-			    		<img class="parkScoreImg" src="../img/parkImg/parkScoreImg.png" alt="평점 이미지" width="18" height="18">${parkList.parkScore } ,
-			    		후기 : <a href="${parkList.parkScoreLink }" target="_blank" class="parkLink" style="color:#007bff;">${parkList.parkScoreCnt }</a> ,
-			    	 	리뷰 : <a href="${parkList.parkReviewLink }" target="_blank" class="parkLink" style="color:#007bff;">${parkList.parkReview }</a>
-			    	</div>
-			     	<div>${parkList.parkAddr }</div>
-					<div><a href="${parkList.parkLink }" target="_blank" class="parkLink" style="color:#007bff;">상세보기 ></a></div>
-				</div>
-				<hr>
-				</c:forEach>
-			</div>
-			<!--*** 공원 목록 출력 종료 ***-->   
+			<div id="parkList" class="col-md-12" style="overflow:auto;height:430px;padding:10px;"></div>
+			<!--*** 공원 목록 출력 종료 ***-->
+			
 </div>
 <!-- 검색&목록 DIV 종료 -->
-		 
-	</div>
-	<!--*** 지도 DIV 종료 ***-->
+
+<!-- iframe 시작 -->
+<div class="col-md-8" style="float:right;">
+    <embed id="iframeUrl" width="100%" height="520px" src="../img/parkImg/mindImg2.png" style="border:1px solid #e9e9e9">
+</div>
+<!-- iframe 종료 -->
 
 			</div>
 		</div>
@@ -103,8 +116,6 @@
 </section>
 <!--********************* section 종료 *********************-->
 		
-	
-
 
 
 <!--*************** footer 시작 ***************-->
@@ -115,7 +126,7 @@
 <!-- 부트스트랩 이용을 위한 jQuery와 CDN -->
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	
+
 <!-- 카카오 javaScriptKey -->
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9a2c6577da696f87c0359d059fa9c8a7"></script>
 <script src="../js/park/parkMap.js"></script>
@@ -139,9 +150,7 @@
 <script src="../js/google-map.js"></script>
 <script src="../js/main.js"></script>
 <!--********** script 시작 **********-->
-<script>
 
-</script>
     
 </body>
 </html>
