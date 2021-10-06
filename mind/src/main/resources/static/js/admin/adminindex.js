@@ -6,6 +6,21 @@ countMindtalk()
 countTodayCustomer()
 //가장 많은 좋아요 수
 countNoName()
+//긍정 부정 개수
+CustomerPositive()
+
+function CustomerPositive(){
+	$.ajax({
+		url:"CustomerPositive",
+		success:function(result){
+			$('#countPositive').text(result*100+"%")
+			document.getElementById('countPositivePer').style.width=result*100+'%';
+		},
+		error:function(err){
+			console.log(err)
+		}
+	})
+}
 
 function countCustomer(){
 	$.ajax({

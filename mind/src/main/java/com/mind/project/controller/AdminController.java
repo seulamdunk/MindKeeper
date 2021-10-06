@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mind.project.model.Customer;
 import com.mind.project.service.AdminService;
+import com.mind.project.service.JindanService;
 import com.mind.project.service.MindTalkService;
 import com.mind.project.service.NoNameService;
 
@@ -34,6 +35,7 @@ public class AdminController {
 	private final AdminService adminService;
 	private final MindTalkService mindtalkService;
 	private final NoNameService noNameService;
+	private final JindanService jindanService;
 	
 	
 	//회원 목록 불러오기
@@ -140,4 +142,10 @@ public class AdminController {
     public ResponseEntity countNoName() {
 		return ResponseEntity.ok(noNameService.findnoNameCount());
 	}
+    
+    //긍정 갯수
+    @GetMapping("/CustomerPositive")
+    public double CustomerPositive() {
+    	return jindanService.customerPositive();
+    }
 }

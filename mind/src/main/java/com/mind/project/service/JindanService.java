@@ -63,5 +63,11 @@ public class JindanService {
 		//jindanRepository.save(Jindan.builder().jindanCon(jindanCon).jindanConNum(Long.parseLong(jindanConNum)).build());
 	}
 	
+	//긍정 비율 조회
+	public double customerPositive() {
+		String pos="긍정";
+		return jindanRepository.customerPositive(pos);
+	}
+	
 
 }
