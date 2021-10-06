@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,7 +31,9 @@
     <link rel="stylesheet" href="../css/signup.css">
   </head>
   <body>
-    
+<c:if test="${cookie.token.value!=null}">
+    	<c:redirect url="index"/>
+</c:if>
 	 <jsp:include page="../navbar.jsp"></jsp:include>
     <!-- END nav -->
     
@@ -70,7 +73,7 @@
               </fieldset>
 
              <input type="button" onclick="signin();" value="로그인" class="btn btn-primary px-4 py-3" style="width: 200px; margin: 0 auto;"></input>
-              
+              <a href="signup"> 회원가입 ></a>
               
              </form>
               </div>

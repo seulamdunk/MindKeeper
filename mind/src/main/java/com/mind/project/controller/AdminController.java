@@ -1,5 +1,6 @@
 package com.mind.project.controller;
 
+import java.io.Console;
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Optional;
@@ -32,6 +33,7 @@ public class AdminController {
 	private final AdminService adminService;
 	private final MindTalkService mindtalkService;
 	
+	
 	//회원 목록 불러오기
 	@GetMapping("/customerList")
 	public ResponseEntity customerList() {
@@ -57,6 +59,15 @@ public class AdminController {
     	Authentication user = SecurityContextHolder.getContext().getAuthentication();
     	Customer user2 = (Customer) user.getPrincipal();
         return user2.getCustomerNick();
+    }
+
+    //닉네임 정보 가져오기
+    @PostMapping("/CustomerProfile")
+    public String CustomerProfile() {
+    	// 시큐리티에서 정보 가져오기
+    	Authentication user = SecurityContextHolder.getContext().getAuthentication();
+    	Customer user2 = (Customer) user.getPrincipal();
+    	return user2.getProfileImg();
     }
 	
     //회원 증가량 ajax 통신
@@ -100,7 +111,7 @@ public class AdminController {
     	return result;
     }
     
-    //오늘 방문자 숨
+    //오늘 방문자 수
     @GetMapping("/countTodayCustomer")
     public int countTodayCustomer() {
     	int result = adminService.countTodayCustomer();

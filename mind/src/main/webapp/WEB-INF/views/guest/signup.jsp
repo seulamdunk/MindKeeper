@@ -33,7 +33,7 @@
   <body>
     
 <c:if test="${cookie.token.value!=null}">
-    	<c:redirect url="i!ndex"/>
+    	<c:redirect url="index"/>
 </c:if>
 	 <jsp:include page="../navbar.jsp"></jsp:include>
     <!-- END nav -->

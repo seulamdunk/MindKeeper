@@ -262,15 +262,15 @@
                             </div>
                         </li>
 
-                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <div class="topbar-d ivider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><p  id="nickname" style="font-size:250%;"></p></span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><p  id="nickname" style="font-size:200%;"></p></span>
+                                <img class="img-profile rounded-circle" id="CustomerProfile"
+                                    src="#">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -421,7 +421,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">오늘 가장 많은 태그 (자바스크립트 #으로 짤라서 split)</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">연령별 회원 수</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -430,13 +430,19 @@
                                     </div>
                                     <div class="mt-4 text-center small">
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Direct
+                                            <i class="fas fa-circle" style="color:#4e73df"></i> 10대이하
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Social
+                                            <i class="fas fa-circle" style="color:#1cc88a"></i> 20대
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Referral
+                                            <i class="fas fa-circle" style="color:#36b9cc"></i> 30대
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle" style="color:#b1f4fc"></i> 40대
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle" style="color:#ff78db"></i> 50대이상
                                         </span>
                                     </div>
                                 </div>
@@ -446,7 +452,38 @@
 
                     <!-- Content Row -->
                     <div class="row">
-
+						<div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">가장 많은 태그</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4 pb-2">
+                                        <canvas id="myTagChart"></canvas>
+                                    </div>
+                                    <div class="mt-4 text-center small">
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle" style="color:#4e73df"></i> 태그1
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle" style="color:#1cc88a"></i> 태그2
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle" style="color:#36b9cc"></i> 태그3
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle" style="color:#b1f4fc"></i> 태그4
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle" style="color:#ff78db"></i> 태그5
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- Content Column -->
                         <div class="col-lg-6 mb-4">
 
@@ -490,6 +527,8 @@
                             </div>
 
                     </div>
+                        <!-- Content Column -->
+                        
 
                 </div>
                 <!-- /.container-fluid -->
@@ -532,7 +571,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="../../user/signout">Logout</a>
                 </div>
             </div>
         </div>
@@ -556,6 +595,7 @@
     <!-- Page level custom scripts -->
     <script src="../js/admin/chart-area-demo.js"></script>
     <script src="../js/admin/chart-pie-demo.js"></script>
+    <script src="../js/admin/chart-pie-tag.js"></script>
 
 </body>
 

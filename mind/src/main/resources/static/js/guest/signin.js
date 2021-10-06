@@ -13,8 +13,10 @@ function signin(){
 		contentType: "application/json; charset=utf-8",
 		data:JSON.stringify(params),
 		success:function(result){
-			document.cookie="token="+result+"; path=/";
-			//document.cookie="X-AUTH-TOKEN=" +result +"; path=/";
+            var date = new Date();
+            date.setTime(date.getTime() + (60 * 60 * 1000)); //유효시간 1시간
+            var expires = "; expires=" + date.toGMTString();
+			document.cookie="token="+result+expires+"; path=/";
 			location.href='/' 
 		},
 		error:function(err){

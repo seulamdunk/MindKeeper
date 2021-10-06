@@ -45,9 +45,9 @@ $.ajax({
 });
 
 // Pie Chart Example
-var ctx = document.getElementById("myPieChart");
+var ctx = document.getElementById("myTagChart");
 var myPieChart = new Chart(ctx, {
-  type: 'doughnut',
+  type: 'pie',
   data: {
     labels: ["10대이하", "20대", "30대", "40대", "50대이상"],
     datasets: [{
@@ -63,7 +63,7 @@ var myPieChart = new Chart(ctx, {
       backgroundColor: "rgb(255,255,255)",
       bodyFontColor: "#858796",
       borderColor: '#dddfeb',
-      borderWidth: 1,
+      borderWidth: 2,
       xPadding: 15,
       yPadding: 15,
       displayColors: false,
@@ -72,6 +72,6 @@ var myPieChart = new Chart(ctx, {
     legend: {
       display: false
     },
-    cutoutPercentage: 80,
+    cutoutPercentage: 0,
   },
 });
