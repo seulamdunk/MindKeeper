@@ -1,5 +1,6 @@
 package com.mind.project.repository;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -30,6 +31,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     @Transactional
 	@Query(value="UPDATE customer_roles SET roles=?2 WHERE customer_customer_num=?1",nativeQuery=true)
 	public int changeRole(@Param("num") int num,@Param("role") String role);
-
+    
     
 }

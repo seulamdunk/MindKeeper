@@ -34,6 +34,7 @@ public class MindGrowController {
 		youtube.setYoutubeUrl(youtube.getYoutubeUrl().replace("watch?v=","embed/"));
 		m.addAttribute("youtube", youtube);
 		Customer customer = commonService.tokenCustomer(request);
+		System.out.println("customer"+ customer.getCustomerNum());
 		//youtube log
 		if(customer.getCustomerNum() != null) {
 			System.out.println("조건 체크"+customer.getCustomerNum());

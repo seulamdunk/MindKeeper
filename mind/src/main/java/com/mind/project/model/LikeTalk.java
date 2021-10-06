@@ -23,12 +23,12 @@ public class LikeTalk {
 	private int likeTalkNum;
 	
 	
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@JoinColumn
 	private MindTalk talk;
 	
 	
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@JoinColumn
 	private Customer customer;
 

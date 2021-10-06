@@ -38,6 +38,7 @@ public class MindTalk {
     private String talkCon;
     private LocalDateTime talkDate;
     private Integer talkCnt=0;
+    private String tag;
   
     
     @ManyToOne

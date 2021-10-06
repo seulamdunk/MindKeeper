@@ -50,41 +50,26 @@ function likeTalkview(talkNum,customerNum,writer){
 
 					if(data.cnt==0){
 
-					a+=  '<span class="btn btn-primary" onclick="insertTalkLike(' +talkNum +','+customerNum+','+writer+  ')">❤  </span>  '
-					a+='<span class="talkLikeCount">'+data.cntSum+'</span>'
-					
-				 	
+					a+=  '<span class="btn btn-primary" onclick="insertTalkLike(' +talkNum +','+customerNum+','+writer+  ')">❤<span class="talkLikeCount">'+data.cntSum+'</span> </span>  '	 	
 				   a+=  '<span class="btn btn-primary cheerUPBtn">🗨 ' 
 				   a+= ' <input class="talkNum" type="hidden" value="'+talkNum+'"></span>'
 				     
 					if(writer ==customerNum){
 					a+=	'<span class="btn btn-primary deleteTalkBtn">❌ </span>'
 						}
-					
-				   
+			   
 					}else{
-						a+=	'<span class="btn btn-primary" onclick="deleteTalkLike(' +talkNum +','+customerNum+','+writer+  ')" style="color:red;" >❤  </span> '
-						a+=	'<span class="talkLikeCount">'+data.cntSum+'</span>'
-						
-					 	
+						a+=	'<span class="btn btn-primary" onclick="deleteTalkLike(' +talkNum +','+customerNum+','+writer+  ')" style="color:red;" >❤<span class="talkLikeCount">'+data.cntSum+'</span> </span> '
+			 	
 						   a+=  '<span class="btn btn-primary cheerUPBtn">🗨 ' 
 						   a+= ' <input class="talkNum" type="hidden" value="'+talkNum+'"></span>'
 						     
 							if(writer ==customerNum){
 							a+=	'<span class="btn btn-primary deleteTalkBtn">❌ </span>'
 								}
-						     
-
-
-
-						}
-
-					
+			}
+	
 					$(".taklLikeArea"+talkNum).html(a)
-
-
-				
-
 
 
 				
@@ -102,7 +87,7 @@ function likeTalkview(talkNum,customerNum,writer){
 function insertTalkLike(talkNum,customerNum,writer){
 	
 		let param= {
-
+		
 				"talkNum":talkNum,
 				"customerNum":customerNum
 				}
@@ -113,6 +98,7 @@ function insertTalkLike(talkNum,customerNum,writer){
 				data:JSON.stringify(param),
 				contentType:'application/json; charset=utf-8',
 				success:function(){
+					
 					likeTalkview(talkNum,customerNum,writer)
 						}
 					
@@ -123,7 +109,7 @@ function insertTalkLike(talkNum,customerNum,writer){
 		}
 
 function deleteTalkLike(talkNum,customerNum,writer){
-	alert('dd')
+	
 	let param= {
 
 			"talkNum":talkNum,
@@ -135,12 +121,10 @@ function deleteTalkLike(talkNum,customerNum,writer){
 			url:"/deleteLikeTalk",
 			data:JSON.stringify(param),
 			contentType:'application/json; charset=utf-8',
-			success:function(){
-				
+			success:function(){		
 				likeTalkview(talkNum,customerNum,writer)
 					}
-				
-			
+
 			})
 			
 

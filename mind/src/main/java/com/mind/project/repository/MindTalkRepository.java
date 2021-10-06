@@ -39,4 +39,6 @@ public interface MindTalkRepository extends JpaRepository<MindTalk, Integer> {
 	 
 	public  MindTalk findByTalkNum(int talkNum);
 	
+	//고객 게시물 검색
+	Page<MindTalk> findAllByCustomerCustomerNumOrderByTalkDateDesc(int customerNum, Pageable pageable);
 }

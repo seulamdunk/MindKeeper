@@ -1,4 +1,4 @@
-@charset "EUC-KR";
+
 
 
 html {
@@ -10,21 +10,22 @@ body {
 }
 
 section{
-	 /* background-color: #000; */
+	  background-color: #000; 
 }
 h1 {
  font-family: Arial;
  color: #2f89fc;
  text-align: center;
 }
+
 .wrapper {
  display: grid;
  grid-template-columns: repeat(3, 100%);
  max-height:300px;
  overflow: hidden;
  scroll-behavior: smooth;
- background-color: #2f89fc;
- margin-bottom: 100px;
+/*  background-color: #2f89fc; */
+ margin-bottom: 10px;
  
 
 }
@@ -89,6 +90,18 @@ h2{
  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, black 100%);
 }
 
+h2{
+	 color:white;
+	 text-indent: 15px;
+}
+
+.showInfoActive{
+	
+	width:100%;
+	hieght:200px;
+	background-size: cover;
+}
+
 
 @media only screen and (max-width: 600px) {
  .arrow__btn {
@@ -98,7 +111,14 @@ h2{
 
 
 
+.hero-wrap-3 {
+  height: 350px; }
+  @media (max-width: 1199.98px) {
+    .hero-wrap-3 {
+      background-position: center center !important; } }
 
+  .hero-wrap-3 .slider-text {
+    height: 500px; }
 
 /* .dis-block{
 	display:  block;

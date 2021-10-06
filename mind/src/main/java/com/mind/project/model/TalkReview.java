@@ -39,12 +39,12 @@ public class TalkReview {
 	private LocalDateTime talkReviewDate;
 	
 	
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@JoinColumn(name="customer_num")
 	private Customer customer;
 	
 	@JsonBackReference
-	@ManyToOne
+	@ManyToOne(optional = false)
     @JoinColumn(name="talk_Num")
     private MindTalk talk;
 

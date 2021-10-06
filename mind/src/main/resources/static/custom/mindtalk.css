@@ -1,4 +1,4 @@
-@charset "EUC-KR";
+@charset "UTF-8";
 strong{
 	color:#2f89fc;
 }
@@ -95,3 +95,20 @@ align-content: center
 	overflow-y:auto;
 	overflow-x:auto;
 }
+.hero-wrap-3 {
+  height: 350px; }
+  @media (max-width: 1199.98px) {
+    .hero-wrap-3 {
+    background-size:cover;
+      background-position: center center !important; } }
+
+  .hero-wrap-3 .slider-text {
+    height: 500px; }
+    
+.gedf-card{
+	margin-bottom: 50px;
+}
+
+@media (max)
+
+

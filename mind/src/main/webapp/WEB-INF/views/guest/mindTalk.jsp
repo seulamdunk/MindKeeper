@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -37,7 +39,7 @@
 	<jsp:include page="../navbar.jsp"></jsp:include>
     <!-- END nav -->
     
-    <div class="hero-wrap hero-wrap-2" style="background-image: url(images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+    <div class="hero-wrap hero-wrap-3" style="background-image: url(../images/flying-through-magic.jpg);" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container-fluid">
         <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
@@ -50,16 +52,65 @@
     </div>
 
     <section class="ftco-section">
-    <!-- 현재날짜 -->
+    
+  <div class="row">
+    <!-- 로그인중인 고객번호 -->
 	<input type="hidden" id="writer" value="${tokenNum }">
-      <div class="container">
+	<!--프로필   -->
+		<div class="col-md-3">
+			<div class="twPc-div">
+			    <a class="twPc-bg twPc-block"></a>
+			
+				<div>
+					
+			
+					<a title="Mert S. Kaplan" href="https://twitter.com/mertskaplan" class="twPc-avatarLink">
+						<img alt="Mert S. Kaplan" src="https://mertskaplan.com/wp-content/plugins/msk-twprofilecard/img/mertskaplan.jpg" class="twPc-avatarImg">
+					</a>
+			
+					<div class="twPc-divUser">
+						<div class="twPc-divName">
+							<a href="https://twitter.com/mertskaplan">Mert S. Kaplan</a>
+						</div>
+						<span>
+							<a href="https://twitter.com/mertskaplan">@<span>mertskaplan</span></a>
+						</span>
+					</div>
+			
+					<div class="twPc-divStats">
+						<ul class="twPc-Arrange">
+							<li class="twPc-ArrangeSizeFit">
+								<a href="https://twitter.com/mertskaplan" title="9.840 Tweet">
+									<span class="twPc-StatLabel twPc-block">Tweets</span>
+									<span class="twPc-StatValue">9.840</span>
+								</a>
+							</li>
+							<li class="twPc-ArrangeSizeFit">
+								<a href="https://twitter.com/mertskaplan/following" title="885 Following">
+									<span class="twPc-StatLabel twPc-block">Following</span>
+									<span class="twPc-StatValue">885</span>
+								</a>
+							</li>
+							<li class="twPc-ArrangeSizeFit">
+								<a href="https://twitter.com/mertskaplan/followers" title="1.810 Followers">
+									<span class="twPc-StatLabel twPc-block">Followers</span>
+									<span class="twPc-StatValue">1.810</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+      <div class="container only-desc-small col-md-6">
       	 <div class="row">
            
             <div class="col-md-12 gedf-main">
 
                 <!--- \\\\\\\글쓰기-->
                 <div class="card gedf-card">
-                    <div class="card-header bg-blue">
+                    <div class="card-header bg-blue-20">
                         
                     </div>
                     <form name="talk_frm" id="talk_frm" method="post" action="/insertTalk?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">
@@ -69,6 +120,7 @@
 	                                <div class="form-group">
 	                                    <label class="sr-only" for="message">post</label>
 	                                    <textarea class="form-control" id="talkCon" name="talkCon" rows="10" placeholder="마음톡톡"></textarea>
+	                                     <textarea class="form-control" id="tag" name="tag" rows="2" placeholder="#으로 구분"></textarea>
 	                                </div>
 	
 	                            </div>
@@ -84,8 +136,8 @@
 	                               </div>
 	                            <div class="btn-group">
 	                                <!-- <button type="button" onclick="insertTalk()" class="btn btn-primary">올리기</button> -->
-	                                 <button type="submit" class="btn btn-primary">submit</button>
-	                                    <button type="button" class="btn btn-primary">${tokenNum}</button> 
+	                                 <button type="submit" class="btn btn-primary">올리기</button>
+	                                  <%--   <button type="button" class="btn btn-primary">${tokenNum}</button>  --%>
 	                            </div>
 	                           
 	                        </div>
@@ -99,7 +151,8 @@
                     </form>
                 </div>
      
-  		
+  				<jsp:useBean id="now" class="java.util.Date" />
+                <fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss" var="today" />
 				<div class="infinity">
 				<!--  리스트 -->
 				<c:forEach items="${talkList.content }" var="talk">
@@ -115,7 +168,25 @@
                                     <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
                                 </div>
                                 <div class="ml-2">
-                                    <div class="h5 m-0">${talk.customer.customerName }</div>
+                                
+                                    <div class="h5 m-0" data-toggle="dropdown">${talk.customer.customerName }
+                                    		<div class="dropdown-menu">
+												<a onclick='location.href="/searchUser?userNum=${talk.customer.customerNum }"' class="dropdown-item searchUser" >게시글 보기</a>
+												<a onclick='location.href="/invitation?userNum=${talk.customer.customerNum }&userName=${talk.customer.customerName }"' class="dropdown-item goTalk" >톡하기</a>
+											</div>
+                                    
+                                   
+                               </div>     
+                            <%--         <c:set var="dateData" value="${fn:replace(talk.talkDate,'T',' ') }"></c:set>
+                                    <fmt:parseDate value="${dateData }" pattern="yyyy-MM-dd HH:mm:ss" var="w_date">
+                                    <fmt:formatDate value="${w_date }" pattern="yyyy-MM-dd HH:mm:ss"  var="a_date" /> 
+                                    </fmt:parseDate>
+ --%>
+								<%-- 	<c:out value="${today}"/> --%>
+                                <%--    	 <c:out value ="${w_date }"></c:out> --%>
+
+
+                                    
                                     <div class="h7 text-muted"><span>${talk.talkDate }</span></div>
                                      <%-- <div class="h7 text-muted"><span>
                                      
@@ -149,6 +220,12 @@
                         <p class="card-text">
                             ${talk.talkCon }
                             
+                        </p>
+                        <hr>
+                        <p class="card-text">
+                        <c:forEach items="${fn:split(fn:substring(talk.tag,1,fn:length(talk.tag)),'#')}" var='tag' >
+                        		<a>#${tag }&nbsp</a>
+                            </c:forEach>
                         </p>
                         <div class="img-display">
                         <img  src="${talk.talkImg[0].filePath }"/>
@@ -282,10 +359,17 @@
 				<!--  test ///// -->
 				
 				 </div>	
-		
+	
                 </div>
 	</div>
-    
+    <div class="col-md-3">
+   <%--  	<jsp:include page="./chat.jsp">
+    		<jsp:param value="${tokenNum }" name=""/>
+    	</jsp:include> --%>
+		</div>
+		 </div>	
+	
+                
     </section>
 
     
@@ -310,7 +394,7 @@
   <script src="../js/google-map.js"></script>
   <script src="../js/main.js"></script>
   <script src="../custom/mindTalk.js"></script>
-    
+    	<jsp:include page="../footer.jsp"></jsp:include>
   </body>
 </html>
 

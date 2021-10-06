@@ -10,6 +10,6 @@ public class MindTalkDTO {
 	
     private String talkCon;
 
-
+    private String tag;
     private List<MultipartFile> talkImg;
 }

@@ -13,10 +13,14 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -46,6 +50,14 @@ public class Customer implements UserDetails {
     private String customerNick;
     private LocalDateTime createDate;
     private LocalDateTime deleteDate;
+    
+    @JsonManagedReference
+    @OneToMany(mappedBy ="customer" ,fetch = FetchType.LAZY)
+    private List<ChatRoomEntry> chatRoomEntrys = new ArrayList();
+    
+    @JsonManagedReference
+    @OneToMany(mappedBy ="customer",fetch = FetchType.LAZY)
+    private List<Message> message = new ArrayList();
     
     
     @ElementCollection(fetch = FetchType.EAGER)

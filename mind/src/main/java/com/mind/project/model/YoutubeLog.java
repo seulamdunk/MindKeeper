@@ -25,12 +25,12 @@ public class YoutubeLog {
 	private LocalDateTime youtubeLogDate = LocalDateTime.now();
 	
 	  
-	 @ManyToOne
+	 @ManyToOne(optional = false)
 	 @JoinColumn(name="youtube_num") 
 	 private Youtube youtube;
 	
 	 
-	 @ManyToOne
+	 @ManyToOne(optional = false)
 	 @JoinColumn(name="customer_num") 
 	 private Customer customer;
 

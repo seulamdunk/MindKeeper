@@ -35,13 +35,13 @@
 	<jsp:include page="../navbar.jsp"></jsp:include>
     <!-- END nav -->
     
-    <div class="hero-wrap hero-wrap-2" style="background-image: url(images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+    <div class="hero-wrap hero-wrap-3" style="background-image: url(../images/bg-sakura.gif);" ><!--data-stellar-background-ratio="0.8"  -->
       <div class="overlay"></div>
       <div class="container-fluid">
         <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>MindGrow</span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">MindGrow</h1>
+          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span style="color:white;">MindGrow</span></p>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="color:white;">MindGrow</h1>
           </div>
         </div>
       </div>
@@ -55,6 +55,11 @@
 <c:forEach items="${youtubeSet}" var="youtubeList" varStatus="status">
 
    <h2>${youtubeList[0].youtubeTag }</h2>
+   <div class="loctionPoint">
+   <div class="showInfo">
+   
+   
+   </div>
  <div class="wrapper">
  
  	<div class="img-list" id="listCnt${status.count }" >
@@ -62,8 +67,13 @@
 		 	<div class="move-area">
 		 		<c:forEach items="${youtubeList }" var="youtube">
 				 <div class="item">
+				 	 <input type="hidden" class="thumbnail" value="${youtube.thumbnail}">
+				 	 <input type="hidden" class="Title" value="${youtube.youtubeTitle}">
+				 	 <input type="hidden" class="Ch" value="${youtube.youtubeCh}">
+				 	 <input type="hidden" class="Cnt" value="${youtube.youtubeCnt}">
 					 <img width="341" height="192" src="${youtube.thumbnail}"
-					 onclick="location.href='/mindGrowDetail?youtubeNum=${youtube.youtubeNum}'">
+					 onclick ="showInfo()"
+					 ondblclick="location.href='/mindGrowDetail?youtubeNum=${youtube.youtubeNum}'">
 				 </div>
 				 </c:forEach>
 	
@@ -72,6 +82,7 @@
 	 </div>
 	 
  </div>	 
+ </div>
  	
 </c:forEach>	 
 	
