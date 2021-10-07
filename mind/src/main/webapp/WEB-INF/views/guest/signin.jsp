@@ -57,7 +57,7 @@
   		<div class="container">
         <div class="row">
           <div class="col-md-12">
-            <form action="index.html" method="post">
+            <form action="#" method="post" id="login_form">
               <!-- <h1> Sign In </h1> -->
               
               <fieldset>
@@ -68,7 +68,7 @@
                 <input type="text" id="customerID">
               
                 <label for="password">Password:</label>
-                <input type="password" id="customerPW">
+                <input type="password" id="customerPW" onkeyup="enterkey()">
               
               </fieldset>
 

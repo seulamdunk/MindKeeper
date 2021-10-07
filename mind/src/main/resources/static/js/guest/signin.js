@@ -1,3 +1,4 @@
+
 function signin(){
 	
 	var customerID=$('#customerID').val()
@@ -25,4 +26,10 @@ function signin(){
 		}
 	})
 
+}
+
+function enterkey(){
+	if(window.event.keyCode==13){
+		signin()
+	}
 }
