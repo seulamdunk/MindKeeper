@@ -39,6 +39,8 @@
 </style>
 <!-- **************** 로드뷰 css 추가 (종료) **************** -->
 
+
+
 </head>
 
 <body>
@@ -60,10 +62,10 @@
      </div>
 </div>
 <!--********** header 종료 **********--> 
-
+		
 <!--********************* section 시작 *********************-->
 <section class="ftco-section contact-section ftco-degree-bg">
-<br/><br/><br/><br/><br/>
+<br/><br/><br/><br/>
 	<div class="container">
 		<div class="row d-flex mb-5 contact-info">
 	    	<div class="col-md-12 mb-4">
@@ -106,17 +108,75 @@
 
 <!-- iframe 시작 -->
 <div class="col-md-8" style="float:right;">
-    <embed id="iframeUrl" width="100%" height="520px" src="../img/parkImg/mindImg2.png" style="border:1px solid #e9e9e9">
+    <embed id="iframeUrl" width="100%" height="520px" src="../img/parkImg/mindImg2.png" style="border:1px solid #e9e9e9;">
 </div>
 <!-- iframe 종료 -->
 
 			</div>
 		</div>
 	</div>
+
+
+<div id="banner">
+	 <div class="banner_inner">
+	  <h2>이번달 걷기 행사</h2>
+	   <div id="banner_list">
+	    <ul class="sec3_list">
+	     <li>
+	      <span><img src="../img/parkImg/walkevent.jpg" alt="행사"></span>
+	       <dl>
+	        <dt>MIRUN SEOUL UNTACT RACE 2021</dt>
+	        <dd>레포츠<br>2021.10.01. (금) ~ 2021.10.07. (목)</dd>
+	       </dl>
+	     </li>
+	     <li>
+	      <span><img src="../img/parkImg/walkevent2.jpg" alt="행사"></span>
+	       <dl>
+	        <dt>사랑 하나 오티즘 버츄얼레이스</dt>
+	        <dd>레포츠<br>2021.10.04. (월) ~ 2021.10.11. (월)</dd>
+	       </dl>
+	     </li>
+	     <li>
+	      <span><img src="../img/parkImg/walkevent3.jpg" alt="행사"></span>
+	       <dl>
+	        <dt>하이브리드 한강나이트워크42K</dt>
+	        <dd>레포츠<br>2021.10.01. (금) ~ 2021.10.17. (일)</dd>
+	       </dl>
+	     </li>
+	     <li>
+	      <span><img src="../img/parkImg/walkevent4.jpg" alt="행사"></span>
+	       <dl>
+	        <dt>2021 세이브더칠드런 R untact 국제어린이마라톤</dt>
+	        <dd>레포츠<br>2021.10.08. (금) ~ 2021.10.10. (일)</dd>
+	       </dl>
+	     </li>
+	     <li>
+	      <span><img src="../img/parkImg/walkevent5.jpg" alt="행사"></span>
+	       <dl>
+	      	<dt>엘르런 ELLE RUN</dt>
+	      	<dd>레포츠<br>2021.10.09. (토) ~ 2021.10.10. (일)</dd>
+	       </dl>
+	     </li>
+	     <li>
+	      <span><img src="../img/parkImg/walkevent6.jpg" alt="행사"></span>
+	       <dl>
+	        <dt>2021 옥스팜 버추얼워커 50K</dt>
+	        <dd>레포츠<br>2021.10.11. (월) ~ 2021.11.21. (일)</dd>
+	       </dl>
+	     </li>
+	    </ul>
+	    <div class="bx-controls bx-has-controls-direction">
+	    	<div class="bx-controls-direction">
+	    		<a class="bx-prev" href=""><img src="../img/parkImg/previous.png" alt="이전버튼" style="width:50px;height:50px;"></a>
+	    		<a class="bx-next" href=""><img src="../img/parkImg/next.png" alt="다음버튼" style="width:50px;height:50px;"></a>
+	    	</div>
+	    </div>
+	   </div>
+	  </div>
+	</div>
+	
 </section>
 <!--********************* section 종료 *********************-->
-		
-
 
 <!--*************** footer 시작 ***************-->
 <jsp:include page="../footer.jsp"></jsp:include>
@@ -151,6 +211,47 @@
 <script src="../js/main.js"></script>
 <!--********** script 시작 **********-->
 
+<!-- *************** bxslider script 시작**************** -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src=" http://bxslider.com/lib/jquery.bxslider.js "></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var mySlider =$('.sec3_list').bxSlider({
+		 auto:true,
+		 pager: false,
+		 controls: false, 
+		 autoControls: false, 
+		 minSlides: 4, 
+		 maxSlides: 4, 
+		 moveSlides: 1, 
+		 slideWidth: 285, 
+		 slideMargin: 20, 
+		 autoHover:true,
+		 prevText:"", 
+		 nextText:"",
+		 speed: 500
+	});
+
+	// 이전버튼
+    $(".bx-prev").on("click", function(){
+        // 이전 슬라이드 배너로 이동
+        mySlider.goToPrevSlide();
+        // <a>의 링크를 차단
+        return false;
+    });
+    
+    // 다음버튼
+    $(".bx-next").on("click", function(){
+        // 다음 슬라이드 배너로 이동
+        mySlider.goToNextSlide();
+        // <a>의 링크를 차단
+        return false;
+    });
+    
+});
+</script>
+<!-- *************** bxslider script 종료**************** -->
     
 </body>
 </html>
