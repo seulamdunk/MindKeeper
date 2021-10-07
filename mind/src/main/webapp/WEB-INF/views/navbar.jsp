@@ -16,14 +16,14 @@
 	          <li class="nav-item"><a href="/guest/mindTalk" class="nav-link">마음톡톡</a></li>
 	          <li class="nav-item"><a href="/guest/mindGrow"class="nav-link">마음가꾸기</a></li>
 	          <li class="nav-item"><a href="/guest/park" class="nav-link">마음기르기</a></li>
-	          <li class="nav-item"><a href="/admin/myPage" class="nav-link">마이페이지</a></li>
 	          <li class="nav-item"><a href="/n_name" class="nav-link">익명게시판</a></li>
 	          <c:choose>
 			    <c:when test="${cookie.token.value==null}">
 		          	<li class="nav-item cta"><a href="/guest/signin" class="nav-link" ><span>로그인</span></a></li>
 			    </c:when>
 			    <c:otherwise>
-		          	<li class="nav-item cta"><a href="/user/signout" class="nav-link" ><span>로그아웃</span></a></li>
+			    	<li class="nav-item"><a href="/user/myPage?customerNum=<%=request.getParameter("customerNum") %>" class="nav-link">마이페이지</a></li>
+		          	<li class="nav-item cta"><a href="/signout" class="nav-link" ><span>로그아웃</span></a></li>
 			    </c:otherwise>
 	          </c:choose>
 	          <li id="admin" class="nav-item cta"></li>

@@ -27,9 +27,22 @@
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/style.css">
+    
+      <!-- Vendor CSS Files -->
+  <link href="../css/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../css/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../css/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../css/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  
+  <!-- Template Main CSS File -->
+  <link href="../css/assets/css/style.css" rel="stylesheet">
+    
   </head>
   <body>
-	<jsp:include page="../navbar.jsp"></jsp:include>
+	<jsp:include page="../navbar.jsp">
+	<jsp:param value="${user.customerNum }" name="customerNum" />
+	</jsp:include>
     <!-- END nav -->
     
     <div class="hero-wrap" style="background-image: url(../images/bg_10.jpg);">
@@ -38,33 +51,9 @@
         <div class="slider-text d-md-flex align-items-center" data-scrollax-parent="true">
 
           <div class="one-forth ftco-animate align-self-md-center" data-scrollax=" properties: { translateY: '70%' }">
-          	<!--  
-          	<h1 class="mb-4"> 지쳐버린<br>당신의 <br>
-              <strong class="typewrite" data-period="4000" data-type='[ "마음지킴이", "마음지킴이", "마음지킴이", "마음지킴이" ]'>
-                <span class="wrap"></span>
-              </strong>
-            </h1>
-          
-            <p class="mb-md-5 mb-sm-3" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-            -->
             <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="/guest/signup" class="btn btn-primary px-4 py-3">Get a Quote</a></p>
           </div>
-          
-          <!--
-          <div class="one-half align-self-md-end align-self-sm-center">
-          	<div class="slider-carousel owl-carousel">
-          		<div class="item">
-			          <img src="../images/dashboard_full_1.png" class="img-fluid img"alt="">
-		          </div>
-		          <div class="item">
-			          <img src="../images/dashboard_full_2.png" class="img-fluid img"alt="">
-		          </div>
-		          <div class="item">
-			          <img src="../images/dashboard_full_3.png" class="img-fluid img"alt="">
-		          </div>
-	          </div>
-          </div>
-          -->
+ 
           
         </div>
       </div>
@@ -166,6 +155,7 @@
     </section>
     -->
  
+ <!--  코로나
     <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(../images/bg_1.jpg);" data-stellar-background-ratio="0.5">
     	<div class="container">
     		<div class="row justify-content-center">
@@ -208,15 +198,62 @@
         </div>
     	</div>
     </section>
+     -->
 
 
     <section class="ftco-section ftco-work">
     	<div class="container-fluid">
     		<div class="row justify-content-center mb-5 pb-5">
           <div class="col-md-7 text-center heading-section ftco-animate">
-            <h2 class="mb-2">Our Portfolio</h2>
-            <span class="subheading">We're Happy to share our complete Projects</span>
+            <h2 class="mb-2" style="margin-top: 50px;">마음 건강 지키는 7가지 수칙</h2>
+            <span class="subheading">마음지킴이는 보건복지부가 배포한 ‘코로나19와 함께하는 마음 건강 지키는 7가지 수칙’을<br>기반으로 맞춤형 컨텐츠를 제공합니다.</span>
           </div>
+          
+          <!-- 마음방역수칙 설명 ************************************************ -->
+          <section id="services" class="services">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-6 order-2 order-lg-1">
+            <div class="icon-box mt-5 mt-lg-0 aos-init aos-animate" data-aos="fade-up">
+              <i class="bx bxs-bookmark-heart"></i>
+              <h4>코로나로 인해 변화된 일상을 받아들이세요</h4>
+              <p>코로나 장기화로 인해 피로감, 우울, 불안감을 느끼는것은 새로운 변화에 적응하기 위한 정상적인 과정입니다</p>
+            </div>
+            <div class="icon-box mt-5 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+              <i class="bx bxs-bookmark-heart"></i>
+              <h4>지나친 걱정은 NO! 방역지침을 잘 알고 실천하면 됩니다</h4>
+              <p>너무 많은 정보나 불확실한 정보는 불안과 스트레스를 가중시킬수 있습니다. 방역지침에 관심을 기울이고 생활 속에서 실천해주세요</p>
+            </div>
+            <div class="icon-box mt-5 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+              <i class="bx bxs-bookmark-heart"></i>
+              <h4>규칙적인 생활을 하세요</h4>
+              <p>규칙적인 생활을 통해 일상생활을 유지하면 몸과 마음의 면역력을 함께 높일 수 있습니다</p>
+            </div>
+            <div class="icon-box mt-5 aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+              <i class="bx bxs-bookmark-heart"></i>
+              <h4>마음이 즐거워지는 취미나 여가시간을 가져보세요</h4>
+              <p>일상의 스트레스에서 벗어나 재충전의 시간을 가짐으로써 마음이 힘들어질때 극복할 수 있는 에너지를 쌓을 수 있습니다</p>
+            </div>
+            <div class="icon-box mt-5 aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+              <i class="bx bxs-bookmark-heart"></i>
+              <h4>스트레칭, 걷기, 운동 등 신체활동을 규칙적으로 하세요</h4>
+              <p>적당한 신체활동은 마음의 건강을 유지하는 데도 도움이 됩니다. 몸의 건강을 통해 마음건강도 지키세요</p>
+            </div>
+            <div class="icon-box mt-5 aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+              <i class="bx bxs-bookmark-heart"></i>
+              <h4>가족, 친구 등 주변 사람들과 소통을 이어가세요</h4>
+              <p>우리 모두 코로나와 함께 하고 있습니다. 영상통화, 이메일 등을 통해 친구, 동료 등 진심으로 마음을 주고받을 수 있는 사람들과 소통하세요</p>
+            </div>
+          </div>
+          <div class="image col-lg-6 order-1 order-lg-2 aos-init aos-animate" style="background-image: url(../css/assets/img/logo_bogun.jpg);" data-aos="fade-left" data-aos-delay="100"></div>
+        </div>
+
+      </div>
+    </section>
+          <!-- end of 마음방역수칙 설명 ******************************************* -->
+
+          
         </div>
         <div class="row">
         	<div class="col-md-4 ftco-animate">
@@ -633,6 +670,18 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="../js/google-map.js"></script>
   <script src="../js/main.js"></script>
+  
+  <!-- Vendor JS Files -->
+  <script src="../css/assets/vendor/aos/aos.js"></script>
+  <script src="../css/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../css/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../css/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../css/assets/vendor/php-email-form/validate.js"></script>
+  <script src="../css/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../css/assets/js/main.js"></script>
+  
     
   </body>
 </html>

@@ -39,17 +39,26 @@ public class Secret extends TimeEntity {
     @Column(name="secret_date")
     private LocalDateTime secretDate;
     
+    @Column(name="jindan_Con")
+    private String jindanCon;
+    
+    @Column(name="jindan_conNum")
+    private Long jindanConNum;
+    
     @Builder
-	public Secret(Long customerNum, String secretTitle, String secretCon, String secretImg) {
+	public Secret(Long customerNum, String secretTitle, String secretCon, String secretImg, String jindanCon, Long jindanConNum) {
 		this.customerNum = customerNum;
 		this.secretTitle = secretTitle;
 		this.secretCon = secretCon;
 		this.secretImg = secretImg;
+		this.jindanCon = jindanCon;
+		this.jindanConNum = jindanConNum;
 	}
     
     @PrePersist
     public void secretDate() {
-    	this.secretDate = LocalDateTime.now();
+    	LocalDateTime now = LocalDateTime.now();
+    	this.secretDate = LocalDateTime.of(now.getYear(),now.getMonth(), now.getDayOfMonth(), 0,0,0);
     }
     
     

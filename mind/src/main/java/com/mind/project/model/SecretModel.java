@@ -23,6 +23,9 @@ public class SecretModel {
 	private String secretTitle;
 	private String secretCon;
 	private Long customerNum;
+	private String jindanCon;
+	private Long jindanConNum;
+	private String secretImg;
 	private LocalDateTime secretDate;
 	
 	public Secret toEntity() {
@@ -30,18 +33,24 @@ public class SecretModel {
 				.secretTitle(secretTitle)
 				.secretCon(secretCon)
 				.customerNum(customerNum)
+				.jindanCon(jindanCon)
+				.secretImg(secretImg)
+				.jindanConNum(jindanConNum)
 				.build();
 		return build;
 	}
 	
 	@Builder
 	public SecretModel(Long secretNum, String secretTitle, String secretCon, Long customerNum,
-			LocalDateTime secretDate) {
+			LocalDateTime secretDate, String jindanCon, String secretImg, Long jindanConNum) {
 		super();
 		this.secretNum = secretNum;
 		this.secretTitle = secretTitle;
 		this.secretCon = secretCon;
 		this.customerNum = customerNum;
+		this.jindanCon = jindanCon;
+		this.secretImg = secretImg;
+		this.jindanConNum = jindanConNum;
 		this.secretDate = secretDate;
 	}
 
