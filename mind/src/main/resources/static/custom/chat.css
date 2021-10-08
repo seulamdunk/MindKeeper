@@ -55,15 +55,80 @@ input::placeholder {
 }
 .chat-if{
 	position: absolute;
-  width: 100%; /* 부모에 맞게 꽉 채운다. */
+  width: 100%; /* 遺�紐⑥뿉 留욊쾶 苑� 梨꾩슫�떎. */
   height: 100%;
 }
 
 
+.no-padding-top{
+	padding-top:0px !important;
+}
 
+.chat-btn-area{
+	height:48px;
+	width: 100%;
+	  display: flex;
+	
+}
+.more-chat{
+	width:80%;
+	text-align: center;
+	text-indent: 48px;
+	float: letf;
+	box-sizing: border-box;
+}
+.chat-setting{
+	width:20%;
+	float:right;
+	text-align: right;
+	box-sizing: border-box;
+	
+}
 
+	#action_menu_btn{
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		color: white;
+		cursor: pointer;
+		font-size: 20px;
+		width:20%;
+	}
+	.action_menu{
+		z-index: 1;
+		position: absolute;
+		padding: 15px 0;
+		background-color: rgba(0,0,0,0.5);
+		color: white;
+		border-radius: 15px;
+		top: 30px;
+		right: 15px;
+		display: none;
+		
+	}
+	.fas{
 
-
+	color:black;
+	}
+	.action_menu ul{
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.action_menu ul li{
+		width: 100%;
+		padding: 10px 15px;
+		margin-bottom: 5px;
+		
+	}
+	.action_menu ul li i{
+		padding-right: 10px;
+		color:#74EBD5;;
+	}
+	.action_menu ul li:hover{
+		cursor: pointer;
+		background-color: rgba(0,0,0,0.2);
+	}
 
 /* 	body,html{
 			height: 100%;

@@ -24,7 +24,6 @@ import com.mind.project.model.Message;
 import com.mind.project.model.MindTalk;
 import com.mind.project.model.TalkImg;
 import com.mind.project.model.TalkReview;
-import com.mind.project.model.chatRoomCusNum;
 import com.mind.project.repository.ChatRoomEntryRepository;
 import com.mind.project.repository.ChatRoomRepository;
 import com.mind.project.repository.CustomerRepository;
@@ -294,7 +293,7 @@ import com.mind.project.repository.TalkReviewRepository;
 		//System.out.println("lastNum==="+lastNum+" ,size==="+size +"roomNumber==="+roomNumber);
 //		PageRequest pageRequest= PageRequest.of(0,size);
 		//Pageable pageable = Pageable.ofSize(size);
-		Pageable pageable = PageRequest.of(0,size);
+		
 		return msgRep.findTop10ByChatRoomRoomNumberAndMessageNumLessThanOrderByMessageDateDesc( roomNumber,lastNum);
 	}
 
@@ -302,6 +301,11 @@ import com.mind.project.repository.TalkReviewRepository;
 	public Page<MindTalk> searchUser(int customerNum, Pageable pageable) {
 		return 	talkRep.findAllByCustomerCustomerNumOrderByTalkDateDesc(customerNum, pageable);
 		
+	}
+
+	@Override
+	public void deleteRoom(int roomNumber) {
+		chatRoomRep.deleteByRoomNumber(roomNumber);
 	}
 	
 	

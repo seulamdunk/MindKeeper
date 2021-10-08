@@ -20,7 +20,9 @@ public class MindGrowController {
 	CommonService commonService;
 	
 	@GetMapping(value="/guest/mindGrow")
-	public String getListYoutube(Model m) throws Exception {
+	public String getListYoutube(Model m,HttpServletRequest request) throws Exception {
+		
+		m.addAttribute("recommendList", mindGrowService.getRecommendList(request));
 		m.addAttribute("youtubeSet", mindGrowService.getListYoutube());
 		return "/guest/mindGrow";
 	}

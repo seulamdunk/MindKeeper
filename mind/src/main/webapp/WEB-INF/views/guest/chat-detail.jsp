@@ -88,11 +88,7 @@ function wsEvt() {
 		
 	}
 
-	document.addEventListener("keypress", function(e){
-		if(e.keyCode == 13){ //enter press
-			send();
-		}
-	});
+	
 }
 
 
@@ -104,7 +100,7 @@ let saveData ={
 		"roomNumber" :d.roomNumber,
 		"userNum":d.userNum
 			}
-	alert(saveData.msg)
+	//alert(saveData.msg)
 	$.ajax({
 		type:"post",
 		url:"/saveMessage",
@@ -213,10 +209,11 @@ function send() {
 	var option ={
 			type: "message",
 			sessionId : $("#sessionId").val(),
-			userName :${user.customerName},
+			userName :"${user.customerName}",
+			userNum:$("#userNum").val(),
 			msg : $("#chatting").val(),
-			roomNumber:$("#roomNumber").val(),
-			userNum:${user.customerNum}
+			roomNumber:$("#roomNumber").val()
+			
 		}
 
 	ws.send(JSON.stringify(option))
@@ -235,21 +232,49 @@ function send() {
 }
 
 
+function deleteRoom(){
+
+$.ajax({
+	type:"post",
+	url:"/deleteRoom",
+	data:JSON.stringify($("#roomNumber").val()),
+	contentType:'application/json; charset=utf-8',
+	dataType:"JSON",
+	success:function(data){
+		 location.reload()
+}
+})
+
+}
 $(function(){
 	wsOpen()
-	
+
+	$('#action_menu_btn').click(function(){
+		$('.action_menu').toggle();
+	});
+
 })
 
 </script>
 </head>
-				
-			
-			
-		
-			
-		      <div class="px-4 py-5 chat-box bg-white" style="padding-top:0;">
+
+		      <div class="px-4 py-5 chat-box bg-white no-padding-top">
 		      <!-- 	<div>더 가져오기</div> -->
-		    	<div id="chating">
+		      <div class="chat-btn-area">
+			      	<div class="more-chat">more</div>
+			      	<div class="chat-setting"  >			      		 
+	                    	<span id="action_menu_btn"><i class="fas fa-align-justify"></i></span>
+							<div class="action_menu">
+								<ul>
+									<!-- <li><i class="fas fa-user-circle"></i> View profile</li>
+									<li><i class="fas fa-users"></i> Add to close friends</li> -->
+								<!-- 	<li><i class="fas fa-plus"></i> 초대하기</li> -->
+									<li><a href="/deleteRoom?roomNumber=${roomNumber }"><i class="fas fa-trash delete-room" onclick="deleteRoom()"></i></a> 삭제</li>
+								</ul>
+							</div>	      	
+			      </div>
+		      </div>
+		    	<div id="chating" >
 			        <c:forEach items="${messageList }" var="message" varStatus="status">
 						
 						<c:choose>
@@ -295,7 +320,7 @@ $(function(){
 				
 				</c:forEach> 
 		        </div>
-		       
+		       </div>
 		   <%--          <!-- Sender Message-->
 		        <div class="media w-50 mb-3"  >
 		        <div style="line-height:100px;">
@@ -320,13 +345,12 @@ $(function(){
 		            <p class="small text-muted">12:00 PM | Aug 13</p>
 		          </div>
 		        </div> --%>
-			</div>
-				
+	
       	
 
    
       <!-- Typing area -->
-      <form action="#" class="bg-light">
+      <form action="#" class="bg-light"  onsubmit="return false">
         <div class="input-group">
           <input id="chatting" type="text" placeholder="Type a message" aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 bg-light">
           <div class="input-group-append">
@@ -335,13 +359,17 @@ $(function(){
         </div>
       </form>
 	<input type="hidden" value="" id="sessionId">
-<input type="hidden" value="${messageList[0].chatRoom.roomNumber }" id="roomNumber">
-		        
+<input type="hidden" value="${roomNumber }" id="roomNumber">
+<input type="hidden" value="${user.customerNum }" id="userNum">		        
 
 
 
 
 <script type="text/javascript">
 
-	
+document.addEventListener("keypress", function(e){
+	if(e.keyCode == 13){ //enter press
+		send();
+	}
+});
 </script>

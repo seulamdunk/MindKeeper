@@ -67,13 +67,11 @@ $(function() {
 
 //첫 댓글 입력
 $(document).on("click",".review-btn",function(){
-		if(customerNum==-1){
+		if($("#writer")==-1){
 			
 			alert("로그인 후 작성하실 수 있습니다.")
-		}else if(talkReviewCon==""){
-			
-			
-		}else{
+			return;
+		}
 		
 		const customerNum=$("#writer").val()
 		const talkReviewCon=$(this).parent().find(".review-textarea").html()
@@ -103,7 +101,7 @@ $(document).on("click",".review-btn",function(){
 			}
 		})
 			
-		}
+		
 	
 	
 });

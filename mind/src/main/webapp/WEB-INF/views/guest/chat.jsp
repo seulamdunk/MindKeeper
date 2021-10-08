@@ -95,7 +95,9 @@
 	                  '</div>'+
 	                 ' <p class="font-italic mb-0 text-small">참가명단</p>'+
 	                '</div>'+
+	             
 	             ' </div>'+
+	             
 	            '</a>';
 
 		
@@ -120,7 +122,12 @@
 			})
 		}	
 		
+		$(function(){
+		$(document).on("click",".room-more-btn",function(){
 
+					alert()
+			})
+			})
 	
 
 </script> 
@@ -133,7 +140,7 @@
 	<div class="container py-5 px-4">
   <!-- For demo purpose-->
   <header class="text-center">
-    <h1 class="display-4 text-white">마음지킴이</h1>
+    <h1 class="display-4 text-white"><a href="/">마음지킴이</a></h1>
     <p class="text-white lead mb-0"></p>
     <p class="text-white lead mb-4">
     

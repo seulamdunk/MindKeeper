@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  	<!-- 마음가꾸기 -->
     <title>마음지킴이</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -48,11 +47,52 @@
       </div>
     </div>
 
-    <section class="ftco-section">
+    <section class="ftco-section" >
     
 
 	
 <h1>마음가꾸기</h1>
+
+	
+<!--추천 영상-->
+<c:if test="${recommendList[0].youtubeNum != Null }">
+
+
+   <h2>이런건 어때요?</h2>
+   <div class="loctionPoint">
+   <div class="showInfo">
+   
+   
+   </div>
+ <div class="wrapper">
+ 
+ 	<div class="img-list recommendList" id="listCnt" >
+		 <div class="arrow__btn btn1">‹</div>
+		 	<div class="move-area">
+		 		<c:forEach items="${recommendList }" var="youtube">
+				 <div class="item">
+				 	 <input type="hidden" class="thumbnail" value="${youtube.thumbnail}">
+				 	 <input type="hidden" class="Title" value="${youtube.youtubeTitle}">
+				 	 <input type="hidden" class="Ch" value="${youtube.youtubeCh}">
+				 	 <input type="hidden" class="Cnt" value="${youtube.youtubeCnt}">
+					 <img width="341" height="192" src="${youtube.thumbnail}"
+					 onclick ="showInfo()"
+					 ondblclick="location.href='/mindGrowDetail?youtubeNum=${youtube.youtubeNum}'">
+				 </div>
+				 </c:forEach>
+	
+	 		</div>
+	 	 <div class="arrow__btn btn2">›</div>
+	 </div>
+	 
+ </div>	 
+ </div>
+ 	
+
+	</c:if>
+<!--태그 별  -->
+
+
 <c:forEach items="${youtubeSet}" var="youtubeList" varStatus="status">
 
    <h2>${youtubeList[0].youtubeTag }</h2>
@@ -112,6 +152,7 @@
 	<jsp:include page="../footer.jsp"></jsp:include>
 	
 	
+s
   <script src="../js/jquery.min.js"></script>
   <script src="../js/jquery-migrate-3.0.1.min.js"></script>
   <script src="../js/popper.min.js"></script>

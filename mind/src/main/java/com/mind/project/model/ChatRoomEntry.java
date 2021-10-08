@@ -29,7 +29,7 @@ public class ChatRoomEntry {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int chatRoomEnrtyNum;
 	
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false )
 	@JoinColumn(name="customer")
 	@JsonBackReference
 	private Customer customer;
@@ -39,7 +39,8 @@ public class ChatRoomEntry {
 	@JsonBackReference
 	private ChatRoom chatRoom;
 
-	
+	/*,cascade = CascadeType.ALL
+		*/
 	@Builder
 	public ChatRoomEntry(Customer customer, ChatRoom chatRoom) {
 		this.customer = customer;

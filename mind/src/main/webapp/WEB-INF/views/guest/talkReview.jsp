@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 마음톡톡 리뷰작성 -->
-<title>마음지킴이</title>
+
+<title>Insert title here</title>
 <script src="../js/jquery.min.js"></script>
 
 </head>
@@ -83,7 +83,7 @@ $(document).ready(function(){
  a+=                    '<div class="ml-2">';
  a+=                       ' <div class="inline-div " style="width=100%">';
  a+=                         	'<div class=" text-bk">';
- a+=                        		'<p><strong>'+value.customer.customerName +'</strong> &nbsp;&nbsp;'+ value.talkReviewCon +'</p>';
+ a+=                        		'<p><strong>'+value.customer.customerNick +'</strong> &nbsp;&nbsp;'+ value.talkReviewCon +'</p>';
  a+=                        	'</div>';
  a+=                        	'<div class="h7 text-muted">';
                          		

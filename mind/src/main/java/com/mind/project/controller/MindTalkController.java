@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -37,7 +38,7 @@ import com.mind.project.model.LikeTalk;
 import com.mind.project.model.Message;
 import com.mind.project.model.MindTalk;
 import com.mind.project.model.TalkReview;
-import com.mind.project.model.chatRoomCusNum;
+
 import com.mind.project.repository.CustomerRepository;
 import com.mind.project.service.CommonService;
 import com.mind.project.service.MindTalkService;
@@ -69,9 +70,9 @@ public class MindTalkController {
 		m.addAttribute("talkList", mindTalk.getTalksList(pageable));
 		//토큰에 저장된 이름을 바로 가져오는 코드, token 유효성검사 과정이 없어 보임
 	
-		//System.out.println("security check" + SecurityContextHolder.getContext().getAuthentication().getName());
+		System.out.println("security check" + SecurityContextHolder.getContext().getAuthentication().getName());
 		Customer customer =commonService.tokenCustomer(request);
-		//System.out.println("고객"+ customer);
+		System.out.println("고객"+ customer.getCustomerNum());
 		m.addAttribute("tokenNum",Integer.valueOf(commonService.tokenImfo(m, request)));
 		
 		m.addAttribute("user",customer);
@@ -149,7 +150,7 @@ public class MindTalkController {
 		
 	
 		
-		return "redirect:/guest/mindTalk";
+		return "/guest/mindTalk";
 	}
 	
 	
@@ -274,11 +275,14 @@ public class MindTalkController {
 		@RequestMapping("/createRoom")
 		public @ResponseBody List<EntryInfo> createRoom(@RequestParam HashMap<Object, Object> params,HttpServletRequest request){
 			System.out.println("방생성 호출");
+			Optional<Customer> customerOption= customerRep.findByCustomerID(SecurityContextHolder.getContext().getAuthentication().getName());
+			Customer customer = customerOption.get();
+			System.out.println("생성자 아이디"+customer.getCustomerNum());
 			String roomName = (String) params.get("roomName");
 			System.out.println("roomName = " + roomName);
 			if(roomName != null && !roomName.trim().equals("")) {
 				ChatRoom chatRoom= mindTalk.createChatRoom(ChatRoom.builder().roomName(roomName).build());
-				Customer customer =commonService.tokenCustomer(request);
+				
 				mindTalk.insertRoomEntry(chatRoom,customer );
 				List<EntryInfo> roomList = mindTalk.getAllChatRoom(customer);
 				return roomList;
@@ -294,9 +298,11 @@ public class MindTalkController {
 		
 		@RequestMapping("/getRoom")
 		public @ResponseBody List<EntryInfo> getRoom(@RequestParam HashMap<Object, Object> params,HttpServletRequest request){
-			System.out.println("dtdfsdfsd"+commonService.tokenCustomer(request).getCustomerNum());
-			List<EntryInfo> list = mindTalk.getAllChatRoom(commonService.tokenCustomer(request));
-		
+			
+			
+			Optional<Customer> customer= customerRep.findByCustomerID(SecurityContextHolder.getContext().getAuthentication().getName());
+			List<EntryInfo> list = mindTalk.getAllChatRoom(customer.get());
+			System.out.println("채팅유저"+customer.get().getCustomerNum());
 			//System.out.println("testtest====\n\n\n\n\n\n====="+ list.get(0).getChatRoom());
 			return list;
 		}
@@ -306,12 +312,14 @@ public class MindTalkController {
 		 * @return
 		 */	
 		@RequestMapping("/moveChating")
-		public String chating(HttpServletRequest request,int roomNumber, Model m) {
+		public String chating(HttpServletRequest request,String roomNumber, Model m) {
 			System.out.println("채팅방 이동 "+roomNumber );
-	
-			m.addAttribute("user", commonService.tokenCustomer(request));
-			List<Message> messageList =mindTalk.getMsgListFirst(300, chattingSize, roomNumber);
+			Optional<Customer> customerOp= customerRep.findByCustomerID(SecurityContextHolder.getContext().getAuthentication().getName());
+			Customer customer =customerOp.get();
+			m.addAttribute("user", customer);
+			List<Message> messageList =mindTalk.getMsgListFirst(300, chattingSize, Integer.parseInt(roomNumber));
 			Collections.reverse(messageList);
+			m.addAttribute("roomNumber", roomNumber);
 			m.addAttribute("messageList",messageList);
 			
 	
@@ -321,7 +329,7 @@ public class MindTalkController {
 		
 		@RequestMapping("/getMessageList")
 		@ResponseBody
-		public Page<chatRoomCusNum> getMessageList(@RequestBody Map<String,String> m ,HttpServletRequest request) {
+		public Page<Message> getMessageList(@RequestBody Map<String,String> m ,HttpServletRequest request) {
 			
 		/*
 		 * Page<chatRoomCusNum> list= mindTalk.getMsgList(lastNum, size, roomNumber)
@@ -350,7 +358,7 @@ public class MindTalkController {
 		@RequestMapping("/saveMessage")
 		@ResponseBody
 		public void saveMessage(@RequestBody Map<String,String> m ,HttpServletRequest request) {
-		//System.out.println("데이터 체크  == "+ m);
+		System.out.println("데이터 체크  == "+ m);
 		mindTalk.saveMessage(Message.builder()
 				.messageCon(m.get("msg"))
 				.customer(Customer.builder().customerNum(Integer.parseInt(m.get("userNum"))).build())
@@ -362,19 +370,21 @@ public class MindTalkController {
 		
 		
 		@RequestMapping("/invitation")
-		public ModelAndView  invitaion(@RequestParam int userNum,String userName,HttpServletRequest request) {
+		public String  invitaion(@RequestParam int userNum,String userName,HttpServletRequest request) {
 			System.out.println("userNum =  "+userNum  +"  userName  = "+userName);
 			ModelAndView mv = new ModelAndView();
-			Customer sender =commonService.tokenCustomer(request);
+			Optional<Customer> customerOption= customerRep.findByCustomerID(SecurityContextHolder.getContext().getAuthentication().getName());
+			Customer sender = customerOption.get();
 			Customer reciver = customerRep.getById(userNum);
 			String roomName= userName +"님과 "+ sender.getCustomerName();
 			System.out.println(roomName);
 			ChatRoom chatRoom= mindTalk.createChatRoom(ChatRoom.builder().roomName(roomName).build());
 			mindTalk.insertRoomEntry(chatRoom,sender );
+			System.out.println("reciver"+ reciver.getCustomerNum());
 			mindTalk.insertRoomEntry(chatRoom,reciver );
-			mv.setViewName("/guest/chatRoom");
+		/* mv.setViewName("/guest/chatRoom"); */
 			
-			return mv;
+			return "redirect:/guest/chat";
 		}
 		
 		
@@ -394,6 +404,13 @@ public class MindTalkController {
 			return mv;
 		}
 		
+	
+		@RequestMapping("/deleteRoom")
+		public void deleteRoom(@RequestParam int roomNumber) {
+			System.out.println("deleteroom"+roomNumber);
+			mindTalk.deleteRoom(roomNumber);
+			
+		}
 }
 //@ResponseBody
 //@RequestMapping(value="/refreshTalk")

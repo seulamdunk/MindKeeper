@@ -14,7 +14,6 @@ import com.mind.project.model.LikeTalk;
 import com.mind.project.model.Message;
 import com.mind.project.model.MindTalk;
 import com.mind.project.model.TalkReview;
-import com.mind.project.model.chatRoomCusNum;
 
 public interface MindTalkService {
 
@@ -83,9 +82,9 @@ public interface MindTalkService {
 	public List<Message> getMsgListFirst(int lastNum,int size,int roomNumber);
 	
 	//고객 게시물 검색
-	Page<MindTalk> searchUser(int customerNum, Pageable pageable);
+	public Page<MindTalk> searchUser(int customerNum, Pageable pageable);
 		
-	
+	public void deleteRoom(int roomNumber);
 	
 	
 }

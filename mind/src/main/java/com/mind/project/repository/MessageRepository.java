@@ -5,11 +5,8 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
-import com.mind.project.model.ChatRoom;
 import com.mind.project.model.Message;
-import com.mind.project.model.chatRoomCusNum;
 
 public interface MessageRepository extends JpaRepository<Message, Integer> {
 

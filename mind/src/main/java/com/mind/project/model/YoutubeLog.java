@@ -2,6 +2,7 @@ package com.mind.project.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,12 +26,12 @@ public class YoutubeLog {
 	private LocalDateTime youtubeLogDate = LocalDateTime.now();
 	
 	  
-	 @ManyToOne(optional = false)
+	 @ManyToOne(optional = false,cascade=CascadeType.ALL)
 	 @JoinColumn(name="youtube_num") 
 	 private Youtube youtube;
 	
 	 
-	 @ManyToOne(optional = false)
+	 @ManyToOne(optional = false,cascade=CascadeType.ALL)
 	 @JoinColumn(name="customer_num") 
 	 private Customer customer;
 

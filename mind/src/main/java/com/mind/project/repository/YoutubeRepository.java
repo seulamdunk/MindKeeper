@@ -11,5 +11,8 @@ public interface YoutubeRepository extends JpaRepository<Youtube, Integer> {
 	List<Youtube> findAllByOrderByYoutubeTagDesc();
 
 	Youtube findByYoutubeNum(int youtubeNum);
+	
+	
+	public List<Youtube> findByYoutubeNumIn(List<Integer> recommendList);
 
 }

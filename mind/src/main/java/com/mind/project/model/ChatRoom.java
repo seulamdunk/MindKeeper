@@ -38,11 +38,11 @@ public class ChatRoom {
 	private LocalDateTime roomLastDate;
 	
 	@JsonManagedReference
-	@OneToMany(mappedBy ="chatRoom",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE  )
+	@OneToMany(mappedBy ="chatRoom",fetch = FetchType.LAZY,cascade = CascadeType.ALL  )
 	private List<ChatRoomEntry> chatRoomEntry = new ArrayList();
 	
 	@JsonManagedReference
-    @OneToMany(mappedBy ="chatRoom",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy ="chatRoom",fetch = FetchType.LAZY,cascade = CascadeType.ALL )
     private List<Message> message = new ArrayList();
 	
 	@Override

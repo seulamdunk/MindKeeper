@@ -8,7 +8,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  	<!-- 마음톡톡 -->
     <title>마음 지킴이</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -40,10 +39,17 @@
 	<jsp:include page="../navbar.jsp"></jsp:include>
     <!-- END nav -->
     
-<!-- 메인 배너 -->
-<div class="hero-wrap hero-wrap-2" style="background-image: url(../images/banner_talktalk.jpg);" data-stellar-background-ratio="0.5">
-</div>
-<!-- 메인 배너 종료 -->
+    <div class="hero-wrap hero-wrap-3" style="background-image: url(../images/flying-through-magic.jpg);" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container-fluid">
+        <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>마음톡톡</span></p>
+            <h1 class="mb-3 bread"  data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">마음톡톡</h1>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <section class="ftco-section">
     
@@ -58,20 +64,20 @@
 				<div>
 					
 			
-					<a title="Mert S. Kaplan" href="https://twitter.com/mertskaplan" class="twPc-avatarLink">
-						<img alt="Mert S. Kaplan" src="https://mertskaplan.com/wp-content/plugins/msk-twprofilecard/img/mertskaplan.jpg" class="twPc-avatarImg">
+					<a title="Mert S. Kaplan" href="#" class="twPc-avatarLink">
+						<img alt="Mert S. Kaplan" src="{user.customerNick }" width=72px height=72px class="twPc-avatarImg">
 					</a>
 			
 					<div class="twPc-divUser">
 						<div class="twPc-divName">
-							<a href="https://twitter.com/mertskaplan">Mert S. Kaplan</a>
+							<a href="#">${user.customerNick }</a>
 						</div>
 						<span>
-							<a href="https://twitter.com/mertskaplan">@<span>mertskaplan</span></a>
+							<a href="#">가입일<span>${fn:substring(user.createDate,0,10) }</span></a>
 						</span>
 					</div>
 			
-					<div class="twPc-divStats">
+					<!-- div class="twPc-divStats">
 						<ul class="twPc-Arrange">
 							<li class="twPc-ArrangeSizeFit">
 								<a href="https://twitter.com/mertskaplan" title="9.840 Tweet">
@@ -92,7 +98,9 @@
 								</a>
 							</li>
 						</ul>
-					</div>
+					</div> -->
+					
+					
 				</div>
 			</div>
 		</div>
@@ -163,10 +171,10 @@
                                 </div>
                                 <div class="ml-2">
                                 
-                                    <div class="h5 m-0" data-toggle="dropdown">${talk.customer.customerName }
+                                    <div class="h5 m-0" data-toggle="dropdown">${talk.customer.customerNick }
                                     		<div class="dropdown-menu">
 												<a onclick='location.href="/searchUser?userNum=${talk.customer.customerNum }"' class="dropdown-item searchUser" >게시글 보기</a>
-												<a onclick='location.href="/invitation?userNum=${talk.customer.customerNum }&userName=${talk.customer.customerName }"' class="dropdown-item goTalk" >톡하기</a>
+											<c:if test="${talk.customer.customerNum != tokenNum  }"><a onclick='location.href="/invitation?userNum=${talk.customer.customerNum }&userName=${talk.customer.customerNick }"' class="dropdown-item goTalk" >톡하기</a></c:if>	
 											</div>
                                     
                                    
@@ -388,6 +396,7 @@
   <script src="../js/google-map.js"></script>
   <script src="../js/main.js"></script>
   <script src="../custom/mindTalk.js"></script>
+    	<jsp:include page="../footer.jsp"></jsp:include>
   </body>
 </html>
 
