@@ -23,7 +23,7 @@
 			    </c:when>
 			    <c:otherwise>
 			    	<li class="nav-item"><a href="/user/myPage?customerNum=<%=request.getParameter("customerNum") %>" class="nav-link">마이페이지</a></li>
-		          	<li class="nav-item cta"><a href="/signout" class="nav-link" ><span>로그아웃</span></a></li>
+		          	<li class="nav-item cta"><a href="/user/signout" class="nav-link" ><span>로그아웃</span></a></li>
 			    </c:otherwise>
 	          </c:choose>
 	          <li id="admin" class="nav-item cta"></li>
