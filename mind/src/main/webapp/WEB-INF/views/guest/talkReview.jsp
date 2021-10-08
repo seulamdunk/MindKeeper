@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<title>Insert title here</title>
+<!-- 마음톡톡 리뷰작성 -->
+<title>마음지킴이</title>
 <script src="../js/jquery.min.js"></script>
 
 </head>

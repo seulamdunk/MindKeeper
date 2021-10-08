@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  	<!-- 마음톡톡 -->
     <title>마음 지킴이</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -387,7 +388,6 @@
   <script src="../js/google-map.js"></script>
   <script src="../js/main.js"></script>
   <script src="../custom/mindTalk.js"></script>
-    	<jsp:include page="../footer.jsp"></jsp:include>
   </body>
 </html>
 

@@ -15,7 +15,8 @@
 	padding-top: 56.25%
 }
 </style>
-<title>Elen - Free Bootstrap 4 Template by Colorlib</title>
+<!-- 마이페이지 -->
+<title>마음지킴이</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">

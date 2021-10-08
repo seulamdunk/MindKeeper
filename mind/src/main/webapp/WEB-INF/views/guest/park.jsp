@@ -4,7 +4,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Ultim8 - Free Bootstrap 4 Template by Colorlib</title>
+<!-- 마음기르기 -->
+<title>마음지킴이</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -50,22 +51,15 @@
 
 
 <!--********** header 시작 **********--> 
-<div class="hero-wrap hero-wrap-2" style="background-image: url(../images/bg_2.jpg);" data-stellar-background-ratio="0.5">
-	<div class="overlay"></div>
-      <div class="container-fluid">
-        <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="/">Home</a></span> <span>Search</span></p>
-            <h1 class="mb-3 bread" style="radius:50px;" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">공원 알림</h1>
-          </div>
-        </div>
-     </div>
+<div class="hero-wrap hero-wrap-2" style="background-image: url(../images/banner_park.jpg);" data-stellar-background-ratio="0.5">
 </div>
 <!--********** header 종료 **********--> 
 		
+<br/><br/><br/><br/>
+
 <!--********************* section 시작 *********************-->
 <section class="ftco-section contact-section ftco-degree-bg">
-<br/><br/><br/><br/>
+
 	<div class="container">
 		<div class="row d-flex mb-5 contact-info">
 	    	<div class="col-md-12 mb-4">
@@ -115,7 +109,8 @@
 			</div>
 		</div>
 	</div>
-
+	
+<br/><br/>
 
 <div id="banner">
 	 <div class="banner_inner">
@@ -167,16 +162,18 @@
 	    </ul>
 	    <div class="bx-controls bx-has-controls-direction">
 	    	<div class="bx-controls-direction">
-	    		<a class="bx-prev" href=""><img src="../img/parkImg/previous.png" alt="이전버튼" style="width:50px;height:50px;"></a>
-	    		<a class="bx-next" href=""><img src="../img/parkImg/next.png" alt="다음버튼" style="width:50px;height:50px;"></a>
+	    		<a class="bx-prev" href=""><img src="../img/parkImg/previous.png" alt="이전버튼" style="width:48px;height:48px;"></a>
+	    		<a class="bx-next" href=""><img src="../img/parkImg/next.png" alt="다음버튼" style="width:48px;height:48px;"></a>
 	    	</div>
 	    </div>
 	   </div>
 	  </div>
 	</div>
-	
+
 </section>
 <!--********************* section 종료 *********************-->
+
+<br/><br/><br/>
 
 <!--*************** footer 시작 ***************-->
 <jsp:include page="../footer.jsp"></jsp:include>

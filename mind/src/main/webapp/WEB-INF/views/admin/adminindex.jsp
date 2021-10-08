@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>MindKeeper - Dashboard</title>
+    <title>마음지킴이</title>
 
     <!-- Custom fonts for this template-->
     <link href="../css/admin/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
