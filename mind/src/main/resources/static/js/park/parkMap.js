@@ -199,22 +199,24 @@ $.ajax({
     	success:function(parkData){
     	
     		for(i=0; i< parkData.length; i++){
-    			 
+    			
+    			 								  // lat1,lng1 => 현재위치 좌표, lat2,lng2 => 마커들의 위치 좌표
     			function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
     				function deg2rad(deg) {
 	    				return deg * (Math.PI/180)
     				}
-	    			var R = 6371; // Radius of the earth in km
-	    			var dLat = deg2rad(lat2-lat1); // deg2rad below
-	    			var dLon = deg2rad(lng2-lng1);
+	    			var R = 6371; // 지구반경(km)
+	    			var dLat = deg2rad(lat2-lat1); // (마커 위도 - 현재위치 위도) 
+	    			var dLon = deg2rad(lng2-lng1); // (마커 경도 - 현재위치 경도)
 	    			var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2);
 	    			var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-	    			var d = R * c; // Distance in km
+	    			// Math.Atan2(Double, Double) => 탄젠트를 적용했을 때 지정된 두 숫자의 몫이 나오는 각도를 반환, Math.sqrt => 제곱근 반환
+	    			var d = R * c; // 거리(km) = 지구반경  * (각도*2)
 	    			
 	    			return d;
     			} // end of function getDistanceFromLatLonInKm()
-    			
-    			let d =getDistanceFromLatLonInKm(locPosition["Ma"], locPosition["La"],parkData[i]["parkLat"],parkData[i]["parkLng"])
+
+    			var d =getDistanceFromLatLonInKm(locPosition["Ma"], locPosition["La"],parkData[i]["parkLat"],parkData[i]["parkLng"])
     			//console.log(locPosition["Ma"]) // 현재위치 위도 가져와 지는지 확인
     			//console.log(d) // 현재위치와 DB공원 위치와의 거리 차이 확인
     			
@@ -238,6 +240,11 @@ $.ajax({
 
      		    $("#parkList").append(html);
     			//*********************html 목록 출력 종료***********************
+     		    
+     		    $("#parkList #parkName").css({"cursor":"pointer"});
+     		    $("#parkList #parkScoreLink").css({"cursor":"pointer"});
+     		    $("#parkList #parkReviewLink").css({"cursor":"pointer"});
+     		    $("#parkList #parkLink").css({"cursor":"pointer","fontWeight":"bold"});
      		    
     			// 마커 이미지 생성
     			var imageSrc = "../img/parkImg/running.png"; 
@@ -355,7 +362,7 @@ $.ajax({
 
 			    	// 인포윈도우를 생성
 			    	var infowindow = new kakao.maps.InfoWindow({
-			    	    position : position, 
+			    	    position : iwPosition, 
 			    	    content : iwContent 
 			    	});
 			    	infowindow.open(map, marker); 
@@ -581,6 +588,11 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
      		    $("#parkList").append(html);
     			//*********************html 목록 출력 종료***********************
+
+     		    $("#parkList #parkName").css({"cursor":"pointer"});
+     		    $("#parkList #parkScoreLink").css({"cursor":"pointer"});
+     		    $("#parkList #parkReviewLink").css({"cursor":"pointer"});
+     		    $("#parkList #parkLink").css({"cursor":"pointer","fontWeight":"bold"});
      		    
     			// 마커 이미지 생성
     			var imageSrc = "../img/parkImg/running.png"; 
@@ -590,7 +602,7 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
     		    var position= new kakao.maps.LatLng(keywordList[z]["parkLat"],keywordList[z]["parkLng"])
     		    var title = keywordList[z]["parkName"]
     		    
-    		   var Parkmarker = new kakao.maps.Marker({
+    		   Parkmarker = new kakao.maps.Marker({
     		    	map: map,
     		       	position: position,
     		       	image:markerImage,
@@ -699,7 +711,7 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
 			    	// 인포윈도우를 생성
 			    	var infowindow = new kakao.maps.InfoWindow({
-			    	    position : position, 
+			    	    position : iwPosition, 
 			    	    content : iwContent 
 			    	});
 			    	infowindow.open(map, marker);
