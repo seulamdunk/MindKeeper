@@ -3,8 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  	<!-- 익명게시판 수정하기 -->
-    <title>마음지킴이</title>
+    <title>수정하기</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -61,11 +60,11 @@
 		<div class="board_write_wrap">
 			<div class="board_write">
 				<div class="title">
-				<form action="/n_details/edit/${noNameDTO.noNameNum }" method="post" >
+				<form action="/n_details/edit/${noName.noNameNum }" method="post" >
 					<dl>
 						<dt>제목</dt>
 						<dd>
-							<input type="text" placeholder="제목 입력" value="${noNameDTO.noNameTitle }" name="noNameTitle">
+							<input type="text" placeholder="제목 입력" value="${noName.noNameTitle }" name="noNameTitle" id="noNameTitle">
 						</dd>
 					</dl>
 				</div>
@@ -78,17 +77,13 @@
 					</dl>
 				</div>
 				<div class="cont">
-					<textarea placeholder="내용 입력" name="noNameCon" >${noNameDTO.noNameCon }</textarea>
+					<textarea placeholder="내용 입력" id="noNameCon" name="noNameCon" >${noName.noNameCon }</textarea>
 				</div>
 			</div>
-			<div class="bt_wrap">
-				<input type="submit" value="수정하기" class="btn btn-primary bst">
-				<input type="button" class="btn btn-primary" value="취소하기" onclick="location.href='/n_name'">
-			</div>
-			<input type="hidden" name="_method" value="put"/>
-        	<input type="hidden" class="form-control" name="customerNum" value=1 />
-        	<input type="hidden" class="form-control" name="noNameNum" value='${noNameDTO.noNameNum }' />
+			<input type="hidden" id="noNameNum" value='${noName.noNameNum }' />
 			</form>
+			<button class="btn btn-primary" onclick="update();">글수정</button>
+			<input type="button" class="btn btn-primary" value="취소하기" onclick="location.href='/no_name'">
 		</div>
 	</div>
 
@@ -117,19 +112,6 @@
   <script src="../../js/main.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <script src="//cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
-   <script src="../../js/update.js"></script>
-  
-  <script>
- /* var date = $("#date").text()
- 
- date=date.substring(0,19)
-  alert(date);
-
- $("#datetime").val(date)
-  */
- 
-</script>
-
-
+   <script src="../../js/noname/update.js"></script>
   </body>
 </html>

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  	<!-- 익명상담게시판 -->
-    <title>마음지킴이</title>
+    <title>익명상담게시판</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700" rel="stylesheet">
@@ -45,7 +45,7 @@
       <div class="container-fluid">
         <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="/">Home</a></span> <span>Team</span></p>
+          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="/">Home</a></span> <span>익명상담게시판</span></p>
             <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">익명상담게시판</h1>
           </div>
         </div>
@@ -65,41 +65,51 @@
 					<div class="date">작성일</div>
 					<div class="count">조회</div>
 				</div>
-				<c:forEach var="noNameList" items="${noNameList}">
+				<c:forEach var="no_lists" items="${n_list.content }">
 				<div>				
-					<div class="num">${noNameList.noNameNum }</div>
+					<div class="num">${no_lists.noNameNum }</div>
 					<div class="title">
-						<a href="/n_details/${noNameList.noNameNum }">${noNameList.noNameTitle }</a>
+						<a href="/n_details/${no_lists.noNameNum }">${no_lists.noNameTitle }</a>
 					</div>
 					<div class="writer">익명</div>
-					<div class="date">${noNameList.noNameDate }</div>
-					<div class="count">${noNameList.noNameCount }</div>				
+					<div class="date">${fn:substring(no_lists.noNameDate,0,16) }</div>
+					<div class="count">${no_lists.noNameCount }</div>				
 				</div>
 				</c:forEach>
 			</div>
+			<ul class="pagination justify-content-center" style="margin:20px 0">
+				<c:choose>
+					<c:when test="${n_list.first }">
+						<li class="page-item disabled"><a class="page-link" href="?page=${n_list.number -1 }">◀</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item"><a class="page-link" href="?page=${n_list.number -1 }">◀</a></li>
+					</c:otherwise>
+				</c:choose>
+				
+					<p>&nbsp;&nbsp;${n_list.number }&nbsp;&nbsp;<p>
+				<c:choose>
+					<c:when test="${n_list.last }">
+						<li class="page-item disabled"><a class="page-link" href="?page=${n_list.number +1 }">▶</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item"><a class="page-link" href="?page=${n_list.number +1 }">▶</a></li>
+					</c:otherwise>
+				</c:choose>
+			</ul>
 			<!-- 검색 form -->
-			<br>
-				<form action="/n_search" method="GET">
+				<!-- <form action="/n_search" method="GET">
 					<div class="btn-group" role="group" aria-label="Basic example">
 							<input name="keyword" type="text" placeholder="검색어를 입력해주세요">
 							<button class="btn btn-primary">검색</button>
 							</div>
-							</form>
+				</form> -->
 				</div>
 			<!-- 검색 종료 -->
-			<div class="board_page">
-				<c:forEach items="${pageList }" var="pageNum">
-				<a href="/n_name/?page=${pageNum }">${pageNum }</a>
-				</c:forEach>
-			</div>
-			<div class="bt_wrap">
-				<a href="/n_write" class="on">글작성</a>
+		<div class="bt_wrap">
+				<a href="/no_name_write" class="on">글작성</a>
 			</div>
 		</div>
-	</div>
-
-
-    
     <!-- footer -->
 	<jsp:include page="footer.jsp"></jsp:include>
 

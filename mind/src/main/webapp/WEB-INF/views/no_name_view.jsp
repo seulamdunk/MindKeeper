@@ -4,8 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  	<!-- 익명상담게시판 -->
-    <title>마음지킴이</title>
+    <title>익명상담게시판</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700" rel="stylesheet">
@@ -51,7 +50,7 @@
         </div>
       </div>
     </div>
-<div class="board_wrap">
+	<div class="board_wrap">
 		<div class="board_title">
 			<strong>익명상담게시판</strong>
 			<p>익명으로 글이 작성되니 안심하고 상담하시기 바랍니다.</p>
@@ -66,33 +65,32 @@
 					<div class="count">조회</div>
 				</div>
 				<c:forEach var="noNameDTOList" items="${noNameDTOList}">
-				<div>				
-					<div class="num">${noNameDTOList.noNameNum }</div>
-					<div class="title">
-						<a href="n_details/${noNameDTOList.noNameNum }">${noNameDTOList.noNameTitle }</a>
+					<div>
+						<div class="num">${noNameDTOList.noNameNum }</div>
+						<div class="title">
+							<a href="n_details/${noNameDTOList.noNameNum }">${noNameDTOList.noNameTitle }</a>
+						</div>
+						<div class="writer">익명</div>
+						<div class="date">${noNameDTOList.noNameDate }</div>
+						<div class="count">${noNameDTOList.noNameCount }</div>
 					</div>
-					<div class="writer">익명</div>
-					<div class="date">${noNameDTOList.noNameDate }</div>
-					<div class="count">${noNameDTOList.noNameCount }</div>				
-				</div>
 				</c:forEach>
 			</div>
 			<!-- 검색 form -->
 			<br>
-				<form action="/n_search" method="GET">
-					<div class="btn-group" role="group" aria-label="Basic example">
-							<input name="keyword" type="text" placeholder="검색어를 입력해주세요">
-							<button class="btn btn-primary">검색</button>
-							</div>
-							</form>
+			<form action="/n_search" method="POST">
+				<div class="btn-group" role="group" aria-label="Basic example">
+					<input name="keyword" type="text" placeholder="검색어를 입력해주세요">
+					<button class="btn btn-primary">검색</button>
 				</div>
-			<!-- 검색 종료 -->
+			</form>
+		</div>
+		<!-- 검색 종료 -->
+		<div class="board_page">
 			<div class="board_page">
-				<a href="#" class="bt first"><<</a> <a href="#" class="bt prev"><</a>
-				<a href="#" class="num on">1</a> <a href="#" class="num">2</a> <a
-					href="#" class="num">3</a> <a href="#" class="num">4</a> <a
-					href="#" class="num">5</a> <a href="#" class="bt next">></a> <a
-					href="#" class="bt last">>></a>
+				<c:forEach items="${pageList }" var="pageNum">
+					<a href="n_search?keyword=${keyword }&page=${pageNum}">${pageNum }</a>
+				</c:forEach>
 			</div>
 			<div class="bt_wrap">
 				<a href="/n_write" class="on">글작성</a>
@@ -100,8 +98,8 @@
 		</div>
 	</div>
 
-    
-    <!-- footer -->
+
+	<!-- footer -->
 	<jsp:include page="footer.jsp"></jsp:include>
 
   <script src="../js/jquery.min.js"></script>

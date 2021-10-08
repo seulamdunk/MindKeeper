@@ -129,7 +129,10 @@ a {
     vertical-align: middle;
     border: 1px solid #ddd;
     border-left: 0;
-    line-height: 100%; 
+    line-height: 32px; 
+    font-size:15px;
+    color:black;
+    
 }
 
 .board_page a.bt {

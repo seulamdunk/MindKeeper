@@ -1,41 +1,48 @@
 package com.mind.project.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.PrePersist;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
 
-import lombok.AccessLevel;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
-@Getter
-@Setter
-@Entity
+@Data
 @Table(name="noname")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
+@AllArgsConstructor
 @ToString
+@Builder
+@Entity
 public class NoName {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	@Column(name="no_name_num")
-	private Long noNameNum;
+	private int noNameNum;
 	
-	@Column(name="customer_num")
-	private int customerNum;
+	@ManyToOne
+	@JoinColumn(name="customer_num")
+	private Customer customer;
 	
 	@Column(name="no_name_title")
 	private String noNameTitle;
@@ -43,26 +50,20 @@ public class NoName {
 	@Column(name="no_name_con")
 	private String noNameCon;
 	
+	@ColumnDefault("0")
 	@Column(name="no_name_count")
 	private int noNameCount;
 	
+	@CreationTimestamp
 	@Column(name="no_name_date")
 	private LocalDateTime noNameDate;
 	
-	@Column(name="no_name_updatedate")
-	private LocalDateTime noNameUpdatedate;
+	@OneToMany(mappedBy = "noName", fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"noName"})
+	@OrderBy("noNameReplyDate desc")
+	private List<NoNameReply> noNameReply;
 	
 	
-	@Builder
-	public NoName(Long noNameNum, int customerNum, String noNameTitle, int noNameCount,  String noNameCon) {
-		this.noNameNum = noNameNum;
-		this.customerNum = customerNum;
-		this.noNameTitle = noNameTitle;
-		this.noNameCon = noNameCon;
-		this.noNameCount = noNameCount;
-		this.noNameDate = LocalDateTime.now();
-		this.noNameUpdatedate = LocalDateTime.now();
-	}
 	
 	
 	

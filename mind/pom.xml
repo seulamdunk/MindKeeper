@@ -143,8 +143,8 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.12.3</version>
 		</dependency>
-
-
+		
+		
 
 
 
@@ -161,10 +161,6 @@
 		    <artifactId>json-simple</artifactId>
 		    <version>1.1.1</version>
 		</dependency>
-
-
-		
-
 		
 	</dependencies>
 

@@ -3,8 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  	<!-- 익명게시판 글쓰기 -->
-    <title>마음지킴이</title>
+    <title>익명게시판 글쓰기</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -32,6 +31,7 @@
     <link rel="stylesheet" href="../css/css/noname/css.css">
     <link rel="stylesheet" href="../css/css/noname/media.css">
     <link rel="stylesheet" href="../css/css/noname/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
   </head>
   <body>
     
@@ -57,11 +57,10 @@
         <div class="board_write_wrap">
             <div class="board_write">
                 <div class="title">
-            <form action="/n_write" method="post" >
-                 <input type="hidden"  class="form-control" name="customerNum" value=1 />
+            	<form action="/n_write" method="post" >
                     <dl>
                         <dt>제목</dt>
-                        <dd><input type="text" placeholder="제목 입력" name="noNameTitle"></dd>
+                        <dd><input type="text" id="noNameTitle" placeholder="제목 입력" name="noNameTitle"></dd>
                     </dl>
                 </div>
                 <div class="info">
@@ -71,19 +70,13 @@
                     </dl>
                 </div>
                 <div class="cont">
-                    <textarea placeholder="내용 입력" name="noNameCon"></textarea>
+                    <textarea class="summernote" id="noNameCon" name="noNameCon"></textarea>
                 </div>
-            </div>
-            <div class="bt_wrap">
-               <input type="submit" value="글쓰기" class="btn btn-primary bst">
-               <input type="reset" value="다시작성" class="btn btn-primary rst" >
-               <input type="button" class="btn btn-primary" value="취소" onClick="location.href='/n_name'">
             </div>
         </div>
         </form>
+        <button class="btn btn-primary" onclick="save();">글저장</button>
     </div>
-   
-
     
     <!-- footer -->
 	<jsp:include page="footer.jsp"></jsp:include>
@@ -105,16 +98,14 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="../js/google-map.js"></script>
   <script src="../js/main.js"></script>
-  <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  <script src="//cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+  <script src="../js/noname/save.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
   <script>
-	//CKEDITOR 적용 
-	CKEDITOR.replace('content', {
-    width:'100%',
-    height:'350'
-	});
- 
-  </script>
+      $('.summernote').summernote({
+        placeholder: '내용을 입력해주세요',
+        tabsize: 2,
+        height: 300
+      });
+    </script>
 </body>
 </html>

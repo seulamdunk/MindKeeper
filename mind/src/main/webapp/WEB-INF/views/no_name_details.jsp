@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  	<!-- 익명게시판 상세보기 -->
-    <title>마음지킴이</title>
+    <title>상세보기</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="../css/jquery.timepicker.css">
 
     
-    <link rel="stylesheet" href="../css/flaticon.css">
+   	<link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/css/noname/css.css">
@@ -57,12 +57,12 @@
         <div class="board_view_wrap">
             <div class="board_view">
                 <div class="title">
-                   		${noNameDTO.noNameTitle }
+                   		${noName.noNameTitle }
                 </div>
                 <div class="info">
                     <dl>
                         <dt>번호</dt>
-                        <dd>${noNameDTO.noNameNum }</dd>
+                       <dd><span id="noNameNum">${noName.noNameNum }</span></dd>
                     </dl>
                     <dl>
                         <dt>글쓴이</dt>
@@ -70,27 +70,54 @@
                     </dl>
                     <dl>
                         <dt>작성일</dt>
-                        <dd>${noNameDTO.noNameDate }</dd>
+                        <dd>${noName.noNameDate }</dd>
                     </dl>
                     <dl>
                         <dt>조회</dt>
-                        <dd>${noNameDTO.noNameCount }</dd>
+                        <dd>${noName.noNameCount }</dd>
                     </dl>
                 </div>
                 <div class="cont textview">
-                    ${noNameDTO.noNameCon }
+                    ${noName.noNameCon }
                 </div>
             </div>
-            <div class="text-center">
-                <input type="button" class="btn btn-primary" value="수정하기" onclick="location.href='/n_details/edit/${noNameDTO.noNameNum}'">
-                <form id="delete-form" action="/n_details/${noNameDTO.noNameNum }" method="post">
-       	    		<input type="hidden" name="_method" value="delete"/>
-       	    		<button id="delete-btn" class="btn btn-primary">삭제하기</button>
-    			</form>
-    			<input type="button" class="btn btn-primary" value="목록보기" onclick="location.href='/n_name'">
-            </div>
+            <br/>
+            <button class="btn btn-primary" onclick="history.back()">돌아가기</button>
+          <c:if test="${noName.customer.customerNum == tokenNum}"> 
+            <a href="/n_details/edit/${noName.noNameNum}" class="btn btn-warning">수정</a>
+            <button id="btn-delete" class="btn btn-danger" onclick="deleteById();">삭제</button>
+          </c:if>
         </div>
+        <hr/>
+		<div class="card">
+			<form>
+			<input type="hidden" id="noNameNum2" value="${noName.noNameNum }" />
+				<div class="car-body">
+					<textarea id="reply-content" class="form-control" rows="1"></textarea>
+				</div>
+				<div class="car-footer">
+					<button class="btn btn-primary" onclick="replySave();">등록</button>
+				</div>
+			</form>
+		</div>
+		<br/>
+        <div>
+        	<div class="card-header">댓글 목록</div>
+			<ul class="list-group" id="reply--box">
+				<c:forEach var="reply" items="${noName.noNameReply }">
+					<li class="list-group-item d-flex justify-content-between"
+						id="reply--1">
+						<div>${reply.noNameReplyCon }</div>
+						<div class="d-flex">
+							<div>작성자: 익명 &nbsp;</div>
+							<button class="badge">삭제</button>
+						</div>
+					</li>
+				</c:forEach>
+			</ul>
+		</div>
     </div>
+    
     
   <!-- footer -->
   <jsp:include page="footer.jsp"></jsp:include>
@@ -112,6 +139,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="../js/google-map.js"></script>
   <script src="../js/main.js"></script>
-    
+  <script src="../js/noname/delete.js"></script>
+  <script src="../js/noname/reply_save.js"></script>
   </body>
 </html>
