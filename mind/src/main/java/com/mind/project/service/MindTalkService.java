@@ -19,7 +19,7 @@ public interface MindTalkService {
 
 	//게시글 목록
 	public Page<MindTalk> getTalksList(Pageable pageable);
-	
+	public Page<MindTalk> getTalksListA(int lastNum);
 	//게시글 입력
 	public void insertTalk(MindTalk talk,MultipartHttpServletRequest MHSR)throws Exception;
 	//댓글 목로 가져오기

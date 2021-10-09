@@ -42,7 +42,7 @@ public class MindGrowController {
 			System.out.println("조건 체크"+customer.getCustomerNum());
 			mindGrowService.savaYoutuveLog(youtube, customer);
 		}
-		
+		m.addAttribute("recommendList", mindGrowService.getRecommendList(request));
 		
 		return "/guest/mindGrowDetail";
 	}

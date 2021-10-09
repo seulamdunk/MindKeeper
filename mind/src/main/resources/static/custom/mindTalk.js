@@ -18,6 +18,58 @@
 //	setTimeout("updateData()", 2000); 
 
 $(function() { 
+	
+	
+	
+	 var flag=0;
+	  
+	  $('.share').on('click',function(){
+	   if(flag == 0)
+	    {
+	      $(this).siblings('.one').animate({
+	      top:'200px',
+	      left:'50%',
+	    },200);
+	    
+	     $(this).siblings('.two').delay(200).animate({
+	      top:'260px',
+	      left:'40%'
+	    },200);
+	    
+	     $(this).siblings('.three').delay(300).animate({
+	      top:'260px',
+	      left:'60%'
+	    },200);
+	              
+	    $('.one i,.two i, .three i').delay(500).fadeIn(200);  
+	      flag = 1;
+	    }
+	    
+	    
+	  else{
+	    $('.one, .two, .three').animate({
+	        top:'300px',
+	        left:'50%'
+	      },200);
+	      
+	  $('.one i,.two i, .three i').delay(500).fadeOut(200);
+	      flag = 0;
+	    }
+	  });
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	$("cus-name-click-menu").hide()
 	$('.cus-name-click').click(function(){
 		$(this).find("cus-name-click-menu").toggle()
@@ -61,6 +113,188 @@ $(function() {
 			reader.readAsDataURL(this.files[0]);
 		}
 		});
+	
+	
+	
+	
+	
+	function YesScroll () {
+		const pagination = document.querySelector('.paginaiton'); // 페이지네이션 정보획득
+		const fullContent = document.querySelector('#infinity'); // 전체를 둘러싼 컨텐츠 정보획득
+		const screenHeight = screen.height; // 화면 크기
+		let oneTime = false; // 일회용 글로벌 변수
+		document.addEventListener('scroll',OnScroll,{passive:true}) // 스크롤 이벤트함수정의
+		 function OnScroll () { //스크롤 이벤트 함수
+		   const fullHeight = fullContent.clientHeight; // infinite 클래스의 높이   
+		   const scrollPosition = pageYOffset; // 스크롤 위치
+		   if (fullHeight-screenHeight/8 <= scrollPosition && !oneTime) { // 만약 전체높이-화면높이/2가 스크롤포지션보다 작아진다면, 그리고 oneTime 변수가 거짓이라면
+		     oneTime = true; // oneTime 변수를 true로 변경해주고,
+		      // 컨텐츠를 추가하는 함수를 불러온다.
+		  getNewTalkList()
+	   
+		     
+		   }
+		 }
+		 }
+		YesScroll()
+
+	// articleController
+
+/*	const defaultArticlePaginationSize = 5; // 한 번 요청으로 가져올 게시글의 개수
+	
+	$(window).scroll(function() {
+		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
+			   
+			   alert("dkdkdkddk")
+			   let talkNumList = document.querySelectorAll('.talk-num');
+			  
+			   	alert(talkNumList)
+		
+			 
+			   
+			   getNewTalkList(lastTalkNum,defaultArticlePaginationSize);
+		   }
+		});
+*/
+	/*	function(customerNum,customerNick){
+			location.href='/invitation?userNum='+customerNum+'&'+userName=customerNick'
+		}
+*/
+	function getNewTalkList(){
+			let talkNumDiv = $('.talk-num');
+			talkNumList=[]
+			talkNumDiv.each(function(){
+				
+				let idNum =$(this).attr("id")
+				talkNumList.push(idNum)
+			})
+				let lastTalkNum= Math.min.apply(null,talkNumList)
+			 
+				let param={
+				lastTalkNum:lastTalkNum
+			}
+				$.ajax({
+					type:"post",
+					data:JSON.stringify(param),
+					url:"/getTalkListPage",
+					contentType:'application/json; charset=utf-8',
+					dataType:'JSON',
+					success: function(res){
+						   let tokenNum =$("writer").val()
+						$.each(res.content, function(key, value){
+						console.log(value)
+							 <!--- \\\\\\\Post-->
+						
+						let talkPage=''+
+						
+		               ' <div class="card gedf-card">'+
+		               ' <div class="bg-blue-20"></div>'+
+		               ' <input type ="hidden" class="talk-num" id="'+value.talkNum +'"value="$'+value.talkNum +'">'+
+		                  '  <div class="card-header">'+
+		                       ' <div class="d-flex justify-content-between align-items-center">'+
+		                           ' <div class="d-flex justify-content-between align-items-center ">'+
+		                              '  <div class="mr-2">'+
+		                                   ' <img class="rounded-circle" width="45" src="'+value.customer.profileImg+'" alt="">'+
+		                                   ' </div> '+
+		                                   ' <div class="ml-2"> '+
+		                                
+		                                   ' <div class="h5 m-0" data-toggle="dropdown"> '+value.customer.customerNick +
+		                                   '<div class="dropdown-menu"> '+
+													'+	<a onclick="location.href=/searchUser?userNum='+value.customer.customerNum +'" class="dropdown-item searchUser" >게시글 보기</a>';
+													
+												if(value.customer.customerNum != tokenNum  ){
+													talkPage +='<a onclick="location.href=/invitation?userNum='+value.customer.customerNum+'userName='+value.customer.customerNick +'" class="dropdown-item goTalk" >톡하기</a>'
+												}
+						talkPage +=					'</div>'+
+		                                    
+		                                   
+		                               '</div>     '+
+
+		                                    
+		                                   ' <div class="h7 text-muted"><span>'+value.talkDate +'</span></div>'+
+		               
+		                                '</div>'+
+		                            '</div>'+
+		                           
+		                      '  </div>'+
+
+		                 '   </div>'+
+		                    
+		                  
+		                    '<div class="card-body">'+
+		                 
+		                        '<p class="card-text">'+ value.talkCon +'</p>'+
+		                       ' <hr>'+
+		                        '<p class="card-text">'
+		                        
+		                        for (let a in value.tag.split("#")){
+		                        	talkPage +=		'<a>'+a+'&nbsp</a>'
+		                        }
+		                        
+						talkPage +=	
+		                       ' </p>'+
+		                        '<div class="img-display">'+
+		                      '  <img  src="'+value.talkImg[0] +'"/>'+
+		                      '  </div>'+
+		                   ' </div>'+
+		                  
+		                    
+		                   ' <div class="card-footer taklLikeArea'+value.talkNum +'">'+
+		        
+		                     
+		                    	
+							'<jsp:include page="./likeTalk.jsp">'+
+								'<jsp:param value="${talk.talkNum }" name="talkNum"/>'+
+								'<jsp:param value="${tokenNum }" name="tokenNum"/>'+
+								'<jsp:param value="${talk.customer.customerNum }" name="writer"/>'+
+						'	</jsp:include>'+
+		                  '  </div>'+
+		                  
+						       	'	<div class="inser-area justify-content-center">'+
+						       			'<form class="review-frm" method="post" action="insertReview">'+
+						       				'<div class="review-group">'+
+								       		
+								       			'<div class="review-textarea-div">'+
+								       		
+								       			
+													'<div  class="review-textarea" contenteditable="true"placeholder="응원의 한마디" ></div>'+
+								       				'<div class="review-btn "><span>💌</span></div>'+
+								       			'</div>'+
+								       		'</div>	'+
+						       			'</form>'+
+						       		'</div>'+		  
+						     
+		                    '<div class="+cheerUPArea"'+value.talkNum+'">'+
+		                    	 '<div class="card card-inner"> '+
+		         
+		              		  '<jsp:include page="./talkReview.jsp" flush="false">'+
+		            			  		'<jsp:param name="talkNum" value="'+value.talkNum +'" /> '+         
+		            			  	'	<jsp:param name="tokenNum" value="'+tokenNum +'" />'+                  
+		      					'  </jsp:include>'+
+						'</div>'+
+
+
+
+		                  '</div>'+
+		                
+		                  
+						'</div>'+
+				
+						'</div>	'
+					
+						
+						
+						$("#infinity").append(talkPage)
+					})
+								
+						
+					},
+					error:function(request, status, error){
+						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					}
+				})
+					
+		}
 	
 	
 });
@@ -364,6 +598,13 @@ function viewLikeReview(talkReviewNum,customerNum){
 		
 	}); 
 };
+
+
+
+
+
+
+
 
 
 /*//댓글 좋아요 입력

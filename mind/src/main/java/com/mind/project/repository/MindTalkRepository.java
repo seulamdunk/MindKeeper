@@ -34,7 +34,7 @@ public interface MindTalkRepository extends JpaRepository<MindTalk, Integer> {
 	
 	Page<MindTalk> findAllByOrderByTalkDateDesc(Pageable pageable);
 
-	
+	Page<MindTalk> findByTalkNumLessThanOrderByTalkDateDesc(Pageable pageable,int lastNum);
 	//게시글 삭제
 	 @Transactional
 	public void deleteByTalkNum(int talkNum);

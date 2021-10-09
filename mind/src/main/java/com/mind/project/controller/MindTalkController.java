@@ -70,15 +70,30 @@ public class MindTalkController {
 		m.addAttribute("talkList", mindTalk.getTalksList(pageable));
 		//토큰에 저장된 이름을 바로 가져오는 코드, token 유효성검사 과정이 없어 보임
 	
-		System.out.println("security check" + SecurityContextHolder.getContext().getAuthentication().getName());
+		//System.out.println("security check" + SecurityContextHolder.getContext().getAuthentication().getName());
 		Customer customer =commonService.tokenCustomer(request);
-		System.out.println("고객"+ customer.getCustomerNum());
+		//System.out.println("고객"+ customer.getCustomerNum());
 		m.addAttribute("tokenNum",Integer.valueOf(commonService.tokenImfo(m, request)));
 		
 		m.addAttribute("user",customer);
 		return "guest/mindTalk";
 		     
 	}
+	//톡 화면 가져오기
+	@ResponseBody
+	@RequestMapping(value="/getTalkListPage")
+	public Page<MindTalk> getTalkListPage(@RequestBody Map<String,String> m){
+		System.out.println(m);
+		
+		 Page<MindTalk> list =mindTalk.getTalksListA(Integer.parseInt(m.get("lastTalkNum")));
+		 System.out.println(list);
+		return list ;
+		     
+	}
+	
+	
+	
+	
 	
 	//리뷰 가져오기
 	@ResponseBody

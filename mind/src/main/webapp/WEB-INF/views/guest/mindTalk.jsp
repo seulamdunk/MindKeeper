@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<% String lastTalkNum="300"; %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,7 +39,7 @@
 	<jsp:include page="../navbar.jsp"></jsp:include>
     <!-- END nav -->
     
-    <div class="hero-wrap hero-wrap-3" style="background-image: url(../images/flying-through-magic.jpg);" data-stellar-background-ratio="0.5">
+    <div class="hero-wrap hero-wrap-3" style="background-image: url(../images/banner_talktalk.jpg);" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container-fluid">
         <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
@@ -105,7 +105,7 @@
 			</div>
 		</div>
 		
-      <div class="container only-desc-small col-md-6">
+      <div class="container main-con only-desc-small col-md-6">
       	 <div class="row">
            
             <div class="col-md-12 gedf-main">
@@ -155,14 +155,14 @@
      
   				<jsp:useBean id="now" class="java.util.Date" />
                 <fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss" var="today" />
-				<div class="infinity">
+				<div id="infinity">
 				<!--  리스트 -->
-				<c:forEach items="${talkList.content }" var="talk">
-				
+				<c:forEach items="${talkList.content }" var="talk" varStatus="status">
+				<div class="pageItem">
 				 <!--- \\\\\\\Post-->
                 <div class="card gedf-card">
                 <div class="bg-blue-20"></div>
-                <input type ="hidden" class="talk-num" value="${talk.talkNum }">
+                <input type ="hidden" class="talk-num" id="${talk.talkNum }"value="${talk.talkNum }">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center ">
@@ -179,32 +179,10 @@
                                     
                                    
                                </div>     
-                            <%--         <c:set var="dateData" value="${fn:replace(talk.talkDate,'T',' ') }"></c:set>
-                                    <fmt:parseDate value="${dateData }" pattern="yyyy-MM-dd HH:mm:ss" var="w_date">
-                                    <fmt:formatDate value="${w_date }" pattern="yyyy-MM-dd HH:mm:ss"  var="a_date" /> 
-                                    </fmt:parseDate>
- --%>
-								<%-- 	<c:out value="${today}"/> --%>
-                                <%--    	 <c:out value ="${w_date }"></c:out> --%>
-
 
                                     
                                     <div class="h7 text-muted"><span>${talk.talkDate }</span></div>
-                                     <%-- <div class="h7 text-muted"><span>
-                                     
-                                     
-                                     </span></div>
-                                     <div>
-                                     	<c:set var="now" value="<%=new java.util.Date()%>" />
-                                     	<fmt:formatDate value="${now}" pattern="yyyy-MM-dd'T'hh:mm:ss" />
-                                     <fmt:parseDate value="${talk.talkDate }" var="strPlanDate" pattern="yyyy-MM-dd'T'hh:mm:ss"/>
-								<fmt:parseNumber value="${strPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="strDate"></fmt:parseNumber>
-								<fmt:parseDate value="${now }" var="endPlanDate" pattern="yyyy-MM-dd"/>
-								<fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate"></fmt:parseNumber>
-									${endDate - strDate }
-									
-
-</div> --%>
+               
                                 </div>
                             </div>
                            
@@ -236,30 +214,9 @@
                   
                     
                     <div class="card-footer taklLikeArea${talk.talkNum }">
-          <%--           	
-                    	<c:choose>
-                    		<c:when test="${likeTalkCheck  }">
-                    			<span class="btn btn-primary">❤ ${talk.talkCnt}</span> 
-                    		</c:when>
-                    		
-                    		<c:otherwise>
-                    			<span class="btn btn-primary">🤍  ${talk.talkCnt}</span>  
-                    		</c:otherwise>
-                    		
-           
+        
                      
-                     
-                     
-                     </c:choose> --%>
-                     
-                    	<%--  <span class="btn btn-primary talkHeart">🤍  </span>  <span class="talkLikeCount">${talk.talkCnt}</span>
                     	
-                       <span class="btn btn-primary cheerUPBtn">🗨  
-                       <input class="talkNum" type="hidden" value="${talk.talkNum }"></span>
-                       <c:if test="${ tokenNum eq talk.customer.customerNum }">
-
-                       <span class="btn btn-primary deleteTalkBtn">❌ </span>
-                       </c:if> --%>
 					<jsp:include page="./likeTalk.jsp">
 						<jsp:param value="${talk.talkNum }" name="talkNum"/>
 						<jsp:param value="${tokenNum }" name="tokenNum"/>
@@ -300,63 +257,20 @@
 				</div>
 
 
-                
-                   
-                   
-               <%--  <div class="card card-inner"> 
-                    <c:forEach items="${talkReviewList}" var="review" varStatus="status">
-                   	<c:if test="${review.talk.talkNum eq talk.talkNum }">
-	                    <div class="card-body"  style="margin-left:${review.tkClass * 5}%">
-					        <div class="row" style="margin-left:10px">        	 
-		                            <div class="d-flex justify-content-between align-items-center" >
-		                                <div class="mr-2">
-		                                	<div class="col-12">
-		                                    	<img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
-		                                    </div>
-		                                    <div class="col-12">
-		                                    	<span>시간</span>
-		                                    </div>
-		                                </div>
-		                                <div class="ml-2">
-		                                    <div class="inline-div " style="width=100%">
-		                                    	<div class=" text-bk">
-		                                    		<p><strong>${review.customer.customerName }</strong> &nbsp;&nbsp;${review.talkReviewCon }</p>
-		                                    	</div>
-		                                    	<div class="h7 text-muted">
-		                                    		
-		                                    	</div>
-		                                    	<div class="">
-							                       <span class="btn btn-primary">🤍${review.talkReviewCnt }  </span>  
-							                       <span class="btn btn-primary cheerUPBtn2">🗨  </span>	
-							                       <input type="hidden" class="tkClass" value="${review.tkClass}">	
-							                        <input type="hidden" class="groupNum" value="${review.groupNum}">
-							                         <input type="hidden" class="talkReviewNum" value="${review.talkReviewNum}">
-							                         <c:if test="${ tokenNum eq talk.customer.customerNum }">
-							                          <span class="btn btn-primary deleteReviewBtn">❌ </span>	
-							                         </c:if>				                       
-							                    </div>
-							                    <div class="insert-group-area"></div>		                                    
-		                                    </div>      
-		                                </div>
-		                                
-	                            	</div>
-				       			 </div>
-				       		</div> 
-				       		</c:if>
-				       		 	</c:forEach>
-            
-				       		  </div>   --%>
-				       		
 
                   </div>
                       <!--댓글 종료  -->
                   
 				</div>
+		
+				</div>
 				   </c:forEach>
+				   <div class="pageItem">
+				   </div>
              </div>
-                <div class="pageNation"></div>  
+                <a class="pageNation" href="#"></a>  
                 <!-- Post /////-->
-                
+             
              
 				<!--  test ///// -->
 				
@@ -364,10 +278,21 @@
 	
                 </div>
 	</div>
-    <div class="col-md-3">
-   <%--  	<jsp:include page="./chat.jsp">
-    		<jsp:param value="${tokenNum }" name=""/>
-    	</jsp:include> --%>
+    <div class="col-md-3 button-css">
+
+    	
+    	<div class="share">
+  <i class="fa fa-plus"></i>
+	</div>
+	  <div class="one">
+	   <i class="fas fa-video"></i>
+	  </div>
+	  <div class="two">
+	    <i class="fa fa-twitter"></i>
+	  </div>
+	  <div class="three">
+	    <i class="fa fa-instagram"></i>
+	  </div>
 		</div>
 		 </div>	
 	
@@ -392,50 +317,13 @@
   <script src="../js/bootstrap-datepicker.js"></script>
   <script src="../js/jquery.timepicker.min.js"></script>
   <script src="../js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="../js/google-map.js"></script>
+<!--   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
+<!--   <script src="../js/google-map.js"></script> -->
   <script src="../js/main.js"></script>
   <script src="../custom/mindTalk.js"></script>
-    	<jsp:include page="../footer.jsp"></jsp:include>
+
+
   </body>
 </html>
 
 
-<!-- 
- <c:forEach items="${talk.talkReview}" var="review" varStatus="status">
-                   	
-	                    <div class="card-body"  style="margin-left:${review.tkClass * 5}%">
-					        <div class="row" style="margin-left:10px">        	 
-		                            <div class="d-flex justify-content-between align-items-center" >
-		                                <div class="mr-2">
-		                                    <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
-		                                </div>
-		                                <div class="ml-2">
-		                                    <div class="inline-div " style="width=100%">
-		                                    	<div class=" text-bk">
-		                                    		<p><strong>${review.customer.customerName }</strong>		<span>시간</span></p>
-		                                    	</div>
-		                                    	<div class="h7 text-muted">
-		                                    		<p>${review.talkReviewCon }</p>
-		                                    	</div>
-		                                    	<div class="">
-							                       <span class="btn btn-primary">🤍  힘내요</span>  <span>0</span>
-							                       <span class="btn btn-primary cheerUPBtn2">🗨  응원</span>	
-							                       <input type="hidden" class="tkClass" value="${review.tkClass}">	
-							                        <input type="hidden" class="groupNum" value="${review.groupNum}">
-							                         <input type="hidden" class="talkReviewNum" value="${review.talkReviewNum}">
-							                         <c:if test="${ tokenNum eq talk.customer.customerNum }">
-							                          <span class="btn btn-primary deleteReviewBtn">❌삭제 </span>	
-							                         </c:if>				                       
-							                    </div>
-							                    <div class="insert-group-area"></div>		                                    
-		                                    </div>      
-		                                </div>
-		                                
-	                            	</div>
-				       			 </div>
-				       		</div> 
-				       		 	</c:forEach>
-
-
- -->

@@ -72,11 +72,17 @@ import com.mind.project.repository.TalkReviewRepository;
 	  
 	  public Page<MindTalk> getTalksList(Pageable pageable){
 		 Page<MindTalk> talkList =talkRep.findAllByOrderByTalkDateDesc(pageable);
-		
+	
 		  return talkList; 
 		  
 	  }
-
+	  public Page<MindTalk> getTalksListA(int lastNum){
+			
+			 Pageable pageable = PageRequest.of(0,5, Sort.by("talkNum").descending());
+			 Page<MindTalk> talkList =talkRep.findByTalkNumLessThanOrderByTalkDateDesc(pageable,lastNum);
+			  return talkList; 
+			  
+		  }
 	  public void insertTalk(MindTalk talk,MultipartHttpServletRequest MHSR)throws Exception{
 		  MindTalk a=talkRep.save(talk);
 		  System.out.println("insert 반환" + a.getTalkNum());

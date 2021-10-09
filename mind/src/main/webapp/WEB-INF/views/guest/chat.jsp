@@ -12,7 +12,29 @@
 		 <link rel="stylesheet" href="../custom/chat.css">
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
-		
+		   <link rel="stylesheet" href="../css/style.css">
+		     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/magnific-popup.css">
+
+    <link rel="stylesheet" href="../css/aos.css">
+
+    <link rel="stylesheet" href="../css/ionicons.min.css">
+
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="../css/flaticon.css">
+    <link rel="stylesheet" href="../css/icomoon.css">
+    <link rel="stylesheet" href="../css/style.css">
+		   
+		   
 		<script type="text/javascript">
 
 		var ws;
@@ -136,6 +158,23 @@
 	</head>
 	<!--Coded With Love By Mutiullah Samim-->
 	<body>
+	<jsp:include page="../navbar.jsp"></jsp:include>
+	
+	
+	
+	
+	    
+    <div class="hero-wrap hero-wrap-3" style="background-image: url(../images/banner_talktalk.jpg);" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container-fluid">
+        <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>마음톡톡</span></p>
+            <h1 class="mb-3 bread"  data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">마음톡톡</h1>
+          </div>
+        </div>
+      </div>
+    </div>
 	
 	<div class="container py-5 px-4">
   <!-- For demo purpose-->
@@ -292,6 +331,6 @@
 			</div>
 		</div>
 	</body> --%>
-
+<jsp:include page="../footer.jsp"></jsp:include>
 </html>
 
