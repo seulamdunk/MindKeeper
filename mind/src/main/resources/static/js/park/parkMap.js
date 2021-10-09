@@ -1,8 +1,4 @@
-var overlayOn = false, 
-    container = document.getElementById('container'),
-    mapWrapper = document.getElementById('mapWrapper'), 
-    mapContainer = document.getElementById('map'), 
-    rvContainer = document.getElementById('roadview'); 
+var mapContainer = document.getElementById('map');
 
 var mapCenter = new kakao.maps.LatLng(37.47908780531465, 126.87895238473779),
     mapOption = {
@@ -54,133 +50,8 @@ function displayMarker(locPosition) {
 }     
 //========================= 현재 접속위치 첫화면에 출력 (종료) ==============================
 
-
-//========================= 로드뷰 생성 (시작) ==============================
 // 지도 생성
 var map = new kakao.maps.Map(mapContainer, mapOption);
-
-// 로드뷰 생성
-var rv = new kakao.maps.Roadview(rvContainer); 
-
-// 좌표로부터 로드뷰 객체 생성
-var rvClient = new kakao.maps.RoadviewClient(); 
-
-kakao.maps.event.addListener(rv, 'position_changed', function() {
-
-    // 현재 로드뷰의 위치 좌표
-    var rvPosition = rv.getPosition();
-
-    map.setCenter(rvPosition);
-
-    if(overlayOn) {
-        marker.setPosition(rvPosition);
-    }
-});
-
-// 마커 이미지를 생성
-var markImage = new kakao.maps.MarkerImage(
-    'https://t1.daumcdn.net/localimg/localimages/07/2018/pc/roadview_minimap_wk_2018.png',
-    new kakao.maps.Size(26, 46),
-    {
-        spriteSize: new kakao.maps.Size(1666, 168),
-        spriteOrigin: new kakao.maps.Point(705, 114),
-        offset: new kakao.maps.Point(13, 46)
-    }
-);
-
-// 드래그가 가능한 마커를 생성
-var marker = new kakao.maps.Marker({
-    image : markImage,
-    position: mapCenter,
-    draggable: true
-});
-
-// 마커에 이벤트 등록
-kakao.maps.event.addListener(marker, 'dragend', function(mouseEvent) {
-
-    var position = marker.getPosition();
-    toggleRoadview(position);
-});
-
-//지도에 클릭 이벤트를 등록
-kakao.maps.event.addListener(map, 'click', function(mouseEvent){
-    
-    // 지도 위에 로드뷰 도로 오버레이가 추가된 상태가 아니면 클릭이벤트를 무시
-    if(!overlayOn) {
-        return;
-    }
-
-    var position = mouseEvent.latLng;
-    marker.setPosition(position);
-    toggleRoadview(position);
-});
-
-// 전달받은 좌표(position)에 로드뷰 설정 함수
-function toggleRoadview(position){
-    rvClient.getNearestPanoId(position, 50, function(panoId) {
-    	
-        if (panoId === null) {
-            toggleMapWrapper(true, position);
-        } else {
-         toggleMapWrapper(false, position);
-            rv.setPanoId(panoId, position);
-        }
-    });
-}
-
-// 지도를 감싸고 있는 div의 크기를 조정하는 함수
-function toggleMapWrapper(active, position) {
-    if (active) {
-        container.className = '';
-        map.relayout();
-        map.setCenter(position);
-    } else {
-
-        // 지도만 보여지고 있는 상태이면 지도의 너비가 50%가 되도록 class를 변경
-        if (container.className.indexOf('view_roadview') === -1) {
-            container.className = 'view_roadview';
-
-            map.relayout();
-            map.setCenter(position);
-        }
-    }
-}
-
-// 지도 위의 로드뷰 도로 오버레이를 추가,제거하는 함수
-function toggleOverlay(active) {
-    if (active) {
-        overlayOn = true;
-
-        map.addOverlayMapTypeId(kakao.maps.MapTypeId.ROADVIEW);
-        marker.setMap(map);
-        marker.setPosition(map.getCenter());
-        toggleRoadview(map.getCenter());
-    } else {
-        overlayOn = false;
-        map.removeOverlayMapTypeId(kakao.maps.MapTypeId.ROADVIEW);
-        marker.setMap(null);
-    }
-}
-
-// 지도 위의 로드뷰 버튼을 눌렀을 때 호출되는 함수
-function setRoadviewRoad() {
-    var control = document.getElementById('roadviewControl');
-    
-    if (control.className.indexOf('active') === -1) {
-        control.className = 'active';
-        toggleOverlay(true);
-    } else {
-        control.className = '';
-        toggleOverlay(false);
-    }
-}
-
-// 로드뷰에서 X버튼을 눌렀을 때 로드뷰를 지도 뒤로 숨기는 함수
-function closeRoadview() {
-    var position = marker.getPosition();
-    toggleMapWrapper(true, position);
-}
-//========================= 로드뷰 생성 (종료) ==============================
 
 //지도,스카이뷰 컨트롤러
 var mapTypeControl = new kakao.maps.MapTypeControl();
@@ -191,7 +62,8 @@ var zoomControl = new kakao.maps.ZoomControl();
 map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
 //========================= DB에 저장된 park 마커표시 (시작) ==============================
-
+/*function pageload(page)
+if ap*/
 $.ajax({
     	url:"/parkRequest",
     	type:"post",
@@ -226,25 +98,19 @@ $.ajax({
     			//*********************html 목록 출력 시작***********************
     			var html = "";
     			
-     		    html = '<div class="wrap">';
-     		    html += '<div style="font-weight: bold;" id="parkName">' + parkData[i]["parkName"] + '</div>';
-     		    html += '<div>';
-     		    html += '<img class="parkScoreImg" src="../img/parkImg/parkScoreImg.png" alt="평점 이미지" width="18" height="18">' + parkData[i]["parkScore"] + ' ,';
-     		    html += '후기 : <span id="parkScoreLink" src="' + parkData[i]["parkScoreLink"] + '" style="color:#007bff;">' + parkData[i]["parkScoreCnt"] + '</span> ,';
-     		    html += '리뷰 : <span id="parkReviewLink" src="' + parkData[i]["parkReviewLink"] + '" style="color:#007bff;">' + parkData[i]["parkReview"] + '</span>';
-     		    html += '</div>';
-     		    html += '<div>' + parkData[i]["parkAddr"] + '</div>';
-     		    html += '<div><span id="parkLink" src="' + parkData[i]["parkLink"] + '" style="color:#007bff;">상세보기 ></span></div>';
-     		    html += '</div>';
-     		    html += '<hr>';
-
+    			html = '<tr>'
+     		    html += '<td style="font-weight:bold;width:250px;" id="parkName">' + parkData[i]["parkName"] + '</td>';
+     		    html += '<td style="width:600px;">' + parkData[i]["parkAddr"] + '</td>';
+     		    html += '<td><img class="parkScoreImg" src="../img/parkImg/parkScoreImg.png" alt="평점 이미지" width="18" height="18"> ' + parkData[i]["parkScore"] + '</td>';
+     		    html += '<td><a id="parkScoreLink" href="' + parkData[i]["parkScoreLink"] + '" target="_blank">' + parkData[i]["parkScoreCnt"] + '</a></td>';
+     		    html += '<td><a id="parkReviewLink" href="' + parkData[i]["parkReviewLink"] + '" target="_blank">' + parkData[i]["parkReview"] + '</a></td>';
+     		    html += '<td><a id="parkLink" href="' + parkData[i]["parkLink"] + '">상세보기 ></a></td>';
+    			html += '</tr>'
+    				
      		    $("#parkList").append(html);
     			//*********************html 목록 출력 종료***********************
      		    
      		    $("#parkList #parkName").css({"cursor":"pointer"});
-     		    $("#parkList #parkScoreLink").css({"cursor":"pointer"});
-     		    $("#parkList #parkReviewLink").css({"cursor":"pointer"});
-     		    $("#parkList #parkLink").css({"cursor":"pointer","fontWeight":"bold"});
      		    
     			// 마커 이미지 생성
     			var imageSrc = "../img/parkImg/running.png"; 
@@ -273,11 +139,11 @@ $.ajax({
                 '            <div class="desc" style="font-size:0.8em;">' + 
                 '                <div class="ellipsis">' + 
                 '					<img class="parkScoreImg" src="../img/parkImg/parkScoreImg.png" alt="평점 이미지" width="18" height="18">' + parkData[i]["parkScore"] +
-                '					 , 후기 : <span id="parkScoreLink" style="color:#007bff;">' + parkData[i]["parkScoreCnt"] + '</span>' + 
-                '					 , 리뷰 : <span id="parkReviewLink" style="color:#007bff;">' + parkData[i]["parkReview"] + '</span>' + 
+                '					 , 후기 : <a href="' + parkData[i]["parkScoreLink"] +'" id="parkScoreLink" target="_blank">' + parkData[i]["parkScoreCnt"] + '</a>' + 
+                '					 , 리뷰 : <a href="' + parkData[i]["parkReviewLink"] +'" id="parkReviewLink" target="_blank">' + parkData[i]["parkReview"] + '</a>' + 
                 '			 	 </div>' + 
                 '                <div class="ellipsis">' + parkData[i]["parkAddr"] + '</div>' + 
-                '                <div><span id="parkLink" style="color:#007bff;">상세보기 ></span></div>' + 
+                '                <div><a href="'+ parkData[i]["parkLink"] +'" id="parkLink" target="_blank">상세보기 ></a></div>' + 
                 '            </div>' + 
                 '        </div>' + 
                 '    </div>' +    
@@ -303,7 +169,7 @@ $.ajax({
 	
     	    } // end of for
     		
-   			//************ 후기,리뷰,상세보기 클릭시 iframe 출력 시작 *************
+   			//************ 공원이름 클릭시 위치, 인포윈도우 생성(시작) *************
     		// 공원이름
     		$("#parkList #parkName").click(function(){
     			//alert($(this).text());
@@ -350,11 +216,11 @@ $.ajax({
 	                '            <div class="desc" style="font-size:0.8em;">' + 
 	                '                <div class="ellipsis">' + 
 	                '					<img class="parkScoreImg" src="../img/parkImg/parkScoreImg.png" alt="평점 이미지" width="18" height="18">' + parkData[y]["parkScore"] +
-	                '					 , 후기 : <span id="parkScoreLink" style="color:#007bff;">' + parkData[y]["parkScoreCnt"] + '</span>' + 
-	                '					 , 리뷰 : <span id="parkReviewLink" style="color:#007bff;">' + parkData[y]["parkReview"] + '</span>' + 
+	                '					 , 후기 : <a href="' + parkData[y]["parkScoreLink"] +'" id="parkScoreLink" target="_blank">' + parkData[y]["parkScoreCnt"] + '</a>' + 
+	                '					 , 리뷰 : <a href="' + parkData[y]["parkReviewLink"] +'" id="parkReviewLink" target="_blank">' + parkData[y]["parkReview"] + '</a>' + 
 	                '			 	 </div>' + 
 	                '                <div class="ellipsis">' + parkData[y]["parkAddr"] + '</div>' + 
-	                '                <div><span id="parkLink" style="color:#007bff;">상세보기 ></span></div>' + 
+	                '                <div><a href="'+ parkData[y]["parkLink"] +'" id="parkLink" target="_blank">상세보기 ></a></div>' + 
 	                '            </div>' + 
 	                '        </div>' + 
 	                '    </div>' +    
@@ -371,29 +237,8 @@ $.ajax({
 					} // end of if
 				 } // end of for
  			}) // end of 공원이름
- 			
-        	// 후기
-    		$("#parkList #parkScoreLink").click(function(){
-    			// 공원 후기링크
- 		    	var parkScoreLink = $(this).attr("src");
- 		    	//alert(parkScoreLink);
-	 			$("#iframeUrl").attr('src',parkScoreLink);
- 			}) // end of 후기
-    			
-    		// 리뷰
-    		$("#parkList #parkReviewLink").click(function(){
-    			// 공원 리뷰
- 		    	var parkReviewLink = $(this).attr("src");
-	 			$("#iframeUrl").attr('src',parkReviewLink);
-    		}) // end of 리뷰
-    			
-    		//상세보기
-    		$("#parkList #parkLink").click(function(){
-    			// 공원 상세보기
- 		    	var parkLink = $(this).attr("src");
-	 			$("#iframeUrl").attr('src',parkLink);
-    		}) // end of 상세보기
-    		//************ 후기,리뷰,상세보기 클릭시 iframe 출력 종료 *************
+
+    		//************ 공원이름 클릭시 위치, 인포윈도우 생성(종료) *************
     		
     } // end of function(parkData)
     		
@@ -405,135 +250,16 @@ $.ajax({
 //****************************************키워드 검색 후 마커와 리스트 출력***************************************************************
 function getKeyword(){
     
-var overlayOn = false,
-container = document.getElementById('container'),
-mapWrapper = document.getElementById('mapWrapper'),
-mapContainer = document.getElementById('map'),
-rvContainer = document.getElementById('roadview');
+var mapContainer = document.getElementById('map');
 
 var mapCenter = new kakao.maps.LatLng(37.47908780531465, 126.87895238473779),
-    mapOption = {
-        center: mapCenter,
-        level: 5
-    };
+	mapOption = {
+	    center: mapCenter, // 지도의 중심좌표
+	    level: 5 // 지도의 확대 레벨
+	};
 
 var map = new kakao.maps.Map(mapContainer, mapOption);
-var rv = new kakao.maps.Roadview(rvContainer); 
-var rvClient = new kakao.maps.RoadviewClient(); 
 
-kakao.maps.event.addListener(rv, 'position_changed', function() {
-
- var rvPosition = rv.getPosition();
- map.setCenter(rvPosition);
-
- if(overlayOn) {
-     marker.setPosition(rvPosition);
- }
-});
-
-//마커 이미지를 생성
-var markImage = new kakao.maps.MarkerImage(
- 'https://t1.daumcdn.net/localimg/localimages/07/2018/pc/roadview_minimap_wk_2018.png',
- new kakao.maps.Size(26, 46),
- {
-     spriteSize: new kakao.maps.Size(1666, 168),
-     spriteOrigin: new kakao.maps.Point(705, 114),
-     offset: new kakao.maps.Point(13, 46)
- }
-);
-
-//드래그가 가능한 마커를 생성
-var marker = new kakao.maps.Marker({
- image : markImage,
- position: mapCenter,
- draggable: true
-});
-
-//마커에 이벤트 등록
-kakao.maps.event.addListener(marker, 'dragend', function(mouseEvent) {
-
- var position = marker.getPosition();
- toggleRoadview(position);
-});
-
-//지도에 클릭 이벤트를 등록
-kakao.maps.event.addListener(map, 'click', function(mouseEvent){
- 
- if(!overlayOn) {
-     return;
- }
-
- var position = mouseEvent.latLng;
- marker.setPosition(position);
- toggleRoadview(position);
-});
-
-//전달받은 좌표(position)에 로드뷰 설정 함수
-function toggleRoadview(position){
- rvClient.getNearestPanoId(position, 50, function(panoId) {
- 	
-     if (panoId === null) {
-         toggleMapWrapper(true, position);
-     } else {
-      toggleMapWrapper(false, position);
-         rv.setPanoId(panoId, position);
-     }
- });
-}
-
-//지도를 감싸고 있는 div의 크기를 조정하는 함수
-function toggleMapWrapper(active, position) {
- if (active) {
-     container.className = '';
-     map.relayout();
-     map.setCenter(position);
- } else {
-
-     // 지도만 보여지고 있는 상태이면 지도의 너비가 50%가 되도록 class를 변경
-     if (container.className.indexOf('view_roadview') === -1) {
-         container.className = 'view_roadview';
-
-         map.relayout();
-         map.setCenter(position);
-     }
- }
-}
-
-//지도 위의 로드뷰 도로 오버레이를 추가,제거하는 함수
-function toggleOverlay(active) {
- if (active) {
-     overlayOn = true;
-
-     map.addOverlayMapTypeId(kakao.maps.MapTypeId.ROADVIEW);
-     marker.setMap(map);
-     marker.setPosition(map.getCenter());
-     toggleRoadview(map.getCenter());
- } else {
-     overlayOn = false;
-     map.removeOverlayMapTypeId(kakao.maps.MapTypeId.ROADVIEW);
-     marker.setMap(null);
- }
-}
-
-//지도 위의 로드뷰 버튼을 눌렀을 때 호출되는 함수
-function setRoadviewRoad() {
- var control = document.getElementById('roadviewControl');
- 
- if (control.className.indexOf('active') === -1) {
-     control.className = 'active';
-     toggleOverlay(true);
- } else {
-     control.className = '';
-     toggleOverlay(false);
- }
-}
-
-//로드뷰에서 X버튼을 눌렀을 때 로드뷰를 지도 뒤로 숨기는 함수
-function closeRoadview() {
- var position = marker.getPosition();
- toggleMapWrapper(true, position);
-}
-//========================= 로드뷰 생성 (종료) ==============================
 //지도,스카이뷰 컨트롤러
 var mapTypeControl = new kakao.maps.MapTypeControl();
 map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
@@ -574,25 +300,19 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
     			//*********************html 목록 출력 시작***********************
     			var html = "";
     			
-    			html = '<div class="wrap">';
-     		    html += '<div style="font-weight: bold;" id="parkName">' + keywordList[z]["parkName"] + '</div>';
-     		    html += '<div>';
-     		    html += '<img class="parkScoreImg" src="../img/parkImg/parkScoreImg.png" alt="평점 이미지" width="18" height="18">' + keywordList[z]["parkScore"] + ' ,';
-     		    html += '후기 : <span id="parkScoreLink" src="' + keywordList[z]["parkScoreLink"] + '" style="color:#007bff;">' + keywordList[z]["parkScoreCnt"] + '</span> ,';
-     		    html += '리뷰 : <span id="parkReviewLink" src="' + keywordList[z]["parkReviewLink"] + '" style="color:#007bff;">' + keywordList[z]["parkReview"] + '</span>';
-     		    html += '</div>';
-     		    html += '<div>' + keywordList[z]["parkAddr"] + '</div>';
-     		    html += '<div><span id="parkLink" src="' + keywordList[z]["parkLink"] + '" style="color:#007bff;">상세보기 ></span></div>';
-     		    html += '</div>';
-     		    html += '<hr>';
+    			html = '<tr>'
+         		html += '<td style="font-weight: bold;" id="parkName">' + keywordList[z]["parkName"] + '</td>';
+         		html += '<td>' + keywordList[z]["parkAddr"] + '</td>';
+         		html += '<td><img class="parkScoreImg" src="../img/parkImg/parkScoreImg.png" alt="평점 이미지" width="18" height="18"> ' + keywordList[z]["parkScore"] + '</td>';
+         		html += '<td><a id="parkScoreLink" href="' + keywordList[z]["parkScoreLink"] + '" target="_blank">' + keywordList[z]["parkScoreCnt"] + '</a></td>';
+         		html += '<td><a id="parkReviewLink" href="' + keywordList[z]["parkReviewLink"] + '" target="_blank">' + keywordList[z]["parkReview"] + '</a></td>';
+         		html += '<td><a id="parkLink" href="' + keywordList[z]["parkLink"] + '" target="_blank">상세보기 ></a></td>';
+        		html += '</tr>'
 
      		    $("#parkList").append(html);
     			//*********************html 목록 출력 종료***********************
 
      		    $("#parkList #parkName").css({"cursor":"pointer"});
-     		    $("#parkList #parkScoreLink").css({"cursor":"pointer"});
-     		    $("#parkList #parkReviewLink").css({"cursor":"pointer"});
-     		    $("#parkList #parkLink").css({"cursor":"pointer","fontWeight":"bold"});
      		    
     			// 마커 이미지 생성
     			var imageSrc = "../img/parkImg/running.png"; 
@@ -621,11 +341,11 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
                 '            <div class="desc" style="font-size:0.8em;">' + 
                 '                <div class="ellipsis">' + 
                 '					<img class="parkScoreImg" src="../img/parkImg/parkScoreImg.png" alt="평점 이미지" width="18" height="18">' + keywordList[z]["parkScore"] +
-                '					 , 후기 : <span id="parkScoreLink" style="color:#007bff;">' + keywordList[z]["parkScoreCnt"] + '</span>' + 
-                '					 , 리뷰 : <span id="parkReviewLink" style="color:#007bff;">' + keywordList[z]["parkReview"] + '</span>' + 
+                '					 , 후기 : <a href="' + keywordList[z]["parkScoreLink"] +'" id="parkScoreLink" target="_blank">' + keywordList[z]["parkScoreCnt"] + '</a>' + 
+                '					 , 리뷰 : <a href="' + keywordList[z]["parkReviewLink"] +'" id="parkReviewLink" target="_blank">' + keywordList[z]["parkReview"] + '</a>' + 
                 '			 	 </div>' + 
                 '                <div class="ellipsis">' + keywordList[z]["parkAddr"] + '</div>' + 
-                '                <div><span id="parkLink" style="color:#007bff;">상세보기 ></span></div>' + 
+                '                <div><a href="'+ keywordList[z]["parkLink"] +'" id="parkLink" target="_blank">상세보기 ></a></div>' + 
                 '            </div>' + 
                 '        </div>' + 
                 '    </div>' +    
@@ -651,10 +371,10 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
         	} // end of for
     		
     		// 키워드 입력한 값들 중 10번째 마커의 위치로 이동
-    		var moveLatLng = new kakao.maps.LatLng(keywordList[10]["parkLat"],keywordList[10]["parkLng"]);   
+    		var moveLatLng = new kakao.maps.LatLng(keywordList[0]["parkLat"],keywordList[0]["parkLng"]);   
     		map.panTo(moveLatLng);
     		
-    		//************ 후기,리뷰,상세보기 클릭시 iframe 출력 시작 *************
+    		//************ 공원이름 클릭시 위치, 인포윈도우 생성(시작) *************
     		// 공원이름
     		$("#parkList #parkName").click(function(){
     			//alert($(this).text());
@@ -699,11 +419,11 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 	                '            <div class="desc" style="font-size:0.8em;">' + 
 	                '                <div class="ellipsis">' + 
 	                '					<img class="parkScoreImg" src="../img/parkImg/parkScoreImg.png" alt="평점 이미지" width="18" height="18">' + keywordList[y]["parkScore"] +
-	                '					 , 후기 : <span id="parkScoreLink" style="color:#007bff;">' + keywordList[y]["parkScoreCnt"] + '</span>' + 
-	                '					 , 리뷰 : <span id="parkReviewLink" style="color:#007bff;">' + keywordList[y]["parkReview"] + '</span>' + 
+	                '					 , 후기 : <a href="' + keywordList[y]["parkScoreLink"] +'" id="parkScoreLink" target="_blank">' + keywordList[y]["parkScoreCnt"] + '</a>' + 
+	                '					 , 리뷰 : <a href="' + keywordList[y]["parkReviewLink"] +'" id="parkReviewLink" target="_blank">' + keywordList[y]["parkReview"] + '</a>' + 
 	                '			 	 </div>' + 
 	                '                <div class="ellipsis">' + keywordList[y]["parkAddr"] + '</div>' + 
-	                '                <div><span id="parkLink" style="color:#007bff;">상세보기 ></span></div>' + 
+	                '                <div><a href="'+ keywordList[y]["parkLink"] +'" id="parkLink" target="_blank">상세보기 ></a></div>' + 
 	                '            </div>' + 
 	                '        </div>' + 
 	                '    </div>' +    
@@ -718,33 +438,13 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 					} // end of if
 				 } // end of for
  			}) // end of 공원이름
- 			
-        	// 후기
-    		$("#parkList #parkScoreLink").click(function(){
-    			// 공원 후기링크
- 		    	var parkScoreLink = $(this).attr("src");
- 		    	//alert(parkScoreLink);
-	 			$("#iframeUrl").attr('src',parkScoreLink);
- 			}) // end of 후기
-    			
-    		// 리뷰
-    		$("#parkList #parkReviewLink").click(function(){
-    			// 공원 리뷰
- 		    	var parkReviewLink = $(this).attr("src");
-	 			$("#iframeUrl").attr('src',parkReviewLink);
-    		}) // end of 리뷰
-    			
-    		//상세보기
-    		$("#parkList #parkLink").click(function(){
-    			// 공원 상세보기
- 		    	var parkLink = $(this).attr("src");
-	 			$("#iframeUrl").attr('src',parkLink);
-    		}) // end of 상세보기
-    		//************ 후기,리뷰,상세보기 클릭시 iframe 출력 종료 *************
+    		//************ 공원이름 클릭시 위치, 인포윈도우 생성(종료) *************
     		
-    	} // end of function(parkSearchData)
-    		
+    	}, // end of function(parkSearchData)
+    	error:function(request,status,error){
+            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+           }
 	}) // end of ajax
 	
-//========================= 키워드와 관련된 값을 마커와 목록 출력(시작) ==============================
 } // end of getKeyword()
+//========================= 키워드와 관련된 값을 마커와 목록 출력(종료) ==============================
