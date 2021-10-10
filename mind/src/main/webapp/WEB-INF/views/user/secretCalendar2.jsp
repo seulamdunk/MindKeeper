@@ -192,14 +192,14 @@
 												
 												
 												
-												<!-- 날짜 for each문 *************************************************************** -->
-												<tr>
+												<!-- 날짜 for each문 11~17 *************************************************************** -->
+<%-- 												<tr>
 												<c:forEach items="${calendar }" var="calendar" varStatus="loop" begin="7" end="13" step="1">
 												
 												<c:choose>
 													<c:when test="${calendar.jindanConNum > 85}">
 													<td class="day past calendar-day-'${calendar.secretDate }'">
-													<div style="background-color: #4527A0;">
+													<div style="background-color: #fbc02d;">
 													<div class="day-contents" id="${calendar.jindanConNum}">${fn:substring(calendar.secretDate,8,10)+0}</div>
 													</div>
 													</td>
@@ -207,7 +207,7 @@
 													
 													<c:when test="${calendar.jindanConNum > 70}">
 													<td class="day past calendar-day-'${calendar.secretDate }'">
-													<div style="background-color: #512DA8;">
+													<div style="background-color: #fdd835;">
 													<div class="day-contents" id="${calendar.jindanConNum}">${fn:substring(calendar.secretDate,8,10)+0}</div>
 													</div>
 													</td>
@@ -215,7 +215,7 @@
 													
 													<c:when test="${calendar.jindanConNum > 55}">
 													<td class="day past calendar-day-'${calendar.secretDate }'">
-													<div style="background-color: #5e35b1;">
+													<div style="background-color: #ffeb3b;">
 													<div class="day-contents" id="${calendar.jindanConNum}">${fn:substring(calendar.secretDate,8,10)+0}</div>
 													</div>
 													</td>
@@ -223,7 +223,7 @@
 													
 													<c:when test="${calendar.jindanConNum > 40}">
 													<td class="day past calendar-day-'${calendar.secretDate }'">
-													<div style="background-color: #673AB7;">
+													<div style="background-color: #ffee58;">
 													<div class="day-contents" id="${calendar.jindanConNum}">${fn:substring(calendar.secretDate,8,10)+0}</div>
 													</div>
 													</td>
@@ -239,19 +239,67 @@
 													
 												
 												</c:choose>
-												
-												<c:if test="${loop.last }">
-													<c:forEach var="i" begin="1" end="4" step="1">
-													<td class="day past calendar-day">
-													<div class="day-contents">${fn:substring(calendar.secretDate,8,10) + i}</div>
-													</td>
-													</c:forEach>
-													</c:if>
-													
+																								
 													
 												</c:forEach>
+												</tr> --%>
+												<!-- end of 날짜 for each문 *************************************************************** -->
+												
+												
+												
+												<tr>
+													<td class="day past calendar-day-2015-09-04">
+													<div id="day_4"><div class="day-contents">11</div></div></td>
+													<td class="day past calendar-day-2015-09-05"><div
+															class="day-contents" id="day">12</div></td>
+															<td class="day past calendar-day-2015-09-04">
+													<div id="day_4"><div class="day-contents">13</div></div></td>
+													<td class="day past calendar-day-2015-09-05"><div
+															class="day-contents" id="day">14</div></td>
+															<td class="day past calendar-day-2015-09-04">
+													<div id="day_4"><div class="day-contents">15</div></div></td>
+													<td class="day past calendar-day-2015-09-05"><div
+															class="day-contents" id="day">16</div></td>
+															<td class="day past calendar-day-2015-09-04">
+													<div id="day_4"><div class="day-contents">17</div></div></td>
 												</tr>
-												<!-- 날짜 for each문 *************************************************************** -->
+												
+												
+												
+												<tr>
+													<td class="day past calendar-day-2015-09-04">
+													<div id="day_4"><div class="day-contents">18</div></div></td>
+													<td class="day past calendar-day-2015-09-05"><div
+															class="day-contents" id="day">19</div></td>
+															<td class="day past calendar-day-2015-09-04">
+													<div id="day_4"><div class="day-contents">20</div></div></td>
+													<td class="day past calendar-day-2015-09-05"><div
+															class="day-contents" id="day">21</div></td>
+															<td class="day past calendar-day-2015-09-04">
+													<div id="day_4"><div class="day-contents">22</div></div></td>
+													<td class="day past calendar-day-2015-09-05"><div
+															class="day-contents" id="day">23</div></td>
+															<td class="day past calendar-day-2015-09-04">
+													<div id="day_4"><div class="day-contents">24</div></div></td>
+												</tr>
+												
+												
+												<tr>
+													<td class="day past calendar-day-2015-09-04">
+													<div id="day_4"><div class="day-contents">25</div></div></td>
+													<td class="day past calendar-day-2015-09-05"><div
+															class="day-contents" id="day">26</div></td>
+															<td class="day past calendar-day-2015-09-04">
+													<div id="day_4"><div class="day-contents">27</div></div></td>
+													<td class="day past calendar-day-2015-09-05"><div
+															class="day-contents" id="day">28</div></td>
+															<td class="day past calendar-day-2015-09-04">
+													<div id="day_4"><div class="day-contents">29</div></div></td>
+													<td class="day past calendar-day-2015-09-05"><div
+															class="day-contents" id="day">30</div></td>
+															<td class="day past calendar-day-2015-09-04">
+													<div id="day_4"><div class="day-contents">31</div></div></td>
+												</tr>
 										
 											</tbody>
 										</table>
@@ -407,7 +455,6 @@
 
 
 
-<jsp:include page="myPage-footer.jsp"></jsp:include>
 		</div>
 		<!-- end of colorlib-main -->
 

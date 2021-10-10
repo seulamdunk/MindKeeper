@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>   
 <!DOCTYPE html>
 <html>
 <head>
-<title>Elen - Free Bootstrap 4 Template by Colorlib</title>
+<title>마음지킴이</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -68,7 +69,6 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="blog-entry ftco-animate">
-										<span class="category mb-1 d-block"><a href="#">Technology</a></span>
 										<h3 class="mb-4">
 											<a href="#">${secretModel.secretTitle }</a>
 										</h3>
@@ -89,7 +89,7 @@
 											<div class="author mb-4 d-flex align-items-center">
 												<div class="ml-3 info">
 													<h3>
-														<span id="secretDate">${secretModel.secretDate }</span>
+														<span id="secretDate">${fn:substring(secretModel.secretDate,0,10)}</span>
 													</h3>
 												</div>
 											</div>
@@ -133,8 +133,6 @@
 		<div class="container">
 			<div class="section-title aos-init aos-animate" data-aos="fade-up">
 				<h2>${user.customerName }님을 위한 추천영상</h2>
-				<p>Magnam dolores commodi suscipit eius consequatur ex aliquid
-					fuga eum quidem</p>
 			</div>
 			<div class="row">
 			

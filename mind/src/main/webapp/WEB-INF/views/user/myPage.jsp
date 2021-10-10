@@ -95,7 +95,7 @@
 						<span class="tit_test">${user.customerName }님의 마음지수</span><span class="txt_score"><em>${jindanTotal}</em>점</span><a
 							data-tiara-layer="hellotrend my_hello"
 							data-tiara-action-name="필수테스트_보기_클릭" class="link_view"
-							href="/hello/essential">안녕지수 자세히보기 &gt;</a>
+							href="/hello/essential">마음지수 자세히보기 &gt;</a>
 					</div>
 				</div>
 				<div class="group_compare">
@@ -108,8 +108,7 @@
 							<div class="info_compare my_compare" style='left:${jindanTotal}%;'>
 								<div class="indicate_point">
 									<div class="name_info" style="left: 0px;">
-										<a class="link_my"><span class="txt_compare">나의
-												점수는?</span></a>
+										<a class="link_my"><span class="txt_compare">${jindanTotal}</span></a>
 									</div>
 									<!---->
 									<!---->
@@ -200,17 +199,21 @@
 							<h3 _ngcontent-hal-c185="" class="my_tit">좋아요</h3>
 							
 							<!-- 좋아요 목록 ******************************************************************* -->
-							<!-- 
+							<!--  
 							<div _ngcontent-hal-c185="" class="heart_artwrap">
 								<h4 _ngcontent-hal-c185="" class="h_tit">Products</h4>
 								<ul _ngcontent-hal-c185="" class="heart_lst ng-star-inserted">
+								
+								<c:forEach items="${likeMind }" var="likeMind" varStatus="loop">
 									<li _ngcontent-hal-c185="" class="ng-star-inserted"><a
 										_ngcontent-hal-c185="" href="/product/682991">
-											<div _ngcontent-hal-c185="" class="imgbx"></div> <strong
-											_ngcontent-hal-c185="" class="info"></strong>
-											<p _ngcontent-hal-c185="" class="txt">Unbal linen
-												cardigan (skyblue)</p>
+											<div _ngcontent-hal-c185="" class="imgbx"></div>
+											<strong ngcontent-hal-c185="" class="info"></strong>
+											<p _ngcontent-hal-c185="" class="txt">${likeMind.talk_con }</p>
 									</a></li>
+									</c:forEach>
+									
+									
 									<li _ngcontent-hal-c185="" class="ng-star-inserted"><a
 										_ngcontent-hal-c185="" href="/product/684374">
 											<div _ngcontent-hal-c185="" class="imgbx"></div> <strong
@@ -413,8 +416,6 @@
 				</div>
 			</section>
 			<!-- end of 비밀일기 -->
-
-			<jsp:include page="myPage-footer.jsp"></jsp:include>
 
 		</div>
 		<!-- END COLORLIB-MAIN -->

@@ -6,7 +6,6 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -26,11 +25,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mind.project.config.security.JwtTokenProvider;
 import com.mind.project.model.Customer;
+import com.mind.project.model.MindTalk;
 import com.mind.project.model.SecretModel;
 import com.mind.project.model.Youtube;
 import com.mind.project.repository.CustomerRepository;
 import com.mind.project.service.CommonService;
-import com.mind.project.service.MindGrowService;
+import com.mind.project.service.MindTalkService;
 import com.mind.project.service.SecretService;
 
 import lombok.RequiredArgsConstructor;
@@ -49,6 +49,8 @@ public class SecretController {
 	private final JwtTokenProvider jwtTokenProvider;
 	@Autowired
 	private final CustomerRepository customerRep;
+	@Autowired
+	private final MindTalkService mindTalkService;
 
 	// 마이페이지
 	@RequestMapping(value = "/myPage")
@@ -82,6 +84,10 @@ public class SecretController {
 		
 		//String jindanTotal = Long.toString(jindanConNumTotal/secretModelList.size());
 		
+		// 좋아요 누른 게시글 가져오기 =======================================================
+		//MindTalk mindTalk = secretService.likeMindTalk(customer.getCustomerNum());
+		//model.addAttribute("likeMind", mindTalk);
+		
 		// 글목록 불러오기
 		List<SecretModel> mypageList = secretService.getSecretList(Long.parseLong(String.valueOf(customer.getCustomerNum())));
 		
@@ -106,11 +112,6 @@ public class SecretController {
 	@PostMapping("/saveDiary")
 	@ResponseBody
 	public Long save(@RequestBody SecretModel secretModel, HttpServletRequest request, Model model) {
-		// System.out.println("a 확인==================>" + a);
-		// return secretService.save(secretModel);
-
-		System.out.println("콘솔확인================>" + secretModel.getSecretCon());
-		System.out.println("custoemrNum 콘솔확인================>" + secretModel.getCustomerNum());
 
 		// 소켓통신 시작
 		try (Socket client = new Socket()) {
@@ -148,12 +149,6 @@ public class SecretController {
 				// byte형식의 데이터를 string형식으로 변환한다.
 				msg = new String(data, "UTF-8");
 				// ex) 이 msg는 ~확률로 무엇입니다. 가 저장되어 있다
-
-				// 콘솔에 출력한다.
-				// model.addObject("result", msg);
-				System.out.println("콘솔 결과 확인=========================>" + msg);
-				System.out.println("콘솔 결과 확인----------------->" + msg.substring(0, 2));
-				System.out.println("콘솔 결과 확인2----------------->" + msg.substring(3, 5));
 
 				secretModel.setJindanCon(msg.substring(0, 2));
 				secretModel.setJindanConNum(Long.parseLong(msg.substring(3, 5)));
@@ -209,35 +204,6 @@ public class SecretController {
 	
 	
 	// 캘린더
-	/*
-	@RequestMapping(value="/secretCalendar" , method={RequestMethod.POST})
-	@ResponseBody
-	public Map<String,Object> secretCalendar(@RequestBody String secretDate, HttpServletRequest request) {
-		
-		Map<String, Object> map = new HashMap<>();
-		map.put("user", commonService.tokenCustomer(request));
-		
-		System.out.println("날짜확인=========>"+ secretDate);
-		
-		// 날짜 "" 자르기
-		String secretDate2 = secretDate.substring(1, secretDate.length()-1);
-		System.out.println("날짜확인2=========>"+ secretDate2);
-		
-		// 날짜 포맷 변경
-		LocalDateTime secretDate3 = LocalDateTime.parse(secretDate2, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-		System.out.println("날짜확인3=========>"+ secretDate3);
-		
-		SecretModel secretCalendar = secretService.secretCalendar(secretDate3);
-		//System.out.println("날짜확인=========>"+ secretDate2);
-		
-		map.put("secretCalendar", secretCalendar);
-		System.out.println("값확인3=========>" + secretCalendar.getJindanCon());
-		
-		return map;
-	}
-	*/
-	
-	// 캘린더
 	@RequestMapping(value="/secretCalendar2")
 	@ResponseBody
 	public Model secretCalendar(Model model, HttpServletRequest request) {
@@ -253,7 +219,9 @@ public class SecretController {
 		
 		return model;
 	}
-
+	
+	
+	
 
 
 }

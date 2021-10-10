@@ -9,9 +9,11 @@ import javax.transaction.Transactional;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.mind.project.model.MindTalk;
 import com.mind.project.model.SecretModel;
 import com.mind.project.model.Youtube;
 import com.mind.project.model.entity.Secret;
+import com.mind.project.repository.MindTalkRepository;
 import com.mind.project.repository.SecretRepository;
 import com.mind.project.repository.YoutubeRepository;
 
@@ -24,6 +26,8 @@ public class SecretService {
 	private final SecretRepository secretRepository;
 	
 	private final YoutubeRepository youtubeRepository;
+	
+	private final MindTalkRepository mindTalkRepository;
 
 	@Transactional
 	public Long save(SecretModel secretModel) {
@@ -93,30 +97,6 @@ public class SecretService {
 
 		return secretModel;
 	}
-
-	
-	
-	/*
-	// 캘린더 리스트
-	@Transactional
-	public SecretModel secretCalendar(secret) {
-
-		Optional<Secret> secretWrapper = secretRepository.findBySecretDate(secretDate);
-		Secret secret = secretWrapper.get();
-
-		SecretModel secretCalendar = SecretModel.builder()
-				.customerNum(secret.getCustomerNum())
-				.secretNum(secret.getSecretNum())
-				.secretDate(secret.getSecretDate())
-				.secretCon(secret.getSecretCon())
-				.jindanCon(secret.getJindanCon())
-				.jindanConNum(secret.getJindanConNum())
-				.secretTitle(secret.getSecretTitle())
-				.build();
-		
-		return secretCalendar;
-	}
-	*/
 	
 	
 	// 진단값
@@ -145,5 +125,23 @@ public class SecretService {
 		List<Youtube> youtubeList = youtubeRepository.findAll();
 	return youtubeList;
 	}
+	
+	
+	// 좋아요 리스트
+	/*
+	@Transactional
+	public MindTalk likeMindTalk(int customerNum) {
+		Optional<MindTalk> mindTalkList = mindTalkRepository.findByCustomerNum(customerNum);
+		MindTalk mindTalk = mindTalkList.get();
+		
+		MindTalk mindtalk = MindTalk.builder()
+				.talkCon(mindTalk.getTalkCon())
+				.talkDate(mindTalk.getTalkDate())
+				.talkNum(mindTalk.getTalkNum())
+				.build();
+				
+		return mindtalk;
+	}
+	*/
 
 }
