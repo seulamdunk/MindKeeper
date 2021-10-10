@@ -10,8 +10,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.mind.project.model.SecretModel;
+import com.mind.project.model.Youtube;
 import com.mind.project.model.entity.Secret;
 import com.mind.project.repository.SecretRepository;
+import com.mind.project.repository.YoutubeRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,6 +22,8 @@ import lombok.RequiredArgsConstructor;
 public class SecretService {
 
 	private final SecretRepository secretRepository;
+	
+	private final YoutubeRepository youtubeRepository;
 
 	@Transactional
 	public Long save(SecretModel secretModel) {
@@ -133,6 +137,13 @@ public class SecretService {
 		}
 
 		return jindanList;
+	}
+	
+	// 유튜브 리스트
+	@Transactional
+	public List<Youtube> getYoutubeList() {
+		List<Youtube> youtubeList = youtubeRepository.findAll();
+	return youtubeList;
 	}
 
 }

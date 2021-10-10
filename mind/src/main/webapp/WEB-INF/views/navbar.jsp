@@ -10,13 +10,12 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
 	          <li class="nav-item"><a href="/corona" class="nav-link">코로나현황</a></li>
 	          <li class="nav-item"><a href="/weather" class="nav-link">날씨 현황</a></li>
-	          <li class="nav-item"><a href="/guest/mindTalk" class="nav-link">마음톡톡</a></li>
-	          <li class="nav-item"><a href="/guest/mindGrow"class="nav-link">마음가꾸기</a></li>
 	          <li class="nav-item"><a href="/guest/park" class="nav-link">마음기르기</a></li>
 	          <li class="nav-item"><a href="/no_name" class="nav-link">익명게시판</a></li>
+	          <li class="nav-item"><a href="/guest/mindTalk" class="nav-link">마음톡톡</a></li>
+	          <li class="nav-item"><a href="/guest/mindGrow"class="nav-link">마음가꾸기</a></li>
 	          <c:choose>
 			    <c:when test="${cookie.token.value==null}">
 		          	<li class="nav-item cta"><a href="/guest/signin" class="nav-link" ><span>로그인</span></a></li>

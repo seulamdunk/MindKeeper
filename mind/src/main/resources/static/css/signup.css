@@ -1,3 +1,19 @@
+ @font-face {
+ font-family: "noto";
+ src: url("../fonts/NOTOSANSKR-LIGHT.OTF");
+ }
+  @font-face {
+ font-family: "noto-bold";
+ src: url("../fonts/NOTOSANSKR-BOLD.OTF");
+ }
+   @font-face {
+ font-family: "ko-bold";
+ src: url("../fonts/KoPubWorld Dotum Bold.ttf");
+ }
+ 
+ body {
+ font-family: 'noto';}
+
 form {
     max-width: 300px;
     margin: 10px auto;
@@ -64,7 +80,6 @@ form {
   }
   
   fieldset {
-    margin-bottom: 30px;
     border: none;
   }
   

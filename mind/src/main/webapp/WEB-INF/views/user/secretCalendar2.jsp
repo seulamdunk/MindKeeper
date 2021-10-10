@@ -252,45 +252,7 @@
 												</c:forEach>
 												</tr>
 												<!-- 날짜 for each문 *************************************************************** -->
-												
-												
-												
-												
-												<tr>
-													<td class="day past calendar-day-2015-09-20"><div
-															class="day-contents" id="day">17</div></td>
-													<td class="day past event calendar-day-2015-09-21"><div
-															class="day-contents" id="day">18</div></td>
-													<td class="day past event calendar-day-2015-09-22"><div
-															class="day-contents" id="day">19</div></td>
-													<td class="day past event calendar-day-2015-09-23"><div
-															class="day-contents" id="day">20</div></td>
-													<td class="day past calendar-day-2015-09-24"><div
-															class="day-contents" id="day">21</div></td>
-													<td class="day past calendar-day-2015-09-25"><div
-															class="day-contents" id="day">22</div></td>
-													<td class="day past calendar-day-2015-09-26"><div
-															class="day-contents" id="day">23</div></td>
-												</tr>
-												<tr>
-													<td class="day calendar-day-2015-09-27"><div
-															class="day-contents" id="day">24</div></td>
-													<td class="day calendar-day-2015-09-28"><div
-															class="day-contents" id="day">25</div></td>
-													<td class="day calendar-day-2015-09-29"><div
-															class="day-contents" id="day">26</div></td>
-													<td class="day calendar-day-2015-09-30"><div
-															class="day-contents" id="day">27</div></td>
-													<td
-														class="day calendar-day-2015-09-30"><div
-															class="day-contents" id="day">28</div></td>
-													<td
-														class="day calendar-day-2015-09-30"><div
-															class="day-contents" id="day">29</div></td>
-													<td
-														class="day calendar-day-2015-09-30"><div
-															class="day-contents" id="day">30</div></td>
-												</tr>
+										
 											</tbody>
 										</table>
 									</div>

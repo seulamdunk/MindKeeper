@@ -40,21 +40,40 @@
 	<!-- END nav -->
 
 <!-- 메인 배너 -->
-<div class="hero-wrap hero-wrap-2" style="background-image: url(../images/banner_corona.jpg);" data-stellar-background-ratio="0.5">
+<div class="hero-wrap hero-wrap-2" style="background-image:  linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+          ), url(../images/banner_corona.jpg); background-position-y:200%;">
+          
+          <div class="container-fluid">
+        <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-6 ftco-animate text-center" style="margin-top: 50px;" data-scrollax=" properties: { translateY: '70%' }">
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="color:white;">코로나현황</h1>
+            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><span style="color:white;">코로나 현황을 확인하고 지역별 방역지침을 알아보세요<br>
+그리고 달라진 상황을 받아들이고 생활 속에서 방역지침을 실천해주세요</span></p>
+           </div>
+        </div>
+      </div>
+      
 </div>
 <!-- 메인 배너 종료 -->
 
 	
 		<div class="container mt-5">
-		<h1>한국의 코로나19</h1>
 		<div class="col-4">
-		<hr>
 		</div>
 		
-			<div class="row center justify-content-center mb-5 pb-5">
+			<div class="row center justify-content-center mb-5 pb-5" style="margin-top: 30px;">
 			
-			<h2>코로나 총 확진자 수 :  </h2>
-			<h2>${test[0].total}</h2><br/>
+			
+			<div style="width: 100%; text-align: center; margin-bottom: 20px;">
+			<h2 class="corona-title">코로나 총 확진자 수 <span style="color: red">${test[0].total}</span></h2>
+			</div>
+			<section class="ftco-section ftco-work">
 				<table class="table caption-top">
 					<thead>
 						<tr>
@@ -85,6 +104,8 @@
 					</c:forEach>
 					</tbody>
 				</table>
+				</section>
+				
 				<div class="row  mt-5 justify-conten-center">
 					<img src="img\코로나 현황 크롤링0.png">
 				</div>

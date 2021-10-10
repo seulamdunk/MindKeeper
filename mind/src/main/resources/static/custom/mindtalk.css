@@ -1,4 +1,20 @@
 @charset "UTF-8";
+ @font-face {
+ 	font-family: "sb";
+  src: url("../fonts/SB 어그로 L.ttf");
+ }
+  @font-face {
+ 	font-family: "cafe";
+  src: url("../fonts/CAFE24SSURROUNDAIR.TTF");
+ }
+ @font-face {
+ font-family: "noto";
+ src: url("../fonts/NOTOSANSKR-LIGHT.OTF");
+ }
+  @font-face {
+ font-family: "noto-bold";
+ src: url("../fonts/NOTOSANSKR-BOLD.OTF");
+ }
 strong{
 	color:#2f89fc;
 }
@@ -8,6 +24,7 @@ strong{
 }
 .text-bk{
 	color: black;
+	font-family: 'noto';
 }
 .card{
 	width: 100%;
@@ -42,6 +59,7 @@ align-content: center
 		background-color: rgba(0,0,0,0.03)  !important;
 		box-sizing: border-box;
 		display:flex;
+		font-family: 'noto';
 }
 
 .review-textarea{
@@ -120,7 +138,7 @@ align-content: center
     border: 1px solid #e1e8ed;
     border-radius: 6px;
     height: 150px;
-    max-width: 340px; // orginal twitter width: 290px;
+    max-width: 340px; /* orginal twitter width: 290px;*/
 }
 .twPc-bg {
     background-image: url("https://pbs.twimg.com/profile_banners/50988711/1384539792/600x200");

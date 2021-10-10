@@ -40,7 +40,7 @@
     
     <div class="hero-wrap hero-wrap-2" data-stellar-background-ratio="0.5">
       <div class="container-fluid">
-      <div style="width: 600px; margin: 0 auto; margin-top: 200px">
+      <div style="width: 600px; margin: 0 auto; margin-top: 100px">
       <img src="../images/login_logo.png" style="width: 100%" />
       </div>
          <!-- 
@@ -54,7 +54,7 @@
       </div>
     </div>
 
-    <section class="ftco-section bg-light">
+    <section class="ftco-section bg-light" style="margin-bottom: 100px;">
   		<div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -72,9 +72,11 @@
                 <input type="password" id="customerPW" onkeyup="enterkey()">
               
               </fieldset>
+              <a href="signup" style="float: right;"> 회원가입 ></a>
 
-             <input type="button" onclick="signin();" value="로그인" class="btn btn-primary px-4 py-3" style="width: 200px; margin: 0 auto;"></input>
-              <a href="signup"> 회원가입 ></a>
+             <input type="button" onclick="signin();" value="로그인" class="btn btn-primary px-5 py-3" style="width: 150px; margin: 0 auto; margin-top: 50px;
+    display: flex;"></input>
+
               
              </form>
               </div>

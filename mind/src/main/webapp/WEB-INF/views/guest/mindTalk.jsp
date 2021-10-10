@@ -39,16 +39,7 @@
 	<jsp:include page="../navbar.jsp"></jsp:include>
     <!-- END nav -->
     
-    <div class="hero-wrap hero-wrap-3" style="background-image: url(../images/banner_talktalk.jpg);" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container-fluid">
-        <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>마음톡톡</span></p>
-            <h1 class="mb-3 bread"  data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">마음톡톡</h1>
-          </div>
-        </div>
-      </div>
+    <div class="hero-wrap hero-wrap-3" style="background-image: url(../images/banner_talktalk.jpg); background-position: 50% 50%;">
     </div>
 
     <section class="ftco-section">
@@ -171,7 +162,7 @@
                                 </div>
                                 <div class="ml-2">
                                 
-                                    <div class="h5 m-0" data-toggle="dropdown">${talk.customer.customerNick }
+                                    <div class="mindTalk-id m-0" data-toggle="dropdown">${talk.customer.customerNick }
                                     		<div class="dropdown-menu">
 												<a onclick='location.href="/searchUser?userNum=${talk.customer.customerNum }"' class="dropdown-item searchUser" >게시글 보기</a>
 											<c:if test="${talk.customer.customerNum != tokenNum  }"><a onclick='location.href="/invitation?userNum=${talk.customer.customerNum }&userName=${talk.customer.customerNick }"' class="dropdown-item goTalk" >톡하기</a></c:if>	

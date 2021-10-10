@@ -12,7 +12,6 @@ alert('<%=request.getParameter("customerNum") %>')
 					<li class="colorlib-active"><a href="myPage?customerNum=<%=request.getParameter("customerNum") %>">Mypage</a></li>
 					<li><a href="secretDiaryList?customerNum=<%=request.getParameter("customerNum") %>">Secret Diary</a></li>
 					<li><a href="secretCalendar2?customerNum=<%=request.getParameter("customerNum") %>">Calendar</a></li>
-					<li><a href="about.html">About</a></li>
 				</ul>
 			</nav>
 

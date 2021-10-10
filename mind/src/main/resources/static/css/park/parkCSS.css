@@ -1,3 +1,9 @@
+  @font-face {
+ font-family: "noto-bold";
+ src: url("../fonts/NOTOSANSKR-BOLD.OTF");
+ }
+ 
+
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 .map_wrap {position:relative;width:100%;height:500px;}
@@ -54,7 +60,7 @@
 /*bx슬라이더*/
 #banner{background:#ffffff; padding:50px 0;}
 .banner_inner{width:100%; margin:0 auto; } 
-.banner_inner h2{font-size:30px; color:#444; line-height:1; text-align:Center;} 
+.banner_inner h2{font-size:30px; color:#444; line-height:1; text-align:Center; font-family: 'noto-bold';} 
 #banner_list{position:relative; height:370px; margin-top:50px; } 
 #banner_list:before{content:""; position:absolute; top:0; left:-100%; width:100%; height:100%; background:rgba(255,255,255,0.5); z-index:1;} 
 #banner_list:after{position:absolute; top:0; right:-100%; width:100%; height:100%; background:rgba(255,255,255,0.5); z-index:2;} 

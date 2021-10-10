@@ -164,29 +164,19 @@
 	
 	
 	    
-    <div class="hero-wrap hero-wrap-3" style="background-image: url(../images/banner_talktalk.jpg);" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container-fluid">
-        <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>마음톡톡</span></p>
-            <h1 class="mb-3 bread"  data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">마음톡톡</h1>
-          </div>
-        </div>
-      </div>
+    <div class="hero-wrap hero-wrap-3" style="background-image: url(../images/banner_talktalk.jpg); background-position: 50% 50%;">
     </div>
 	
 	<div class="container py-5 px-4">
   <!-- For demo purpose-->
   <header class="text-center">
-    <h1 class="display-4 text-white"><a href="/">마음지킴이</a></h1>
     <p class="text-white lead mb-0"></p>
     <p class="text-white lead mb-4">
     
     </p>
   </header>
 
-  <div class="row rounded-lg overflow-hidden shadow">
+  <div class="row rounded-lg overflow-hidden shadow" style="margin-bottom: 100px;">
     <!-- Users box-->
     <div class="col-5 px-0">
       <div class="bg-white">
@@ -331,6 +321,8 @@
 			</div>
 		</div>
 	</body> --%>
-<jsp:include page="../footer.jsp"></jsp:include>
+	
+<!-- footer -->
+	<jsp:include page="../footer.jsp"></jsp:include>
 </html>
 

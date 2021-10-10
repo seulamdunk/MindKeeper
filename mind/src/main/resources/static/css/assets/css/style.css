@@ -814,6 +814,11 @@ section {
   transition: bottom ease-in-out 0.4s;
 }
 
+.banner
+{
+	visibility: hidden;
+}
+
 /*--------------------------------------------------------------
 # Pricing
 --------------------------------------------------------------*/
@@ -825,6 +830,7 @@ section {
   position: relative;
   overflow: hidden;
   border: 1px solid #fff;
+  height: 180px;
 }
 .pricing .box h3 {
   font-weight: 400;
@@ -916,6 +922,7 @@ section {
   text-transform: uppercase;
   font-weight: 600;
 }
+
 
 /*--------------------------------------------------------------
 # Frequently Asked Questions

@@ -35,24 +35,27 @@
 	<jsp:include page="../navbar.jsp"></jsp:include>
     <!-- END nav -->
     
-    <div class="hero-wrap hero-wrap-3" style="background-image: url(../images/bg-sakura.gif);" ><!--data-stellar-background-ratio="0.8"  -->
+    <div class="hero-wrap hero-wrap-3" style="background-image:  linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 10%,
+            rgba(0, 0, 0, 0.25) 25%,
+            rgba(0, 0, 0, 0.5) 50%,
+            rgba(0, 0, 0, 0.75) 75%,
+            rgba(0, 0, 0, 1) 100%
+          ), url(../images/banner_mindgrow.jpg); background-size:100%; background-position-y: 180%"><!--data-stellar-background-ratio="0.8"  -->
       <div class="overlay"></div>
       <div class="container-fluid">
         <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span style="color:white;">MindGrow</span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="color:white;">MindGrow</h1>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="color:white;">마음가꾸기</h1>
+            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><span style="color:white;">마음이 즐거워질 수 있도록 에너지를 쌓아보세요<br>
+취향에 맞는 영상을 추천받고 즐겨보세요</span></p>
           </div>
         </div>
       </div>
     </div>
 
     <section class="ftco-section" >
-    
-
-	
-<h1>마음가꾸기</h1>
-
 	
 <!--추천 영상-->
 <c:if test="${recommendList[0].youtubeNum != Null }">

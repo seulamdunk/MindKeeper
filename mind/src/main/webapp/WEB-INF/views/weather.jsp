@@ -24,20 +24,34 @@
 
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="apple-touch-icon-precomposed" href="//nimg.nate.com/ui/uidev/images/mnews/common/nate_news_114.png">
+    <link href="https://common.nate.com/css/common/SvcCommon_2020.css?v=2020120301" rel="stylesheet" type="text/css">
+    
 
     
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/weather/weather">
+    <link rel="stylesheet" href="css/weather.css">
     
-    <style>
-	.label * {display: inline-block;vertical-align: top;}
-	.label .left {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_l.png") no-repeat;display: inline-block;height: 24px;overflow: hidden;vertical-align: top;width: 7px;}
-	.label .center {background: url(https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_bg.png) repeat-x;display: inline-block;height: 24px;font-size: 12px;line-height: 24px;}
-	.label .right {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_r.png") -1px 0  no-repeat;display: inline-block;height: 24px;overflow: hidden;width: 6px;}
-	</style>
-  
+    <link rel="apple-touch-icon-precomposed" href="//nimg.nate.com/ui/uidev/images/mnews/common/nate_news_114.png">
+  	<link rel="stylesheet" type="text/css" href="//nimg.nate.com/ui/uidev/pc/release/css/sisa/snb.css?202109291436">
+  	<link rel="stylesheet" type="text/css" href="//nimg.nate.com/ui/uidev/pc/release/css/sisa/news_common.css?202109291436">
+  	<link rel="stylesheet" type="text/css" href="//nimg.nate.com/ui/uidev/pc/release/css/sisa/new_weather.css?202109291436">
+  	<link rel="stylesheet" type="text/css" href="//nimg.nate.com/ui/uidev/pc/release/css/weather/weather_motion.css?202109291436">
+  	<link rel="stylesheet" type="text/css" href="//nimg.nate.com/ui/uidev/pc/release/css/pcsnb.css?202109291436">
+  	<script type="text/javascript" src="//news.nate.com/etc/mobileAgentJs"></script>
+  	<script type="text/javascript" src="//news.nate.com/js/weather.js?202108311331"></script>
+  	<script src="//news.nate.com/js/graph.js?202108311331" charset="euc-kr"></script>
+  	
+  	
+  	
+  <script type="text/javascript" src="https://common.nate.com/js/CommonTextGNB_v20200305.js?ver=20210628_1" charset="utf-8"></script>
+  <script type="text/javascript" src="//common.nate.com/textGNB/commonTextGNBV1"></script>
+  <script type="text/javascript" src="https://common.nate.com/js/CommonTextGNB_v20200305.js?ver=20210628_1" charset="utf-8"></script>
+  <script type="text/javascript" src="//news.nate.com/js/common.js?202108311331"></script>
+  <script type="text/javascript" src="//news.nate.com/js/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" charset="euc-kr" src="//news.nate.com/js/stat.js?202108311331"></script>
  </head>
  <body>
  	<%-- <c:forEach items="${test3 }" var=test>
@@ -48,24 +62,87 @@
     <!-- END nav -->
     
 <!-- 메인 배너 -->
-<div class="hero-wrap hero-wrap-2" style="background-image: url(../images/banner_weather.jpg);" data-stellar-background-ratio="0.5">
+<div class="hero-wrap hero-wrap-2" style="background-image:  linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+          ), url(../images/banner_weather.jpg); background-position-y:200%;">
+          
+          <div class="container-fluid">
+        <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-6 ftco-animate text-center" style="margin-top: 50px;" data-scrollax=" properties: { translateY: '70%' }">
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="color:white;">날씨현황</h1>
+            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><span style="color:white;">오늘의 날씨를 확인해보세요<br>
+그리고 날이 좋은날 잠시 걸어보는건 어떨까요?</span></p>
+           </div>
+        </div>
+      </div>
+      
 </div>
 <!-- 메인 배너 종료 -->
 
-    <section class="ftco-section">
+
+	<div class="lb-widget">
+		<div class="lb-main">
+			<select class="beom" id="select-box">
+				<option value="1">Seoul, 서울</option>
+				<option value="2">Incheon, 인천</option>
+				<option value="3">Daejeon, 대전</option>
+				<option value="4">Gwangju, 광주</option>
+				<option value="5">Daegu, 대구</option>
+				<option value="6">Ulsan, 울산</option>
+				<option value="7">Busan, 부산</option>
+				<option value="8">Jeju, 제주</option>
+			</select>
+		</div>
+		<div id="lb-1" class="lb-weather">
+			<iframe
+				src="https://forecast.io/embed/#lat=37.5266&lon=127.0403&name=Seoul, 서울&color=&font=&units=si"></iframe>
+		</div>
+		<div id="lb-2" class="lb-weather">
+			<iframe
+				src="https://forecast.io/embed/#lat=37.4496&lon=126.7074&name=Incheon, 인천&color=#F6A8A6&font=&units=si"></iframe>
+		</div>
+		<div id="lb-3" class="lb-weather">
+			<iframe
+				src="https://forecast.io/embed/#lat=36.3512&lon=127.3954&name=Daejeon, 대전&color=#5BC065&font=&units=si"></iframe>
+		</div>
+		<div id="lb-4" class="lb-weather">
+			<iframe
+				src="https://forecast.io/embed/#lat=35.1787&lon=126.8974&name=Gwangju, 광주(전남)&color=#A5C8E4&font=&units=si"></iframe>
+		</div>
+		<div id="lb-5" class="lb-weather">
+			<iframe
+				src="https://forecast.io/embed/#lat=35.8759&lon=128.5964&name=Daegu, 대구&color=#C0ECCC&font=&units=si"></iframe>
+		</div>
+		<div id="lb-6" class="lb-weather">
+			<iframe
+				src="https://forecast.io/embed/#lat=35.538&lon=129.324&name=울산&color=#F9F0C1&font=&units=si"></iframe>
+		</div>
+		<div id="lb-7" class="lb-weather">
+			<iframe
+				src="https://forecast.io/embed/#lat=35.1334&lon=129.1058&name=부산&color=#BA55D3&font=&units=si"></iframe>
+		</div>
+		<div id="lb-8" class="lb-weather">
+			<iframe
+				src="https://forecast.io/embed/#lat=33.5007&lon=126.5288&name=제주&color=#ffc261&font=&units=si"></iframe>
+		</div>
+	</div>
+
+	<section class="ftco-section">
       <div class="container">
-      <h1 style="text-align: center;">${test2.country }</h1>
       	<div class="row justify-content-center mb-5 pb-5 test1">
-			<div id="map" style="width:900px; height:1000px;"></div>
+      		<div class="weather_country">
+      			${test1 }
+      		</div>
+      	</div>
 		</div>
     	<div class="row">
-    		<h2>${test2.day_time }</h2>
-  			<h3>${test2.title }</h3>
   			
         <div class="row justify-content-center mb-5 pb-5 test1">
-        	<p>
-        	<h5>${test2.weather_content }</h5>
-        	</p>
       </div>
      </div>
      </div>
@@ -93,48 +170,9 @@
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=12a1ea904d5ba7f7679a6aedc74e4913"></script>
-  <script>
-  var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-	mapOption = {
-		center: new kakao.maps.LatLng(37.56381, 126.98171), // 지도의 중심좌표
-		draggable: false,
-		level: 13, // 지도의 확대 레벨
-		mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
-	}; 
-	
-	// 지도를 생성한다 
-	var map = new kakao.maps.Map(mapContainer, mapOption); 
-	
-	var data = [
-		[37.96560565610974, 124.66992514856672, '<div class ="label"><span class="left"></span><span class="center">${test3[0] }</span><span class="right"></span></div>'],
-		[37.55833029166853, 126.98781186361127, '<div class ="label"><span class="left"></span><span class="center">${test3[1] }</span><span class="right"></span></div>'],
-		[37.88721562441267, 127.74254172440317, '<div class ="label"><span class="left"></span><span class="center">${test3[2] }</span><span class="right"></span></div>'],
-		[37.72000269051544, 128.8645374109962, '<div class ="label"><span class="left"></span><span class="center">${test3[3] }</span><span class="right"></span></div>'],
-		[36.337136709383465, 127.39481035412976, '<div class ="label"><span class="left"></span><span class="center">${test3[4] }</span><span class="right"></span></div>'],
-		[36.62550886273778, 127.49819460346839, '<div class ="label"><span class="left"></span><span class="center">${test3[5] }</span><span class="right"></span></div>'],
-		[35.82716510800298, 127.11546336164004, '<div class ="label"><span class="left"></span><span class="center">${test3[6] }</span><span class="right"></span></div>'],
-		[35.863838906099666, 128.58272153789764, '<div class ="label"><span class="left"></span><span class="center">${test3[7] }</span><span class="right"></span></div>'],
-		[35.15199621925454, 126.84225457499286, '<div class ="label"><span class="left"></span><span class="center">${test3[8] }</span><span class="right"></span></div>'],
-		[35.15685147978738, 129.05188539266413, '<div class ="label"><span class="left"></span><span class="center">${test3[9] }</span><span class="right"></span></div>'],
-		[33.39809260788402, 126.54827962215151, '<div class ="label"><span class="left"></span><span class="center">${test3[10] }</span><span class="right"></span></div>'],
-		[37.36092612710671, 131.41304657927483, '<div class ="label"><span class="left"></span><span class="center">${test3[11] }</span><span class="right"></span></div>'],
-		[37.27865825237089, 127.00748177106634, '<div class ="label"><span class="left"></span><span class="center">${test3[12] }</span><span class="right"></span></div>'],
-		[36.57862029176811, 128.78039193458747, '<div class ="label"><span class="left"></span><span class="center">${test3[13] }</span><span class="right"></span></div>'],
-		[34.81135203404336, 126.39245050863407, '<div class ="label"><span class="left"></span><span class="center">${test3[14] }</span><span class="right"></span></div>'],
-		[34.76011083959945, 127.6626670923337, '<div class ="label"><span class="left"></span><span class="center">${test3[15] }</span><span class="right"></span></div>'],
-		[35.54359459796801, 129.2550244292698, '<div class ="label"><span class="left"></span><span class="center">${test3[16] }</span><span class="right"></span></div>'] 
-		];
-	
-	
-	for(var i=0; i<data.length; i++){
-		var customOverlay = new kakao.maps.CustomOverlay({
-			position: new kakao.maps.LatLng(data[i][0], data[i][1]),
-			content: data[i][2]
-		}); 
-		
-		customOverlay.setMap(map);
-	}
+  <script src="js/weather/weather.js"></script>
+  <script type="text/javascript" charset="UTF-8" src="https://common.nate.com/js/data/liveKeywordStatus.js?v=20211092115"></script>
+  <script type="text/javascript" charset="UTF-8" src="https://common.nate.com/js/rolling-jq-nj_https.js?v=20180820_01"></script>
 
- </script>
 </body>
 </html>

@@ -40,18 +40,36 @@
 	<jsp:include page="navbar.jsp"></jsp:include>
     <!-- END nav -->
     
-    <div class="hero-wrap hero-wrap-2" style="background-image: url(images/bg_2.jpg);" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container-fluid">
+<!-- 메인 배너 -->
+<div class="hero-wrap hero-wrap-2" style="background-image:  linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+          ), url(../images/banner_noname.jpg); background-position-y:200%; background-size: 100%">
+          
+          <div class="container-fluid">
         <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="/">Home</a></span> <span>익명상담게시판</span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">익명상담게시판</h1>
-          </div>
+          <div class="col-md-6 ftco-animate text-center" style="margin-top: 50px;" data-scrollax=" properties: { translateY: '70%' }">
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="color:white;">익명게시판</h1>
+            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><span style="color:white;">주변에 털어놓긴 힘든 고민들을 적어보세요<br>
+내가 누구인지 여기서는 아무도 알 수가 없습니다</span></p>
+           </div>
         </div>
       </div>
-    </div>
-<div class="board_wrap">
+      
+</div>
+<!-- 메인 배너 종료 -->
+    <div style="text-align: center;">
+    <br/>
+    
+   <!--  <h2>오늘의 말!</h1>
+    <img src="../img/cloud.png" style="width: 600px; height: 400px;"> -->
+	
+	
+	<div class="board_wrap">
 		<div class="board_title">
 			<strong>익명상담게시판</strong>
 			<p>익명으로 글이 작성되니 안심하고 상담하시기 바랍니다.</p>
@@ -77,7 +95,9 @@
 				</div>
 				</c:forEach>
 			</div>
-			<ul class="pagination justify-content-center" style="margin:20px 0">
+			<div>
+			<button class="btn btn-primary px-4 py-3" value="작성하기" onclick="location.href='/no_name_write'" style="float: right; font-size: 13px;" >작성하기</button>
+			<ul class="pagination justify-content-center" style="margin:20px 0;" >
 				<c:choose>
 					<c:when test="${n_list.first }">
 						<li class="page-item disabled"><a class="page-link" href="?page=${n_list.number -1 }">◀</a></li>
@@ -96,7 +116,9 @@
 						<li class="page-item"><a class="page-link" href="?page=${n_list.number +1 }">▶</a></li>
 					</c:otherwise>
 				</c:choose>
+				<!-- 검색 종료 -->
 			</ul>
+				
 			<!-- 검색 form -->
 				<!-- <form action="/n_search" method="GET">
 					<div class="btn-group" role="group" aria-label="Basic example">
@@ -105,11 +127,9 @@
 							</div>
 				</form> -->
 				</div>
-			<!-- 검색 종료 -->
-		<div class="bt_wrap">
-				<a href="/no_name_write" class="on">글작성</a>
-			</div>
 		</div>
+		</div>
+	</div>
     <!-- footer -->
 	<jsp:include page="footer.jsp"></jsp:include>
 

@@ -37,7 +37,25 @@
 
 
 <!--********** header 시작 **********--> 
-<div class="hero-wrap hero-wrap-2" style="background-image: url(../images/banner_park.jpg);" data-stellar-background-ratio="0.5">
+<div class="hero-wrap hero-wrap-2" style="background-image:  linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+          ), url(../images/banner_park.jpg); background-position-y:50%;">
+          
+          <div class="container-fluid">
+        <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-6 ftco-animate text-center" style="margin-top: 50px;" data-scrollax=" properties: { translateY: '70%' }">
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="color:white;">마음기르기</h1>
+            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><span style="color:white;">마음이 울적할땐 잠시나마 걸어보는건 어떨까요?<br>
+근처에 걷기 좋은 공원을 알려드릴게요</span></p>
+           </div>
+        </div>
+      </div>
+      
 </div>
 <!--********** header 종료 **********--> 
 
@@ -144,9 +162,9 @@
 <br/><br/>
     	
 		<!-- bx슬라이더 -->
-    	<div id="container-fluid-park">
+    	<div id="container-fluid-park" style="margin-top: 50px; margin-bottom: 100px;">
 		<div class="banner_inner">
-			<h2 style="color:black;">이번달 걷기 행사</h2>
+			<h2>이번달 걷기 행사</h2>
 				<div id="banner_list">
 				<ul class="sec3_list">
 				<li>

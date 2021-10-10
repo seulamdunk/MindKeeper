@@ -6,19 +6,19 @@
 
  <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
-        <div class="row mb-5">
-          <div class="col-md-3">
-            <div class="ftco-footer-widget mb-4">
+        <div class="row mb-5" style="margin: 10px !important;">
+<!--             <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">마음 지킴이</h2>
               <p>당신을 위한 맞춤 감성분석 시스템</p>
-            </div>
-            <!-- <ul class="ftco-footer-social list-unstyled float-md-left float-lft ">
+            </div> -->
+                        
+            <ul class="ftco-footer-social list-unstyled float-md-left float-lft " style="margin: 0 auto;">
               <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
               <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
               <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-            </ul> -->
-          </div>
-          <div class="col-md-4">
+            </ul>
+
+          <!-- <div class="col-md-4">
             <div class="ftco-footer-widget mb-4 ml-md-5">
               <h2 class="ftco-heading-2">Quick Links</h2>
               <ul class="list-unstyled" style="margin-left:40px;">
@@ -29,10 +29,15 @@
                 <li><a href="/guest/park" class="py-2 d-block">마음기르기</a></li>
               </ul>
             </div>
-          </div>
+          </div> -->
+          
+          <!-- 지도=
           <div class="col-md-5">
           	<div id="footerMap" style="width:100%;height:100%;"></div>
           </div>
+           -->
+           
+           
          <!--  <div class="col-md-4 pr-md-4">
             <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Recent Blog</h2>
@@ -78,7 +83,7 @@
         <div class="row">
           <div class="col-md-12 text-center">
             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  &copy; This site is made with by 권순호, 구효원 , 배준건, 배현호, 편이슬
+  Copyright © 권순호, 구효원 , 배준건, 배현호, 편이슬
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
           </div>
         </div>

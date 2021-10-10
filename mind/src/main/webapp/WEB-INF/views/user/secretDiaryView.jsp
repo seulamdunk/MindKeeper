@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 비밀일기 상세보기 -->
-<title>마음지킴이</title>
+<title>Elen - Free Bootstrap 4 Template by Colorlib</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -81,8 +81,9 @@
 											<input type="hidden" id="customerName" value="${user.customerName }" />
 
 										<div class="text pt-2 mt-3">
-											<a href="#" class="img"
-												style='background-image: url("${secretModel.secretImg }");'></a>
+										<c:if test="${secretModel.secretImg != null }">
+										<a href="#" class="img"	style="background-image: url('${secretModel.secretImg }'); height:100%;""></a>
+										</c:if>
 											<p class="mb-4" style="margin-top: 20px; font-size: 25px"
 												id="secretCon">${secretModel.secretCon }</p>
 											<div class="author mb-4 d-flex align-items-center">
@@ -115,10 +116,10 @@
 									</div>
 								</div>
 
-
 							</div>
 
-							<div id="resultBox"></div>
+							<div id="resultBox">
+							</div>
 							<!-- resultBox -->
 
 
@@ -126,7 +127,38 @@
 						</div>
 					</div>
 
-					<div id="banner"></div>
+					<div id="banner" class="banner">
+												<!-- 유튜브 영상 -->
+<section id="pricing-recommand" class="pricing section-bg">
+		<div class="container">
+			<div class="section-title aos-init aos-animate" data-aos="fade-up">
+				<h2>${user.customerName }님을 위한 추천영상</h2>
+				<p>Magnam dolores commodi suscipit eius consequatur ex aliquid
+					fuga eum quidem</p>
+			</div>
+			<div class="row">
+			
+			<c:forEach items="${youtube }" var="youtube" varStatus="status" begin="0" end="2" step="1" >
+				<div class="col-lg-4 col-md-6">
+					<div class="box aos-init aos-animate" style="background-image: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('${youtube.thumbnail}')" data-aos="zoom-in"
+						data-aos-delay="100">
+						<!-- <h3>Free</h3> -->
+						<div class="youtubeTitle">
+						${youtube.youtubeTitle}
+						</div>
+						<div class="btn-wrap">
+							<a href="#" class="btn-buy">보러가기</a>
+						</div>
+					</div>
+				</div>
+				</c:forEach>
+				
+				
+			</div>
+		</div>
+	</section>
+							<!-- 유튜브 영상 종료 -->
+					</div>
 			</section>
 		</div>
 

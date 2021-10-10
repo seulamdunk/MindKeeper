@@ -5,8 +5,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
  <head>
- 	<!-- 비밀일기 목록보기 -->
-    <title>마음지킴이</title>
+    <title>Elen - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -78,10 +77,10 @@
     				
     				<c:choose>
     				<c:when test="${secret.secretImg == null }">
-    				<a href="#" class="img img-2" style='background-image: url(../images/img_no.jpg);'></a>
+    				<a href="./secretDiaryView?secretNum=${secret.secretNum }" class="img img-2" style='background-image: url(../images/img_no.jpg);'></a>
     				</c:when>
     				<c:otherwise>
-    				<a href="#" class="img img-2" style='background-image: url("${secret.secretImg }");'></a>
+    				<a href="./secretDiaryView?secretNum=${secret.secretNum }" class="img img-2" style='background-image: url("${secret.secretImg }");'></a>
     				</c:otherwise>
     				</c:choose>
 							

@@ -39,19 +39,15 @@
 	 <jsp:include page="../navbar.jsp"></jsp:include>
     <!-- END nav -->
     
-    <div class="hero-wrap hero-wrap-2" style="background-image: url(../images/bg_2.jpg);" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
+    <div class="hero-wrap hero-wrap-2" data-stellar-background-ratio="0.5">
       <div class="container-fluid">
-        <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">회원가입</h1>
-          </div>
-        </div>
+      <div style="width: 600px; margin: 0 auto; margin-top: 100px">
+      <img src="../images/login_logo.png" style="width: 100%" />
+      </div>
       </div>
     </div>
 
-    <section class="ftco-section bg-light">
+    <section class="ftco-section bg-light" style="margin-bottom: 100px;">
   		<div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -91,7 +87,8 @@
               </fieldset>
   
              
-              <input type="button" onclick="signup();" class="btn btn-primary"  value="회원가입"></input>
+              <input type="button" onclick="signup();" class="btn btn-primary px-5 py-3" style="width: 150px; margin: 0 auto; margin-top: 50px;
+    display: flex;" value="회원가입"></input>
               
              </form>
               </div>

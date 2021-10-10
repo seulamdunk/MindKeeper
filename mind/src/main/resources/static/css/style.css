@@ -20,6 +20,10 @@
  font-family: "noto-bold";
  src: url("../fonts/NOTOSANSKR-BOLD.OTF");
  }
+   @font-face {
+ font-family: "ko-bold";
+ src: url("../fonts/KoPubWorld Dotum Bold.ttf");
+ }
  
 :root {
   --blue: #007bff;
@@ -511,8 +515,8 @@ pre {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: 30px;
-  margin-left: 30px; }
+  margin-right: 60px;
+  margin-left: 60px; }
 
 .no-gutters {
   margin-right: 0;
@@ -3295,6 +3299,7 @@ input[type="button"].btn-block {
     justify-content: space-between; }
 
 .navbar-brand {
+	font-family:'cafe';
   display: inline-block;
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
@@ -3442,7 +3447,8 @@ input[type="button"].btn-block {
     padding-left: 0; } }
 
 @media (min-width: 992px) {
-  .navbar-expand-lg {
+  .navbar-expand-lg > .container,
+  .navbar-expand-lg > .container-fluid {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -ms-flex-flow: row nowrap;
@@ -7115,7 +7121,8 @@ button.bg-dark:focus {
   text-align: right !important; }
 
 .text-center {
-  text-align: center !important; }
+  text-align: center !important;
+  font-family: 'noto'; }
 
 @media (min-width: 576px) {
   .text-sm-left {
@@ -7323,6 +7330,13 @@ h1, h2, h3, h4, h5,
   line-height: 1.5;
   color: #000;
   font-weight: 400; }
+  
+.mindTalk-id {
+  line-height: 18px;
+  color: #000;
+  font-weight: 800;
+  font-family: 'noto';
+  font-size: 18px; }
 
 .text-primary {
   color: #2f89fc !important; }
@@ -7346,7 +7360,7 @@ h1, h2, h3, h4, h5,
     .ftco-navbar-light .navbar-nav {
       padding-bottom: 20px; } }
   .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
-  font-family: "noto-bold";
+  font-family: "ko-bold";
     font-size: 14px;
     padding-top: .9rem;
     padding-bottom: .9rem;
@@ -7510,7 +7524,7 @@ h1, h2, h3, h4, h5,
   z-index: 1;
   /* 筌롫뗄�뵥 獄쏄퀗瑗� */
   background-size: cover;
-  height: 500px; }
+  height: 350px; }
   @media (max-width: 767.98px) {
     .hero-wrap {
       height: 750px; } }
@@ -7560,7 +7574,7 @@ h1, h2, h3, h4, h5,
     font-size: 35px;
     color: #ffffff;
     line-height: 1.2;
-    font-family: cafe; }
+    font-family: 'ko-bold'; }
     @media (max-width: 991.98px) {
       .slider-text h1 {
         font-size: 50px; } }
@@ -7600,7 +7614,9 @@ h1, h2, h3, h4, h5,
     margin-bottom: 20px;
     z-index: 99; }
     .slider-text .breadcrumbs span {
-      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    font-family: 'noto';
+    font-size:16px;
+    line-height:20px;
       color: rgba(0, 0, 0, 0.7); }
       .slider-text .breadcrumbs span a {
         color: #2f89fc; }
@@ -8085,7 +8101,8 @@ h1, h2, h3, h4, h5,
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
   border: none;
-  border-bottom: 1px solid #e6e6e6; }
+  border-bottom: 1px solid #e6e6e6;
+  font-family: 'noto'; }
   .form-control:focus, .form-control:active {
     border-color: #cccccc; }
 
@@ -8200,8 +8217,8 @@ textarea.form-control {
 
 .ftco-footer {
   font-size: 16px;
-  background: #233142;
-  padding: 6em 0; }
+  background: #2B2B2B;
+  padding: 60px 50px; }
   .ftco-footer .ftco-footer-logo {
     text-transform: uppercase;
     letter-spacing: .1em; }
@@ -9195,3 +9212,7 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+    
+    .corona-title {
+    font-family: 'noto-bold';
+    font-size: 30px;}

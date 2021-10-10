@@ -6,6 +6,8 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,9 +27,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mind.project.config.security.JwtTokenProvider;
 import com.mind.project.model.Customer;
 import com.mind.project.model.SecretModel;
+import com.mind.project.model.Youtube;
 import com.mind.project.repository.CustomerRepository;
 import com.mind.project.service.CommonService;
-import com.mind.project.service.JindanService;
+import com.mind.project.service.MindGrowService;
 import com.mind.project.service.SecretService;
 
 import lombok.RequiredArgsConstructor;
@@ -50,7 +53,7 @@ public class SecretController {
 	// 마이페이지
 	@RequestMapping(value = "/myPage")
 	@ResponseBody
-	public Model mypage(HttpServletRequest request, Model model) {
+	public Model mypage(HttpServletRequest request, Model model) throws Exception {
 		
 		Customer customer = commonService.tokenCustomer(request);
 		model.addAttribute("user", commonService.tokenCustomer(request));
@@ -58,22 +61,32 @@ public class SecretController {
 		//System.out.println("마이페이지 customerNum확인-------" + customerNum);
 		List<SecretModel> secretModelList = secretService.jindanTotal(Long.parseLong(String.valueOf(customer.getCustomerNum())));
 		
-		Long jindanConNumTotal = (long) 0;
 		
-		for(int i=0; i<secretModelList.size(); i++) {
-			System.out.println("리스트확인========="+secretModelList.get(i).getJindanConNum());
-			jindanConNumTotal += secretModelList.get(i).getJindanConNum();
+		if(secretModelList != null) {
+			Long jindanConNumTotal = (long) 0;
+			
+			for(int i=0; i<secretModelList.size(); i++) {
+				System.out.println("리스트확인========="+secretModelList.get(i).getJindanConNum());
+				jindanConNumTotal += secretModelList.get(i).getJindanConNum();
+				
+				String jindanTotal = Long.toString(jindanConNumTotal/secretModelList.size());
+				model.addAttribute("jindanTotal", jindanTotal);
+			}
 		}
-		System.out.println("토탈확인========="+ jindanConNumTotal);
-		System.out.println("평균확인========="+ (jindanConNumTotal/secretModelList.size()));
+//		for(int i=0; i<secretModelList.size(); i++) {
+//			System.out.println("리스트확인========="+secretModelList.get(i).getJindanConNum());
+//			jindanConNumTotal += secretModelList.get(i).getJindanConNum();
+//		}
+		//System.out.println("토탈확인========="+ jindanConNumTotal);
+		//System.out.println("평균확인========="+ (jindanConNumTotal/secretModelList.size()));
 		
-		String jindanTotal = Long.toString(jindanConNumTotal/secretModelList.size());
+		//String jindanTotal = Long.toString(jindanConNumTotal/secretModelList.size());
 		
 		// 글목록 불러오기
 		List<SecretModel> mypageList = secretService.getSecretList(Long.parseLong(String.valueOf(customer.getCustomerNum())));
 		
 		model.addAttribute("mypageList", mypageList);
-		model.addAttribute("jindanTotal", jindanTotal);
+		System.out.println(LocalDateTime.now());
 
 		return model;
 	}
@@ -186,6 +199,9 @@ public class SecretController {
 
 		model.addAttribute("secretModel", secretModel);
 		model.addAttribute("user", commonService.tokenCustomer(request));
+		
+		List<Youtube> youtubeList = secretService.getYoutubeList();
+		model.addAttribute("youtube", youtubeList);
 
 		return model;
 
