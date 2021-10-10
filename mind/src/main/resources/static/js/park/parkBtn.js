@@ -18,9 +18,9 @@ function total(){
      		    html += '<td style="font-weight: bold;" id="parkName">' + total[i]["parkName"] + '</td>';
      		    html += '<td>' + total[i]["parkAddr"] + '</td>';
      		    html += '<td><img class="parkScoreImg" src="../img/parkImg/parkScoreImg.png" alt="평점 이미지" width="18" height="18"> ' + total[i]["parkScore"] + '</td>';
-     		    html += '<td><a id="parkScoreLink" href="' + total[i]["parkScoreLink"] + '" target="_blank">' + total[i]["parkScoreCnt"] + '</a></td>';
-     		    html += '<td><a id="parkReviewLink" href="' + total[i]["parkReviewLink"] + '" target="_blank">' + total[i]["parkReview"] + '</a></td>';
-     		    html += '<td><a id="parkLink" href="' + total[i]["parkLink"] + '" target="_blank">상세보기 ></a></td>';
+     		    html += '<td><a id="parkScoreLink" href="' + total[i]["parkScoreLink"] + '">' + total[i]["parkScoreCnt"] + '</a></td>';
+     		    html += '<td><a id="parkReviewLink" href="' + total[i]["parkReviewLink"] + '">' + total[i]["parkReview"] + '</a></td>';
+     		    html += '<td><a id="parkLink" href="' + total[i]["parkLink"] + '">상세보기 ></a></td>';
     			html += '</tr>'
     				
      		    $("#parkList").append(html);
@@ -54,11 +54,11 @@ function total(){
                 '            <div class="desc" style="font-size:0.8em;">' + 
                 '                <div class="ellipsis">' + 
                 '					<img class="parkScoreImg" src="../img/parkImg/parkScoreImg.png" alt="평점 이미지" width="18" height="18">' + total[i]["parkScore"] +
-                '					 , 후기 : <a href="' + total[i]["parkScoreLink"] +'" id="parkScoreLink" target="_blank">' + total[i]["parkScoreCnt"] + '</a>' + 
-                '					 , 리뷰 : <a href="' + total[i]["parkReviewLink"] +'" id="parkReviewLink" target="_blank">' + total[i]["parkReview"] + '</a>' + 
+                '					 , 후기 : <span id="parkScoreLink" style="color:#007bff;">' + total[i]["parkScoreCnt"] + '</span>' + 
+                '					 , 리뷰 : <span id="parkReviewLink" style="color:#007bff;">' + total[i]["parkReview"] + '</span>' + 
                 '			 	 </div>' + 
                 '                <div class="ellipsis">' + total[i]["parkAddr"] + '</div>' + 
-                '                <div><a href="'+ total[i]["parkLink"] +'" id="parkLink" target="_blank">상세보기 ></a></div>' + 
+                '                <div><span id="parkLink" style="color:#007bff;">상세보기 ></span></div>' + 
                 '            </div>' + 
                 '        </div>' + 
                 '    </div>' +    

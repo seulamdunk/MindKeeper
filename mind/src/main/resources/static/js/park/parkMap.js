@@ -18,7 +18,7 @@ if (navigator.geolocation) {
        
         locPosition = new kakao.maps.LatLng(lat, lon); 
         
-        // 마커와 인포윈도우를 표시
+        // 마커표시
         displayMarker(locPosition);
             
       });
@@ -31,7 +31,7 @@ if (navigator.geolocation) {
     displayMarker(locPosition, message);
 }
 
-//지도에 마커와 인포윈도우를 표시하는 함수
+//지도에 마커를 표시하는 함수
 function displayMarker(locPosition) {
 
     // 마커 이미지 생성
@@ -62,8 +62,6 @@ var zoomControl = new kakao.maps.ZoomControl();
 map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
 //========================= DB에 저장된 park 마커표시 (시작) ==============================
-/*function pageload(page)
-if ap*/
 $.ajax({
     	url:"/parkRequest",
     	type:"post",
@@ -102,8 +100,8 @@ $.ajax({
      		    html += '<td style="font-weight:bold;width:250px;" id="parkName">' + parkData[i]["parkName"] + '</td>';
      		    html += '<td style="width:600px;">' + parkData[i]["parkAddr"] + '</td>';
      		    html += '<td><img class="parkScoreImg" src="../img/parkImg/parkScoreImg.png" alt="평점 이미지" width="18" height="18"> ' + parkData[i]["parkScore"] + '</td>';
-     		    html += '<td><a id="parkScoreLink" href="' + parkData[i]["parkScoreLink"] + '" target="_blank">' + parkData[i]["parkScoreCnt"] + '</a></td>';
-     		    html += '<td><a id="parkReviewLink" href="' + parkData[i]["parkReviewLink"] + '" target="_blank">' + parkData[i]["parkReview"] + '</a></td>';
+     		    html += '<td><a id="parkScoreLink" href="' + parkData[i]["parkScoreLink"] + '">' + parkData[i]["parkScoreCnt"] + '</a></td>';
+     		    html += '<td><a id="parkReviewLink" href="' + parkData[i]["parkReviewLink"] + '">' + parkData[i]["parkReview"] + '</a></td>';
      		    html += '<td><a id="parkLink" href="' + parkData[i]["parkLink"] + '">상세보기 ></a></td>';
     			html += '</tr>'
     				
@@ -139,11 +137,11 @@ $.ajax({
                 '            <div class="desc" style="font-size:0.8em;">' + 
                 '                <div class="ellipsis">' + 
                 '					<img class="parkScoreImg" src="../img/parkImg/parkScoreImg.png" alt="평점 이미지" width="18" height="18">' + parkData[i]["parkScore"] +
-                '					 , 후기 : <a href="' + parkData[i]["parkScoreLink"] +'" id="parkScoreLink" target="_blank">' + parkData[i]["parkScoreCnt"] + '</a>' + 
-                '					 , 리뷰 : <a href="' + parkData[i]["parkReviewLink"] +'" id="parkReviewLink" target="_blank">' + parkData[i]["parkReview"] + '</a>' + 
+                '					 , 후기 : <a href="' + parkData[i]["parkScoreLink"] +'" id="parkScoreLink">' + parkData[i]["parkScoreCnt"] + '</a>' + 
+                '					 , 리뷰 : <a href="' + parkData[i]["parkReviewLink"] +'" id="parkReviewLink">' + parkData[i]["parkReview"] + '</a>' + 
                 '			 	 </div>' + 
                 '                <div class="ellipsis">' + parkData[i]["parkAddr"] + '</div>' + 
-                '                <div><a href="'+ parkData[i]["parkLink"] +'" id="parkLink" target="_blank">상세보기 ></a></div>' + 
+                '                <div><a href="'+ parkData[i]["parkLink"] +'" id="parkLink">상세보기 ></a></div>' + 
                 '            </div>' + 
                 '        </div>' + 
                 '    </div>' +    
@@ -216,11 +214,11 @@ $.ajax({
 	                '            <div class="desc" style="font-size:0.8em;">' + 
 	                '                <div class="ellipsis">' + 
 	                '					<img class="parkScoreImg" src="../img/parkImg/parkScoreImg.png" alt="평점 이미지" width="18" height="18">' + parkData[y]["parkScore"] +
-	                '					 , 후기 : <a href="' + parkData[y]["parkScoreLink"] +'" id="parkScoreLink" target="_blank">' + parkData[y]["parkScoreCnt"] + '</a>' + 
-	                '					 , 리뷰 : <a href="' + parkData[y]["parkReviewLink"] +'" id="parkReviewLink" target="_blank">' + parkData[y]["parkReview"] + '</a>' + 
+	                '					 , 후기 : <a href="' + parkData[y]["parkScoreLink"] +'" id="parkScoreLink">' + parkData[y]["parkScoreCnt"] + '</a>' + 
+	                '					 , 리뷰 : <a href="' + parkData[y]["parkReviewLink"] +'" id="parkReviewLink">' + parkData[y]["parkReview"] + '</a>' + 
 	                '			 	 </div>' + 
 	                '                <div class="ellipsis">' + parkData[y]["parkAddr"] + '</div>' + 
-	                '                <div><a href="'+ parkData[y]["parkLink"] +'" id="parkLink" target="_blank">상세보기 ></a></div>' + 
+	                '                <div><a href="'+ parkData[y]["parkLink"] +'" id="parkLink">상세보기 ></a></div>' + 
 	                '            </div>' + 
 	                '        </div>' + 
 	                '    </div>' +    
@@ -228,16 +226,13 @@ $.ajax({
 
 			    	// 인포윈도우를 생성
 			    	var infowindow = new kakao.maps.InfoWindow({
-			    	    position : iwPosition, 
+			    	    position : position, 
 			    	    content : iwContent 
 			    	});
 			    	infowindow.open(map, marker); 
-			    	
-			    	
 					} // end of if
 				 } // end of for
  			}) // end of 공원이름
-
     		//************ 공원이름 클릭시 위치, 인포윈도우 생성(종료) *************
     		
     } // end of function(parkData)
@@ -304,9 +299,9 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
          		html += '<td style="font-weight: bold;" id="parkName">' + keywordList[z]["parkName"] + '</td>';
          		html += '<td>' + keywordList[z]["parkAddr"] + '</td>';
          		html += '<td><img class="parkScoreImg" src="../img/parkImg/parkScoreImg.png" alt="평점 이미지" width="18" height="18"> ' + keywordList[z]["parkScore"] + '</td>';
-         		html += '<td><a id="parkScoreLink" href="' + keywordList[z]["parkScoreLink"] + '" target="_blank">' + keywordList[z]["parkScoreCnt"] + '</a></td>';
-         		html += '<td><a id="parkReviewLink" href="' + keywordList[z]["parkReviewLink"] + '" target="_blank">' + keywordList[z]["parkReview"] + '</a></td>';
-         		html += '<td><a id="parkLink" href="' + keywordList[z]["parkLink"] + '" target="_blank">상세보기 ></a></td>';
+         		html += '<td><a id="parkScoreLink" href="' + keywordList[z]["parkScoreLink"] + '">' + keywordList[z]["parkScoreCnt"] + '</a></td>';
+         		html += '<td><a id="parkReviewLink" href="' + keywordList[z]["parkReviewLink"] + '">' + keywordList[z]["parkReview"] + '</a></td>';
+         		html += '<td><a id="parkLink" href="' + keywordList[z]["parkLink"] + '">상세보기 ></a></td>';
         		html += '</tr>'
 
      		    $("#parkList").append(html);
@@ -341,11 +336,11 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
                 '            <div class="desc" style="font-size:0.8em;">' + 
                 '                <div class="ellipsis">' + 
                 '					<img class="parkScoreImg" src="../img/parkImg/parkScoreImg.png" alt="평점 이미지" width="18" height="18">' + keywordList[z]["parkScore"] +
-                '					 , 후기 : <a href="' + keywordList[z]["parkScoreLink"] +'" id="parkScoreLink" target="_blank">' + keywordList[z]["parkScoreCnt"] + '</a>' + 
-                '					 , 리뷰 : <a href="' + keywordList[z]["parkReviewLink"] +'" id="parkReviewLink" target="_blank">' + keywordList[z]["parkReview"] + '</a>' + 
+                '					 , 후기 : <a href="' + keywordList[z]["parkScoreLink"] +'" id="parkScoreLink">' + keywordList[z]["parkScoreCnt"] + '</a>' + 
+                '					 , 리뷰 : <a href="' + keywordList[z]["parkReviewLink"] +'" id="parkReviewLink">' + keywordList[z]["parkReview"] + '</a>' + 
                 '			 	 </div>' + 
                 '                <div class="ellipsis">' + keywordList[z]["parkAddr"] + '</div>' + 
-                '                <div><a href="'+ keywordList[z]["parkLink"] +'" id="parkLink" target="_blank">상세보기 ></a></div>' + 
+                '                <div><a href="'+ keywordList[z]["parkLink"] +'" id="parkLink">상세보기 ></a></div>' + 
                 '            </div>' + 
                 '        </div>' + 
                 '    </div>' +    
@@ -370,7 +365,7 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
     		    
         	} // end of for
     		
-    		// 키워드 입력한 값들 중 10번째 마커의 위치로 이동
+    		// 키워드 입력한 값들 중 1번째 마커의 위치로 이동
     		var moveLatLng = new kakao.maps.LatLng(keywordList[0]["parkLat"],keywordList[0]["parkLng"]);   
     		map.panTo(moveLatLng);
     		
@@ -419,11 +414,11 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 	                '            <div class="desc" style="font-size:0.8em;">' + 
 	                '                <div class="ellipsis">' + 
 	                '					<img class="parkScoreImg" src="../img/parkImg/parkScoreImg.png" alt="평점 이미지" width="18" height="18">' + keywordList[y]["parkScore"] +
-	                '					 , 후기 : <a href="' + keywordList[y]["parkScoreLink"] +'" id="parkScoreLink" target="_blank">' + keywordList[y]["parkScoreCnt"] + '</a>' + 
-	                '					 , 리뷰 : <a href="' + keywordList[y]["parkReviewLink"] +'" id="parkReviewLink" target="_blank">' + keywordList[y]["parkReview"] + '</a>' + 
+	                '					 , 후기 : <a href="' + keywordList[y]["parkScoreLink"] +'" id="parkScoreLink">' + keywordList[y]["parkScoreCnt"] + '</a>' + 
+	                '					 , 리뷰 : <a href="' + keywordList[y]["parkReviewLink"] +'" id="parkReviewLink">' + keywordList[y]["parkReview"] + '</a>' + 
 	                '			 	 </div>' + 
 	                '                <div class="ellipsis">' + keywordList[y]["parkAddr"] + '</div>' + 
-	                '                <div><a href="'+ keywordList[y]["parkLink"] +'" id="parkLink" target="_blank">상세보기 ></a></div>' + 
+	                '                <div><a href="'+ keywordList[y]["parkLink"] +'" id="parkLink">상세보기 ></a></div>' + 
 	                '            </div>' + 
 	                '        </div>' + 
 	                '    </div>' +    
@@ -431,7 +426,7 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
 			    	// 인포윈도우를 생성
 			    	var infowindow = new kakao.maps.InfoWindow({
-			    	    position : iwPosition, 
+			    	    position : position, 
 			    	    content : iwContent 
 			    	});
 			    	infowindow.open(map, marker);

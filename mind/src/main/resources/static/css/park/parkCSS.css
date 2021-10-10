@@ -4,7 +4,7 @@
  }
  
 
-.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'�룍��',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 .map_wrap {position:relative;width:100%;height:500px;}
 #menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
@@ -41,8 +41,6 @@
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
 
-/*인포윈도우*/
-.wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
 .wrap * {padding: 0;margin: 0;}
 .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
 .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
@@ -57,7 +55,6 @@
 .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
 .info .link {color: #5085BB;}
 
-/*bx슬라이더*/
 #banner{background:#ffffff; padding:50px 0;}
 .banner_inner{width:100%; margin:0 auto; } 
 .banner_inner h2{font-size:30px; color:#444; line-height:1; text-align:Center; font-family: 'noto-bold';} 
@@ -76,7 +73,6 @@
 a.bx-prev{position:absolute; left:-70px; top:50%; transform:translateY(-50%); width:50px; height:50px; z-index:100;} 
 a.bx-next{position:absolute; right:-70px; top:50%; transform:translateY(-50%); width:50px; height:50px; z-index:100;}
 
-/*동그라미(초록,빨강)*/
 .titleStyle_img{
 	width:15px;
 	height:15px;
@@ -87,7 +83,6 @@ a.bx-next{position:absolute; right:-70px; top:50%; transform:translateY(-50%); w
 	color:black;
 }
 
-/*공원 목록 출력*/
 body {
 	background: #fff; 
 }
@@ -110,7 +105,6 @@ body {
   color: #23b7dc;
 }
 
-/*버튼*/
 .button {
   background-color: #4CAF50; /* Green */
   border: none;
@@ -140,7 +134,6 @@ body {
   border: 2px solid #4CAF50;
 }
 
-/*지도*/
 #map{
 	float:left;
 	height:500px;

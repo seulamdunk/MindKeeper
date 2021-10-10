@@ -77,9 +77,9 @@
 			<table class="col-md-12">
 			<tr>
 				<td><button type="button" class="button button1" id="Total" onclick="total()">전체</button></td>
-				<td><button type="button" class="button button1" id="area" onclick="area()">서울</button></td>
-				<td><button type="button" class="button button1" id="area" onclick="area()">인천</button></td>
-				<td><button type="button" class="button button1" id="area" onclick="area()">경기도</button></td>
+				<td><button type="button" class="button button1" id="seoul" onclick="area()">서울</button></td>
+				<td><button type="button" class="button button1" id="incheon" onclick="brea()">인천</button></td>
+				<td><button type="button" class="button button1" id="gyeonggi" onclick="crea()">경기</button></td>
 			</tr>
 			<tr>
 				<td><button type="button" class="button button1">부산</button></td>
@@ -112,7 +112,7 @@
 			<img src="../img/parkImg/rec_red.png" class="titleStyle_img"/> <span class="titleStyle">주소검색</span>
 		</div>	
 		<div>
-			<input type="text" id="keyword" class="col-md-9" style="width:280px;float:left;" placeholder="입력해주세요.">
+			<input type="text" id="keyword" style="width:260px;float:left;" placeholder="입력해주세요.">
 			<button type="button"  onclick="getKeyword()" id="keywordClick" class="button button12" style="float:right;width:100px;border-radius:5%">검색</button>
 		</div>
 		</div>
@@ -162,9 +162,9 @@
 <br/><br/>
     	
 		<!-- bx슬라이더 -->
-    	<div id="container-fluid-park" style="margin-top: 50px; margin-bottom: 100px;">
+    	<div id="container-fluid-park">
 		<div class="banner_inner">
-			<h2>이번달 걷기 행사</h2>
+			<h2 style="color:black;">이번달 걷기 행사</h2>
 				<div id="banner_list">
 				<ul class="sec3_list">
 				<li>
@@ -238,6 +238,7 @@
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9a2c6577da696f87c0359d059fa9c8a7"></script>
 <script src="../js/park/parkMap.js"></script>
 <script src="../js/park/parkBtn.js"></script>
+<script src="../js/park/parkBtn2.js"></script>
 <!--*********************************** 지도 script 종료 ***************************************-->
 	
 <!--********** script 시작 **********-->
@@ -265,6 +266,8 @@
 <script src=" http://bxslider.com/lib/jquery.bxslider.js "></script>
 <script type="text/javascript">
 $(document).ready(function(){
+
+	// bx슬라이더
 	var mySlider =$('.sec3_list').bxSlider({
 		 auto:true,
 		 pager: false,
