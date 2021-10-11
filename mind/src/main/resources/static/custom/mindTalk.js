@@ -130,7 +130,7 @@ $(function() {
 		                               '</div>     '+
 
 		                                    
-		                                   ' <div class="h7 text-muted"><span>'+value.talkDate +'</span></div>'+
+		                                   ' <div class="h7 text-muted"><span>'+value.talkDate.substring(0,10) +'</span></div>'+
 		               
 		                                '</div>'+
 		                            '</div>'+

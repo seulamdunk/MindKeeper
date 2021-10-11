@@ -134,7 +134,7 @@ $(document).ready(function(){
     		data:JSON.stringify(param),
     		dataType:'JSON',
     		success:function(data){
-    			var a='🤍 '+ data.cntSum
+    			var a='❤ '+ data.cntSum
     			$(".reviewHeartArea"+talkReviewNum).text(a)
     			var de='deleteLikeTalkReview(${talkReviewNum},${customerNum})'
     			if(data.cnt !=0){	
@@ -142,6 +142,7 @@ $(document).ready(function(){
     			$(".reviewHeartArea"+talkReviewNum).css({"color":"red"})
     				$(".reviewHeartArea"+talkReviewNum).attr({"onclick":"deleteLikeTalkReview("+talkReviewNum+","+customerNum+")"})
     			}else{
+    				$(".reviewHeartArea"+talkReviewNum).css({"color":"white"})
     				$(".reviewHeartArea"+talkReviewNum).attr({"onclick":"insertLikeTalkReview("+talkReviewNum+","+customerNum+")"})
         			}
     			
@@ -175,7 +176,7 @@ function viewLikeReview2(talkReviewNum,customerNum){
 		data:JSON.stringify(param),
 		dataType:'JSON',
 		success:function(data){
-			var a='🤍 '+ data.cntSum
+			var a='❤ '+ data.cntSum
 			$(".reviewHeartArea"+talkReviewNum).text(a)
 			
 			if(data.cnt !=0){	
@@ -183,6 +184,7 @@ function viewLikeReview2(talkReviewNum,customerNum){
 				$(".reviewHeartArea"+talkReviewNum).css({"color":"red"})
 				$(".reviewHeartArea"+talkReviewNum).attr({"onclick":"deleteLikeTalkReview("+talkReviewNum+","+customerNum+")"})
 			}else{
+				$(".reviewHeartArea"+talkReviewNum).css({"color":"white"})
 				$(".reviewHeartArea"+talkReviewNum).attr({"onclick":"insertLikeTalkReview("+talkReviewNum+","+customerNum+")"})
     			}
 			

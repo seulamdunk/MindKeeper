@@ -71,7 +71,13 @@ public class MindTalkController {
 		//토큰에 저장된 이름을 바로 가져오는 코드, token 유효성검사 과정이 없어 보임
 	
 		//System.out.println("security check" + SecurityContextHolder.getContext().getAuthentication().getName());
-		Customer customer =commonService.tokenCustomer(request);
+	
+		 Optional<Customer> customerOption= customerRep.findByCustomerID(SecurityContextHolder.getContext().getAuthentication().getName());
+		Customer customer = customerOption.get();
+		if(customer.getCustomerID().isEmpty()) {
+			customer =commonService.tokenCustomer(request);
+		}
+	
 	//System.out.println("고객"+ customer.getCustomerNum());
 		m.addAttribute("tokenNum",Integer.valueOf(commonService.tokenImfo(m, request)));	
 		

@@ -151,9 +151,9 @@
                                     
                                    
                                </div>     
-
+								                        
                                     
-                                    <div class="h7 text-muted"><span>${talk.talkDate }</span></div>
+                                    <div class="h7 text-muted"><span>${fn:substring(talk.talkDate,0,10) }</span></div>
                
                                 </div>
                             </div>
@@ -251,8 +251,8 @@
   <div class="plus" id="plus">
     <div class="plus__line plus__line--v">
       <a href="/guest/chat" class="plus__link fas fa-comments"></a>
-      <a href="#" class="plus__link ion-images"></a>
-      <a href="#" class="plus__link ion-music-note"></a>
+     <!--  <a href="#" class="plus__link ion-images"></a>
+      <a href="#" class="plus__link ion-music-note"></a> -->
       <a href="/user/myPage" class="plus__link far fa-address-card"></a>
     </div>
     <div class="plus__line plus__line--h"></div>
