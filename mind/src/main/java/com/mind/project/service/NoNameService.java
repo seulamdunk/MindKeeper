@@ -1,6 +1,6 @@
 package com.mind.project.service;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.mind.project.DTO.NoNameDTO;
 import com.mind.project.model.Customer;
 import com.mind.project.model.NoName;
 import com.mind.project.model.NoNameReply;
@@ -51,10 +52,8 @@ public class NoNameService {
 	// 게시글 삭제
 	@Transactional
 	public void delete(int noNameNum, Customer customer) {
-		//System.out.println("nonamenum: " + noNameNum);
 		NoName noName = new NoName();
 		noName.setCustomer(customer);
-		//System.out.println("customerNum" + noName.getCustomer());
 		noNameRepository.deleteById(noNameNum);
 	}
 	
@@ -84,8 +83,42 @@ public class NoNameService {
 		 noNameReplyRepository.save(reply);
 		
 	}
+	// 댓글 삭제
+	@Transactional
+	public void replyDelete(int noNameNum, Customer customer, int noNameReplyNum) {
+		//System.out.println("nonamenum: " + noNameNum);
+		NoName noName = new NoName();
+		noName.setCustomer(customer);
+		
+		NoNameReply reply = new NoNameReply();
+		reply.setNoNameReplyNum(noNameReplyNum);
+		
+		//System.out.println("customerNum" + noName.getCustomer());
+		noNameReplyRepository.delete(reply);
+	}
 	
 	
+	//검색 기능
+	@Transactional
+	public List<NoNameDTO> searchPosts(String keyword){
+		
+		List<NoName> noNames = noNameRepository.findByNoNameTitleContainingIgnoreCase(keyword);
+		List<NoNameDTO> noNameDTOList = new ArrayList<>();
+		if(noNames.isEmpty()) {return noNameDTOList;}
+		
+		for(NoName noName:noNames) {
+			noNameDTOList.add(this.convertEntityToDto(noName));
+		}
+		return noNameDTOList;
+	}
+		private NoNameDTO convertEntityToDto(NoName noName) {
+			return NoNameDTO.builder()
+					.noNameNum(noName.getNoNameNum())
+					.noNameTitle(noName.getNoNameTitle())
+					.noNameCon(noName.getNoNameCon())
+					.noNameCount(noName.getNoNameCount())
+					.build();
+		}
 	
 	
 	

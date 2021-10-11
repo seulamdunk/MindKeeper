@@ -1,7 +1,7 @@
 package com.mind.project.controller;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mind.project.DTO.NoNameDTO;
 import com.mind.project.model.Customer;
 import com.mind.project.model.NoName;
 import com.mind.project.model.NoNameReply;
@@ -61,19 +63,13 @@ public class NoNameApiController {
 	@RequestMapping(value="/n_write")
 	public void save(HttpServletRequest request, @RequestBody Map<String,String> m){
 		NoName noName = new NoName();
-		//System.err.println(m.get("noNameTitle"));
-		//noName.setNoNameNum(Integer.parseInt(m.get("noNameNum")));
+		
 		noName.setNoNameTitle(m.get("noNameTitle"));
 		noName.setNoNameCon(m.get("noNameCon"));
-		//System.out.println(m);
-		//Customer customer = commonService.tokenCustomer(request);
+	
 		Optional<Customer> customerOption= customerRep.findByCustomerID(SecurityContextHolder.getContext().getAuthentication().getName());
 		Customer customer = customerOption.get();
-		//System.out.println("customer: " + customer.getCustomerNum());
-		System.out.println("title" + noName.getNoNameTitle());
-		System.out.println("con" + noName.getNoNameCon());
-		System.out.println("num" + noName.getNoNameNum());
-		System.out.println("customer" + customer.getCustomerNum());
+		
 		noNameService.write(noName, customer);
 	}
 	
@@ -81,9 +77,6 @@ public class NoNameApiController {
 	@GetMapping("/n_details/{noNameNum}")
 	public String n_detail(@PathVariable int noNameNum, Model model, HttpServletRequest request) {
 
-//		Optional<Customer> customerOption= customerRep.findByCustomerID(SecurityContextHolder.getContext().getAuthentication().getName());
-//		Customer customer = customerOption.get();
-//		System.out.println(customer.getCustomerNum());
 		commonService.tokenImfo(model, request);
 		model.addAttribute("noName", noNameService.n_details(noNameNum));
 		
@@ -94,9 +87,9 @@ public class NoNameApiController {
 	@ResponseBody
 	@DeleteMapping("/n_details/{noNameNum}")
 	public void deleteById(@RequestBody @PathVariable int noNameNum, HttpServletRequest request) {
-		//System.out.println("noNameNum: " + noNameNum);
+		
 		Customer customer = commonService.tokenCustomer(request);
-		//System.out.println("customer: " + customer.getCustomerNum());
+		
 		noNameService.delete(noNameNum,customer);
 		
 	}
@@ -121,14 +114,9 @@ public class NoNameApiController {
 		noName.setNoNameTitle(m.get("noNameTitle"));
 		noName.setNoNameCon(m.get("noNameCon"));
 		
-		
 		Optional<Customer> customerOption= customerRep.findByCustomerID(SecurityContextHolder.getContext().getAuthentication().getName());
 		Customer customer = customerOption.get();
-		//System.out.println("customer" + customer.getCustomerNum());
-		System.out.println(noName.getNoNameDate());
-//		System.out.println(noName.getNoNameTitle());
-//		System.out.println(noName.getNoNameCon());
-//		System.out.println(noName.getNoNameNum());
+		
 		noNameService.update(noName, customer);
 		
 	}
@@ -144,5 +132,27 @@ public class NoNameApiController {
 		//System.out.println("customer: " + customer.getCustomerNum());
 		noNameService.replyWrite(customer, noNameNum, replyCon2);
 	}
-
+	
+	//댓글 삭제
+	@ResponseBody
+	@DeleteMapping("/n_details/{noNameNum}/reply/{noNameReplyNum}")
+	public void replyDelete(@PathVariable int noNameNum, HttpServletRequest request, @PathVariable int noNameReplyNum) {
+				//System.out.println("noNameNum: " + noNameNum);
+				Customer customer = commonService.tokenCustomer(request);
+				//System.out.println("customer: " + customer.getCustomerNum());
+				//System.out.println("noNameReplyNum: " + noNameReplyNum);
+				noNameService.replyDelete(noNameNum,customer,noNameReplyNum);
+		
+	}
+	
+	// 검색기능 
+	@GetMapping("no_name/n_search")
+	public String search(@RequestParam(value="keyword") String keyword, Model model) {
+	    
+		List<NoNameDTO> noNaemDtoList = noNameService.searchPosts(keyword);
+	    
+	    model.addAttribute("NoNameDTO", noNaemDtoList);
+	    
+	    return "no_name_view";
+	}
 }

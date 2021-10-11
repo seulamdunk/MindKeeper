@@ -110,7 +110,10 @@
 						<div>${reply.noNameReplyCon }</div>
 						<div class="d-flex">
 							<div>작성자: 익명 &nbsp;</div>
-							<button class="badge">삭제</button>
+							<c:if test="${noName.customer.customerNum == tokenNum}"> 
+							<input type="hidden" id="noNameReplyNum" value="${reply.noNameReplyNum }" />
+							<button onClick="replyDelete();" class="badge btn btn-primary" >삭제</button>
+							</c:if>
 						</div>
 					</li>
 				</c:forEach>
@@ -141,5 +144,6 @@
   <script src="../js/main.js"></script>
   <script src="../js/noname/delete.js"></script>
   <script src="../js/noname/reply_save.js"></script>
+  <script src="../js/noname/reply_delete.js"></script>
   </body>
 </html>

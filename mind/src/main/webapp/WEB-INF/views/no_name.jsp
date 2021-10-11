@@ -97,6 +97,14 @@
 			</div>
 			<div>
 			<button class="btn btn-primary px-4 py-3" value="작성하기" onclick="location.href='/no_name_write'" style="float: right; font-size: 13px;" >작성하기</button>
+			<!-- 검색 form -->
+				<form action="no_name/n_search" method="GET">
+					<div class="btn-group" role="group" aria-label="Basic example" style="float: left; font-size: 13px;">
+						<input name="keyword" type="text" placeholder="검색어를 입력해주세요">
+						<button class="btn btn-primary btn-lg">검색</button>
+					</div>
+					</form>
+				<!-- 검색 종료 -->
 			<ul class="pagination justify-content-center" style="margin:20px 0;" >
 				<c:choose>
 					<c:when test="${n_list.first }">
@@ -118,14 +126,6 @@
 				</c:choose>
 				<!-- 검색 종료 -->
 			</ul>
-				
-			<!-- 검색 form -->
-				<!-- <form action="/n_search" method="GET">
-					<div class="btn-group" role="group" aria-label="Basic example">
-							<input name="keyword" type="text" placeholder="검색어를 입력해주세요">
-							<button class="btn btn-primary">검색</button>
-							</div>
-				</form> -->
 				</div>
 		</div>
 		</div>
