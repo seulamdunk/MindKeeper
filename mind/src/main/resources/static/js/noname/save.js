@@ -4,8 +4,8 @@ function save(){
 		noNameTitle: $("#noNameTitle").val(),
 		noNameCon: $("#noNameCon").val()
 	}
-		alert($("#noNameTitle").val());
-		alert($("#noNameCon").val());
+//		alert($("#noNameTitle").val());
+//		alert($("#noNameCon").val());
 		
 	$.ajax({
 		type:"POST",

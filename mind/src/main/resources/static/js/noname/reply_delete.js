@@ -2,9 +2,9 @@ function replyDelete() {
 	
 	var noNameNum = $("#noNameNum").text();
 	var noNameReplyNum= $("#noNameReplyNum").val();
-	
-	alert($("#noNameNum").text());
-	alert($("#noNameReplyNum").val());
+//	
+//	alert($("#noNameNum").text());
+//	alert($("#noNameReplyNum").val());
 	
 	
 	$.ajax({

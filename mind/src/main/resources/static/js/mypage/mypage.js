@@ -27,7 +27,7 @@ $(function() {
 			contentType: 'application/json; charset=utf-8',
 			data: JSON.stringify(params),
 			success: function(result) {
-				alert("성공")
+				alert("저장되었습니다")
 				location.href= "myPage" 
 		
 			},
@@ -51,7 +51,7 @@ $(function() {
 		var jindanConNum = $('#jindanConNum').val()
 		var customerName = $('#customerName').val()
 		
-		alert(jindanConNum)
+		//alert(jindanConNum)
 		
 		if(jindanCon == '긍정') {
 			$('#resultBox').append('<div class="card-body"><h4 class="font-weight-bold">' + jindanCon + '<span class="float-right">' + jindanConNum + '%</span></h4><div class="progress mb-4"><div class="progress-bar bg-danger" role="progressbar" style="width:' +jindanConNum + '%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div></div></div>')

@@ -46,6 +46,24 @@
 <!-- Template Main CSS File -->
 <link href="../css/assets/css/style.css" rel="stylesheet">
 
+
+<link rel="stylesheet" href="../css/weather.css">
+
+<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="css/jquery.timepicker.css">
+<link rel="apple-touch-icon-precomposed" href="//nimg.nate.com/ui/uidev/images/mnews/common/nate_news_114.png">
+<link href="https://common.nate.com/css/common/SvcCommon_2020.css?v=2020120301" rel="stylesheet" type="text/css">
+
+<link rel="apple-touch-icon-precomposed" href="//nimg.nate.com/ui/uidev/images/mnews/common/nate_news_114.png">
+  	<link rel="stylesheet" type="text/css" href="//nimg.nate.com/ui/uidev/pc/release/css/sisa/snb.css?202109291436">
+  	<link rel="stylesheet" type="text/css" href="//nimg.nate.com/ui/uidev/pc/release/css/sisa/news_common.css?202109291436">
+  	<link rel="stylesheet" type="text/css" href="//nimg.nate.com/ui/uidev/pc/release/css/sisa/new_weather.css?202109291436">
+  	<link rel="stylesheet" type="text/css" href="//nimg.nate.com/ui/uidev/pc/release/css/weather/weather_motion.css?202109291436">
+  	<link rel="stylesheet" type="text/css" href="//nimg.nate.com/ui/uidev/pc/release/css/pcsnb.css?202109291436">
+  	<script type="text/javascript" src="//news.nate.com/etc/mobileAgentJs"></script>
+  	<script type="text/javascript" src="//news.nate.com/js/weather.js?202108311331"></script>
+  	<script src="//news.nate.com/js/graph.js?202108311331" charset="euc-kr"></script>
+
 </head>
 <body>
 	<jsp:include page="../navbar.jsp">
@@ -380,12 +398,72 @@
 				</div>
 				<div class="col-md-6 py-5 pl-md-5">
 					<div>
-						<img alt="" src="../img/cloud.png" style="width: 400px;">
+						<img alt="" src="../img/cloud.png" style="width: 800px; height: 400px;">
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	
+	
+	<section class="ftco-section testimony-section bg-light" style="margin-top: 50px; margin-bottom: 5px; padding-left: 400px;">
+	
+	<div class="weather_country" >
+      			${test1 }
+     </div>
+	
+	
+	<div class="lb-widget">
+		<div class="lb-main">
+			<select class="beom" id="select-box">
+				<option value="1">Seoul, 서울</option>
+				<option value="2">Incheon, 인천</option>
+				<option value="3">Daejeon, 대전</option>
+				<option value="4">Gwangju, 광주</option>
+				<option value="5">Daegu, 대구</option>
+				<option value="6">Ulsan, 울산</option>
+				<option value="7">Busan, 부산</option>
+				<option value="8">Jeju, 제주</option>
+			</select>
+		</div>
+		<div id="lb-1" class="lb-weather">
+			<iframe
+				src="https://forecast.io/embed/#lat=37.5266&lon=127.0403&name=Seoul, 서울&color=&font=&units=si"></iframe>
+		</div>
+		<div id="lb-2" class="lb-weather">
+			<iframe
+				src="https://forecast.io/embed/#lat=37.4496&lon=126.7074&name=Incheon, 인천&color=#F6A8A6&font=&units=si"></iframe>
+		</div>
+		<div id="lb-3" class="lb-weather">
+			<iframe
+				src="https://forecast.io/embed/#lat=36.3512&lon=127.3954&name=Daejeon, 대전&color=#5BC065&font=&units=si"></iframe>
+		</div>
+		<div id="lb-4" class="lb-weather">
+			<iframe
+				src="https://forecast.io/embed/#lat=35.1787&lon=126.8974&name=Gwangju, 광주(전남)&color=#A5C8E4&font=&units=si"></iframe>
+		</div>
+		<div id="lb-5" class="lb-weather">
+			<iframe
+				src="https://forecast.io/embed/#lat=35.8759&lon=128.5964&name=Daegu, 대구&color=#C0ECCC&font=&units=si"></iframe>
+		</div>
+		<div id="lb-6" class="lb-weather">
+			<iframe
+				src="https://forecast.io/embed/#lat=35.538&lon=129.324&name=울산&color=#F9F0C1&font=&units=si"></iframe>
+		</div>
+		<div id="lb-7" class="lb-weather">
+			<iframe
+				src="https://forecast.io/embed/#lat=35.1334&lon=129.1058&name=부산&color=#BA55D3&font=&units=si"></iframe>
+		</div>
+		<div id="lb-8" class="lb-weather">
+			<iframe
+				src="https://forecast.io/embed/#lat=33.5007&lon=126.5288&name=제주&color=#ffc261&font=&units=si"></iframe>
+		</div>
+	</div>
+
+      		
+	</section>
+	
+	
 
 
 	<section class="ftco-section testimony-section bg-light" style="margin-top: 50px; margin-bottom: 50px;">
@@ -531,6 +609,16 @@
 
 	<!-- Template Main JS File -->
 	<script src="../css/assets/js/main.js"></script>
+	
+	<script src="../js/weather/weather.js"></script>
+	<script type="text/javascript" src="https://common.nate.com/js/CommonTextGNB_v20200305.js?ver=20210628_1" charset="utf-8"></script>
+  <script type="text/javascript" src="//common.nate.com/textGNB/commonTextGNBV1"></script>
+  <script type="text/javascript" src="https://common.nate.com/js/CommonTextGNB_v20200305.js?ver=20210628_1" charset="utf-8"></script>
+  <script type="text/javascript" src="//news.nate.com/js/common.js?202108311331"></script>
+  <script type="text/javascript" src="//news.nate.com/js/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" charset="euc-kr" src="//news.nate.com/js/stat.js?202108311331"></script>
+  <script type="text/javascript" charset="UTF-8" src="https://common.nate.com/js/data/liveKeywordStatus.js?v=20211092115"></script>
+  <script type="text/javascript" charset="UTF-8" src="https://common.nate.com/js/rolling-jq-nj_https.js?v=20180820_01"></script>
 
 
 </body>

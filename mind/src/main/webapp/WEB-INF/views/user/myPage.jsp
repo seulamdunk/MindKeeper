@@ -195,11 +195,11 @@
 
 					<div _ngcontent-hal-c185="" class="split_wrap">
 
-						<section _ngcontent-hal-c185="" class="my_order">
+		<!-- 				<section _ngcontent-hal-c185="" class="my_order">
 							<h3 _ngcontent-hal-c185="" class="my_tit">좋아요</h3>
 							
-							<!-- 좋아요 목록 ******************************************************************* -->
-							<!--  
+							좋아요 목록 *******************************************************************
+							 
 							<div _ngcontent-hal-c185="" class="heart_artwrap">
 								<h4 _ngcontent-hal-c185="" class="h_tit">Products</h4>
 								<ul _ngcontent-hal-c185="" class="heart_lst ng-star-inserted">
@@ -289,25 +289,25 @@
 									</a></li>
 								</ul>
 							</div>
-							-->
-							<!-- end of 좋아요 목록 ******************************************************************* -->
+							
+							end of 좋아요 목록 *******************************************************************
 
 							<div _ngcontent-hal-c185="" class="heart_artwrap type2 border_no">
 								<h4 _ngcontent-hal-c185="" class="h_tit h_tit2">Post</h4>
-								<!---->
+								
 								<div _ngcontent-hal-c185=""
 									class="order_list_none border_no ng-star-inserted">
 									<p _ngcontent-hal-c185="">포스트 하트내역이 없습니다</p>
 								</div>
-								<!---->
+								
 								<ul _ngcontent-hal-c185="" class="heart_lst ng-star-inserted">
-									<!---->
+									
 								</ul>
-								<!---->
+								
 							</div>
 							<a _ngcontent-hal-c185="" routerlink="/heart" class="btn_my_more"
 								href="/mypage/heart">더보기</a>
-						</section>
+						</section> -->
 					</div>
 					</ui-home>
 					<!---->

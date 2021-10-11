@@ -38,17 +38,28 @@
 	<jsp:include page="navbar.jsp"></jsp:include>
     <!-- END nav -->
     
-    <div class="hero-wrap hero-wrap-2" style="background-image: url(images/bg_2.jpg);" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container-fluid">
+<!-- 메인 배너 -->
+<div class="hero-wrap hero-wrap-2" style="background-image:  linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+          ), url(../images/banner_noname.jpg); background-position-y:200%; background-size: 100%">
+          
+          <div class="container-fluid">
         <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="/">Home</a></span> <span>익명상담게시판</span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">상세보기</h1>
-          </div>
+          <div class="col-md-6 ftco-animate text-center" style="margin-top: 50px;" data-scrollax=" properties: { translateY: '70%' }">
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="color:white;">익명게시판</h1>
+            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><span style="color:white;">주변에 털어놓긴 힘든 고민들을 적어보세요<br>
+내가 누구인지 여기서는 아무도 알 수가 없습니다</span></p>
+           </div>
         </div>
       </div>
-    </div>
+      
+</div>
+<!-- 메인 배너 종료 -->
 	   <div class="board_wrap">
         <div class="board_title">
             <strong>익명상담게시판</strong>
@@ -82,11 +93,13 @@
                 </div>
             </div>
             <br/>
-            <button class="btn btn-primary" onclick="history.back()">돌아가기</button>
+            <div style="width: 250px; margin: 0 auto; display: flex;">
+            <button class="btn btn-primary px-4 py-3" onclick="history.back()" style="font-size: 13px; margin-right: 5px;">돌아가기</button>
           <c:if test="${noName.customer.customerNum == tokenNum}"> 
-            <a href="/n_details/edit/${noName.noNameNum}" class="btn btn-warning">수정</a>
-            <button id="btn-delete" class="btn btn-danger" onclick="deleteById();">삭제</button>
+            <a href="/n_details/edit/${noName.noNameNum}" class="btn btn-warning px-4 py-3" style="font-size: 13px; margin-right: 5px;">수정</a>
+            <button id="btn-delete" class="btn btn-danger px-4 py-3" onclick="deleteById();" style="font-size: 13px;">삭제</button>
           </c:if>
+          </div>
         </div>
         <hr/>
 		<div class="card">
@@ -96,7 +109,7 @@
 					<textarea id="reply-content" class="form-control" rows="1"></textarea>
 				</div>
 				<div class="car-footer">
-					<button class="btn btn-primary" onclick="replySave();">등록</button>
+					<button class="btn btn-primary px-4 py-3" onclick="replySave();" style="font-size: 13px;">등록</button>
 				</div>
 			</form>
 		</div>

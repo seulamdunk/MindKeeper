@@ -4,8 +4,8 @@ function replySave(){
 	
 	let noNameNum = $("#noNameNum2").val();
 	
-	alert($("#noNameNum2").val());
-	alert($("#reply-content").val());
+//	alert($("#noNameNum2").val());
+//	alert($("#reply-content").val());
 	
 	$.ajax({
 		type:"POST",

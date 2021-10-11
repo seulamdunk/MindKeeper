@@ -249,8 +249,10 @@
 												
 												<tr>
 													<td class="day past calendar-day-2015-09-04">
-													<div id="day_4"><div class="day-contents">11</div></div></td>
-													<td class="day past calendar-day-2015-09-05"><div
+													<div style="background-color: #fdd835;"><div class="day-contents">11</div></div></td>
+													
+													<td class="day past calendar-day-2015-09-05">
+													<div style="background-color: #fbc02d;"><div
 															class="day-contents" id="day">12</div></td>
 															<td class="day past calendar-day-2015-09-04">
 													<div id="day_4"><div class="day-contents">13</div></div></td>

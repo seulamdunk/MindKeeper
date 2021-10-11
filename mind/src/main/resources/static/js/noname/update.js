@@ -7,9 +7,9 @@ function update(){
 		noNameCon: $("#noNameCon").val(),
 		noNameNum: $("#noNameNum").val()
 	}
-	alert($("#noNameNum").val());
-	alert($("#noNameTitle").val());
-	alert($("#noNameCon").val());
+//	alert($("#noNameNum").val());
+//	alert($("#noNameTitle").val());
+//	alert($("#noNameCon").val());
 	
 	
 	$.ajax({

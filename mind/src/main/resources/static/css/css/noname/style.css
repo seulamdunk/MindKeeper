@@ -94,7 +94,7 @@ a {
 }
 
 .board_list .title {
-    width: 60%;
+    width: 50%;
     text-align: left;
 }
 
@@ -107,7 +107,7 @@ a {
 }
 
 .board_list .date {
-    width: 10%;
+    width: 12%;
 }
 
 .board_list .count {

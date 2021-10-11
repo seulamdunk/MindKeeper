@@ -62,6 +62,7 @@
       
 </div>
 <!-- 메인 배너 종료 -->
+<section class="ftco-section">
     <div style="text-align: center;">
     <br/>
     
@@ -90,13 +91,13 @@
 						<a href="/n_details/${no_lists.noNameNum }">${no_lists.noNameTitle }</a>
 					</div>
 					<div class="writer">익명</div>
-					<div class="date">${fn:substring(no_lists.noNameDate,0,16) }</div>
+					<div class="date">${fn:substring(no_lists.noNameDate,0,10) } ${fn:substring(no_lists.noNameDate,11,16) }</div>
 					<div class="count">${no_lists.noNameCount }</div>				
 				</div>
 				</c:forEach>
 			</div>
 			<div>
-			<button class="btn btn-primary px-4 py-3" value="작성하기" onclick="location.href='/no_name_write'" style="float: right; font-size: 13px;" >작성하기</button>
+			<button class="btn btn-primary px-4 py-3" value="작성하기" onclick="location.href='/no_name_write'" style="float: right; font-size: 13px; margin:0; pading:0;" >작성하기</button>
 			<!-- 검색 form -->
 				<form action="no_name/n_search" method="GET">
 					<div class="btn-group" role="group" aria-label="Basic example" style="float: left; font-size: 13px;">
@@ -105,7 +106,7 @@
 					</div>
 					</form>
 				<!-- 검색 종료 -->
-			<ul class="pagination justify-content-center" style="margin:20px 0;" >
+			<ul class="pagination justify-content-center" style="margin:35px 0;" >
 				<c:choose>
 					<c:when test="${n_list.first }">
 						<li class="page-item disabled"><a class="page-link" href="?page=${n_list.number -1 }">◀</a></li>
@@ -130,6 +131,7 @@
 		</div>
 		</div>
 	</div>
+	</section>
     <!-- footer -->
 	<jsp:include page="footer.jsp"></jsp:include>
 
