@@ -19,8 +19,11 @@ import org.springframework.stereotype.Service;
 import com.mind.project.model.Customer;
 import com.mind.project.model.Youtube;
 import com.mind.project.model.YoutubeLog;
+import com.mind.project.model.YoutubeReview;
 import com.mind.project.repository.YoutubeLogRepository;
 import com.mind.project.repository.YoutubeRepository;
+import com.mind.project.repository.YoutubeReviewRepository;
+
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Service("MindGrowService")
@@ -33,7 +36,10 @@ public class MindGrowServiceImpl implements MindGrowService {
 	
 	@Autowired
 	CommonService commonService;
-
+	
+	@Autowired
+	YoutubeReviewRepository youtubeReviewRep;
+	
 	@Override
 	public List<List<Youtube>> getListYoutube() throws Exception {
 
@@ -126,10 +132,8 @@ public class MindGrowServiceImpl implements MindGrowService {
 			client.connect(ipep);
 			// 소켓이 접속이 완료되면 inputstream과 outputstream을 받는다.
 			try (OutputStream sender = client.getOutputStream();InputStream receiver = client.getInputStream();) {
-				for(int i=0; i<1; i++) {
-						
-				// 전송할 메시지 작성
-				
+				for(int i=0; i<1; i++) {						
+				// 전송할 메시지 작성			
 				byte[] data = String.valueOf(lastView).getBytes();
 				ByteBuffer b = ByteBuffer.allocate(4);
 				// byte포맷은 little 앤디언이다
@@ -138,8 +142,7 @@ public class MindGrowServiceImpl implements MindGrowService {
 				// 데이터 길이 전송
 				sender.write(b.array(),0,4);
 				// 데이터 전송
-				sender.write(data);
-				
+				sender.write(data);				
 				data = new byte[4];
 				// 데이터 길이를 받는다
 				receiver.read(data,0,4);
@@ -150,8 +153,7 @@ public class MindGrowServiceImpl implements MindGrowService {
 				// 데이터 받을 버퍼를 선언한다
 				data = new byte[length];
 				// 데이터를 받는다
-				receiver.read(data, 0, length);
-				
+				receiver.read(data, 0, length);				
 				// byte형식의 데이터를 string형식으로 변환한다.
 				reciveData = new String(data, "UTF-8");		
 		        // ex) 이 msg는 ~확률로 무엇입니다. 가 저장되어 있다
@@ -168,12 +170,26 @@ public class MindGrowServiceImpl implements MindGrowService {
 			}
 		}catch (Throwable e) {
 			e.printStackTrace();
-			
+			List<Youtube> list =youtubeRepository.findAllByOrderByYoutubeTagDesc();
+			   Collections.shuffle(list);
+			   //20개 꺼내기
+			   list=list.subList(0, 20);
+			   return list;
 		} // 소켓통신 종료
 		List<Youtube> resultList =youtubeRepository.findByYoutubeNumIn(yList);
 		Collections.shuffle(resultList);
 		return resultList;
 	}
-	
+	public void insertYoutubeReview(Customer customer, Youtube youtube, String con) {
+		youtubeReviewRep.save(YoutubeReview.builder().youtube(youtube).customer(customer).youtubeReviewCon(con).build());
+	}
 
+	
+	public List<YoutubeReview> viewYoutubeReview(int youtubeNum){
+		return youtubeReviewRep.findByYoutubeYoutubeNumOrderByYoutubeReviewDate(youtubeNum);
+	}
+	
+	public void deleteYoutubeReview(YoutubeReview youtubeReview) {
+		youtubeReviewRep.delete(youtubeReview);
+	}
 }

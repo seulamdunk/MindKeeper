@@ -6,12 +6,14 @@ body{
 
 .ifArea{
 	margin-top:100px;
-		position: relative; /* absolute�� �θ� relative�� �� �θ� ���󰣴�. */
+		position: relative; /* absolute占쏙옙 占싸몌옙 relative占쏙옙 占쏙옙 占싸몌옙 占쏙옙占쏢간댐옙. */
   	width:100%;
  	 padding-bottom: 56.25%;
 	
 }
-
+hr {
+  background-color: white;
+}
 .infoArea{
 
 	display: flex;
@@ -22,10 +24,59 @@ body{
 
 
 }
-
-
+.user_name{
+    font-size:14px;
+    font-weight: bold;
+}
+.comments-list .media{
+    border-bottom: 1px dotted #ccc;
+}
+.pull-right{
+	float: right;
+}
+.media-body{
+	margin-left: 20px;
+}
 h2{
+	
 	color:white;
+}
+h4{
+	color:white;
+}
+
+.youtube-review-input-area{
+	display: flex;
+
+}
+.input-youtube{
+	width:100%;
+
+	   box-sizing: border-box;
+}
+.input-youtube input{
+	text-indent: 40px;
+}
+.input-youtube-btn{
+	width:100px;
+	background:#c0c0c0;
+text-align:center;
+	  color:black;
+	   box-sizing: border-box;
+	min-width:100px;
+}
+.input-youtube-btn:hover{
+	background:#D4D8FA;
+}
+.delete-y-com:hover{
+	color:#D4D8FA;
+}
+
+.input-youtube-btn i{
+	width:40px;
+	color:black;
+	font-size: 2em;
+	line-height: 52px;
 }
 .hero-wrap-3 {
   height: 350px; }
@@ -40,7 +91,7 @@ h2{
 #video{
 	
 	position: absolute;
-  width: 100%; /* �θ� �°� �� ä���. */
+  width: 100%; /* 占싸몌옙 占승곤옙 占쏙옙 채占쏙옙占�. */
   height: 100%;
 }    
 

@@ -1,7 +1,6 @@
 package com.mind.project.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -46,7 +45,6 @@ public interface MindTalkRepository extends JpaRepository<MindTalk, Integer> {
 	//고객 게시물 검색
 	Page<MindTalk> findAllByCustomerCustomerNumOrderByTalkDateDesc(int customerNum, Pageable pageable);
 	
-	// 좋아요 누른 마음톡톡 리스트
-	//@Query(value="select * from mindtalk natural join like_talk where mindtalk.customer_num=like_talk.customer_customer_num and like_talk.customer_customer_num=:customerNum",nativeQuery=true)
-	//Optional<MindTalk> findByCustomerNum(int customerNum);
+	//tag 게시물 검색
+	Page<MindTalk> findByTagContainingOrderByTalkDateDesc(String tag, Pageable pageable);
 }

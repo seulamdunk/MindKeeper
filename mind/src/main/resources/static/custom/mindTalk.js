@@ -1,81 +1,28 @@
-/**
- * 
- */
-//	//2초마다 갱신 코드
-//	function updateData(){
-//	    $.ajax({
-//	      url: "/refreshTalk",
-//	      type:"post",
-//	      success: function(data){ 
-//	       console.log("갱신")
-//	      },
-//	      error:function(data){
-//	    	  console.log("갱신 실패")
-//	      }
-//	    });
-//	    timerID = setTimeout("updateData()", 2000); // 2초 단위로 갱신 처리
-//	}
-//	setTimeout("updateData()", 2000); 
+
 
 $(function() { 
 	
 	
 	
-	 var flag=0;
-	  
-	  $('.share').on('click',function(){
-	   if(flag == 0)
-	    {
-	      $(this).siblings('.one').animate({
-	      top:'200px',
-	      left:'50%',
-	    },200);
-	    
-	     $(this).siblings('.two').delay(200).animate({
-	      top:'260px',
-	      left:'40%'
-	    },200);
-	    
-	     $(this).siblings('.three').delay(300).animate({
-	      top:'260px',
-	      left:'60%'
-	    },200);
-	              
-	    $('.one i,.two i, .three i').delay(500).fadeIn(200);  
-	      flag = 1;
-	    }
-	    
-	    
-	  else{
-	    $('.one, .two, .three').animate({
-	        top:'300px',
-	        left:'50%'
-	      },200);
-	      
-	  $('.one i,.two i, .three i').delay(500).fadeOut(200);
-	      flag = 0;
-	    }
-	  });
+	 var plus = document.getElementById('plus');
+
+	 function plusToggle() {
+	    plus.classList.toggle('plus--active');
+	}
+
+	plus.addEventListener('click', plusToggle);
 	
 	
 	
+
+	var currentPosition = parseInt($(".centered").css("top"));
+	$(window).scroll(function() { 
+		var position = $(window).scrollTop();
+		$(".centered").stop().animate({"top":position+currentPosition+"px"},1000); 
+		});
+
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	$("cus-name-click-menu").hide()
-	$('.cus-name-click').click(function(){
-		$(this).find("cus-name-click-menu").toggle()
-	});
-	
-	
+
 	
 	function showInfo(){
 		
@@ -90,14 +37,7 @@ $(function() {
 		let div =''
 	}
 	
-/*	//업로드 이미지 표시
-	$("#files").on("change", function(e) {
-		 console.log(e.target.files[0].name)
-		 let name=e.target.files[0].name
-		 $(".custom-file-label").text(name)
-		 
-		});
-	*/
+
 	
 	//업로드 이미지 표시
 	$("#files").on("change", function(e) {
@@ -138,28 +78,7 @@ $(function() {
 		 }
 		YesScroll()
 
-	// articleController
 
-/*	const defaultArticlePaginationSize = 5; // 한 번 요청으로 가져올 게시글의 개수
-	
-	$(window).scroll(function() {
-		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-			   
-			   alert("dkdkdkddk")
-			   let talkNumList = document.querySelectorAll('.talk-num');
-			  
-			   	alert(talkNumList)
-		
-			 
-			   
-			   getNewTalkList(lastTalkNum,defaultArticlePaginationSize);
-		   }
-		});
-*/
-	/*	function(customerNum,customerNick){
-			location.href='/invitation?userNum='+customerNum+'&'+userName=customerNick'
-		}
-*/
 	function getNewTalkList(){
 			let talkNumDiv = $('.talk-num');
 			talkNumList=[]
@@ -200,7 +119,7 @@ $(function() {
 		                                
 		                                   ' <div class="h5 m-0" data-toggle="dropdown"> '+value.customer.customerNick +
 		                                   '<div class="dropdown-menu"> '+
-													'+	<a onclick="location.href=/searchUser?userNum='+value.customer.customerNum +'" class="dropdown-item searchUser" >게시글 보기</a>';
+													'	<a onclick="location.href=/searchUser?userNum='+value.customer.customerNum +'" class="dropdown-item searchUser" >게시글 보기</a>';
 													
 												if(value.customer.customerNum != tokenNum  ){
 													talkPage +='<a onclick="location.href=/invitation?userNum='+value.customer.customerNum+'userName='+value.customer.customerNick +'" class="dropdown-item goTalk" >톡하기</a>'
@@ -290,7 +209,7 @@ $(function() {
 						
 					},
 					error:function(request, status, error){
-						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+						
 					}
 				})
 					
@@ -390,7 +309,7 @@ $(document).on("click",".review-btn",function(){
  a+=                ' <div class="d-flex justify-content-between align-items-center" >';
  a+=                    ' <div class="mr-2">';
  a+=                     	'<div class="col-12">';
- a+=                        	'<img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">';
+ a+=                        	'<img class="rounded-circle" width="45" src="'+value.customer.profileImg+'" alt="">';
  a+=                      '  </div>';
  a+=                        '<div class="col-12">';
  a+=                        	'<span>'+time+'</span>';
@@ -495,7 +414,7 @@ $(document).on("click",".cheerUPBtn2",function(){
 	area+=	 '"<form class="review-frm" method="post" action="insertReview">'
 	area+=		'<div class="review-group" style="margin-left:30px">'
 	area+=			'<div class="mr-2">'
-	area+=	            '<img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">'
+
 	area+=	        '</div>'
 	area+=			'<div class="review-textarea-div">'
 	area+=					'<div  class="review-textarea" contenteditable="true"placeholder="응원의 한마디" ></div>'
@@ -606,122 +525,3 @@ function viewLikeReview(talkReviewNum,customerNum){
 
 
 
-
-/*//댓글 좋아요 입력
-$(document).on("click","likeReview",function(){
-	let talkReviewNum = $(this).parent().find(".talkReviewNum").val()
-	let customerNum=$("#writer").val()
-	let talkNum=$(this).closest(".gedf-card").find(".talk-num").val()
-		$.ajax({
-		type:'post',
-		data:JSON.stringify(talkReviewNum),
-		url:"/insertLikeReview",
-		contentType:'application/json; charset=utf-8',
-		success:function(result){
-		
-			commentList(talkNum,customerNum)
-		},
-		error:function(request, status, error){
-			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		}
-	})
-	
-	
-	
-	
-	
-})
-
-*/
-
-
-
-
-
-
-
-	/*	
-	$("#files").on("change", function(e) {
-		inputFile(e); });
-	
-		});
-
-var inputFileList =new Array();
-function insertTalk(){
-		
-    let talkCon = $("#talkCon").val()
-	
-	let imageInput = $("#files").val();
-    var editForm = $("#talk_frm")
-	let formData = new FormData(editForm[0]);
-	//formData.append("talkCon", talkCon);
-	for (var i = 0; i < inputFileList.length; i++) { 
-		if(!inputFileList[i].is_delete){
-			formData.append("talkImg", inputFileList[i]); 
-			}
-		}
-
-
-	// formData.append("upLoadImg", imageInput);
-	
-	
-	
-	alert(formData.get('talkCon'))
-	
-	
-	//var formData = new FormData($('#fileForm')[0]);
-
-
-//	var params={"talkCon":talkCon,
-//				"file":imageInput
-//				}
-    
-    
-	$.ajax({
-		type:"post",
-		contentType: false,
-		processData: false,
-		enctype:'multipart/form-data',
-		data:formData,
-		url:"/insertTalk",
-		contentType:'application/json; charset=utf-8',
-		success: function(res){
-			alert("입력 성공 ")
-		},
-		error:function(request, status, error){
-			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		}
-	})
-	}
-	*/
-
-
-
-
-/*
-//댓글 응원 버튼 누를 시 입력 창 삽입
-$(document).on("click",".cheerUPBtn2",function(){
-
-	let area="";
-	area+= '<div class="insert-area2" style="min-width:307px" >'
-	area+=	 '"<form class="review-frm" method="post" action="insertReview">'
-	area+=		'<div class="review-group" style="margin-left:30px">'
-	area+=			'<div class="mr-2">'
-	area+=	            '<img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">'
-	area+=	        '</div>'
-	area+=			'<div class="review-textarea-div">'
-	area+=					'<div  class="review-textarea" contenteditable="true"placeholder="응원의 한마디" ></div>'
-	area+=					'<div class="review-btn2 "><span> 💌응원</span></div>'
-
-	area+=			'</div>'
-	area+=	   		'</div>	'
-	area+=			'</form>'
-	area+='</div>'		
-	
-	
-	$(this).parent().parent().find('.insert-group-area').html(area)
-});
-	});
-
-
-*/

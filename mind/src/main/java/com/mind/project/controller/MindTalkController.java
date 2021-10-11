@@ -72,8 +72,8 @@ public class MindTalkController {
 	
 		//System.out.println("security check" + SecurityContextHolder.getContext().getAuthentication().getName());
 		Customer customer =commonService.tokenCustomer(request);
-		//System.out.println("고객"+ customer.getCustomerNum());
-		m.addAttribute("tokenNum",Integer.valueOf(commonService.tokenImfo(m, request)));
+	//System.out.println("고객"+ customer.getCustomerNum());
+		m.addAttribute("tokenNum",Integer.valueOf(commonService.tokenImfo(m, request)));	
 		
 		m.addAttribute("user",customer);
 		return "guest/mindTalk";
@@ -246,7 +246,10 @@ public class MindTalkController {
 	@RequestMapping(value="/viewLikeReview")
 	public Map<String,String> viewLikeReview(@RequestBody Map<String,String> map){
 	System.out.println(map);
-	int cnt =mindTalk.checkLikeTalkReview(Integer.parseInt(map.get("customerNum")),Integer.parseInt( map.get("talkReviewNum")));
+	int cnt=0;
+	if(!map.get("customerNum").isEmpty()) {
+	 cnt =mindTalk.checkLikeTalkReview(Integer.parseInt(map.get("customerNum")),Integer.parseInt( map.get("talkReviewNum")));
+	 }
 	int cntSum =mindTalk.checkLikeTalkReview(Integer.parseInt(map.get("customerNum")),Integer.parseInt( map.get("talkReviewNum")));
 	
 	Map<String,String> result = new HashMap<String,String>();
@@ -274,13 +277,7 @@ public class MindTalkController {
 		
 		
 				
-	/*
-	 * //chatRoom 이동
-	 * 
-	 * @RequestMapping("/chat-detail") public String chatRoom() {
-	 * 
-	 * return "/chat-detail"; }
-	 */	
+
 	
 		/**
 		 * 방 생성하기
@@ -346,30 +343,11 @@ public class MindTalkController {
 		@ResponseBody
 		public Page<Message> getMessageList(@RequestBody Map<String,String> m ,HttpServletRequest request) {
 			
-		/*
-		 * Page<chatRoomCusNum> list= mindTalk.getMsgList(lastNum, size, roomNumber)
-		 * 
-		 */
-		/*
-		 * for(chatRoomCusNum data :list) {
-		 * System.out.println(data.getCustomer().getMessage().get(0).getMessageNum()); }
-		 */
+
 			return null;
 		}
 
-	/*
-			@RequestMapping("/getMessageList")
-		@ResponseBody
-		public Page<chatRoomCusNum> getMessageList(@RequestBody Map<String,String> m ,HttpServletRequest request) {
-			
-			
-			Page<chatRoomCusNum> list= mindTalk.getMsgList(Integer.parseInt(m.get("lastNum")),Integer.parseInt(m.get("size")), Integer.parseInt(m.get("roomNumber")));
-			for(chatRoomCusNum data :list) {
-				System.out.println(data.getCustomer().getMessage().get(0).getMessageNum());
-			}
-			return list;
-		}
-	*/
+
 		@RequestMapping("/saveMessage")
 		@ResponseBody
 		public void saveMessage(@RequestBody Map<String,String> m ,HttpServletRequest request) {
@@ -409,7 +387,9 @@ public class MindTalkController {
 				,@PageableDefault(size=5,sort="talkNum",direction = Sort.Direction.DESC)
 		Pageable pageable) {
 			System.out.println("userNum= "+userNum);
-			Customer customer =commonService.tokenCustomer(request);
+			Optional<Customer> customerOption= customerRep.findByCustomerID(SecurityContextHolder.getContext().getAuthentication().getName());
+			Customer customer = customerOption.get();
+		
 			//System.out.println("고객"+ customer);
 			mv.addObject("tokenNum",customer.getCustomerNum());
 			
@@ -419,35 +399,30 @@ public class MindTalkController {
 			return mv;
 		}
 		
-	
+		
+		
+		@RequestMapping("/searchTag")
+		public ModelAndView searchTag(@RequestParam String tag,ModelAndView mv,HttpServletRequest request
+				,@PageableDefault(size=5,sort="talkNum",direction = Sort.Direction.DESC)
+		Pageable pageable) {
+			System.out.println("tag= "+tag);
+			Optional<Customer> customerOption= customerRep.findByCustomerID(SecurityContextHolder.getContext().getAuthentication().getName());
+			Customer customer = customerOption.get();
+			//System.out.println("고객"+ customer);
+			mv.addObject("tokenNum",customer.getCustomerNum());
+			
+			mv.addObject("user",customer);
+			mv.addObject("talkList", mindTalk.searchTag(tag, pageable));
+			mv.setViewName("guest/mindTalkSearch");
+			return mv;
+		}
+		
+		@ResponseBody
 		@RequestMapping("/deleteRoom")
-		public void deleteRoom(@RequestParam int roomNumber) {
+		public int deleteRoom(@RequestParam int roomNumber) {
 			System.out.println("deleteroom"+roomNumber);
 			mindTalk.deleteRoom(roomNumber);
-			
+			System.out.println("deleteroom fi"+roomNumber);
+			return roomNumber; 
 		}
 }
-//@ResponseBody
-//@RequestMapping(value="/refreshTalk")
-//public void refreshTalk(Model m, HttpServletRequest request) {
-//	m.addAttribute("talkList", mindTalk.getTalksList());
-//	System.out.println("갱신");
-//	commonService.tokenImfo(m,request);
-//	
-//}
-/*
-  
-  	@ResponseBody
-	@PostMapping("/getToken")
-	public int getToken(HttpServletRequest request) {
-		//System.out.println("확인 \n\n\n\n\n\n\n"+talkReviewNum);
-		int talkNum=-1;
-		if(commonService.tokenCustomer(request).getCustomerNum()!=null) {
-			talkNum=commonService.tokenCustomer(request).getCustomerNum();
-		}
-		
-		return talkNum;
-		
-	}
- 
-*/

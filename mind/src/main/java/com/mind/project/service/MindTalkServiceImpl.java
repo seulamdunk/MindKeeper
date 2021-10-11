@@ -308,7 +308,11 @@ import com.mind.project.repository.TalkReviewRepository;
 		return 	talkRep.findAllByCustomerCustomerNumOrderByTalkDateDesc(customerNum, pageable);
 		
 	}
-
+	@Override
+	public Page<MindTalk> searchTag(String tag, Pageable pageable) {
+		return 	talkRep.findByTagContainingOrderByTalkDateDesc(tag, pageable);
+		
+	}
 	@Override
 	public void deleteRoom(int roomNumber) {
 		chatRoomRep.deleteByRoomNumber(roomNumber);

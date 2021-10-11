@@ -33,6 +33,10 @@
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../custom/mindtalk.css" />
+     <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+  />
   </head>
   <body>
     
@@ -55,8 +59,8 @@
 				<div>
 					
 			
-					<a title="Mert S. Kaplan" href="#" class="twPc-avatarLink">
-						<img alt="Mert S. Kaplan" src="{user.customerNick }" width=72px height=72px class="twPc-avatarImg">
+					<a title="user Profile" href="#" class="twPc-avatarLink">
+						<img alt="user" src="${user.profileImg}" width=72px height=72px class="twPc-avatarImg">
 					</a>
 			
 					<div class="twPc-divUser">
@@ -68,30 +72,7 @@
 						</span>
 					</div>
 			
-					<!-- div class="twPc-divStats">
-						<ul class="twPc-Arrange">
-							<li class="twPc-ArrangeSizeFit">
-								<a href="https://twitter.com/mertskaplan" title="9.840 Tweet">
-									<span class="twPc-StatLabel twPc-block">Tweets</span>
-									<span class="twPc-StatValue">9.840</span>
-								</a>
-							</li>
-							<li class="twPc-ArrangeSizeFit">
-								<a href="https://twitter.com/mertskaplan/following" title="885 Following">
-									<span class="twPc-StatLabel twPc-block">Following</span>
-									<span class="twPc-StatValue">885</span>
-								</a>
-							</li>
-							<li class="twPc-ArrangeSizeFit">
-								<a href="https://twitter.com/mertskaplan/followers" title="1.810 Followers">
-									<span class="twPc-StatLabel twPc-block">Followers</span>
-									<span class="twPc-StatValue">1.810</span>
-								</a>
-							</li>
-						</ul>
-					</div> -->
-					
-					
+
 				</div>
 			</div>
 		</div>
@@ -158,7 +139,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center ">
                                 <div class="mr-2">
-                                    <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                                    <img class="rounded-circle" width="45" src="${talk.customer.profileImg }" alt="">
                                 </div>
                                 <div class="ml-2">
                                 
@@ -183,11 +164,7 @@
                     
                   
                     <div class="card-body">
-                      <!--   <div class="text-muted h7 mb-2"> <span class="fa fa-clock-o"></span> Hace 40 min</div> -->
-                        <!-- <a class="card-link" href="#">
-                            <h5 class="card-title">Totam non adipisci hic! Possimus ducimus amet, dolores illo ipsum quoscum.</h5>
-                        </a> -->
-
+               
                         <p class="card-text">
                             ${talk.talkCon }
                             
@@ -195,7 +172,7 @@
                         <hr>
                         <p class="card-text">
                         <c:forEach items="${fn:split(fn:substring(talk.tag,1,fn:length(talk.tag)),'#')}" var='tag' >
-                        		<a>#${tag }&nbsp</a>
+                        		<a onclick='location.href="/searchTag?tag=${tag }"' >#${tag }&nbsp</a>
                             </c:forEach>
                         </p>
                         <div class="img-display">
@@ -218,9 +195,7 @@
 				       		<div class="inser-area justify-content-center">
 				       			<form class="review-frm" method="post" action="insertReview">
 				       				<div class="review-group">
-						       			 <!-- <div class="mr-2">
-		                                    <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
-		                                </div> -->
+						       			
 						       			<div class="review-textarea-div">
 						       		
 						       			
@@ -240,7 +215,7 @@
 				     
                     <div class="cheerUPArea${talk.talkNum }">
                     	 <div class="card card-inner"> 
-              <%--   <%@ include file="talkReview.jsp"  %>  --%>
+          
               		  <jsp:include page="./talkReview.jsp" flush="false">
             			  		<jsp:param name="talkNum" value="${talk.talkNum }" />          
             			  		<jsp:param name="tokenNum" value="${tokenNum }" />                  
@@ -272,20 +247,17 @@
     <div class="col-md-3 button-css">
 
     	
-    	<div class="share">
-  <i class="fa fa-plus"></i>
-	</div>
-	  <div class="one">
-	   <i class="fas fa-video"></i>
-	  </div>
-	  <div class="two">
-	    <i class="fa fa-twitter"></i>
-	  </div>
-	  <div class="three">
-	    <i class="fa fa-instagram"></i>
-	  </div>
-		</div>
-		 </div>	
+ <div class="centered">
+  <div class="plus" id="plus">
+    <div class="plus__line plus__line--v">
+      <a href="/guest/chat" class="plus__link fas fa-comments"></a>
+      <a href="#" class="plus__link ion-images"></a>
+      <a href="#" class="plus__link ion-music-note"></a>
+      <a href="/user/myPage" class="plus__link far fa-address-card"></a>
+    </div>
+    <div class="plus__line plus__line--h"></div>
+  </div>
+</div>	
 	
                 
     </section>

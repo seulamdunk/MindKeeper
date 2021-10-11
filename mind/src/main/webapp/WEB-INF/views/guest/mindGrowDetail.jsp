@@ -32,27 +32,40 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../custom/mindGrowDetail.css">
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+         <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+  />
   </head>
   <body>
     
 	<jsp:include page="../navbar.jsp"></jsp:include>
     <!-- END nav -->
     
-    <div class="hero-wrap hero-wrap-3" style="background-image: url(images/bg-MotionElements_abstract.gif);" data-stellar-background-ratio="0.5">
+        <div class="hero-wrap hero-wrap-3" style="background-image:  linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 10%,
+            rgba(0, 0, 0, 0.25) 25%,
+            rgba(0, 0, 0, 0.5) 50%,
+            rgba(0, 0, 0, 0.75) 75%,
+            rgba(0, 0, 0, 1) 100%
+          ), url(../images/banner_mindgrow.jpg); background-size:100%; background-position-y: 180%"><!--data-stellar-background-ratio="0.8"  -->
       <div class="overlay"></div>
       <div class="container-fluid">
         <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-          	<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html" >Home</a></span> <span style="color:white;">Team</span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="color:white;">MindGrow</h1>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="color:white;">마음가꾸기</h1>
+            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><span style="color:white;">마음이 즐거워질 수 있도록 에너지를 쌓아보세요<br>
+취향에 맞는 영상을 추천받고 즐겨보세요</span></p>
+          </div>
         </div>
       </div>
     </div>
-</div>
+    
     <section class="ftco-section">
       <div class="container">
-      
-      	
+      <input type="hidden" value="${youtube.youtubeNum}" id="youtube-num">
+      	<input type="hidden" value="${user}" id="user-num">
       
       	<div class="row justify-content-center mb-5 pb-5">
         	
@@ -65,22 +78,34 @@
 	        
         </div>
         <div class="youtube-title"><h2>${youtube.youtubeTitle}</h2></div>
-	         <hr/>
+	        
 	         <div>채널    : ${youtube.youtubeCh}</div>
 	         <div><br/></div>
 	         <div>조회수 : ${youtube.youtubeCnt}</div>
 	         
-	        <%--  <div class="infoArea"> 
-	         
-        		<div>
-        			채널 : ${youtube.youtubeCh}&nbsp;&nbsp;&nbsp;&nbsp;
-        		</div>
-        		<div>
-        			조회수 : ${youtube.youtubeCnt}
-        		</div>
-        	 </div>	 --%>
-        	 
+	 
         	 <hr>
+        	 
+        	 	 <div class="youtube-review-input-area">
+        	 	 		<div class="input-youtube">
+        	 		  <input class="form-control" id="youtubeCon" name="youtubeCon"  placeholder="">
+        	 		  </div>
+        	 		  <div class="input-youtube-btn" onclick=insertYoutubeReview()>
+        	 		 <i  class="fas fa-feather-alt"></i>
+        			 </div>
+        	 </div>
+        	 
+        	 
+       <div class="youtube-review-area">
+       		<div class="comments-list">
+              
+       
+       </div> 	 
+        	
+        	 
+        
+        	 
+        	   <hr>
         <div class="justify-content-center mb-5 pb-5">
         		<div class="container" >
     <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
@@ -129,7 +154,7 @@
 
       
       
-   		
+   		</div>
     </section>
 
     
@@ -153,7 +178,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="../js/google-map.js"></script>
   <script src="../js/main.js"></script>
-
+  <script src="../custom/mindGrowDetail.js"></script>
 <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 

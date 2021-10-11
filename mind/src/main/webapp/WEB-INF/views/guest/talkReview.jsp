@@ -74,7 +74,7 @@ $(document).ready(function(){
  a+=                ' <div class="d-flex justify-content-between align-items-center" >';
  a+=                    ' <div class="mr-2">';
  a+=                     	'<div class="col-12">';
- a+=                        	'<img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">';
+ a+=                        	'<img class="rounded-circle" width="45" src="'+value.customer.profileImg+'" alt="">';
  a+=                      '  </div>';
  a+=                        '<div class="col-12">';
  a+=                        	'<span>'+time+'</span>';

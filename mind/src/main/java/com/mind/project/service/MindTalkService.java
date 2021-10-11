@@ -83,7 +83,8 @@ public interface MindTalkService {
 	
 	//고객 게시물 검색
 	public Page<MindTalk> searchUser(int customerNum, Pageable pageable);
-		
+	//고객 게시물 검색
+	public Page<MindTalk> searchTag(String tag, Pageable pageable);
 	public void deleteRoom(int roomNumber);
 	
 	

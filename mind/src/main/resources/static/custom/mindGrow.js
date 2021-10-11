@@ -39,12 +39,14 @@ if(eval(id+"=="+limit)){
 		$(this).parent().find(".move-area").animate({left:"-=345"}, 500)
 	}
 		
-	}
+	});
+
 	
-	function showYoutubeInfo(){
-		let info ="<img"
-	}
+	
+	
+	
+	
+	
 
-
-})
+});
 
