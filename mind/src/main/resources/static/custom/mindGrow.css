@@ -1,19 +1,4 @@
- @font-face {
- 	font-family: "sb";
-  src: url("../fonts/SB 어그로 L.ttf");
- }
-  @font-face {
- 	font-family: "cafe";
-  src: url("../fonts/CAFE24SSURROUNDAIR.TTF");
- }
- @font-face {
- font-family: "noto";
- src: url("../fonts/NOTOSANSKR-LIGHT.OTF");
- }
-  @font-face {
- font-family: "noto-bold";
- src: url("../fonts/NOTOSANSKR-BOLD.OTF");
- }
+
 
 
 html {
@@ -45,9 +30,9 @@ h1 {
 
 }
 h2{
-	font-family: 'noto';
+	font-family: Arial;
 	color: black;
-	text-indent: 20px;
+	text-indent: 40px;
  
 }
 
@@ -56,7 +41,8 @@ h2{
  width: 100%;
  position: relative;
  display: grid;
- margin-bottom: 15px;
+ 
+ margin: 20px 0;
 
 
 }
@@ -106,9 +92,7 @@ h2{
 
 h2{
 	 color:white;
-	 font-family: 'noto-bold';
-	 font-size: 30px;
-	 
+	 text-indent: 15px;
 }
 
 .showInfoActive{

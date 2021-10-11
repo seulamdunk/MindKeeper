@@ -8,6 +8,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -57,8 +59,11 @@ public class SecretController {
 	@ResponseBody
 	public Model mypage(HttpServletRequest request, Model model) throws Exception {
 		
-		Customer customer = commonService.tokenCustomer(request);
-		model.addAttribute("user", commonService.tokenCustomer(request));
+		
+		Optional<Customer> customerOption= customerRep.findByCustomerID(SecurityContextHolder.getContext().getAuthentication().getName());
+		Customer customer = customerOption.get();
+		
+		commonService.tokenImfo(model, request);
 		
 		//System.out.println("마이페이지 customerNum확인-------" + customerNum);
 		List<SecretModel> secretModelList = secretService.jindanTotal(Long.parseLong(String.valueOf(customer.getCustomerNum())));
